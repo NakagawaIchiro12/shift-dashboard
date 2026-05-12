@@ -1,0 +1,989 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>パート出勤ダッシュボード｜中川農産</title>
+<style>
+:root {
+  --green: #2E7D32;
+  --green-light: #66BB6A;
+  --green-dark: #1B5E20;
+  --orange: #FF8F00;
+  --red: #E53935;
+  --gray-soft: #B0BEC5;
+  --cream: #FFF8E7;
+  --beige: #F5EFE0;
+  --line: #E0DCC8;
+  --ink: #2C2C2C;
+  --ink-soft: #555;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Noto Sans JP", -apple-system, sans-serif;
+  background: var(--beige);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* === Header === */
+header {
+  background: linear-gradient(135deg, var(--green-dark), var(--green) 60%, var(--green-light));
+  color: #fff;
+  padding: 16px 18px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,.15);
+}
+header h1 { font-size: 18px; font-weight: 800; margin: 0; }
+header .sub { font-size: 11px; opacity: .85; margin-top: 2px; }
+header .meta {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-top: 8px;
+}
+header .pill {
+  background: rgba(255,255,255,.15);
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  border: 1px solid rgba(255,255,255,.25);
+}
+
+/* === View toggle === */
+.view-toggle {
+  display: flex; gap: 0; padding: 12px 16px;
+  background: #fff; border-bottom: 1px solid var(--line);
+  position: sticky; top: 64px; z-index: 90;
+}
+.view-toggle button {
+  flex: 1; padding: 10px;
+  border: 1px solid var(--green);
+  background: #fff; color: var(--green-dark);
+  font-weight: 800; font-size: 13px;
+  cursor: pointer;
+}
+.view-toggle button:first-child { border-radius: 8px 0 0 8px; }
+.view-toggle button:last-child { border-radius: 0 8px 8px 0; border-left: none; }
+.view-toggle button.active {
+  background: var(--green); color: #fff;
+}
+
+/* === Main === */
+main { padding: 16px; max-width: 720px; margin: 0 auto; }
+
+/* === Week View === */
+.week-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.week-header h2 { font-size: 16px; color: var(--green-dark); }
+.week-nav { display: flex; gap: 6px; }
+.week-nav button {
+  background: #fff; border: 1px solid var(--green);
+  color: var(--green-dark); width: 32px; height: 32px;
+  border-radius: 6px; font-weight: 800; cursor: pointer;
+}
+
+.shift-grid {
+  display: grid;
+  grid-template-columns: 100px repeat(5, 1fr);
+  gap: 4px;
+  background: var(--line);
+  border-radius: 12px;
+  padding: 4px;
+  overflow: hidden;
+}
+.shift-cell {
+  background: #fff;
+  padding: 8px 6px;
+  font-size: 12px;
+  text-align: center;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.shift-cell.header-row {
+  background: var(--green-dark); color: #fff;
+  font-weight: 800; font-size: 11px;
+}
+.shift-cell.header-col {
+  background: var(--cream);
+  font-weight: 700; font-size: 12px;
+  color: var(--green-dark);
+  text-align: left;
+  padding-left: 8px;
+  cursor: pointer;
+}
+.shift-cell.header-col:hover { background: var(--orange); color: #fff; }
+.shift-cell.day-name { font-size: 10px; opacity: .8; }
+.shift-cell.work { background: var(--green); color: #fff; font-weight: 700; }
+.shift-cell.off { background: var(--red); color: #fff; font-weight: 700; }
+.shift-cell.unknown { background: var(--gray-soft); color: #fff; }
+.shift-cell.empty { background: #FAFAFA; }
+.shift-cell:not(.header-row):not(.header-col):not(.empty) { cursor: pointer; }
+.shift-cell .time { display: block; font-size: 9px; opacity: .85; margin-top: 2px; }
+
+@media (max-width: 480px) {
+  .shift-grid { grid-template-columns: 80px repeat(5, 1fr); font-size: 11px; }
+  .shift-cell.header-col { font-size: 11px; padding-left: 6px; }
+}
+
+/* === Month view === */
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  background: var(--line);
+  padding: 2px;
+  border-radius: 10px;
+}
+.month-day {
+  background: #fff;
+  min-height: 70px;
+  padding: 4px;
+  font-size: 11px;
+  position: relative;
+}
+.month-day .date {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--green-dark);
+}
+.month-day.weekend .date { color: var(--red); }
+.month-day.outside { background: #F5F5F5; opacity: .5; }
+.month-day .badges {
+  display: flex; flex-wrap: wrap; gap: 2px;
+  margin-top: 4px;
+}
+.month-day .badge {
+  font-size: 9px; padding: 1px 4px;
+  border-radius: 3px; color: #fff;
+}
+.month-day .badge.off { background: var(--red); }
+.month-day .badge.work { background: var(--green); }
+.month-day-header {
+  background: var(--green-dark); color: #fff;
+  text-align: center; padding: 6px 0;
+  font-size: 10px; font-weight: 800;
+}
+.month-day-header.sat { background: #1976D2; }
+.month-day-header.sun { background: #C62828; }
+
+/* === Pattern view === */
+.pattern-card {
+  background: #fff; padding: 14px;
+  border-radius: 10px;
+  margin: 12px 0;
+  border-left: 4px solid var(--orange);
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.pattern-card h3 {
+  font-size: 13px;
+  color: var(--green-dark);
+  margin-bottom: 6px;
+}
+.pattern-bar {
+  display: flex; gap: 2px; margin-top: 6px;
+}
+.pattern-cell {
+  flex: 1; height: 18px;
+  border-radius: 2px;
+  background: var(--green);
+  font-size: 8px;
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+}
+.pattern-cell.off { background: var(--red); }
+.pattern-cell.unknown { background: var(--gray-soft); }
+
+/* === Input section === */
+.input-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+.input-section h2 {
+  font-size: 15px;
+  color: var(--green-dark);
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+textarea#linePaste {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 13px;
+  resize: vertical;
+  font-family: inherit;
+}
+.input-buttons {
+  display: flex; gap: 8px; margin-top: 10px;
+}
+.btn-primary {
+  background: var(--green);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  flex: 1;
+}
+.btn-primary:hover { background: var(--green-dark); }
+.btn-secondary {
+  background: #fff;
+  color: var(--green-dark);
+  border: 1px solid var(--green);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+}
+.parse-result {
+  margin-top: 10px;
+  padding: 10px;
+  background: var(--cream);
+  border-radius: 8px;
+  font-size: 12px;
+  display: none;
+}
+.parse-result.active { display: block; }
+.parse-result h4 { font-size: 12px; color: var(--green-dark); margin-bottom: 6px; }
+.parse-item {
+  padding: 4px 8px;
+  margin: 4px 0;
+  background: #fff;
+  border-radius: 4px;
+  border-left: 3px solid var(--orange);
+}
+
+/* === Modal === */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 380px;
+}
+.modal h3 { font-size: 15px; color: var(--green-dark); margin-bottom: 12px; }
+.modal label { font-size: 12px; color: var(--ink-soft); display: block; margin: 8px 0 4px; }
+.modal input, .modal select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 14px;
+}
+.modal-buttons { display: flex; gap: 8px; margin-top: 14px; }
+.modal-buttons button { flex: 1; padding: 9px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; }
+.modal-buttons .save { background: var(--green); color: #fff; }
+.modal-buttons .cancel { background: #ECEFF1; color: var(--ink); }
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 24px 16px;
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+/* === Stats bar === */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 12px 0;
+}
+.stat-card {
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  border-bottom: 3px solid var(--green);
+}
+.stat-card.off { border-bottom-color: var(--red); }
+.stat-card.unknown { border-bottom-color: var(--gray-soft); }
+.stat-num {
+  font-size: 24px; font-weight: 800;
+  color: var(--green-dark); line-height: 1;
+}
+.stat-label {
+  font-size: 10px; color: var(--ink-soft);
+  margin-top: 4px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌾 パート出勤ダッシュボード</h1>
+  <div class="sub">中川農産・100t農家のイチロウ</div>
+  <div class="meta">
+    <span class="pill" id="todayLabel">📅 今日</span>
+    <span class="pill" id="workCountLabel">✅ 出勤 0名</span>
+    <span class="pill" id="offCountLabel">🟥 休み 0名</span>
+  </div>
+</header>
+
+<nav class="view-toggle">
+  <button class="active" data-view="week">📋 週</button>
+  <button data-view="month">📅 月</button>
+  <button data-view="pattern">📊 パターン</button>
+</nav>
+
+<main>
+
+<!-- WEEK VIEW -->
+<section id="weekView">
+  <div class="week-header">
+    <h2 id="weekLabel">2026年5月12日(月) 〜 5月16日(金)</h2>
+    <div class="week-nav">
+      <button onclick="changeWeek(-1)">←</button>
+      <button onclick="changeWeek(0)" title="今週">●</button>
+      <button onclick="changeWeek(1)">→</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num" id="weekWorkCount">0</div><div class="stat-label">のべ出勤</div></div>
+    <div class="stat-card off"><div class="stat-num" id="weekOffCount">0</div><div class="stat-label">のべ休み</div></div>
+    <div class="stat-card unknown"><div class="stat-num" id="weekUnknownCount">0</div><div class="stat-label">のべ不明</div></div>
+  </div>
+
+  <div class="shift-grid" id="shiftGrid"></div>
+</section>
+
+<!-- MONTH VIEW -->
+<section id="monthView" style="display:none;">
+  <div class="week-header">
+    <h2 id="monthLabel">2026年5月</h2>
+    <div class="week-nav">
+      <button onclick="changeMonth(-1)">←</button>
+      <button onclick="changeMonth(0)" title="今月">●</button>
+      <button onclick="changeMonth(1)">→</button>
+    </div>
+  </div>
+  <div class="month-grid" id="monthGrid"></div>
+</section>
+
+<!-- PATTERN VIEW -->
+<section id="patternView" style="display:none;">
+  <div class="week-header">
+    <h2>📊 過去3ヶ月のパターン</h2>
+  </div>
+  <p style="font-size:12px; color: var(--ink-soft); margin-bottom: 12px;">
+    各パートさんの出勤・休みパターンを過去90日で表示します。
+  </p>
+  <div id="patternList"></div>
+</section>
+
+<!-- INPUT SECTION -->
+<section class="input-section">
+  <h2>📝 LINE 休み連絡を貼る</h2>
+  <textarea id="linePaste" placeholder="例：
+来週月曜日(5/12) 休みます
+&#10;鈴木：5/13、5/14、5/15 休み希望
+&#10;5/16 田中さん 通院のためお休み"></textarea>
+  <div class="input-buttons">
+    <button class="btn-primary" onclick="parseAndPreview()">🔍 解読してプレビュー</button>
+    <button class="btn-secondary" onclick="clearPaste()">クリア</button>
+  </div>
+  <div class="parse-result" id="parseResult"></div>
+  <p style="font-size: 11px; color: var(--ink-soft); margin-top: 10px;">
+    💡 画像（LINEスクショ）対応は Phase 3 で追加予定（OCR連携）
+  </p>
+</section>
+
+<!-- SYNC SECTION -->
+<section class="input-section">
+  <h2>🔄 同期（端末間でデータを移す）</h2>
+  <p style="font-size: 11px; color: var(--ink-soft); margin-bottom: 10px;">
+    スマホとPCで使うとき、このボタンでデータを移動できます。<br>
+    ※ 同じ端末・同じブラウザでは自動で残るので、これは "別端末に持っていく時" 用。
+  </p>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px;">
+    <button class="btn-primary" onclick="exportJSON()" style="background:#1e3a5f;">📤 JSONダウンロード</button>
+    <button class="btn-secondary" onclick="document.getElementById('importFile').click()">📥 JSONインポート</button>
+    <input type="file" id="importFile" accept=".json,application/json" style="display:none;" onchange="importJSON(event)">
+    <button class="btn-primary" onclick="copyToClipboard()" style="background:#06c755;">📲 文字列コピー</button>
+    <button class="btn-secondary" onclick="showPasteDialog()">📋 文字列ペースト</button>
+  </div>
+
+  <div id="syncStatus" style="margin-top: 10px; padding: 10px; background: var(--cream); border-radius: 6px; font-size: 12px; display: none;"></div>
+
+  <details style="margin-top: 12px; font-size: 12px;">
+    <summary style="color: var(--ink-soft); cursor: pointer;">💡 使い方ガイド（タップで開く）</summary>
+    <div style="margin-top: 8px; padding: 10px; background: #f8fafc; border-radius: 6px; line-height: 1.7;">
+      <strong>📲 スマホ → PC で同期する場合</strong><br>
+      1. スマホで「📲 文字列コピー」<br>
+      2. Discord/LINEで自分宛に貼って送る<br>
+      3. PCのDiscord/LINEで開いて全文コピー<br>
+      4. PCで「📋 文字列ペースト」→ ペーストして反映<br>
+      <br>
+      <strong>📤 ファイルで同期する場合</strong><br>
+      1. 元の端末で「📤 JSONダウンロード」<br>
+      2. ファイルをメール/AirDrop/Drive等で転送<br>
+      3. 他端末で「📥 JSONインポート」→ファイル選択<br>
+      <br>
+      <strong>⚠️ 注意</strong>：「インポート/ペースト」は **既存データを上書き** します。<br>
+      事前にエクスポートで バックアップを取ることをおすすめします。
+    </div>
+  </details>
+</section>
+
+<!-- Paste Dialog Modal -->
+<div class="modal-overlay" id="pasteModal">
+  <div class="modal" style="max-width: 480px;">
+    <h3>📋 文字列ペースト</h3>
+    <p style="font-size: 11px; color: var(--ink-soft); margin-bottom: 8px;">
+      別端末でコピーした同期用文字列を貼り付けてください
+    </p>
+    <textarea id="pasteText" style="width:100%; min-height:140px; padding:10px; border:1px solid var(--line); border-radius:8px; font-size:12px; font-family:monospace;"></textarea>
+    <div style="font-size: 11px; color: var(--red); margin-top: 8px;">
+      ⚠️ 既存のデータは上書きされます
+    </div>
+    <div class="modal-buttons">
+      <button class="cancel" onclick="document.getElementById('pasteModal').classList.remove('active');">キャンセル</button>
+      <button class="save" onclick="applyPaste()">取り込む</button>
+    </div>
+  </div>
+</div>
+
+<!-- ROSTER MANAGEMENT -->
+<section class="input-section">
+  <h2>👥 パートさん名簿（編集可）</h2>
+  <p style="font-size: 11px; color: var(--ink-soft); margin-bottom: 8px;">
+    名前をタップで編集／+でメンバー追加（このブラウザの localStorage に保存）
+  </p>
+  <div id="rosterList"></div>
+  <button class="btn-secondary" onclick="addMember()" style="width:100%; margin-top:10px;">+ メンバー追加</button>
+</section>
+
+</main>
+
+<!-- Edit Modal -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <h3 id="modalTitle">シフト編集</h3>
+    <div id="modalBody"></div>
+    <div class="modal-buttons">
+      <button class="cancel" onclick="closeModal()">キャンセル</button>
+      <button class="save" onclick="saveModal()">保存</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div>🌾 中川農産 / パート出勤ダッシュボード v1（モック）</div>
+  <div style="opacity:.7; margin-top:6px;">© 2026 Saikouyasai｜部署_労務管理/outputs/shift-dashboard</div>
+</footer>
+
+<script>
+// ============== Data Layer ==============
+const STORAGE_KEY = 'shift_dashboard_v1';
+const ROSTER_KEY = 'shift_roster_v1';
+
+const defaultRoster = [
+  { id: 'p1', name: 'パートさん1' },
+  { id: 'p2', name: 'パートさん2' },
+  { id: 'p3', name: 'パートさん3' },
+  { id: 'p4', name: 'パートさん4' },
+  { id: 'p5', name: 'パートさん5' },
+  { id: 'p6', name: 'パートさん6' },
+  { id: 'p7', name: 'パートさん7' },
+  { id: 'p8', name: 'パートさん8' },
+];
+
+let roster = JSON.parse(localStorage.getItem(ROSTER_KEY) || 'null') || defaultRoster;
+let shifts = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+// shifts format: { '2026-05-12': { 'p1': 'work', 'p2': 'off', ... } }
+
+// ============== Date helpers ==============
+const today = new Date();
+let currentWeekStart = getMonday(today);
+let currentMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+
+function getMonday(d) {
+  const day = d.getDay();
+  const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+  return new Date(d.getFullYear(), d.getMonth(), diff);
+}
+function fmtDate(d) {
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function fmtJP(d) {
+  const days = ['日','月','火','水','木','金','土'];
+  return `${d.getMonth()+1}月${d.getDate()}日(${days[d.getDay()]})`;
+}
+
+// ============== View toggle ==============
+document.querySelectorAll('.view-toggle button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.view-toggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const view = btn.dataset.view;
+    document.getElementById('weekView').style.display = view === 'week' ? 'block' : 'none';
+    document.getElementById('monthView').style.display = view === 'month' ? 'block' : 'none';
+    document.getElementById('patternView').style.display = view === 'pattern' ? 'block' : 'none';
+    if (view === 'month') renderMonth();
+    if (view === 'pattern') renderPattern();
+  });
+});
+
+// ============== Week Render ==============
+function renderWeek() {
+  const grid = document.getElementById('shiftGrid');
+  const days = [];
+  for (let i = 0; i < 5; i++) {
+    const d = new Date(currentWeekStart);
+    d.setDate(d.getDate() + i);
+    days.push(d);
+  }
+
+  document.getElementById('weekLabel').textContent =
+    `${days[0].getFullYear()}年 ${fmtJP(days[0])} 〜 ${fmtJP(days[4])}`;
+
+  let html = '<div class="shift-cell header-row">名前</div>';
+  days.forEach(d => {
+    html += `<div class="shift-cell header-row">${d.getMonth()+1}/${d.getDate()}<div class="day-name">${['日','月','火','水','木','金','土'][d.getDay()]}</div></div>`;
+  });
+
+  let workCount = 0, offCount = 0, unknownCount = 0;
+  roster.forEach(p => {
+    html += `<div class="shift-cell header-col" onclick="editName('${p.id}')">${p.name}</div>`;
+    days.forEach(d => {
+      const dateKey = fmtDate(d);
+      const status = (shifts[dateKey] || {})[p.id] || 'unknown';
+      let cls = 'shift-cell ' + status;
+      let label = status === 'work' ? '○' : status === 'off' ? '休' : '?';
+      if (status === 'work') workCount++;
+      if (status === 'off') offCount++;
+      if (status === 'unknown') unknownCount++;
+      html += `<div class="${cls}" onclick="editShift('${p.id}','${dateKey}')">${label}</div>`;
+    });
+  });
+  grid.innerHTML = html;
+
+  document.getElementById('weekWorkCount').textContent = workCount;
+  document.getElementById('weekOffCount').textContent = offCount;
+  document.getElementById('weekUnknownCount').textContent = unknownCount;
+
+  // Header pills
+  const todayKey = fmtDate(today);
+  const todayShifts = shifts[todayKey] || {};
+  const todayWork = Object.values(todayShifts).filter(s => s === 'work').length;
+  const todayOff = Object.values(todayShifts).filter(s => s === 'off').length;
+  document.getElementById('todayLabel').textContent = `📅 ${fmtJP(today)}`;
+  document.getElementById('workCountLabel').textContent = `✅ 出勤 ${todayWork}名`;
+  document.getElementById('offCountLabel').textContent = `🟥 休み ${todayOff}名`;
+}
+
+function changeWeek(delta) {
+  if (delta === 0) currentWeekStart = getMonday(today);
+  else {
+    currentWeekStart.setDate(currentWeekStart.getDate() + (delta * 7));
+  }
+  renderWeek();
+}
+
+// ============== Month Render ==============
+function renderMonth() {
+  const year = currentMonth.getFullYear();
+  const month = currentMonth.getMonth();
+  document.getElementById('monthLabel').textContent = `${year}年${month+1}月`;
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+  const startWeek = firstDay.getDay(); // 0=Sun
+
+  const grid = document.getElementById('monthGrid');
+  const dayHeaders = ['日','月','火','水','木','金','土'];
+  let html = '';
+  dayHeaders.forEach((d, i) => {
+    let cls = 'month-day-header';
+    if (i === 0) cls += ' sun';
+    else if (i === 6) cls += ' sat';
+    html += `<div class="${cls}">${d}</div>`;
+  });
+
+  // empty cells before
+  for (let i = 0; i < startWeek; i++) {
+    html += '<div class="month-day outside"></div>';
+  }
+  // days
+  for (let d = 1; d <= lastDay.getDate(); d++) {
+    const date = new Date(year, month, d);
+    const dateKey = fmtDate(date);
+    const dayShifts = shifts[dateKey] || {};
+    const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+    const offs = Object.values(dayShifts).filter(s => s === 'off').length;
+    const works = Object.values(dayShifts).filter(s => s === 'work').length;
+    let badges = '';
+    if (offs > 0) badges += `<span class="badge off">休${offs}</span>`;
+    if (works > 0) badges += `<span class="badge work">出${works}</span>`;
+    html += `<div class="month-day ${isWeekend ? 'weekend' : ''}">
+      <div class="date">${d}</div>
+      <div class="badges">${badges}</div>
+    </div>`;
+  }
+  grid.innerHTML = html;
+}
+
+function changeMonth(delta) {
+  if (delta === 0) currentMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  else currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + delta, 1);
+  renderMonth();
+}
+
+// ============== Pattern Render ==============
+function renderPattern() {
+  const list = document.getElementById('patternList');
+  let html = '';
+  roster.forEach(p => {
+    const cells = [];
+    let work = 0, off = 0, unk = 0;
+    for (let i = 89; i >= 0; i--) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const dayOfWeek = d.getDay();
+      if (dayOfWeek === 0 || dayOfWeek === 6) continue; // skip weekends
+      const dateKey = fmtDate(d);
+      const status = (shifts[dateKey] || {})[p.id] || 'unknown';
+      cells.push(status);
+      if (status === 'work') work++;
+      else if (status === 'off') off++;
+      else unk++;
+    }
+    const cellsHtml = cells.slice(-30).map(s => {
+      if (s === 'work') return '<div class="pattern-cell" title="出勤"></div>';
+      if (s === 'off') return '<div class="pattern-cell off" title="休み"></div>';
+      return '<div class="pattern-cell unknown" title="不明"></div>';
+    }).join('');
+    html += `<div class="pattern-card">
+      <h3>${p.name}</h3>
+      <div style="font-size:11px; color: var(--ink-soft);">直近30営業日：出勤${work}日／休み${off}日／不明${unk}日</div>
+      <div class="pattern-bar">${cellsHtml}</div>
+    </div>`;
+  });
+  list.innerHTML = html;
+}
+
+// ============== Roster Management ==============
+function renderRoster() {
+  const list = document.getElementById('rosterList');
+  let html = '';
+  roster.forEach((p, i) => {
+    html += `<div style="display:flex; align-items:center; gap:8px; padding:8px 0; border-bottom:1px dashed var(--line);">
+      <span style="font-weight:700; color:var(--green-dark); width:24px;">${i+1}.</span>
+      <input type="text" value="${p.name}" onchange="updateName('${p.id}', this.value)" style="flex:1; padding:6px 10px; border:1px solid var(--line); border-radius:4px; font-size:13px;">
+      <button onclick="deleteMember('${p.id}')" style="background:#fff; color:var(--red); border:1px solid var(--red); padding:4px 10px; border-radius:4px; font-size:11px; cursor:pointer;">削除</button>
+    </div>`;
+  });
+  list.innerHTML = html;
+}
+
+function addMember() {
+  const id = 'p' + Date.now();
+  roster.push({ id, name: 'パートさん' + (roster.length + 1) });
+  saveRoster();
+  renderRoster();
+  renderWeek();
+}
+
+function deleteMember(id) {
+  if (!confirm('このメンバーを削除します。よろしいですか？\n（過去のシフトデータは残ります）')) return;
+  roster = roster.filter(p => p.id !== id);
+  saveRoster();
+  renderRoster();
+  renderWeek();
+}
+
+function updateName(id, newName) {
+  const p = roster.find(p => p.id === id);
+  if (p) {
+    p.name = newName;
+    saveRoster();
+    renderWeek();
+  }
+}
+
+function editName(id) {
+  // For desktop click on roster row: scroll to roster section
+  document.getElementById('rosterList').scrollIntoView({ behavior: 'smooth' });
+}
+
+function saveRoster() {
+  localStorage.setItem(ROSTER_KEY, JSON.stringify(roster));
+}
+
+// ============== Shift Edit Modal ==============
+let modalContext = null;
+function editShift(memberId, dateKey) {
+  modalContext = { memberId, dateKey };
+  const member = roster.find(p => p.id === memberId);
+  const current = (shifts[dateKey] || {})[memberId] || 'unknown';
+  document.getElementById('modalTitle').textContent = `${member.name}・${dateKey}`;
+  document.getElementById('modalBody').innerHTML = `
+    <label>状態</label>
+    <select id="modalStatus">
+      <option value="work" ${current==='work'?'selected':''}>○ 出勤</option>
+      <option value="off" ${current==='off'?'selected':''}>休 休み</option>
+      <option value="unknown" ${current==='unknown'?'selected':''}>? 不明</option>
+    </select>
+  `;
+  document.getElementById('editModal').classList.add('active');
+}
+function closeModal() { document.getElementById('editModal').classList.remove('active'); }
+function saveModal() {
+  const status = document.getElementById('modalStatus').value;
+  const { memberId, dateKey } = modalContext;
+  if (!shifts[dateKey]) shifts[dateKey] = {};
+  shifts[dateKey][memberId] = status;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(shifts));
+  closeModal();
+  renderWeek();
+}
+
+// ============== LINE Parse ==============
+function parseAndPreview() {
+  const text = document.getElementById('linePaste').value.trim();
+  if (!text) return;
+  const items = parseLine(text);
+  const result = document.getElementById('parseResult');
+  if (items.length === 0) {
+    result.innerHTML = '<h4>⚠️ 解読できませんでした</h4><p style="font-size:11px;">名前と日付を含む形式で入力してください（例：「鈴木 5/13 休み」）</p>';
+    result.classList.add('active');
+    return;
+  }
+  let html = '<h4>📋 解読結果（プレビュー）</h4>';
+  items.forEach(item => {
+    html += `<div class="parse-item">
+      <strong>${item.name}</strong> ・ ${item.date} ・ ${item.status === 'off' ? '🟥 休み' : '✅ 出勤'}
+    </div>`;
+  });
+  html += `<div style="margin-top:10px; display:flex; gap:8px;">
+    <button class="btn-primary" onclick="applyParsedItems(${JSON.stringify(items).replace(/"/g, '&quot;')})">✅ 全て反映</button>
+    <button class="btn-secondary" onclick="document.getElementById('parseResult').classList.remove('active');">破棄</button>
+  </div>`;
+  result.innerHTML = html;
+  result.classList.add('active');
+}
+
+function parseLine(text) {
+  const items = [];
+  const lines = text.split(/\r?\n/);
+  const year = today.getFullYear();
+  lines.forEach(line => {
+    if (!line.trim()) return;
+    // Find name (first matching member name)
+    let memberId = null, memberName = null;
+    for (const p of roster) {
+      if (line.includes(p.name) && p.name !== '' && !p.name.startsWith('パートさん')) {
+        memberId = p.id;
+        memberName = p.name;
+        break;
+      }
+    }
+    // If no match by name, try first 2-3 chars before pattern like "5/12"
+    if (!memberId) {
+      const match = line.match(/^(\S{1,4})/);
+      if (match) {
+        // Try to find loose match
+        for (const p of roster) {
+          if (p.name && (p.name.includes(match[1]) || match[1].includes(p.name))) {
+            memberId = p.id;
+            memberName = p.name;
+            break;
+          }
+        }
+      }
+    }
+    // Find dates (e.g., 5/12, 5月12日)
+    const dateMatches = line.matchAll(/(\d{1,2})[\/月](\d{1,2})/g);
+    const status = /休|オフ|お休み|休み希望/.test(line) ? 'off' : 'work';
+    for (const m of dateMatches) {
+      const month = parseInt(m[1]);
+      const day = parseInt(m[2]);
+      const date = `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+      items.push({
+        name: memberName || '?要選択?',
+        memberId: memberId,
+        date: date,
+        status: status
+      });
+    }
+  });
+  return items;
+}
+
+function applyParsedItems(items) {
+  let applied = 0, skipped = 0;
+  items.forEach(item => {
+    if (!item.memberId) { skipped++; return; }
+    if (!shifts[item.date]) shifts[item.date] = {};
+    shifts[item.date][item.memberId] = item.status;
+    applied++;
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(shifts));
+  alert(`${applied}件 反映しました${skipped > 0 ? `\n（${skipped}件は名前が特定できずスキップ／名簿を編集してください）` : ''}`);
+  document.getElementById('linePaste').value = '';
+  document.getElementById('parseResult').classList.remove('active');
+  renderWeek();
+}
+
+function clearPaste() {
+  document.getElementById('linePaste').value = '';
+  document.getElementById('parseResult').classList.remove('active');
+}
+
+// ============== Sync (export/import/clipboard) ==============
+function buildSyncPayload() {
+  return {
+    _meta: {
+      app: 'part-shift-dashboard',
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      device: navigator.userAgent.substring(0, 80)
+    },
+    roster: roster,
+    shifts: shifts
+  };
+}
+
+function showSyncStatus(msg, isError) {
+  const el = document.getElementById('syncStatus');
+  el.style.display = 'block';
+  el.style.background = isError ? '#FFEBEE' : 'var(--cream)';
+  el.style.color = isError ? 'var(--red)' : 'var(--ink)';
+  el.textContent = msg;
+  setTimeout(() => { el.style.display = 'none'; }, 4000);
+}
+
+function exportJSON() {
+  const payload = buildSyncPayload();
+  const json = JSON.stringify(payload, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const ts = new Date().toISOString().replace(/[:.]/g, '-').substring(0, 19);
+  a.href = url;
+  a.download = `shift-dashboard-${ts}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showSyncStatus(`✅ ${a.download} をダウンロードしました`);
+}
+
+function importJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!data._meta || data._meta.app !== 'part-shift-dashboard') {
+        if (!confirm('このJSONはこのアプリのものではない可能性があります。続けますか？')) return;
+      }
+      if (!confirm('既存のデータを上書きします。よろしいですか？\n（事前にエクスポートでバックアップを取ることをおすすめします）')) return;
+      if (data.roster) {
+        roster = data.roster;
+        localStorage.setItem(ROSTER_KEY, JSON.stringify(roster));
+      }
+      if (data.shifts) {
+        shifts = data.shifts;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(shifts));
+      }
+      renderRoster();
+      renderWeek();
+      const memberCount = roster.length;
+      const shiftDays = Object.keys(shifts).length;
+      showSyncStatus(`✅ 取り込み完了：メンバー${memberCount}名／シフト${shiftDays}日分`);
+    } catch (err) {
+      showSyncStatus(`❌ 読み込み失敗：${err.message}`, true);
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = ''; // reset
+}
+
+function copyToClipboard() {
+  const payload = buildSyncPayload();
+  const json = JSON.stringify(payload);
+  navigator.clipboard.writeText(json).then(() => {
+    const sizeKB = (json.length / 1024).toFixed(1);
+    showSyncStatus(`✅ クリップボードにコピーしました（${sizeKB}KB）。Discord/LINEで自分宛に送ってください`);
+  }).catch(err => {
+    // Fallback: show in textarea
+    const ta = document.createElement('textarea');
+    ta.value = json;
+    ta.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:60vh;z-index:9999;padding:10px;';
+    document.body.appendChild(ta);
+    ta.select();
+    showSyncStatus('クリップボード自動コピー失敗。表示された文字列を手動でコピーしてください', true);
+    setTimeout(() => { ta.remove(); }, 30000);
+  });
+}
+
+function showPasteDialog() {
+  document.getElementById('pasteText').value = '';
+  document.getElementById('pasteModal').classList.add('active');
+}
+
+function applyPaste() {
+  const text = document.getElementById('pasteText').value.trim();
+  if (!text) {
+    showSyncStatus('❌ ペーストする文字列が空です', true);
+    return;
+  }
+  try {
+    const data = JSON.parse(text);
+    if (!data._meta || data._meta.app !== 'part-shift-dashboard') {
+      if (!confirm('このJSONはこのアプリのものではない可能性があります。続けますか？')) return;
+    }
+    if (!confirm('既存のデータを上書きします。よろしいですか？')) return;
+    if (data.roster) {
+      roster = data.roster;
+      localStorage.setItem(ROSTER_KEY, JSON.stringify(roster));
+    }
+    if (data.shifts) {
+      shifts = data.shifts;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(shifts));
+    }
+    document.getElementById('pasteModal').classList.remove('active');
+    renderRoster();
+    renderWeek();
+    const memberCount = roster.length;
+    const shiftDays = Object.keys(shifts).length;
+    showSyncStatus(`✅ 取り込み完了：メンバー${memberCount}名／シフト${shiftDays}日分`);
+  } catch (err) {
+    showSyncStatus(`❌ JSON解析失敗：${err.message}`, true);
+  }
+}
+
+// ============== Init ==============
+renderWeek();
+renderRoster();
+</script>
+
+</body>
+</html>
