@@ -520,6 +520,120 @@ let roster = JSON.parse(localStorage.getItem(ROSTER_KEY) || 'null') || defaultRo
 let shifts = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
 // shifts format: { '2026-05-12': { 'p1': 'work', 'p2': 'off', ... } }
 
+// ============== Supabase Backend (cloud sync) ==============
+// Configured by replacing the two constants below after Supabase project setup.
+// While the placeholder values are present, cloud sync is disabled and the
+// dashboard falls back to localStorage-only mode (original behavior).
+const SUPABASE_URL = 'https://xinodchgtqgihpcftzfv.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_E5VpVwcT11MGvgs-GT3BGQ_xgJfcTw7';
+
+let supabaseClient = null;
+let workspaceId = null;
+let cloudSaveTimeout = null;
+
+// Workspace ID: from URL ?ws=<uuid> param, persisted to localStorage on first visit
+(function bootstrapWorkspaceId() {
+  const urlParams = new URLSearchParams(location.search);
+  const fromUrl = urlParams.get('ws');
+  if (fromUrl) {
+    workspaceId = fromUrl;
+    localStorage.setItem('ws_id', fromUrl);
+  } else {
+    workspaceId = localStorage.getItem('ws_id');
+  }
+})();
+
+function isCloudEnabled() {
+  return SUPABASE_URL && !SUPABASE_URL.includes('YOUR_PROJECT_REF') && !!workspaceId;
+}
+
+async function initCloudSync() {
+  if (!isCloudEnabled()) return;
+  // Load Supabase SDK from CDN
+  if (typeof window.supabase === 'undefined') {
+    await new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  await loadFromCloud();
+}
+
+async function loadFromCloud() {
+  if (!supabaseClient || !workspaceId) return;
+  try {
+    const { data, error } = await supabaseClient
+      .from('shift_workspaces')
+      .select('roster, shifts, updated_at')
+      .eq('id', workspaceId)
+      .maybeSingle();
+    if (error) throw error;
+    if (data) {
+      const cloudTime = new Date(data.updated_at).getTime();
+      const localTime = parseInt(localStorage.getItem('shift_last_save') || '0');
+      if (cloudTime > localTime) {
+        // Cloud is newer — adopt cloud data
+        if (Array.isArray(data.roster) && data.roster.length > 0) {
+          roster = data.roster;
+          localStorage.setItem(ROSTER_KEY, JSON.stringify(roster));
+        }
+        if (data.shifts && typeof data.shifts === 'object') {
+          shifts = data.shifts;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(shifts));
+        }
+        localStorage.setItem('shift_last_save', cloudTime.toString());
+        renderRoster();
+        renderWeek();
+        showSyncStatus('☁️ クラウドから最新データを読み込みました');
+      } else if (localTime > cloudTime) {
+        // Local is newer (e.g. user just imported via hash) — push to cloud
+        await saveToCloud();
+        showSyncStatus('☁️ ローカル変更をクラウドに同期しました');
+      }
+    } else {
+      // No cloud row yet — push current local data
+      await saveToCloud();
+      showSyncStatus('☁️ クラウドに初回保存しました');
+    }
+  } catch (e) {
+    console.warn('cloud load failed:', e);
+    showSyncStatus('⚠️ クラウド接続失敗（オフラインモードで動作）', true);
+  }
+}
+
+async function saveToCloud() {
+  if (!supabaseClient || !workspaceId) return;
+  try {
+    const now = new Date().toISOString();
+    const { error } = await supabaseClient
+      .from('shift_workspaces')
+      .upsert({ id: workspaceId, roster: roster, shifts: shifts, updated_at: now });
+    if (error) throw error;
+  } catch (e) {
+    console.warn('cloud save failed:', e);
+  }
+}
+
+function queueCloudSave() {
+  if (!isCloudEnabled()) return;
+  if (cloudSaveTimeout) clearTimeout(cloudSaveTimeout);
+  cloudSaveTimeout = setTimeout(() => {
+    saveToCloud();
+  }, 1000); // 1秒デバウンス
+}
+
+// Centralized persist: localStorage + queue cloud save
+function persistAll() {
+  localStorage.setItem(ROSTER_KEY, JSON.stringify(roster));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(shifts));
+  localStorage.setItem('shift_last_save', Date.now().toString());
+  queueCloudSave();
+}
+
 // ============== Auto-import from URL hash (#import=<base64-utf8-json>) ==============
 // Allows one-tap data injection from a shared link without manual paste.
 // The hash is read client-side only (never sent to server) and cleared after import.
@@ -537,14 +651,9 @@ let shifts = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
       console.warn('hash import: meta check failed');
       return;
     }
-    if (data.roster) {
-      roster = data.roster;
-      localStorage.setItem(ROSTER_KEY, JSON.stringify(roster));
-    }
-    if (data.shifts) {
-      shifts = data.shifts;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(shifts));
-    }
+    if (data.roster) roster = data.roster;
+    if (data.shifts) shifts = data.shifts;
+    persistAll();
     // Clear hash so a reload doesn't re-import stale data
     history.replaceState(null, '', location.pathname + location.search);
     // Set a flag for the UI to flash a confirmation after first render
@@ -768,7 +877,7 @@ function editName(id) {
 }
 
 function saveRoster() {
-  localStorage.setItem(ROSTER_KEY, JSON.stringify(roster));
+  persistAll();
 }
 
 // ============== Shift Edit Modal ==============
@@ -794,7 +903,7 @@ function saveModal() {
   const { memberId, dateKey } = modalContext;
   if (!shifts[dateKey]) shifts[dateKey] = {};
   shifts[dateKey][memberId] = status;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(shifts));
+  persistAll();
   closeModal();
   renderWeek();
 }
@@ -879,7 +988,7 @@ function applyParsedItems(items) {
     shifts[item.date][item.memberId] = item.status;
     applied++;
   });
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(shifts));
+  persistAll();
   alert(`${applied}件 反映しました${skipped > 0 ? `\n（${skipped}件は名前が特定できずスキップ／名簿を編集してください）` : ''}`);
   document.getElementById('linePaste').value = '';
   document.getElementById('parseResult').classList.remove('active');
@@ -939,14 +1048,9 @@ function importJSON(event) {
         if (!confirm('このJSONはこのアプリのものではない可能性があります。続けますか？')) return;
       }
       if (!confirm('既存のデータを上書きします。よろしいですか？\n（事前にエクスポートでバックアップを取ることをおすすめします）')) return;
-      if (data.roster) {
-        roster = data.roster;
-        localStorage.setItem(ROSTER_KEY, JSON.stringify(roster));
-      }
-      if (data.shifts) {
-        shifts = data.shifts;
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(shifts));
-      }
+      if (data.roster) roster = data.roster;
+      if (data.shifts) shifts = data.shifts;
+      persistAll();
       renderRoster();
       renderWeek();
       const memberCount = roster.length;
@@ -995,14 +1099,9 @@ function applyPaste() {
       if (!confirm('このJSONはこのアプリのものではない可能性があります。続けますか？')) return;
     }
     if (!confirm('既存のデータを上書きします。よろしいですか？')) return;
-    if (data.roster) {
-      roster = data.roster;
-      localStorage.setItem(ROSTER_KEY, JSON.stringify(roster));
-    }
-    if (data.shifts) {
-      shifts = data.shifts;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(shifts));
-    }
+    if (data.roster) roster = data.roster;
+    if (data.shifts) shifts = data.shifts;
+    persistAll();
     document.getElementById('pasteModal').classList.remove('active');
     renderRoster();
     renderWeek();
@@ -1026,6 +1125,9 @@ if (window.__hashImportApplied) {
     showSyncStatus(`✅ リンク経由で取り込みました：メンバー${memberCount}名／シフト${shiftDays}日分`);
   }, 300);
 }
+
+// クラウド同期を開始（Supabase設定済みで ?ws=<uuid> が指定されている場合のみ動作）
+initCloudSync();
 </script>
 
 </body>
