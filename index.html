@@ -520,6 +520,40 @@ let roster = JSON.parse(localStorage.getItem(ROSTER_KEY) || 'null') || defaultRo
 let shifts = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
 // shifts format: { '2026-05-12': { 'p1': 'work', 'p2': 'off', ... } }
 
+// ============== Auto-import from URL hash (#import=<base64-utf8-json>) ==============
+// Allows one-tap data injection from a shared link without manual paste.
+// The hash is read client-side only (never sent to server) and cleared after import.
+(function tryHashImport() {
+  const HASH_PREFIX = '#import=';
+  if (!location.hash.startsWith(HASH_PREFIX)) return;
+  try {
+    const encoded = location.hash.slice(HASH_PREFIX.length);
+    // Decode base64 → bytes → UTF-8 string
+    const binary = atob(encoded);
+    const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+    const json = new TextDecoder('utf-8').decode(bytes);
+    const data = JSON.parse(json);
+    if (!data._meta || data._meta.app !== 'part-shift-dashboard') {
+      console.warn('hash import: meta check failed');
+      return;
+    }
+    if (data.roster) {
+      roster = data.roster;
+      localStorage.setItem(ROSTER_KEY, JSON.stringify(roster));
+    }
+    if (data.shifts) {
+      shifts = data.shifts;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(shifts));
+    }
+    // Clear hash so a reload doesn't re-import stale data
+    history.replaceState(null, '', location.pathname + location.search);
+    // Set a flag for the UI to flash a confirmation after first render
+    window.__hashImportApplied = true;
+  } catch (e) {
+    console.error('hash import error:', e);
+  }
+})();
+
 // ============== Date helpers ==============
 const today = new Date();
 let currentWeekStart = getMonday(today);
@@ -983,6 +1017,15 @@ function applyPaste() {
 // ============== Init ==============
 renderWeek();
 renderRoster();
+
+// 表示直後にハッシュインポート結果を通知
+if (window.__hashImportApplied) {
+  const memberCount = roster.length;
+  const shiftDays = Object.keys(shifts).length;
+  setTimeout(() => {
+    showSyncStatus(`✅ リンク経由で取り込みました：メンバー${memberCount}名／シフト${shiftDays}日分`);
+  }, 300);
+}
 </script>
 
 </body>
