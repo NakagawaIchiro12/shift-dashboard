@@ -634,6 +634,60 @@ function persistAll() {
   queueCloudSave();
 }
 
+// Normalize a name for fuzzy match: trim, strip trailing 「さん」、lowercase ASCII.
+function normalizePersonName(s) {
+  if (!s) return '';
+  return String(s).replace(/さん$/u, '').trim().toLowerCase();
+}
+
+// Find roster entry by id first, then by normalized name. Returns the entry or null.
+function findRosterEntry(key) {
+  if (!key) return null;
+  const byId = roster.find(p => p.id === key);
+  if (byId) return byId;
+  const target = normalizePersonName(key);
+  if (!target) return null;
+  return roster.find(p => normalizePersonName(p.name) === target) || null;
+}
+
+// Generate a fresh roster id that doesn't collide with existing ids.
+function nextRosterId() {
+  let n = roster.length + 1;
+  while (roster.some(p => p.id === 'p' + n)) n++;
+  return 'p' + n;
+}
+
+// Merge import: preserves existing data, adds/updates by person and date.
+function applyImportMerge(data) {
+  // Roster: add entries that don't already exist (by id or name).
+  if (Array.isArray(data.roster)) {
+    for (const entry of data.roster) {
+      if (!entry || !entry.name) continue;
+      const existing = findRosterEntry(entry.id) || findRosterEntry(entry.name);
+      if (existing) continue;
+      const id = (entry.id && !roster.some(p => p.id === entry.id)) ? entry.id : nextRosterId();
+      roster.push({ id, name: entry.name });
+    }
+  }
+  // Shifts: merge by date. Within each date, resolve person key (id or name) to roster id,
+  // auto-adding a roster entry if the name is new. Existing entries on other dates/persons
+  // are preserved.
+  if (data.shifts && typeof data.shifts === 'object') {
+    for (const [date, dayData] of Object.entries(data.shifts)) {
+      if (!dayData || typeof dayData !== 'object') continue;
+      if (!shifts[date]) shifts[date] = {};
+      for (const [key, status] of Object.entries(dayData)) {
+        let target = findRosterEntry(key);
+        if (!target) {
+          target = { id: nextRosterId(), name: key };
+          roster.push(target);
+        }
+        shifts[date][target.id] = status;
+      }
+    }
+  }
+}
+
 // ============== Auto-import from URL hash (#import=<base64-utf8-json>) ==============
 // Allows one-tap data injection from a shared link without manual paste.
 // The hash is read client-side only (never sent to server) and cleared after import.
@@ -651,8 +705,15 @@ function persistAll() {
       console.warn('hash import: meta check failed');
       return;
     }
-    if (data.roster) roster = data.roster;
-    if (data.shifts) shifts = data.shifts;
+    // Merge mode (default): preserve existing data, add/update by date+person.
+    // Replace mode (legacy): replace whole roster/shifts arrays.
+    const replaceMode = data._meta.merge === false;
+    if (replaceMode) {
+      if (data.roster) roster = data.roster;
+      if (data.shifts) shifts = data.shifts;
+    } else {
+      applyImportMerge(data);
+    }
     persistAll();
     // Clear hash so a reload doesn't re-import stale data
     history.replaceState(null, '', location.pathname + location.search);
