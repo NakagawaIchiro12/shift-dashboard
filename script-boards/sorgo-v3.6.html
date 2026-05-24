@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+  <title>📋 ソルゴー トリセツ風 v3.6 渇望MAX版（完成尺30分・LINE特典統合）読み上げ台本 | 台本ボードLP</title>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: 'Yu Gothic', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  background: #0c1e3e;
+  color: #f4f1ec;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 760px; margin: 0 auto; }
+
+.hero {
+  background: linear-gradient(135deg, #0c1e3e 0%, #1a3a6e 100%);
+  padding: 56px 28px 44px;
+  text-align: center;
+  position: relative;
+}
+.hero .badge-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.hero .badge {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 12px;
+  color: #ffd87a;
+}
+.hero h1 {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  margin-bottom: 14px;
+  color: #ffffff;
+}
+.hero h1 .accent {
+  color: #ffd87a;
+  display: inline-block;
+}
+.hero .subtitle {
+  font-size: 16px;
+  color: #b8c4dd;
+  margin-top: 12px;
+}
+.hero .stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 32px;
+}
+.hero .stat {
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 14px 8px;
+}
+.hero .stat .num {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffd87a;
+}
+.hero .stat .lab {
+  font-size: 11px;
+  color: #b8c4dd;
+  margin-top: 4px;
+}
+
+.intro {
+  background: #f4f1ec;
+  color: #1a1a1a;
+  padding: 36px 28px;
+  text-align: center;
+}
+.intro h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0c1e3e;
+  margin-bottom: 8px;
+}
+.intro p {
+  font-size: 15px;
+  color: #555;
+}
+.intro .arrow {
+  margin: 20px auto 0;
+  font-size: 28px;
+  color: #ffd87a;
+  text-shadow: 0 2px 0 rgba(0,0,0,0.1);
+}
+
+.timeline {
+  background: #f4f1ec;
+  padding: 8px 0 56px;
+}
+
+.section {
+  background: #ffffff;
+  margin: 0 16px 24px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(12, 30, 62, 0.10);
+}
+
+.section .head {
+  padding: 22px 24px 18px;
+  position: relative;
+}
+.section .head .position {
+  font-size: 13px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.04em;
+}
+.section .head .title {
+  font-size: 30px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.3;
+  margin: 4px 0 6px;
+  word-break: keep-all;
+}
+.section .head .subtitle {
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 600;
+}
+.section .head .duration-pill {
+  display: inline-block;
+  background: rgba(0,0,0,0.18);
+  border-radius: 99px;
+  padding: 3px 12px;
+  font-size: 12px;
+  color: #fff;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.section .head.hook { background: linear-gradient(135deg, #ff6b35 0%, #d04612 100%); }
+.section .head.core { background: linear-gradient(135deg, #4a6fff 0%, #1f3fcf 100%); }
+.section .head.cta  { background: linear-gradient(135deg, #06a77d 0%, #047a59 100%); }
+.section .head.support { background: linear-gradient(135deg, #6a7280 0%, #4a5260 100%); }
+.section .head.normal { background: linear-gradient(135deg, #5d6d7e 0%, #34495e 100%); }
+
+.section .body {
+  padding: 24px;
+}
+
+.emotion-arrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  background: #f9f7f1;
+  border-radius: 10px;
+}
+.emotion-arrow .from { color: #888; }
+.emotion-arrow .arrow { color: #ff6b35; font-weight: 800; font-size: 18px; }
+.emotion-arrow .to { color: #d04612; font-weight: 800; }
+
+.section.core .emotion-arrow .arrow { color: #4a6fff; }
+.section.core .emotion-arrow .to { color: #1f3fcf; }
+.section.cta .emotion-arrow .arrow { color: #06a77d; }
+.section.cta .emotion-arrow .to { color: #047a59; }
+
+.viewer-thoughts {
+  background: linear-gradient(135deg, #f9f7f1 0%, #fff8e1 100%);
+  border-left: 5px solid #ffd87a;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 18px 0;
+}
+.viewer-thoughts .lab {
+  font-size: 13px;
+  font-weight: 800;
+  color: #b08a3a;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+.viewer-thoughts .thought {
+  font-size: 16px;
+  color: #2c2c2c;
+  margin-bottom: 8px;
+  padding-left: 22px;
+  position: relative;
+  font-weight: 500;
+}
+.viewer-thoughts .thought::before {
+  content: "💬";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.viewer-thoughts .thought.highlight {
+  background: #fff3c8;
+  padding: 8px 12px 8px 32px;
+  border-radius: 8px;
+  margin-top: 8px;
+  font-weight: 700;
+  color: #b04500;
+}
+
+.quote {
+  background: #f4f1ec;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-top: 18px;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.75;
+  position: relative;
+  font-style: italic;
+}
+.quote::before {
+  content: "“";
+  font-size: 40px;
+  color: #d6d2c4;
+  position: absolute;
+  top: -4px;
+  left: 8px;
+  font-family: Georgia, serif;
+}
+.quote-text {
+  padding-left: 26px;
+}
+
+.appendix-heading {
+  margin: 40px 32px 12px;
+  padding-top: 18px;
+  border-top: 1px solid #d6d2c4;
+  font-size: 14px;
+  color: #888;
+  font-weight: 700;
+  text-align: center;
+}
+.section.appendix {
+  background: #ebe7dd;
+  box-shadow: none;
+  margin-bottom: 10px;
+}
+.section.appendix .head {
+  padding: 14px 24px;
+}
+.section.appendix .head .title { font-size: 18px; color: #555; }
+.section.appendix .head.normal { background: transparent; border-bottom: 1px solid #d6d2c4; }
+.section.appendix .body { padding: 14px 24px; font-size: 13px; color: #888; }
+
+.footer {
+  text-align: center;
+  padding: 40px 24px 60px;
+  color: #b8c4dd;
+  background: #0c1e3e;
+  font-size: 12px;
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 26px; }
+  .hero .stats { grid-template-columns: repeat(2, 1fr); }
+  .section .head .title { font-size: 24px; }
+  .section { margin: 0 10px 18px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <section class="hero">
+    <div class="badge-row">
+      <span class="badge">📋 台本ボード</span>
+      <span class="badge">視聴者目線レビュー</span>
+    </div>
+    <h1>ソルゴー トリセツ風 v3.6 渇望MAX版（完成尺30分・LINE特典統合）読み上げ台本</h1>
+    <div class="subtitle">視聴者がどう動くかを台本制作者が体験するボード</div>
+    <div class="stats">
+      <div class="stat"><div class="num">12</div><div class="lab">セクション</div></div>
+      <div class="stat"><div class="num">14,514</div><div class="lab">文字数</div></div>
+      <div class="stat"><div class="num">40.3<small style="font-size:14px">分</small></div><div class="lab">推定尺</div></div>
+      <div class="stat"><div class="num">2+2</div><div class="lab">フック+CTA</div></div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <h2>▼ 視聴者の旅路（上から下へ）</h2>
+    <p>各セクションをタップするように読み進めると、<br>視聴者がどう動くか体感できます。</p>
+    <div class="arrow">▼</div>
+  </section>
+
+  <div class="timeline">
+    
+<section class="section hook">
+  <div class="head hook">
+    <div class="position">#01 / 12 · 🎯 冒頭フック</div>
+    <div class="title">オープニング</div>
+    
+    <span class="duration-pill">⏱ 70秒 / 420字</span>
+  </div>
+  <div class="body">
+    <div class="emotion-arrow">
+      <span class="from">油断・無防備</span>
+      <span class="arrow">→</span>
+      <span class="to">期待・好奇心</span>
+    </div>
+    <div class="viewer-thoughts">
+      <div class="lab">🎬 視聴者の頭の中</div>
+      <div class="thought">「えっ、なにそれ?」</div>
+<div class="thought">「自分のことだ…」</div>
+<div class="thought highlight">「もっと聞きたい」</div>
+    </div>
+    <div class="quote"><div class="quote-text">100tから、おかげさまで、もうすぐ200tです。</div></div>
+  </div>
+</section>
+<section class="section hook">
+  <div class="head hook">
+    <div class="position">#02 / 12 · 🎯 冒頭フック</div>
+    <div class="title">自己診断 5問</div>
+    
+    <span class="duration-pill">⏱ 90秒 / 500字</span>
+  </div>
+  <div class="body">
+    <div class="emotion-arrow">
+      <span class="from">油断・無防備</span>
+      <span class="arrow">→</span>
+      <span class="to">期待・好奇心</span>
+    </div>
+    <div class="viewer-thoughts">
+      <div class="lab">🎬 視聴者の頭の中</div>
+      <div class="thought">「えっ、なにそれ?」</div>
+<div class="thought">「自分のことだ…」</div>
+<div class="thought highlight">「もっと聞きたい」</div>
+    </div>
+    <div class="quote"><div class="quote-text">質問が、5つあります。</div></div>
+  </div>
+</section>
+<section class="section core">
+  <div class="head core">
+    <div class="position">#03 / 12 · 🔥 本論</div>
+    <div class="title">危機感</div>
+    <div class="subtitle">化学肥料依存の罠</div>
+    <span class="duration-pill">⏱ 180秒 / 1,000字</span>
+  </div>
+  <div class="body">
+    <div class="emotion-arrow">
+      <span class="from">興味</span>
+      <span class="arrow">→</span>
+      <span class="to">理解・確信</span>
+    </div>
+    <div class="viewer-thoughts">
+      <div class="lab">🎬 視聴者の頭の中</div>
+      <div class="thought">「なるほど、そういうことか」</div>
+<div class="thought">「これ、知らなかった」</div>
+<div class="thought highlight">「自分の畑でもできそう」</div>
+    </div>
+    <div class="quote"><div class="quote-text">化学肥料、便利です。</div></div>
+  </div>
+</section>
+<section class="section core">
+  <div class="head core">
+    <div class="position">#04 / 12 · 🔥 本論</div>
+    <div class="title">プロ登場・3年間ストーリー</div>
+    
+    <span class="duration-pill">⏱ 90秒 / 500字</span>
+  </div>
+  <div class="body">
+    <div class="emotion-arrow">
+      <span class="from">興味</span>
+      <span class="arrow">→</span>
+      <span class="to">理解・確信</span>
+    </div>
+    <div class="viewer-thoughts">
+      <div class="lab">🎬 視聴者の頭の中</div>
+      <div class="thought">「なるほど、そういうことか」</div>
+<div class="thought">「これ、知らなかった」</div>
+<div class="thought highlight">「自分の畑でもできそう」</div>
+    </div>
+    <div class="quote"><div class="quote-text">僕は、100t農家のイチロウです。</div></div>
+  </div>
+</section>
+<section class="section core">
+  <div class="head core">
+    <div class="position">#05 / 12 · 🔥 本論</div>
+    <div class="title">ソルゴー3兄弟</div>
+    <div class="subtitle">深掘り版</div>
+    <span class="duration-pill">⏱ 300秒 / 1,650字</span>
+  </div>
+  <div class="body">
+    <div class="emotion-arrow">
+      <span class="from">興味</span>
+      <span class="arrow">→</span>
+      <span class="to">理解・確信</span>
+    </div>
+    <div class="viewer-thoughts">
+      <div class="lab">🎬 視聴者の頭の中</div>
+      <div class="thought">「なるほど、そういうことか」</div>
+<div class="thought">「これ、知らなかった」</div>
+<div class="thought highlight">「自分の畑でもできそう」</div>
+    </div>
+    <div class="quote"><div class="quote-text">ソルゴーが土に効く理由、3つあります。</div></div>
+  </div>
+</section>
+<section class="section core">
+  <div class="head core">
+    <div class="position">#06 / 12 · 🔥 本論</div>
+    <div class="title">ソルゴー1年タイムライン</div>
+    
+    <span class="duration-pill">⏱ 200秒 / 1,100字</span>
+  </div>
+  <div class="body">
+    <div class="emotion-arrow">
+      <span class="from">興味</span>
+      <span class="arrow">→</span>
+      <span class="to">理解・確信</span>
+    </div>
+    <div class="viewer-thoughts">
+      <div class="lab">🎬 視聴者の頭の中</div>
+      <div class="thought">「なるほど、そういうことか」</div>
+<div class="thought">「これ、知らなかった」</div>
+<div class="thought highlight">「自分の畑でもできそう」</div>
+    </div>
+    <div class="quote"><div class="quote-text">ソルゴーを取り入れた畑の、1年は、こうです。</div></div>
+  </div>
+</section>
+<section class="section normal">
+  <div class="head normal">
+    <div class="position">#07 / 12 · 📄 セクション</div>
+    <div class="title">キャベツと白菜への効果</div>
+    
+    <span class="duration-pill">⏱ 90秒 / 500字</span>
+  </div>
+  <div class="body">
+    <div class="emotion-arrow">
+      <span class="from">注視</span>
+      <span class="arrow">→</span>
+      <span class="to">把握</span>
+    </div>
+    <div class="viewer-thoughts">
+      <div class="lab">🎬 視聴者の頭の中</div>
+      <div class="thought">「ふむふむ」</div>
+<div class="thought">「次に何が出てくるか」</div>
+<div class="thought highlight">「ここも聞いておこう」</div>
+    </div>
+    <div class="quote"><div class="quote-text">ソルゴーを入れた畑、何の作物にも、効きます。</div></div>
+  </div>
+</section>
+<section class="section core">
+  <div class="head core">
+    <div class="position">#08 / 12 · 🔥 本論</div>
+    <div class="title">YouTube姿勢</div>
+    
+    <span class="duration-pill">⏱ 45秒 / 260字</span>
+  </div>
+  <div class="body">
+    <div class="emotion-arrow">
+      <span class="from">興味</span>
+      <span class="arrow">→</span>
+      <span class="to">理解・確信</span>
+    </div>
+    <div class="viewer-thoughts">
+      <div class="lab">🎬 視聴者の頭の中</div>
+      <div class="thought">「なるほど、そういうことか」</div>
+<div class="thought">「これ、知らなかった」</div>
+<div class="thought highlight">「自分の畑でもできそう」</div>
+    </div>
+    <div class="quote"><div class="quote-text">YouTubeを続けていて、感じることがあります。</div></div>
+  </div>
+</section>
+<section class="section core">
+  <div class="head core">
+    <div class="position">#09 / 12 · 🔥 本論</div>
+    <div class="title">今日からできる具体策</div>
+    <div class="subtitle">5落とし穴版</div>
+    <span class="duration-pill">⏱ 360秒 / 2,000字</span>
+  </div>
+  <div class="body">
+    <div class="emotion-arrow">
+      <span class="from">興味</span>
+      <span class="arrow">→</span>
+      <span class="to">理解・確信</span>
+    </div>
+    <div class="viewer-thoughts">
+      <div class="lab">🎬 視聴者の頭の中</div>
+      <div class="thought">「なるほど、そういうことか」</div>
+<div class="thought">「これ、知らなかった」</div>
+<div class="thought highlight">「自分の畑でもできそう」</div>
+    </div>
+    <div class="quote"><div class="quote-text">ここからは、実践編です。</div></div>
+  </div>
+</section>
+<section class="section core">
+  <div class="head core">
+    <div class="position">#10 / 12 · 🔥 本論</div>
+    <div class="title">失敗事例コーナー</div>
+    
+    <span class="duration-pill">⏱ 180秒 / 1,000字</span>
+  </div>
+  <div class="body">
+    <div class="emotion-arrow">
+      <span class="from">興味</span>
+      <span class="arrow">→</span>
+      <span class="to">理解・確信</span>
+    </div>
+    <div class="viewer-thoughts">
+      <div class="lab">🎬 視聴者の頭の中</div>
+      <div class="thought">「なるほど、そういうことか」</div>
+<div class="thought">「これ、知らなかった」</div>
+<div class="thought highlight">「自分の畑でもできそう」</div>
+    </div>
+    <div class="quote"><div class="quote-text">ここで、僕の3年間で、やっちゃった失敗、お話しします。</div></div>
+  </div>
+</section>
+<section class="section cta">
+  <div class="head cta">
+    <div class="position">#11 / 12 · 📣 CTA・誘導</div>
+    <div class="title">CTA橋渡し</div>
+    <div class="subtitle">v3.6 渇望MAX書き換え</div>
+    <span class="duration-pill">⏱ 150秒 / 900字</span>
+  </div>
+  <div class="body">
+    <div class="emotion-arrow">
+      <span class="from">確信</span>
+      <span class="arrow">→</span>
+      <span class="to">行動衝動</span>
+    </div>
+    <div class="viewer-thoughts">
+      <div class="lab">🎬 視聴者の頭の中</div>
+      <div class="thought">「今日から動きたい」</div>
+<div class="thought">「LINEで詳しく聞きたい」</div>
+<div class="thought highlight">「忘れないうちに登録しよう」</div>
+    </div>
+    <div class="quote"><div class="quote-text">ここまで聞いて、自分の畑にソルゴー、やってみよう、</div></div>
+  </div>
+</section>
+<section class="section cta">
+  <div class="head cta">
+    <div class="position">#12 / 12 · 📣 CTA・誘導</div>
+    <div class="title">締め</div>
+    
+    <span class="duration-pill">⏱ 120秒 / 700字</span>
+  </div>
+  <div class="body">
+    <div class="emotion-arrow">
+      <span class="from">確信</span>
+      <span class="arrow">→</span>
+      <span class="to">行動衝動</span>
+    </div>
+    <div class="viewer-thoughts">
+      <div class="lab">🎬 視聴者の頭の中</div>
+      <div class="thought">「今日から動きたい」</div>
+<div class="thought">「LINEで詳しく聞きたい」</div>
+<div class="thought highlight">「忘れないうちに登録しよう」</div>
+    </div>
+    <div class="quote"><div class="quote-text">ソルゴーは、3兄弟、揃って初めて、効きます。</div></div>
+  </div>
+</section>
+    <div class="appendix-heading">📎 付帯セクション（撮影外）</div>
+<section class="section appendix">
+  <div class="head normal">
+    <div class="title">尺見積もり</div>
+  </div>
+</section>
+<section class="section appendix">
+  <div class="head normal">
+    <div class="title">撮影フォーマット</div>
+  </div>
+</section>
+<section class="section appendix">
+  <div class="head normal">
+    <div class="title">撮影前のチェックリスト</div>
+  </div>
+</section>
+<section class="section appendix">
+  <div class="head normal">
+    <div class="title">想定スコア</div>
+  </div>
+</section>
+<section class="section appendix">
+  <div class="head normal">
+    <div class="title">関連</div>
+  </div>
+</section>
+  </div>
+
+  <footer class="footer">
+    Generated 2026-05-25 08:33 JST from 2026-05-23_sorgo_torisetsu-style_v3.6_katsubo-max_yomiage.md
+  </footer>
+
+</div>
+</body>
+</html>
