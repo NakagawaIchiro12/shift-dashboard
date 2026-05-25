@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+  <title>📚 台本ボード一覧 | 中川農産</title>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Yu Gothic', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  background: #0c1e3e;
+  color: #f4f1ec;
+  min-height: 100vh;
+  padding: 28px 18px 80px;
+}
+.container { max-width: 760px; margin: 0 auto; }
+.hero {
+  text-align: center;
+  margin-bottom: 24px;
+  padding: 28px 18px;
+  background: linear-gradient(135deg, #1a3a6e 0%, #0c1e3e 100%);
+  border-radius: 14px;
+}
+.hero h1 {
+  font-size: 26px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.hero h1 .accent { color: #ffd87a; }
+.hero .sub { color: #b8c4dd; font-size: 14px; }
+.hero .count {
+  display: inline-block;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 6px 14px;
+  border-radius: 99px;
+  margin-top: 12px;
+  font-size: 14px;
+}
+.hero .count strong { color: #ffd87a; font-size: 18px; }
+
+.board-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.board-card {
+  background: #fff;
+  color: #1a1a1a;
+  border-radius: 14px;
+  padding: 18px 20px 16px;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  position: relative;
+  border-left: 8px solid #ccc;
+}
+.board-card:hover, .board-card:active {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+.board-card .title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.board-card .meta {
+  font-size: 13px;
+  color: #777;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.board-card .score-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f4f1ec;
+  border-radius: 99px;
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 800;
+}
+.board-card .score-badge .num { font-size: 22px; }
+.board-card .tier {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: #fff;
+  margin-top: 8px;
+}
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #b8c4dd;
+}
+.empty .icon { font-size: 48px; margin-bottom: 12px; }
+
+.toricetsu {
+  margin-top: 30px;
+  padding: 20px 22px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+  font-size: 13px;
+  color: #b8c4dd;
+  line-height: 1.7;
+}
+.toricetsu h3 {
+  color: #ffd87a;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.toricetsu code {
+  background: #1a1a1a;
+  color: #ffd87a;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+}
+
+.footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <section class="hero">
+    <h1>📚 台本ボード <span class="accent">一覧</span></h1>
+    <div class="sub">視聴者目線でレビューする 中川農産の台本コレクション</div>
+    <div class="count"><strong>3</strong> 本の台本ボード</div>
+  </section>
+
+  <div class="board-list">
+
+<a href="cabbage-pro-vs-beginner-v3.1.html" class="board-card" style="border-left-color: #ff9f43;">
+  <div class="score-badge" style="color: #ff9f43;"><span class="num">69</span><span style="font-size:11px; opacity:.6;">/100</span></div>
+  <div class="title">📺 「プロが作る畑と、初心者が初めて作るキャベツ」読み上げ台本（v3.1）</div>
+  <div class="meta">
+    <span>📅 2026-05-25</span>
+    <span>📑 12 セクション</span>
+  </div>
+  <span class="tier" style="background: #ff9f43;">要改善 ⚠️</span>
+</a>
+
+<a href="okura-uetsuke-v3.html" class="board-card" style="border-left-color: #ff9f43;">
+  <div class="score-badge" style="color: #ff9f43;"><span class="num">69</span><span style="font-size:11px; opacity:.6;">/100</span></div>
+  <div class="title">📺 【今が旬】オクラの植え付けで失敗する3つのパターン 完全攻略</div>
+  <div class="meta">
+    <span>📅 2026-05-25</span>
+    <span>📑 8 セクション</span>
+  </div>
+  <span class="tier" style="background: #ff9f43;">要改善 ⚠️</span>
+</a>
+
+<a href="sorgo-v3.6.html" class="board-card" style="border-left-color: #3aa873;">
+  <div class="score-badge" style="color: #3aa873;"><span class="num">78</span><span style="font-size:11px; opacity:.6;">/100</span></div>
+  <div class="title">📺 ソルゴー トリセツ風 v3.7 OPブラッシュアップ版（挨拶固定＋曖昧除去）読み上げ台本</div>
+  <div class="meta">
+    <span>📅 2026-05-25</span>
+    <span>📑 12 セクション</span>
+  </div>
+  <span class="tier" style="background: #3aa873;">緑 ✓</span>
+</a>
+</div>
+
+  <div class="toricetsu">
+    <h3>💡 使い方</h3>
+    📺 タップして個別の台本ボードを開く。点数が低いセクションは「ブラッシュアップ候補」とナレッジ投入ガイドが表示される🌸<br>
+    ⚡ ご主人様の指示例：<code>#XX ブラッシュアップ</code>でピンポイント修正<br>
+    🆕 新規台本生成：<code>○○の台本ボード作って</code>で愛菜ちゃんが自動生成・追加
+  </div>
+
+  <div class="footer">Generated 2026-05-25 15:22 JST · NakagawaIchiro12/shift-dashboard</div>
+</div>
+</body>
+</html>
