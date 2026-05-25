@@ -375,6 +375,100 @@ html, body {
   font-weight: 700;
 }
 
+/* ===== スコア・改善提案 ===== */
+.score-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 99px;
+  padding: 5px 14px 5px 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-weight: 900;
+  color: #ffffff;
+  font-size: 13px;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+.score-badge .score-num {
+  font-size: 22px;
+  line-height: 1;
+}
+.score-badge .score-max {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.improve-box {
+  background: linear-gradient(135deg, #fff8f0 0%, #fff0e0 100%);
+  border: 2px solid #ff9f43;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-top: 16px;
+}
+.improve-box.urgent {
+  border-color: #e63946;
+  background: linear-gradient(135deg, #fff0f0 0%, #ffe5e5 100%);
+}
+.improve-box .lab {
+  font-size: 12px;
+  font-weight: 800;
+  color: #c44d00;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+.improve-box.urgent .lab { color: #b00020; }
+.improve-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.improve-box li {
+  font-size: 14px;
+  color: #2c2c2c;
+  padding: 4px 0 4px 22px;
+  position: relative;
+  line-height: 1.6;
+}
+.improve-box li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  color: #ff9f43;
+  font-weight: 900;
+}
+.improve-box.urgent li::before { color: #e63946; }
+.improve-box .request-hint {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #555;
+}
+.improve-box .request-hint code {
+  background: #1a1a1a;
+  color: #ffd87a;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'SF Mono', Menlo, monospace;
+  font-weight: 800;
+}
+
+/* スコアバッジを各重要度ヘッダーに乗せる用 */
+.section .head { position: relative; }
+
+/* サイドバーにスコアを併記 */
+.emotion-sidebar a .sb-score {
+  display: block;
+  font-size: 9px;
+  font-weight: 800;
+  margin-top: 1px;
+  opacity: 0.85;
+}
+
 .appendix-heading {
   margin: 40px 32px 12px;
   padding-top: 18px;
@@ -413,18 +507,18 @@ html, body {
 </style>
 </head>
 <body>
-<aside class="emotion-sidebar"><div class="sb-title">心理動線</div><nav class="path"><a href="#sec-01" class="hook" data-target="sec-01"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">01</span><span class="emotion">興味</span></a>
-<a href="#sec-02" class="hook" data-target="sec-02"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">02</span><span class="emotion">気づき</span></a>
-<a href="#sec-03" class="core" data-target="sec-03"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">03</span><span class="emotion">不安</span></a>
-<a href="#sec-04" class="core" data-target="sec-04"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">04</span><span class="emotion">信頼</span></a>
-<a href="#sec-05" class="core" data-target="sec-05"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">05</span><span class="emotion">学び</span></a>
-<a href="#sec-06" class="core" data-target="sec-06"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">06</span><span class="emotion">理解</span></a>
-<a href="#sec-07" class="normal" data-target="sec-07"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">07</span><span class="emotion">把握</span></a>
-<a href="#sec-08" class="core" data-target="sec-08"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">08</span><span class="emotion">共感</span></a>
-<a href="#sec-09" class="core" data-target="sec-09"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">09</span><span class="emotion">不安</span></a>
-<a href="#sec-10" class="core" data-target="sec-10"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">10</span><span class="emotion">警戒</span></a>
-<a href="#sec-11" class="cta" data-target="sec-11"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">11</span><span class="emotion">行動</span></a>
-<a href="#sec-12" class="cta" data-target="sec-12"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">12</span><span class="emotion">決意</span></a></nav></aside>
+<aside class="emotion-sidebar"><div class="sb-title">心理動線</div><nav class="path"><a href="#sec-01" class="hook" data-target="sec-01"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">01</span><span class="emotion">興味</span><span class="sb-score" style="color: #ff9f43;">57点</span></a>
+<a href="#sec-02" class="hook" data-target="sec-02"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">02</span><span class="emotion">気づき</span><span class="sb-score" style="color: #06a77d;">80点</span></a>
+<a href="#sec-03" class="core" data-target="sec-03"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">03</span><span class="emotion">不安</span><span class="sb-score" style="color: #06a77d;">71点</span></a>
+<a href="#sec-04" class="core" data-target="sec-04"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">04</span><span class="emotion">信頼</span><span class="sb-score" style="color: #06a77d;">79点</span></a>
+<a href="#sec-05" class="core" data-target="sec-05"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">05</span><span class="emotion">学び</span><span class="sb-score" style="color: #06a77d;">82点</span></a>
+<a href="#sec-06" class="core" data-target="sec-06"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">06</span><span class="emotion">理解</span><span class="sb-score" style="color: #06a77d;">79点</span></a>
+<a href="#sec-07" class="normal" data-target="sec-07"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">07</span><span class="emotion">把握</span><span class="sb-score" style="color: #06a77d;">73点</span></a>
+<a href="#sec-08" class="core" data-target="sec-08"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">08</span><span class="emotion">共感</span><span class="sb-score" style="color: #ff9f43;">65点</span></a>
+<a href="#sec-09" class="core" data-target="sec-09"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">09</span><span class="emotion">不安</span><span class="sb-score" style="color: #06a77d;">79点</span></a>
+<a href="#sec-10" class="core" data-target="sec-10"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">10</span><span class="emotion">警戒</span><span class="sb-score" style="color: #06a77d;">80点</span></a>
+<a href="#sec-11" class="cta" data-target="sec-11"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">11</span><span class="emotion">行動</span><span class="sb-score" style="color: #06a77d;">85点</span></a>
+<a href="#sec-12" class="cta" data-target="sec-12"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">12</span><span class="emotion">決意</span><span class="sb-score" style="color: #06a77d;">79点</span></a></nav></aside>
 <div class="page">
 
   <section class="hero">
@@ -456,6 +550,9 @@ html, body {
     <div class="title">オープニング</div>
     
     <span class="duration-pill">⏱ 70秒 / 420字</span>
+    <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
+      <span class="score-num">57</span><span class="score-max">/100</span>
+    </span>
   </div>
   <div class="body">
     <div class="emotion-arrow">
@@ -483,6 +580,15 @@ html, body {
 <p>でも、違いました。</p>
     </div>
     <div class="greeting-warning">⚠️ 固定挨拶 「こんにちは！100t農家のイチローです」 が検出できませんでした。必ず冒頭に入れてください（メモリ feedback_youtube_channel_positioning 準拠）</div>
+    
+    <div class="improve-box urgent">
+      <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
+      <ul><li>曖昧表現が2件（断定型に書き換え）</li>
+<li>⚠️ 固定挨拶『こんにちは！100t農家のイチローです』が無い（最優先で入れる）</li></ul>
+      <div class="request-hint">
+        ご主人様の指示例：Discord で <code>#01 ブラッシュアップ</code> または <code>#01 曖昧表現が2件（断定型に書き換え）…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+      </div>
+    </div>
   </div>
 </section>
 <section class="section hook" id="sec-02">
@@ -491,6 +597,9 @@ html, body {
     <div class="title">自己診断 5問</div>
     
     <span class="duration-pill">⏱ 90秒 / 500字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">80</span><span class="score-max">/100</span>
+    </span>
   </div>
   <div class="body">
     <div class="emotion-arrow">
@@ -518,6 +627,14 @@ html, body {
 <p>これ、すごく大事です。ミミズは、土の健康のバロメーターです。</p>
     </div>
     
+    
+    <div class="improve-box">
+      <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
+      <ul><li>100t / 200t 等の権威数字を入れたい（フックの3秒釘付け）</li></ul>
+      <div class="request-hint">
+        ご主人様の指示例：Discord で <code>#02 ブラッシュアップ</code> または <code>#02 100t / 200t 等の権威数字…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+      </div>
+    </div>
   </div>
 </section>
 <section class="section core" id="sec-03">
@@ -526,6 +643,9 @@ html, body {
     <div class="title">危機感</div>
     <div class="subtitle">化学肥料依存の罠</div>
     <span class="duration-pill">⏱ 180秒 / 1,000字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">71</span><span class="score-max">/100</span>
+    </span>
   </div>
   <div class="body">
     <div class="emotion-arrow">
@@ -553,6 +673,14 @@ html, body {
 <p>ちょっと、化学のお話、します。</p>
     </div>
     
+    
+    <div class="improve-box">
+      <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
+      <ul><li>曖昧表現が1件（断定型に書き換え）</li></ul>
+      <div class="request-hint">
+        ご主人様の指示例：Discord で <code>#03 ブラッシュアップ</code> または <code>#03 曖昧表現が1件（断定型に書き換え）…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+      </div>
+    </div>
   </div>
 </section>
 <section class="section core" id="sec-04">
@@ -561,6 +689,9 @@ html, body {
     <div class="title">プロ登場・3年間ストーリー</div>
     
     <span class="duration-pill">⏱ 90秒 / 500字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">79</span><span class="score-max">/100</span>
+    </span>
   </div>
   <div class="body">
     <div class="emotion-arrow">
@@ -588,6 +719,7 @@ html, body {
 <p>種代がかかる。</p>
     </div>
     
+    
   </div>
 </section>
 <section class="section core" id="sec-05">
@@ -596,6 +728,9 @@ html, body {
     <div class="title">ソルゴー3兄弟</div>
     <div class="subtitle">深掘り版</div>
     <span class="duration-pill">⏱ 300秒 / 1,650字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">82</span><span class="score-max">/100</span>
+    </span>
   </div>
   <div class="body">
     <div class="emotion-arrow">
@@ -623,6 +758,7 @@ html, body {
 <p>刈り倒して、土に返すと、地表近くに、栄養が戻ります。</p>
     </div>
     
+    
   </div>
 </section>
 <section class="section core" id="sec-06">
@@ -631,6 +767,9 @@ html, body {
     <div class="title">ソルゴー1年タイムライン</div>
     
     <span class="duration-pill">⏱ 200秒 / 1,100字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">79</span><span class="score-max">/100</span>
+    </span>
   </div>
   <div class="body">
     <div class="emotion-arrow">
@@ -658,6 +797,14 @@ html, body {
 <p>この時期、何もしなくていいです。</p>
     </div>
     
+    
+    <div class="improve-box">
+      <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
+      <ul><li>曖昧表現が1件（断定型に書き換え）</li></ul>
+      <div class="request-hint">
+        ご主人様の指示例：Discord で <code>#06 ブラッシュアップ</code> または <code>#06 曖昧表現が1件（断定型に書き換え）…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+      </div>
+    </div>
   </div>
 </section>
 <section class="section normal" id="sec-07">
@@ -666,6 +813,9 @@ html, body {
     <div class="title">キャベツと白菜への効果</div>
     
     <span class="duration-pill">⏱ 90秒 / 500字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">73</span><span class="score-max">/100</span>
+    </span>
   </div>
   <div class="body">
     <div class="emotion-arrow">
@@ -693,6 +843,7 @@ html, body {
 <p>ここで栄養が切れると、巻きが、緩くなったり、サイズが小さくなったりする。</p>
     </div>
     
+    
   </div>
 </section>
 <section class="section core" id="sec-08">
@@ -701,6 +852,9 @@ html, body {
     <div class="title">YouTube姿勢</div>
     
     <span class="duration-pill">⏱ 45秒 / 260字</span>
+    <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
+      <span class="score-num">65</span><span class="score-max">/100</span>
+    </span>
   </div>
   <div class="body">
     <div class="emotion-arrow">
@@ -726,6 +880,14 @@ html, body {
 <p>それを大事にして、これからも、続けます。</p>
     </div>
     
+    
+    <div class="improve-box">
+      <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
+      <ul><li>具体的数字が少ない（年数・量・回数で立体化）</li></ul>
+      <div class="request-hint">
+        ご主人様の指示例：Discord で <code>#08 ブラッシュアップ</code> または <code>#08 具体的数字が少ない（年数・量・回数で…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+      </div>
+    </div>
   </div>
 </section>
 <section class="section core" id="sec-09">
@@ -734,6 +896,9 @@ html, body {
     <div class="title">今日からできる具体策</div>
     <div class="subtitle">5落とし穴版</div>
     <span class="duration-pill">⏱ 360秒 / 2,000字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">79</span><span class="score-max">/100</span>
+    </span>
   </div>
   <div class="body">
     <div class="emotion-arrow">
@@ -761,6 +926,7 @@ html, body {
 <p>数日のズレで、結果が、変わります。</p>
     </div>
     
+    
   </div>
 </section>
 <section class="section core" id="sec-10">
@@ -769,6 +935,9 @@ html, body {
     <div class="title">失敗事例コーナー</div>
     
     <span class="duration-pill">⏱ 180秒 / 1,000字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">80</span><span class="score-max">/100</span>
+    </span>
   </div>
   <div class="body">
     <div class="emotion-arrow">
@@ -796,6 +965,7 @@ html, body {
 <p>苗の根が、伸びる場所を、見つけられない。</p>
     </div>
     
+    
   </div>
 </section>
 <section class="section cta" id="sec-11">
@@ -804,6 +974,9 @@ html, body {
     <div class="title">CTA橋渡し</div>
     <div class="subtitle">v3.6 渇望MAX書き換え</div>
     <span class="duration-pill">⏱ 150秒 / 900字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">85</span><span class="score-max">/100</span>
+    </span>
   </div>
   <div class="body">
     <div class="emotion-arrow">
@@ -831,6 +1004,7 @@ html, body {
 <p>出荷の目標量、</p>
     </div>
     
+    
   </div>
 </section>
 <section class="section cta" id="sec-12">
@@ -839,6 +1013,9 @@ html, body {
     <div class="title">締め</div>
     
     <span class="duration-pill">⏱ 120秒 / 700字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">79</span><span class="score-max">/100</span>
+    </span>
   </div>
   <div class="body">
     <div class="emotion-arrow">
@@ -865,6 +1042,7 @@ html, body {
 <p>3年は、長く感じるかもしれません。</p>
 <p>でも、土が痩せた状態を、放置している3年と、</p>
     </div>
+    
     
   </div>
 </section>
@@ -897,7 +1075,7 @@ html, body {
   </div>
 
   <footer class="footer">
-    Generated 2026-05-25 12:43 JST from 2026-05-23_sorgo_torisetsu-style_v3.6_katsubo-max_yomiage.md
+    Generated 2026-05-25 12:50 JST from 2026-05-23_sorgo_torisetsu-style_v3.6_katsubo-max_yomiage.md
   </footer>
 
 </div>
