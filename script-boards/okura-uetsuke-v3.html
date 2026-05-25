@@ -591,154 +591,26 @@ html, body {
   font-weight: 800;
 }
 
-/* ===== 撮影準備パネル ===== */
-.prep-panel {
-  background: linear-gradient(135deg, #0c1e3e 0%, #1a3a6e 100%);
-  color: #f4f1ec;
-  margin: 36px 16px 24px;
-  border-radius: 16px;
-  padding: 26px 24px 28px;
-  box-shadow: 0 10px 28px rgba(12, 30, 62, 0.25);
-}
-.prep-title {
-  font-size: 22px;
-  font-weight: 900;
-  color: #ffd87a;
-  margin-bottom: 18px;
-  text-align: center;
-}
-.prep-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  margin-bottom: 22px;
-}
-.prep-stat {
-  background: rgba(255,255,255,0.06);
-  border-radius: 10px;
-  padding: 14px;
-  text-align: center;
-}
-.prep-stat-label {
-  font-size: 11px;
-  color: #b8c4dd;
-  margin-bottom: 4px;
-  letter-spacing: 0.04em;
-}
-.prep-stat-value {
-  font-size: 22px;
-  font-weight: 900;
-  color: #ffd87a;
-  line-height: 1.2;
-}
-.prep-stat-value small {
-  font-size: 12px;
-  opacity: 0.7;
-  color: #b8c4dd;
-}
-.prep-stat-note {
-  font-size: 11px;
-  color: #b8c4dd;
-  margin-top: 4px;
-}
-.prep-block {
-  background: rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 18px 20px;
-  margin-bottom: 16px;
-}
-.prep-lab {
-  font-size: 13px;
-  font-weight: 800;
-  color: #ffd87a;
-  margin-bottom: 12px;
-  letter-spacing: 0.04em;
-}
-.prep-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.prep-list li {
+.appendix-heading {
+  margin: 40px 32px 12px;
+  padding-top: 18px;
+  border-top: 1px solid #d6d2c4;
   font-size: 14px;
-  padding: 6px 0 6px 22px;
-  position: relative;
-  color: #f4f1ec;
-  line-height: 1.65;
-}
-.prep-list li::before {
-  content: "•";
-  position: absolute;
-  left: 6px;
-  color: #ffd87a;
-  font-weight: 900;
-}
-.prep-checklist {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.prep-checklist li {
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.prep-checklist li:last-child { border-bottom: none; }
-.prep-checklist label {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  font-size: 14px;
-  color: #f4f1ec;
-  line-height: 1.5;
-  -webkit-tap-highlight-color: rgba(255,216,122,0.25);
-}
-.prep-checklist input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 24px;
-  height: 24px;
-  border: 2px solid #ffd87a;
-  border-radius: 6px;
-  flex-shrink: 0;
-  cursor: pointer;
-  position: relative;
-  background: transparent;
-  transition: background 0.15s ease;
-}
-.prep-checklist input[type="checkbox"]:checked {
-  background: #ffd87a;
-}
-.prep-checklist input[type="checkbox"]:checked::after {
-  content: "✓";
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #0c1e3e;
-  font-weight: 900;
-  font-size: 16px;
-}
-.prep-checklist input[type="checkbox"]:checked + span {
-  opacity: 0.55;
-  text-decoration: line-through;
-}
-.prep-source {
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  font-size: 11px;
-  color: #b8c4dd;
+  color: #888;
+  font-weight: 700;
   text-align: center;
 }
-.prep-source code {
-  background: rgba(255,255,255,0.08);
-  padding: 2px 8px;
-  border-radius: 6px;
-  font-family: 'SF Mono', Menlo, monospace;
-  word-break: break-all;
+.section.appendix {
+  background: #ebe7dd;
+  box-shadow: none;
+  margin-bottom: 10px;
 }
+.section.appendix .head {
+  padding: 14px 24px;
+}
+.section.appendix .head .title { font-size: 18px; color: #555; }
+.section.appendix .head.normal { background: transparent; border-bottom: 1px solid #d6d2c4; }
+.section.appendix .body { padding: 14px 24px; font-size: 13px; color: #888; }
 
 .footer {
   text-align: center;
@@ -1174,55 +1046,10 @@ CTAは その先＝続け方・収益化 をテーマにした戦略相談への
   </div>
 </section>
     
-<section class="prep-panel" id="prep-panel">
-  <h2 class="prep-title">📹 撮影準備パネル</h2>
-
-  <div class="prep-stats">
-    <div class="prep-stat">
-      <div class="prep-stat-label">⏱ 推定読み上げ尺</div>
-      <div class="prep-stat-value">—</div>
-    </div>
-    
-    <div class="prep-stat">
-      <div class="prep-stat-label">📑 セクション数</div>
-      <div class="prep-stat-value">8</div>
-    </div>
-  </div>
-
-  <div class="prep-block">
-    <div class="prep-lab">📋 撮影前 必須チェックリスト（タップで✓・状態保存）</div>
-    <ul class="prep-checklist" data-storage="script-board-checklist-2026-05-14_okura-uetsuke-3pattern_v3">
-      <li><label><input type="checkbox" data-key="greeting"><span>挨拶『こんにちは！100t農家のイチロウです』暗記OK</span></label></li>
-<li><label><input type="checkbox" data-key="gdocs"><span>Google Docs に最新台本をコピーした</span></label></li>
-<li><label><input type="checkbox" data-key="font"><span>Google Docs のフォントサイズを 36px に設定</span></label></li>
-<li><label><input type="checkbox" data-key="landscape"><span>スマホを横画面（ランドスケープ）に固定</span></label></li>
-<li><label><input type="checkbox" data-key="battery"><span>スマホ充電 70%以上 / 録音マイク動作確認</span></label></li>
-<li><label><input type="checkbox" data-key="environment"><span>撮影場所の音響確認（風 / エコー / 騒音なし）</span></label></li>
-<li><label><input type="checkbox" data-key="scroll"><span>【Scroll】マーカー位置で停止＆スクロール準備OK</span></label></li>
-<li><label><input type="checkbox" data-key="cta"><span>CTA特典『農業のゲームチェンジ』動画ナレッジを再確認</span></label></li>
-    </ul>
-  </div>
-
-  <div class="prep-block">
-    <div class="prep-lab">🎬 撮影フォーマット</div>
-    <ul class="prep-list">
-      <li>解像度：1530×1080（横画面フルスクリーン）</li>
-      <li>Google Docs：36px ／ 行間広め</li>
-      <li>【Scroll】マーカーで1画面ずつスクロール</li>
-      <li>収録後：cut-list-generator で無音化前処理</li>
-    </ul>
-  </div>
-
-  
-
-  <div class="prep-source">
-    📄 元台本：<code>2026-05-14_okura-uetsuke-3pattern_v3.md</code>
-  </div>
-</section>
   </div>
 
   <footer class="footer">
-    Generated 2026-05-25 16:52 JST from 2026-05-14_okura-uetsuke-3pattern_v3.md
+    Generated 2026-05-25 15:22 JST from 2026-05-14_okura-uetsuke-3pattern_v3.md
   </footer>
 
 </div>
@@ -1275,24 +1102,6 @@ CTAは その先＝続け方・収益化 をテーマにした戦略相談への
   window.addEventListener('scroll', onScroll, { passive: true });
   // Initial
   activate(0);
-})();
-
-// === 撮影準備パネル チェックリスト localStorage 永続化 ===
-(function(){
-  const list = document.querySelector('.prep-checklist[data-storage]');
-  if (!list) return;
-  const key = list.dataset.storage;
-  let state = {};
-  try {
-    state = JSON.parse(localStorage.getItem(key) || '{}');
-  } catch (e) { state = {}; }
-  list.querySelectorAll('input[type="checkbox"][data-key]').forEach(cb => {
-    if (state[cb.dataset.key]) cb.checked = true;
-    cb.addEventListener('change', () => {
-      state[cb.dataset.key] = cb.checked;
-      localStorage.setItem(key, JSON.stringify(state));
-    });
-  });
 })();
 </script>
 </body>
