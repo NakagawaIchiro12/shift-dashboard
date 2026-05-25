@@ -13,7 +13,132 @@ html, body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
-.page { max-width: 760px; margin: 0 auto; }
+.page { max-width: 760px; margin: 0 auto; padding-right: 76px; }
+@media (max-width: 580px) {
+  .page { padding-right: 60px; }
+}
+
+/* ===== 心理動線 サイドバー ===== */
+.emotion-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 76px;
+  background: rgba(12, 30, 62, 0.96);
+  z-index: 100;
+  padding: 14px 0;
+  overflow-y: auto;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+.emotion-sidebar::-webkit-scrollbar { width: 0; }
+.emotion-sidebar .sb-title {
+  font-size: 10px;
+  color: #ffd87a;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+  padding: 0 4px;
+  line-height: 1.3;
+}
+.emotion-sidebar .path {
+  position: relative;
+  padding: 0 8px 14px;
+}
+.emotion-sidebar .path::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  bottom: 14px;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: linear-gradient(180deg,
+    #ff6b35 0%, #ff6b35 22%,
+    #4a6fff 22%, #4a6fff 78%,
+    #06a77d 78%, #06a77d 100%);
+  opacity: 0.5;
+}
+.emotion-sidebar a {
+  display: block;
+  text-align: center;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  position: relative;
+  padding: 6px 2px;
+  transition: transform 0.12s ease;
+}
+.emotion-sidebar a:hover { transform: scale(1.05); color: #ffd87a; }
+.emotion-sidebar a .dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.25);
+  border: 2px solid #0c1e3e;
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.15s ease;
+}
+.emotion-sidebar a.hook .dot { background: #ff6b35; }
+.emotion-sidebar a.core .dot { background: #4a6fff; }
+.emotion-sidebar a.cta  .dot { background: #06a77d; }
+.emotion-sidebar a.support .dot { background: #8a8a8a; }
+.emotion-sidebar a .num {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.1;
+}
+.emotion-sidebar a .emotion {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+.emotion-sidebar a.active .dot {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 2px;
+  box-shadow: 0 0 0 4px rgba(255, 216, 122, 0.35), 0 0 12px rgba(255, 216, 122, 0.5);
+  border-color: #ffd87a;
+}
+.emotion-sidebar a.active .emotion {
+  color: #ffd87a;
+  font-size: 13px;
+}
+.emotion-sidebar a.active .num { color: #ffd87a; }
+.emotion-sidebar .here-tag {
+  display: none;
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffd87a;
+  color: #0c1e3e;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px 0 0 4px;
+  white-space: nowrap;
+  margin-right: -2px;
+}
+.emotion-sidebar a.active .here-tag {
+  display: block;
+}
+@media (max-width: 580px) {
+  .emotion-sidebar { width: 60px; }
+  .emotion-sidebar a .emotion { font-size: 11px; }
+  .emotion-sidebar a .dot { width: 12px; height: 12px; }
+  .emotion-sidebar a.active .dot { width: 16px; height: 16px; }
+}
 
 .hero {
   background: linear-gradient(135deg, #0c1e3e 0%, #1a3a6e 100%);
@@ -288,6 +413,18 @@ html, body {
 </style>
 </head>
 <body>
+<aside class="emotion-sidebar"><div class="sb-title">心理動線</div><nav class="path"><a href="#sec-01" class="hook" data-target="sec-01"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">01</span><span class="emotion">興味</span></a>
+<a href="#sec-02" class="hook" data-target="sec-02"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">02</span><span class="emotion">気づき</span></a>
+<a href="#sec-03" class="core" data-target="sec-03"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">03</span><span class="emotion">不安</span></a>
+<a href="#sec-04" class="core" data-target="sec-04"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">04</span><span class="emotion">信頼</span></a>
+<a href="#sec-05" class="core" data-target="sec-05"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">05</span><span class="emotion">学び</span></a>
+<a href="#sec-06" class="core" data-target="sec-06"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">06</span><span class="emotion">理解</span></a>
+<a href="#sec-07" class="normal" data-target="sec-07"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">07</span><span class="emotion">把握</span></a>
+<a href="#sec-08" class="core" data-target="sec-08"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">08</span><span class="emotion">共感</span></a>
+<a href="#sec-09" class="core" data-target="sec-09"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">09</span><span class="emotion">不安</span></a>
+<a href="#sec-10" class="core" data-target="sec-10"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">10</span><span class="emotion">警戒</span></a>
+<a href="#sec-11" class="cta" data-target="sec-11"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">11</span><span class="emotion">行動</span></a>
+<a href="#sec-12" class="cta" data-target="sec-12"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">12</span><span class="emotion">決意</span></a></nav></aside>
 <div class="page">
 
   <section class="hero">
@@ -313,7 +450,7 @@ html, body {
 
   <div class="timeline">
     
-<section class="section hook">
+<section class="section hook" id="sec-01">
   <div class="head hook">
     <div class="position">#01 / 12 · 🎯 冒頭フック</div>
     <div class="title">オープニング</div>
@@ -348,7 +485,7 @@ html, body {
     <div class="greeting-warning">⚠️ 固定挨拶 「こんにちは！100t農家のイチローです」 が検出できませんでした。必ず冒頭に入れてください（メモリ feedback_youtube_channel_positioning 準拠）</div>
   </div>
 </section>
-<section class="section hook">
+<section class="section hook" id="sec-02">
   <div class="head hook">
     <div class="position">#02 / 12 · 🎯 冒頭フック</div>
     <div class="title">自己診断 5問</div>
@@ -383,7 +520,7 @@ html, body {
     
   </div>
 </section>
-<section class="section core">
+<section class="section core" id="sec-03">
   <div class="head core">
     <div class="position">#03 / 12 · 🔥 本論</div>
     <div class="title">危機感</div>
@@ -418,7 +555,7 @@ html, body {
     
   </div>
 </section>
-<section class="section core">
+<section class="section core" id="sec-04">
   <div class="head core">
     <div class="position">#04 / 12 · 🔥 本論</div>
     <div class="title">プロ登場・3年間ストーリー</div>
@@ -453,7 +590,7 @@ html, body {
     
   </div>
 </section>
-<section class="section core">
+<section class="section core" id="sec-05">
   <div class="head core">
     <div class="position">#05 / 12 · 🔥 本論</div>
     <div class="title">ソルゴー3兄弟</div>
@@ -488,7 +625,7 @@ html, body {
     
   </div>
 </section>
-<section class="section core">
+<section class="section core" id="sec-06">
   <div class="head core">
     <div class="position">#06 / 12 · 🔥 本論</div>
     <div class="title">ソルゴー1年タイムライン</div>
@@ -523,7 +660,7 @@ html, body {
     
   </div>
 </section>
-<section class="section normal">
+<section class="section normal" id="sec-07">
   <div class="head normal">
     <div class="position">#07 / 12 · 📄 セクション</div>
     <div class="title">キャベツと白菜への効果</div>
@@ -558,7 +695,7 @@ html, body {
     
   </div>
 </section>
-<section class="section core">
+<section class="section core" id="sec-08">
   <div class="head core">
     <div class="position">#08 / 12 · 🔥 本論</div>
     <div class="title">YouTube姿勢</div>
@@ -591,7 +728,7 @@ html, body {
     
   </div>
 </section>
-<section class="section core">
+<section class="section core" id="sec-09">
   <div class="head core">
     <div class="position">#09 / 12 · 🔥 本論</div>
     <div class="title">今日からできる具体策</div>
@@ -626,7 +763,7 @@ html, body {
     
   </div>
 </section>
-<section class="section core">
+<section class="section core" id="sec-10">
   <div class="head core">
     <div class="position">#10 / 12 · 🔥 本論</div>
     <div class="title">失敗事例コーナー</div>
@@ -661,7 +798,7 @@ html, body {
     
   </div>
 </section>
-<section class="section cta">
+<section class="section cta" id="sec-11">
   <div class="head cta">
     <div class="position">#11 / 12 · 📣 CTA・誘導</div>
     <div class="title">CTA橋渡し</div>
@@ -696,7 +833,7 @@ html, body {
     
   </div>
 </section>
-<section class="section cta">
+<section class="section cta" id="sec-12">
   <div class="head cta">
     <div class="position">#12 / 12 · 📣 CTA・誘導</div>
     <div class="title">締め</div>
@@ -760,9 +897,60 @@ html, body {
   </div>
 
   <footer class="footer">
-    Generated 2026-05-25 08:41 JST from 2026-05-23_sorgo_torisetsu-style_v3.6_katsubo-max_yomiage.md
+    Generated 2026-05-25 12:43 JST from 2026-05-23_sorgo_torisetsu-style_v3.6_katsubo-max_yomiage.md
   </footer>
 
 </div>
+<script>
+(function(){
+  const sidebar = document.querySelector('.emotion-sidebar');
+  if (!sidebar) return;
+  const links = Array.from(sidebar.querySelectorAll('a[data-target]'));
+  const sections = links
+    .map(a => document.getElementById(a.dataset.target))
+    .filter(Boolean);
+
+  function activate(idx) {
+    links.forEach((a, i) => a.classList.toggle('active', i === idx));
+    // Scroll sidebar to keep active in view
+    if (idx >= 0 && links[idx]) {
+      const a = links[idx];
+      const sbRect = sidebar.getBoundingClientRect();
+      const aRect = a.getBoundingClientRect();
+      const targetTop = a.offsetTop - sbRect.height / 2 + aRect.height / 2;
+      sidebar.scrollTo({ top: targetTop, behavior: 'smooth' });
+    }
+  }
+
+  // Smooth scroll on click
+  links.forEach((a, i) => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      sections[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Track scroll position; active = section whose top is just above 30% viewport
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const ref = window.innerHeight * 0.30;
+      let activeIdx = 0;
+      for (let i = 0; i < sections.length; i++) {
+        const rect = sections[i].getBoundingClientRect();
+        if (rect.top - ref <= 0) activeIdx = i;
+        else break;
+      }
+      activate(activeIdx);
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  // Initial
+  activate(0);
+})();
+</script>
 </body>
 </html>
