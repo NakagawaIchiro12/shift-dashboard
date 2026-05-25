@@ -469,6 +469,128 @@ html, body {
   opacity: 0.85;
 }
 
+/* ===== ナレッジ投入ガイド ===== */
+.knowledge-guide {
+  background: linear-gradient(135deg, #e8f4f8 0%, #d9ecf2 100%);
+  border: 2px solid #4a90e2;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-top: 14px;
+}
+.knowledge-guide .lab {
+  font-size: 12px;
+  font-weight: 800;
+  color: #2c5d8a;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+.knowledge-guide ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.knowledge-guide li {
+  padding: 8px 0 8px 28px;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.6;
+  border-bottom: 1px dashed rgba(74, 144, 226, 0.25);
+}
+.knowledge-guide li:last-child { border-bottom: none; }
+.knowledge-guide li::before {
+  content: "📚";
+  position: absolute;
+  left: 0;
+  top: 7px;
+}
+.knowledge-guide .ttl {
+  font-weight: 800;
+  color: #1a4f7a;
+  display: block;
+}
+.knowledge-guide .src {
+  font-size: 11px;
+  color: #6a8aa8;
+  font-family: 'SF Mono', Menlo, monospace;
+  display: block;
+  margin-top: 2px;
+  word-break: break-all;
+}
+.knowledge-guide .effect {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffffff;
+  background: #4a90e2;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+/* ===== トップ トリセツ パネル ===== */
+.toricetsu {
+  background: linear-gradient(135deg, #fff7e0 0%, #fff3c8 100%);
+  border-radius: 14px;
+  margin: 0 16px 18px;
+  padding: 22px 24px;
+  border-left: 6px solid #ffc107;
+}
+.toricetsu h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #856404;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.toricetsu ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: step;
+}
+.toricetsu ol li {
+  counter-increment: step;
+  padding: 8px 0 8px 36px;
+  position: relative;
+  font-size: 14px;
+  color: #2c2c2c;
+  line-height: 1.65;
+}
+.toricetsu ol li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 26px;
+  height: 26px;
+  background: #ffc107;
+  color: #fff;
+  font-weight: 900;
+  font-size: 14px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.toricetsu .req-example {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(0,0,0,0.05);
+  border-radius: 8px;
+  font-size: 13px;
+  color: #555;
+}
+.toricetsu .req-example code {
+  background: #1a1a1a;
+  color: #ffd87a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'SF Mono', Menlo, monospace;
+  font-weight: 800;
+}
+
 .appendix-heading {
   margin: 40px 32px 12px;
   padding-top: 18px;
@@ -543,6 +665,19 @@ html, body {
   </section>
 
   <div class="timeline">
+    <div class="toricetsu">
+      <h3>📖 このボードの使い方（トリセツ）</h3>
+      <ol>
+        <li><strong>右上の点数バッジを見る</strong>：90+はゴールド、70-89緑、50-69黄、&lt;50赤。低い順に修正対象が見える。</li>
+        <li><strong>🛠️ ブラッシュアップ候補を読む</strong>：そのセクションで何が問題かが自動で書かれている。</li>
+        <li><strong>💡 ナレッジ投入ガイドを読む</strong>：ご主人様の既存ナレッジ（PLAUD録音／memory／knowledge）から「ここに何を入れると何点UP」がわかる。</li>
+        <li><strong>右端の心理動線サイドバー</strong>：スクロールに追従して「今ここ」が黄色く光る。タップで該当セクションに飛べる。</li>
+      </ol>
+      <div class="req-example">
+        ⚡ <strong>即修正依頼</strong>：Discord で <code>#01 ブラッシュアップ</code> や <code>#07 牛糞なしキャベツ肥料の数値入れて</code> と送ると、私が該当セクションだけ修正＋再デプロイ → 同URLが更新されます🌸
+      </div>
+    </div>
+
     
 <section class="section hook" id="sec-01">
   <div class="head hook">
@@ -581,6 +716,12 @@ html, body {
     </div>
     
     
+    
+    <div class="knowledge-guide">
+      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
+      <ul><li><span class="ttl">100t→200tの年商成長 権威数字</span><span class="src">knowledge/aina-chan-brain-product-summary.md</span><span class="effect">+8点</span></li>
+<li><span class="ttl">自己診断フレーム（エルさん5問版）</span><span class="src">部署_YouTube動画/knowledge/elsan_katsubo_framework_v2_from_plaud.md</span><span class="effect">+6点</span></li></ul>
+    </div>
   </div>
 </section>
 <section class="section hook" id="sec-02">
@@ -626,6 +767,12 @@ html, body {
       <div class="request-hint">
         ご主人様の指示例：Discord で <code>#02 ブラッシュアップ</code> または <code>#02 100t / 200t 等の権威数字…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
       </div>
+    </div>
+    
+    <div class="knowledge-guide">
+      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
+      <ul><li><span class="ttl">100t→200tの年商成長 権威数字</span><span class="src">knowledge/aina-chan-brain-product-summary.md</span><span class="effect">+8点</span></li>
+<li><span class="ttl">自己診断フレーム（エルさん5問版）</span><span class="src">部署_YouTube動画/knowledge/elsan_katsubo_framework_v2_from_plaud.md</span><span class="effect">+6点</span></li></ul>
     </div>
   </div>
 </section>
@@ -673,6 +820,13 @@ html, body {
         ご主人様の指示例：Discord で <code>#03 ブラッシュアップ</code> または <code>#03 曖昧表現が1件（断定型に書き換え）…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
       </div>
     </div>
+    
+    <div class="knowledge-guide">
+      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
+      <ul><li><span class="ttl">⚠️ 化学肥料連用の具体的弊害ナレッジ</span><span class="src">PLAUDエルさんフォルダ／ご主人様の3年前体験</span><span class="effect">n年でpH低下／収量XX%減 等の具体数値で +12点</span></li>
+<li><span class="ttl">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="src">memory/reference_plaud_elsan_recordings.md</span><span class="effect">+10点</span></li>
+<li><span class="ttl">16年・100t出荷の年数エビデンス</span><span class="src">knowledge/aina-chan-product-message-source.md</span><span class="effect">+5点</span></li></ul>
+    </div>
   </div>
 </section>
 <section class="section core" id="sec-04">
@@ -712,6 +866,13 @@ html, body {
     </div>
     
     
+    
+    <div class="knowledge-guide">
+      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
+      <ul><li><span class="ttl">👨‍🌾 3年間の変化エピソード（年→年）</span><span class="src">ご主人様のPLAUD録音／X過去発信</span><span class="effect">数字を交えた変化のストーリーで +8点</span></li>
+<li><span class="ttl">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="src">memory/reference_plaud_elsan_recordings.md</span><span class="effect">+10点</span></li>
+<li><span class="ttl">16年・100t出荷の年数エビデンス</span><span class="src">knowledge/aina-chan-product-message-source.md</span><span class="effect">+5点</span></li></ul>
+    </div>
   </div>
 </section>
 <section class="section core" id="sec-05">
@@ -751,6 +912,13 @@ html, body {
     </div>
     
     
+    
+    <div class="knowledge-guide">
+      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
+      <ul><li><span class="ttl">🌱 ソルゴー3兄弟（根・葉・種）の役割</span><span class="src">PLAUDエルさんフォルダ／既存原稿</span><span class="effect">各兄弟の具体的機能と植える順番で +10点</span></li>
+<li><span class="ttl">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="src">memory/reference_plaud_elsan_recordings.md</span><span class="effect">+10点</span></li>
+<li><span class="ttl">16年・100t出荷の年数エビデンス</span><span class="src">knowledge/aina-chan-product-message-source.md</span><span class="effect">+5点</span></li></ul>
+    </div>
   </div>
 </section>
 <section class="section core" id="sec-06">
@@ -790,6 +958,13 @@ html, body {
     </div>
     
     
+    
+    <div class="knowledge-guide">
+      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
+      <ul><li><span class="ttl">📅 ご主人様のソルゴー実践 月別記録</span><span class="src">ご主人様のソルゴー栽培ノート</span><span class="effect">4月種まき→6月刈り取り→8月鋤き込み等の月数値を確定で +10点</span></li>
+<li><span class="ttl">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="src">memory/reference_plaud_elsan_recordings.md</span><span class="effect">+10点</span></li>
+<li><span class="ttl">16年・100t出荷の年数エビデンス</span><span class="src">knowledge/aina-chan-product-message-source.md</span><span class="effect">+5点</span></li></ul>
+    </div>
   </div>
 </section>
 <section class="section normal" id="sec-07">
@@ -829,6 +1004,12 @@ html, body {
     </div>
     
     
+    
+    <div class="knowledge-guide">
+      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
+      <ul><li><span class="ttl">🥬 牛糞なし1反キャベツ肥料設計（具体数値）</span><span class="src">knowledge/cabbage_fertilizer_design_no_cow_manure.md</span><span class="effect">元肥かんらん化成8袋／追肥NK化成20日後2袋＋40日後2袋 等を入れて +15点</span></li>
+<li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+    </div>
   </div>
 </section>
 <section class="section core" id="sec-08">
@@ -873,6 +1054,12 @@ html, body {
         ご主人様の指示例：Discord で <code>#08 ブラッシュアップ</code> または <code>#08 具体的数字が少ない（年数・量・回数で…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
       </div>
     </div>
+    
+    <div class="knowledge-guide">
+      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
+      <ul><li><span class="ttl">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="src">memory/reference_plaud_elsan_recordings.md</span><span class="effect">+10点</span></li>
+<li><span class="ttl">16年・100t出荷の年数エビデンス</span><span class="src">knowledge/aina-chan-product-message-source.md</span><span class="effect">+5点</span></li></ul>
+    </div>
   </div>
 </section>
 <section class="section core" id="sec-09">
@@ -912,6 +1099,13 @@ html, body {
     </div>
     
     
+    
+    <div class="knowledge-guide">
+      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
+      <ul><li><span class="ttl">🎯 5落とし穴版 具体策フレーム</span><span class="src">既存ソルゴーv3.5/v3.6 セクション9</span><span class="effect">実行可能な5つに整理＋数値で +8点</span></li>
+<li><span class="ttl">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="src">memory/reference_plaud_elsan_recordings.md</span><span class="effect">+10点</span></li>
+<li><span class="ttl">16年・100t出荷の年数エビデンス</span><span class="src">knowledge/aina-chan-product-message-source.md</span><span class="effect">+5点</span></li></ul>
+    </div>
   </div>
 </section>
 <section class="section core" id="sec-10">
@@ -951,6 +1145,13 @@ html, body {
     </div>
     
     
+    
+    <div class="knowledge-guide">
+      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
+      <ul><li><span class="ttl">🚨 ご主人様＆受講生の失敗エピソード</span><span class="src">PLAUDエルさんフォルダ／個別相談録音</span><span class="effect">実際の失敗例3-5件＋数字で +10点</span></li>
+<li><span class="ttl">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="src">memory/reference_plaud_elsan_recordings.md</span><span class="effect">+10点</span></li>
+<li><span class="ttl">16年・100t出荷の年数エビデンス</span><span class="src">knowledge/aina-chan-product-message-source.md</span><span class="effect">+5点</span></li></ul>
+    </div>
   </div>
 </section>
 <section class="section cta" id="sec-11">
@@ -990,6 +1191,12 @@ html, body {
     </div>
     
     
+    
+    <div class="knowledge-guide">
+      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
+      <ul><li><span class="ttl">公式LINE『農業のゲームチェンジ』動画ナレッジ</span><span class="src">Documents/Claude/Projects/②オプトイン.../完全フロー全文_イチロウ×おむ太郎さん.md</span><span class="effect">+10点</span></li>
+<li><span class="ttl">ヤスさん流 個別相談プロトコル</span><span class="src">memory/reference_yasusan_consultation_advice.md</span><span class="effect">+5点</span></li></ul>
+    </div>
   </div>
 </section>
 <section class="section cta" id="sec-12">
@@ -1029,6 +1236,12 @@ html, body {
     </div>
     
     
+    
+    <div class="knowledge-guide">
+      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
+      <ul><li><span class="ttl">公式LINE『農業のゲームチェンジ』動画ナレッジ</span><span class="src">Documents/Claude/Projects/②オプトイン.../完全フロー全文_イチロウ×おむ太郎さん.md</span><span class="effect">+10点</span></li>
+<li><span class="ttl">ヤスさん流 個別相談プロトコル</span><span class="src">memory/reference_yasusan_consultation_advice.md</span><span class="effect">+5点</span></li></ul>
+    </div>
   </div>
 </section>
     <div class="appendix-heading">📎 付帯セクション（撮影外）</div>
@@ -1060,7 +1273,7 @@ html, body {
   </div>
 
   <footer class="footer">
-    Generated 2026-05-25 13:30 JST from 2026-05-25_sorgo_torisetsu-style_v3.7_brushup-op_yomiage.md
+    Generated 2026-05-25 14:17 JST from 2026-05-25_sorgo_torisetsu-style_v3.7_brushup-op_yomiage.md
   </footer>
 
 </div>
