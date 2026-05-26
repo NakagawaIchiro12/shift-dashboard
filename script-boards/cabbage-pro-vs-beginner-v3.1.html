@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-  <title>📋 「プロが作る畑と、初心者が初めて作るキャベツ」読み上げ台本（v3.1） | 台本ボードLP</title>
+  <title>📋 動画収録ワークフロー（36px・【Scroll】） | 台本ボードLP</title>
   <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
@@ -540,6 +540,69 @@ html, body {
   border-bottom: 1px dashed rgba(74, 144, 226, 0.25);
 }
 .knowledge-guide li:last-child { border-bottom: none; }
+.knowledge-guide li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.knowledge-guide .kg-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+}
+.apply-knowledge-btn {
+  align-self: flex-start;
+  background: linear-gradient(135deg, #ffd87a 0%, #ffb84a 100%);
+  color: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+.apply-knowledge-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,216,122,0.3); }
+.apply-knowledge-btn.copied { background: linear-gradient(135deg, #06a77d 0%, #048a64 100%); color: #fff; }
+.kg-hint {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(255,216,122,0.08);
+  border-left: 3px solid #ffd87a;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #b8c4dd;
+}
+
+/* セクション本文の「続きを開く」 */
+.section .body details.script-more {
+  margin-top: 12px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.section .body details.script-more summary {
+  cursor: pointer;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #ffd87a;
+  list-style: none;
+  user-select: none;
+  background: rgba(255,216,122,0.05);
+  border-radius: 8px;
+  font-weight: 600;
+}
+.section .body details.script-more summary::-webkit-details-marker { display: none; }
+.section .body details.script-more[open] summary {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px 8px 0 0;
+}
+.section .body details.script-more[open] summary::after { content: " ▲"; }
+.section .body details.script-more .script-more-body {
+  padding: 12px 18px;
+}
 .knowledge-guide li::before {
   content: "📚";
   position: absolute;
@@ -954,7 +1017,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <span class="badge">📋 台本ボード</span>
       <span class="badge">視聴者目線レビュー</span>
     </div>
-    <h1>「プロが作る畑と、初心者が初めて作るキャベツ」読み上げ台本（v3.1）</h1>
+    <h1>動画収録ワークフロー（36px・【Scroll】）</h1>
     <div class="subtitle">視聴者がどう動くかを台本制作者が体験するボード</div>
     <div class="stats">
       <div class="stat"><div class="num">5</div><div class="lab">セクション</div></div>
@@ -1027,7 +1090,9 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
 <p>これ、見てください。</p>
 <p>このキャベツ、両方とも、</p>
-<p>同じ品種、同じ日に植えたんです。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り26段落）▼</summary>
+        <div class="script-more-body"><p>同じ品種、同じ日に植えたんです。</p>
 <p>でも、こっちは1.5キロの大玉、</p>
 <p>こっちは500グラム。</p>
 <p>3倍以上、違うんです。</p>
@@ -1035,6 +1100,26 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 → 編集挿入: 「同品種・同日植え／1.5kg vs 500g／3倍差」テロップ</p>
 <p>なぜ、こんなに差がつくのか。</p>
 <p>不思議じゃないですか？</p>
+<p>同じ品種、同じ日に植えて、同じ畑のすぐ近くで育ててるのに、</p>
+<p>片方は1.5キロ、もう片方は500グラム。</p>
+<p>3倍以上違う。</p>
+<p>それはね、</p>
+<p>プロの畑と初心者の畑に、</p>
+<p>決定的な違いが3つ あるからなんです。</p>
+<p>たった3つ。</p>
+<p>しかも、その3つは、特別な技術でも、特別な道具でもありません。</p>
+<p>実は、これ、</p>
+<p>プロが当たり前にやってる、</p>
+<p>でも初心者は知らないままやってしまう、</p>
+<p>そんな違いです。</p>
+<p>家庭菜園で初めてキャベツを作る方、</p>
+<p>何年か作ってるけど結果が安定しない方、</p>
+<p>あるいは、これから本格的に農業を始めようとしている方。</p>
+<p>その全部に、当てはまる話です。</p>
+<p>逆に言うと、</p>
+<p>この3つを知らないままだと、</p>
+<p>毎年、500グラムのキャベツしか作れない。</p></div>
+      </details>
     </div>
     <div class="greeting-warning">⚠️ 固定挨拶 「こんにちは！100t農家のイチローです」 が検出できませんでした。必ず冒頭に入れてください（メモリ feedback_youtube_channel_positioning 準拠）</div>
     
@@ -1048,8 +1133,9 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">100t→200tの年商成長 権威数字</span><span class="src">knowledge/aina-chan-brain-product-summary.md</span><span class="effect">+8点</span></li>
-<li><span class="ttl">自己診断フレーム（エルさん5問版）</span><span class="src">部署_YouTube動画/knowledge/elsan_katsubo_framework_v2_from_plaud.md</span><span class="effect">+6点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">100t→200tの年商成長 権威数字</span><span class="src">knowledge/aina-chan-brain-product-summary.md</span><span class="effect">+8点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#01 ナレッジ追加 100t→200tの年商成長 権威数字 (knowledge/aina-chan-brain-product-summary.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
+<li><div class="kg-row"><span class="ttl">自己診断フレーム（エルさん5問版）</span><span class="src">部署_YouTube動画/knowledge/elsan_katsubo_framework_v2_from_plaud.md</span><span class="effect">+6点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#01 ナレッジ追加 自己診断フレーム（エルさん5問版） (部署_YouTube動画/knowledge/elsan_katsubo_framework_v2_from_plaud.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1081,13 +1167,36 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
 <p>それじゃ、いきます。</p>
 <p>決定的な違い、1つめ。</p>
-<p>「土を作っているか」</p>
+      <details class="script-more">
+        <summary>続きを開く（残り26段落）▼</summary>
+        <div class="script-more-body"><p>「土を作っているか」</p>
 <p>ここがプロと初心者を分ける、</p>
 <p>最初の、そして最大のポイントです。</p>
 <p>なぜ「最大」かというと、</p>
 <p>ここを外すと、その後の何をやっても、上に積み上がらないからです。</p>
 <p>逆に、ここが整ってると、</p>
 <p>その後の管理が多少甘くても、それなりの結果が出る。</p>
+<p>それくらい、土が全部の土台になっています。</p>
+<p>土って、見た目は同じに見えるけど、</p>
+<p>中身が全然違うんです。</p>
+<p>家庭菜園で「あれ、なんかうまく育たない」って思った方、</p>
+<p>おそらく原因の半分以上が、ここにあります。</p>
+<p>肥料を増やしても、水をたっぷりやっても、</p>
+<p>土ができてないと、なかなか育たない。</p>
+<p>そういう経験、ありませんか？</p>
+<p>→ 編集挿入: 「違い① 土を作っているか」見出しスライド
+→ 編集挿入: 良い土と痩せた土の比較イラスト（いらすとや）</p>
+<p>土を作る、</p>
+<p>その中心にあるのが、</p>
+<p>地力窒素（ちりょくちっそ） という考え方です。</p>
+<p>土の中の有機物から、</p>
+<p>時間をかけて、ゆっくり出てくる窒素のこと。</p>
+<p>肥料袋から「ドバッ」と入れる窒素じゃなくて、</p>
+<p>土自体が持ってる栄養の蓄えです。</p>
+<p>この地力窒素が、</p>
+<p>ちゃんと畑にあるかどうか、</p>
+<p>ここが、プロと初心者の最初の分かれ道です。</p></div>
+      </details>
     </div>
     
     
@@ -1101,7 +1210,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#02 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1133,20 +1243,47 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
 <p>それじゃ、2つめにいきます。</p>
 <p>決定的な違い、2つめ。</p>
-<p>「苗の植え付け日付を守っているか」</p>
+      <details class="script-more">
+        <summary>続きを開く（残り29段落）▼</summary>
+        <div class="script-more-body"><p>「苗の植え付け日付を守っているか」</p>
 <p>これがね、</p>
 <p>地味に、けっこう、</p>
 <p>プロと初心者を分けます。</p>
 <p>数字でいうと、たった1週間の差。</p>
 <p>でも、結果は天と地ほど変わるんです。</p>
 <p>「日付を守る」って、すごく地味な話なんですよ。</p>
+<p>「いや、当たり前じゃないか」って思うかもしれません。</p>
+<p>でも、地味に思えるからこそ、</p>
+<p>多くの初心者の方が「まあ、ちょっとくらい遅れても」って、</p>
+<p>軽く考えてしまうんです。</p>
+<p>ここが守れないだけで、</p>
+<p>その先の苦労が、全部空回りになる。</p>
+<p>土をしっかり作っても、</p>
+<p>管理を頑張っても、</p>
+<p>日付がズレてたら、結果が出ない。</p>
+<p>そういうポイントです。</p>
+<p>「地味だけど、外せない」、</p>
+<p>これが2つめの違いです。</p>
+<p>→ 編集挿入: 「違い② 日付を守っているか」見出しスライド
+→ 編集挿入: カレンダーいらすとや（日付を意識するイメージ）</p>
+<p>キャベツって、</p>
+<p>品種ごとに、</p>
+<p>種を蒔く日が、ほぼ決まってる んです。</p>
+<p>「いつ蒔いてもいい」じゃないんです。</p>
+<p>その品種、その地域、</p>
+<p>それぞれに「この日に蒔く」っていう、</p>
+<p>逆算された日付がある。</p>
+<p>種の袋にも書いてあるし、</p>
+<p>種苗店で聞けば教えてくれます。</p></div>
+      </details>
     </div>
     
     
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#03 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1178,13 +1315,41 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
 <p>それじゃ、3つめいきます。</p>
 <p>決定的な違い、3つめ。</p>
-<p>「日付通り、順調に育てているか」</p>
+      <details class="script-more">
+        <summary>続きを開く（残り31段落）▼</summary>
+        <div class="script-more-body"><p>「日付通り、順調に育てているか」</p>
 <p>ここが、</p>
 <p>プロと初心者の差が、</p>
 <p>いちばん「結果」として出る部分です。</p>
 <p>土を作って、</p>
 <p>日付通りに植えて、</p>
 <p>ここまでは多くの方ができます。</p>
+<p>でも、植え付けてから収穫までの2-3ヶ月、</p>
+<p>この期間の管理で差が出ます。</p>
+<p>植え付けの日付を守れても、</p>
+<p>そこから先の管理ができていないと、</p>
+<p>やっぱり結果が出ません。</p>
+<p>土を作って、</p>
+<p>日付通りに植えて、</p>
+<p>そこからの管理で勝負が決まる、</p>
+<p>そう思ってください。</p>
+<p>ここからは、</p>
+<p>僕が16年やってきて、</p>
+<p>「これだけは絶対外せない」って確信した管理ポイントを、</p>
+<p>時系列で全部お伝えします。</p>
+<p>→ 編集挿入: 「違い③ 順調に育てているか」見出しスライド
+→ 編集挿入: 「植付→2〜3ヶ月→収穫」期間スライド</p>
+<p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
+<p>順調に育てるためにやってる管理、</p>
+<p>時系列で整理します。</p>
+<p>まず、元肥をやって、苗を植える。</p>
+<p>そこから先、絶対外せないのが、</p>
+<p>「草に負けないようにする」 ということ。</p>
+<p>キャベツの苗は、</p>
+<p>草に巻かれたら、もう一発で負けます。</p>
+<p>植え付けたばかりの苗って、</p>
+<p>まだ小さくて弱いんです。</p></div>
+      </details>
     </div>
     
     
@@ -1198,7 +1363,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#04 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1230,21 +1396,43 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
 <p>今日の話、整理します。</p>
 <p>ここはぜひ、もう一度聞いて、頭に入れてください。</p>
-<p>プロと初心者の、決定的な違いは、3つ。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り24段落）▼</summary>
+        <div class="script-more-body"><p>プロと初心者の、決定的な違いは、3つ。</p>
 <p>1つめ、土を作っているか。</p>
 <p>地力窒素を確保するための、</p>
 <p>牛糞堆肥、緑肥、元肥、</p>
 <p>この3つを、しっかり、思い切って投資する。</p>
 <p>「もったいない」じゃなくて、「ここは絶対やる」って決める。</p>
 <p>2つめ、苗の植え付け日付を守っているか。</p>
+<p>品種ごとに決まった種まき日、</p>
+<p>種まきから25〜30日後の苗植え、</p>
+<p>その先の収穫までのスケジュールを、</p>
+<p>ピタッと守る。</p>
+<p>1週間ズレたら、もう収穫できないレベル、と思ってください。</p>
+<p>3つめ、日付通りに順調に育てているか。</p>
+<p>草に負けない。</p>
+<p>植え付けから20日後、1回目追肥。</p>
+<p>40日後、2回目追肥。</p>
+<p>順調じゃないサイン（大きく育ってない）に気づいたら、すぐ手を打つ。</p>
+<p>そして、収穫タイミングは「出荷計画から逆算する」プロの視点。</p>
+<p>→ 編集挿入: ①②③再整理スライド（大文字3行）
+→ 編集挿入: 各章の要点アイコン（土・カレンダー・キャベツ）</p>
+<p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
+<p>この3つを押さえれば、</p>
+<p>初心者の方でも、</p>
+<p>確実にプロのキャベツに近づきます。</p>
+<p>冒頭の、3倍違うキャベツ2玉、</p></div>
+      </details>
     </div>
     
     
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">読み上げペース基準（6字/秒・30秒/スライド）</span><span class="src">memory/feedback_video_script_pacing.md</span><span class="effect">+3点</span></li>
-<li><span class="ttl">動画収録ワークフロー（36px・【Scroll】）</span><span class="src">memory/project_video_recording_workflow.md</span><span class="effect">+2点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">読み上げペース基準（6字/秒・30秒/スライド）</span><span class="src">memory/feedback_video_script_pacing.md</span><span class="effect">+3点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#05 ナレッジ追加 読み上げペース基準（6字/秒・30秒/スライド） (memory/feedback_video_script_pacing.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
+<li><div class="kg-row"><span class="ttl">動画収録ワークフロー（36px・【Scroll】）</span><span class="src">memory/project_video_recording_workflow.md</span><span class="effect">+2点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#05 ナレッジ追加 動画収録ワークフロー（36px・【Scroll】） (memory/project_video_recording_workflow.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1391,7 +1579,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
 
   <footer class="footer">
-    Generated 2026-05-26 22:51 JST from 2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md
+    Generated 2026-05-26 22:54 JST from 2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md
   </footer>
 
 </div>

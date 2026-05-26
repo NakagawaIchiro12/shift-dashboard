@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-  <title>📋 「キャベツ3倍攻略 × 完全攻略」統合読み上げ台本 (v3) | 台本ボードLP</title>
+  <title>📋 動画収録ワークフロー（36px・【Scroll】） | 台本ボードLP</title>
   <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
@@ -540,6 +540,69 @@ html, body {
   border-bottom: 1px dashed rgba(74, 144, 226, 0.25);
 }
 .knowledge-guide li:last-child { border-bottom: none; }
+.knowledge-guide li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.knowledge-guide .kg-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+}
+.apply-knowledge-btn {
+  align-self: flex-start;
+  background: linear-gradient(135deg, #ffd87a 0%, #ffb84a 100%);
+  color: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+.apply-knowledge-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,216,122,0.3); }
+.apply-knowledge-btn.copied { background: linear-gradient(135deg, #06a77d 0%, #048a64 100%); color: #fff; }
+.kg-hint {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(255,216,122,0.08);
+  border-left: 3px solid #ffd87a;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #b8c4dd;
+}
+
+/* セクション本文の「続きを開く」 */
+.section .body details.script-more {
+  margin-top: 12px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.section .body details.script-more summary {
+  cursor: pointer;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #ffd87a;
+  list-style: none;
+  user-select: none;
+  background: rgba(255,216,122,0.05);
+  border-radius: 8px;
+  font-weight: 600;
+}
+.section .body details.script-more summary::-webkit-details-marker { display: none; }
+.section .body details.script-more[open] summary {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px 8px 0 0;
+}
+.section .body details.script-more[open] summary::after { content: " ▲"; }
+.section .body details.script-more .script-more-body {
+  padding: 12px 18px;
+}
 .knowledge-guide li::before {
   content: "📚";
   position: absolute;
@@ -967,7 +1030,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <span class="badge">📋 台本ボード</span>
       <span class="badge">視聴者目線レビュー</span>
     </div>
-    <h1>「キャベツ3倍攻略 × 完全攻略」統合読み上げ台本 (v3)</h1>
+    <h1>動画収録ワークフロー（36px・【Scroll】）</h1>
     <div class="subtitle">視聴者がどう動くかを台本制作者が体験するボード</div>
     <div class="stats">
       <div class="stat"><div class="num">18</div><div class="lab">セクション</div></div>
@@ -1040,7 +1103,9 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
 <p>これ、見てください。</p>
 <p>このキャベツ、両方とも、</p>
-<p>同じ品種、同じ日に植えたんです。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り19段落）▼</summary>
+        <div class="script-more-body"><p>同じ品種、同じ日に植えたんです。</p>
 <p>でも、こっちは1.5キロの大玉、</p>
 <p>こっちは500グラム。</p>
 <p>3倍以上、違うんです。</p>
@@ -1048,13 +1113,27 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 → 編集挿入: 「同品種・同日植え／1.5kg vs 500g／3倍差」テロップ</p>
 <p>なぜ、こんなに差がつくのか。</p>
 <p>不思議じゃないですか？</p>
+<p>同じ品種、同じ日に植えて、同じ畑のすぐ近くで育ててるのに、</p>
+<p>片方は1.5キロ、もう片方は500グラム。</p>
+<p>3倍以上違う。</p>
+<p>それはね、</p>
+<p>プロの畑と初心者の畑に、</p>
+<p>決定的な違いが3つ あるからなんです。</p>
+<p>たった3つ。</p>
+<p>しかも、その3つは、特別な技術でも、特別な道具でもありません。</p>
+<p>でも、その3つを知る前に、</p>
+<p>そもそもキャベツを「ちゃんと収穫できる状態」まで持っていく、</p>
+<p>キャベツ栽培の基本のすべて を、まず最初にお伝えします。</p>
+<p>基本ができていないと、3つの違いも活きないからです。</p></div>
+      </details>
     </div>
     
     
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#01 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1086,7 +1165,9 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>こんにちは、100t農家のイチロウです。</p>
 <p>今日は、キャベツ栽培の全部を、</p>
 <p>この1本の動画で、お渡しします。</p>
-<p>僕は16年、現場で野菜を作り続けてきました。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り20段落）▼</summary>
+        <div class="script-more-body"><p>僕は16年、現場で野菜を作り続けてきました。</p>
 <p>年間100トン、キャベツを出荷しています。</p>
 <p>その16年で見えてきた答えを、</p>
 <p>今日は全部、お渡しします。</p>
@@ -1094,13 +1175,28 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 → 編集挿入: 中川農産の畑全景の実績写真 (規模感を見せる)</p>
 <p>今日の動画は、大きく2部構成です。</p>
 <p>前半：キャベツを10月から3月まで連続収穫する、基本の完全ガイド。</p>
+<p>種まきから収穫までの一連の流れ、必要な道具、品種、肥料、農薬、</p>
+<p>そして「減農薬」の現実、よく聞かれる質問。</p>
+<p>これを丁寧に、全部解説します。</p>
+<p>後半：プロと初心者を分ける、決定的な違い3つ。</p>
+<p>土・日付・観察。</p>
+<p>冒頭の3倍違うキャベツ2玉、</p>
+<p>なぜそんな差がついたのか、</p>
+<p>その答えがここにあります。</p>
+<p>家庭菜園で初めてキャベツを作る方、</p>
+<p>何年か作ってるけど結果が安定しない方、</p>
+<p>これから本格的に農業を始めようとしている方、</p>
+<p>どの段階の方にも、</p>
+<p>最後まで観ていただけたら、必ず次の一歩が見えてきます。</p></div>
+      </details>
     </div>
     
     
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#02 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1132,17 +1228,21 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>それじゃ、まずは前半、</p>
 <p>キャベツ栽培の完全ガイド から、見ていきましょう。</p>
 <p>ここを押さえるだけで、</p>
-<p>「キャベツって、こうやって作るんだ」がガラッと見えてきます。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り4段落）▼</summary>
+        <div class="script-more-body"><p>「キャベツって、こうやって作るんだ」がガラッと見えてきます。</p>
 <p>家庭菜園向けと、プロ農家向け、</p>
 <p>両方分かるように2タイプで解説していきますので、</p>
-<p>自分に合うほうを参考にしてみてくださいね。</p>
+<p>自分に合うほうを参考にしてみてくださいね。</p></div>
+      </details>
     </div>
     
     
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#03 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1178,8 +1278,9 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">🥬 牛糞なし1反キャベツ肥料設計（具体数値）</span><span class="src">knowledge/cabbage_fertilizer_design_no_cow_manure.md</span><span class="effect">元肥かんらん化成8袋／追肥NK化成20日後2袋＋40日後2袋 等を入れて +15点</span></li>
-<li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">🥬 牛糞なし1反キャベツ肥料設計（具体数値）</span><span class="src">knowledge/cabbage_fertilizer_design_no_cow_manure.md</span><span class="effect">元肥かんらん化成8袋／追肥NK化成20日後2袋＋40日後2袋 等を入れて +15点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#04 ナレッジ追加 🥬 牛糞なし1反キャベツ肥料設計（具体数値） (knowledge/cabbage_fertilizer_design_no_cow_manure.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
+<li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#04 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1211,13 +1312,19 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>ちなみにみなさんキャベツを作りたいと思ったきっかけって何ですか？</p>
 <p>キャベツって100円で売ってるってイメージが強くてお買い得野菜なので、とにかくカンタンそうなんですよね</p>
 <p>だから家庭菜園で作りたい方は毎日千切りキャベツを食べるから作れたらいいなとか、カンタンそうだからとか、最近ではホームセンターでよく見る「サトウくん」といった甘さを売りにした品種のキャベツ苗もとても美味しそうで魅力的に思います。</p>
-<p>これから農業を始める方であれば地域の特産品がキャベツだからとか、直売所でたくさん売りやすそうな品目だからという理由もありますよね。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り10段落）▼</summary>
+        <div class="script-more-body"><p>これから農業を始める方であれば地域の特産品がキャベツだからとか、直売所でたくさん売りやすそうな品目だからという理由もありますよね。</p>
 <p>実際に僕の周りでもキャベツを作りたいという人が増えています。</p>
 <p>ただ、そんな【農業に対して前向きな人】であっても</p>
 <p>◎そもそもどういった器具を揃える必要があるのか</p>
 <p>◎どういった肥料で栽培をすれば成功するのか</p>
 <p>◎何か月も連続で収穫するにはどうしたらいいのか</p>
 <p>といったリアルなところってちょっとボンヤリしてると思います。</p>
+<p>で、そのボンヤリした理解のまま勢いだけで苗を植えても成功できずあまりにも危険です。</p>
+<p>正しいインプットをしないと【間違った方向】に進みかねないリスクがあるんです。</p>
+<p>【間違った方向】というのは、例えばキャベツの苗を植えて肥料も追肥もこの方法でうまくいくという様々な農法で「植えたキャベツを失敗しないためにはこの肥料、この手法で育てればうまくいく」みたいな謎に期待させてくれる意見なんですよね。</p></div>
+      </details>
     </div>
     
     
@@ -1231,7 +1338,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#05 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1263,13 +1371,20 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>というわけで、今回の動画では、そういった【はじめてだけどキャベツを育てられるようになりたい】という方から【プロレベルに追いつきたい】と考えている方に向けて、完全素人から初めて10年以上農家として作り続けている僕自身の経験を元に</p>
 <p>◎はじめてのキャベツをゼロから育てる方法</p>
 <p>◎プロレcベルの品質のキャベツを作る方法</p>
-<p>の2つを【キャベツ栽培完全ガイド】として全てまとめました。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り11段落）▼</summary>
+        <div class="script-more-body"><p>の2つを【キャベツ栽培完全ガイド】として全てまとめました。</p>
 <p>◎今まで野菜を作ったことがないけど自分にキャベツが作れるだろうか</p>
 <p>◎ホームセンターの苗で失敗したくない</p>
 <p>◎プロレベルのキャベツを作ってみたい</p>
 <p>◎何か月も連続で収穫できるキャベツ栽培を成功させたい</p>
 <p>そういった不安を解消して、前向きになれる動画をお届けします！</p>
 <p>この動画を見ている初心者の方は、どんな土で育つかも知りたいですよね。</p>
+<p>実はキャベツって砂、粘土、どちらの土でも栽培できる適性の広い野菜の１つなんです。</p>
+<p>ほとんどの方が育てることができる野菜で、入門者向けなんですよ</p>
+<p>なので、先ほどお話した、品種や肥料のやり方がわかってくると、うまくいくようになってくるわけなんですね。</p>
+<p>この動画1本で8月に植えて3月の収獲終了時期まで収穫し切れるように解説していきますので、じっくり最後までご覧いただいて、流れがわかったら1個ずつでも取り入れて去年よりもうまくいくように栽培していただけたらと思います。</p></div>
+      </details>
     </div>
     
     
@@ -1283,7 +1398,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#06 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1315,13 +1431,18 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>では早速、キャベツの栽培方法のすべてを見ていきましょう</p>
 <p>まずキャベツっていつからはじめて、どのくらい収穫できるのかをお話します。</p>
 <p>まずキャベツは農家的には7月～8月にかけて種まきを始めて、11月から1月まで収穫できます。</p>
-<p>そして、11月から1月まで途切れなく連続で収獲するには【裏技】を使う必要があるんですよね。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り9段落）▼</summary>
+        <div class="script-more-body"><p>そして、11月から1月まで途切れなく連続で収獲するには【裏技】を使う必要があるんですよね。</p>
 <p>で、その【裏技とは品種選び】です。</p>
 <p>初心者の方は品種選びって難しそう…と思うかもしれませんね。</p>
 <p>でも、その【品種選び】のポイントさえ押さえておけばとても作業がシンプルなので、初心者の方にもオススメなんです。</p>
 <p>というか、品種を選ぶことができなければ、「キャベツの苗をいつ植えていつ収穫できるのかわからない成功するかわからないギャンブル」になってしまうんです</p>
 <p>それでは、キャベツの育て方を学ぶ意味がないですよね…。</p>
 <p>それにキャベツの栽培テクニックを理解できれば白菜、ブロッコリー栽培にも応用できる上、このテクニックc を使えば11月には最速の収穫スピードでアナタのキャベツが一番早く収穫できるんです！</p>
+<p>手順さえ守ってうまく成長さえできればそこまで難しくはないんですよ。</p>
+<p>では、肝心な裏技、手順、うまく成長させるポイントをこれから解説していましょう！</p></div>
+      </details>
     </div>
     
     
@@ -1335,7 +1456,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#07 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1367,13 +1489,16 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>というわけで、用意する種と道具を順に紹介していきます。</p>
 <p>この動画の概要欄にアマゾンで実物を見ることができるものはリンクを用意してあります。</p>
 <p>メモしなくても概要欄にまとめてあるので、動画の最後にすでにメモ書きしてある便利な概要欄をご覧くださいね</p>
-<p>11月のキャベツの種は「YRしぶき2号」を選びます。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り7段落）▼</summary>
+        <div class="script-more-body"><p>11月のキャベツの種は「YRしぶき2号」を選びます。</p>
 <p>アマゾンで&lt;https://amzn.to/4bwPzga&gt;　600円程度で手に入り、試しに栽培してみるにもオススメですし、プロの農家は5000粒のコート種子を使い、128穴のセルトレイに一気に種まきできるように道具を使っています。</p>
 <p>アマゾンでプロが使う品種が販売されているのは驚きましたが、おかげで紹介できますね</p>
 <p>・1月は「とうらん」&lt;https://amzn.to/3SQSnxw&gt;　を使います。</p>
 <p>この2種類の品種は農家が連続で収穫するために必要な品種なので、キャベツの品種に詳しく、自分で品種が選べる方以外は外さないようにしてほしい品種です。</p>
 <p>詳しく知らない人が「まぁこの品種しか手に入らないからいいや…」とやってしまうとそもそも連続で収穫できませんので…。</p>
-<p>僕の動画を見てにやっている方は、そうしないようにしてくださいね。</p>
+<p>僕の動画を見てにやっている方は、そうしないようにしてくださいね。</p></div>
+      </details>
     </div>
     
     
@@ -1388,7 +1513,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#08 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1420,13 +1546,26 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>というわけで肝心かなめである「収穫時期から逆算した種まき、土づくりの時期」を見ていきましょう！見るだけでいいですし、そのままマネするだけでいい感じに育てることができます</p>
 <p>こちら一覧で出します。どん！（※画面に表示）</p>
 <p>＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿</p>
-<p>【品種の種まき時期】</p>
+      <details class="script-more">
+        <summary>続きを開く（残り17段落）▼</summary>
+        <div class="script-more-body"><p>【品種の種まき時期】</p>
 <p>◎しぶき2号を7/25</p>
 <p>◎とうらん　を8/1</p>
 <p>【品種の収穫期間】</p>
 <p>◎しぶき2号  11月～12月（順調なら10月下旬）</p>
 <p>◎とうらん　  1月～2月 （長持ちすれば3月頭）</p>
 <p>【それ以外の時期】</p>
+<p>◎土づくり</p>
+<p>＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿</p>
+<p>ということで順番に解説します。</p>
+<p>まずは【収穫期間】についてから話しますね</p>
+<p>キャベツの品種2種を使うことで、基本11月1日～1月30日まで収獲が行えます。</p>
+<p>使う品種は2つで大丈夫です。</p>
+<p>で、なぜ逆算するかというと、収獲する時期はすでに決まっているからなんですよね。</p>
+<p>種まきの時期も決まっていて、決まった時期に作業をするのが農業だからです。</p>
+<p>このように考えると農業って実に計画的に行える仕事なんだなって感じませんか？</p>
+<p>僕はこの計画的に行える農業だからこそ、土づくり、種まき、収獲を具体的に解説して再現できるものだと思います。</p></div>
+      </details>
     </div>
     
     
@@ -1441,10 +1580,11 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">🥬 牛糞なし1反キャベツ肥料設計（具体数値）</span><span class="src">knowledge/cabbage_fertilizer_design_no_cow_manure.md</span><span class="effect">元肥かんらん化成8袋／追肥NK化成20日後2袋＋40日後2袋 等を入れて +15点</span></li>
-<li><span class="ttl">📅 ご主人様のソルゴー実践 月別記録</span><span class="src">ご主人様のソルゴー栽培ノート</span><span class="effect">4月種まき→6月刈り取り→8月鋤き込み等の月数値を確定で +10点</span></li>
-<li><span class="ttl">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="src">memory/reference_plaud_elsan_recordings.md</span><span class="effect">+10点</span></li>
-<li><span class="ttl">16年・100t出荷の年数エビデンス</span><span class="src">knowledge/aina-chan-product-message-source.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">🥬 牛糞なし1反キャベツ肥料設計（具体数値）</span><span class="src">knowledge/cabbage_fertilizer_design_no_cow_manure.md</span><span class="effect">元肥かんらん化成8袋／追肥NK化成20日後2袋＋40日後2袋 等を入れて +15点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#09 ナレッジ追加 🥬 牛糞なし1反キャベツ肥料設計（具体数値） (knowledge/cabbage_fertilizer_design_no_cow_manure.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
+<li><div class="kg-row"><span class="ttl">📅 ご主人様のソルゴー実践 月別記録</span><span class="src">ご主人様のソルゴー栽培ノート</span><span class="effect">4月種まき→6月刈り取り→8月鋤き込み等の月数値を確定で +10点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#09 ナレッジ追加 📅 ご主人様のソルゴー実践 月別記録 (ご主人様のソルゴー栽培ノート)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
+<li><div class="kg-row"><span class="ttl">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="src">memory/reference_plaud_elsan_recordings.md</span><span class="effect">+10点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#09 ナレッジ追加 PLAUDエルさんフォルダ（渇望ナレッジ原典） (memory/reference_plaud_elsan_recordings.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
+<li><div class="kg-row"><span class="ttl">16年・100t出荷の年数エビデンス</span><span class="src">knowledge/aina-chan-product-message-source.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#09 ナレッジ追加 16年・100t出荷の年数エビデンス (knowledge/aina-chan-product-message-source.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1476,13 +1616,24 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>どうしても品種が多いとわかりにくくて難しい。</p>
 <p>だから、1つの品種を5日おきに種まきして、5日おきに植えればずっと収穫できるのでは？と普通考えますよね？</p>
 <p>実はぼくもこれをやったんですよ。</p>
-<p>だってめんどくさいし、種も余るともったいないじゃないですか。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り15段落）▼</summary>
+        <div class="script-more-body"><p>だってめんどくさいし、種も余るともったいないじゃないですか。</p>
 <p>でもこれってムリなんです。</p>
 <p>じゃん（※画面に大見出しを目次として表示）</p>
 <p>＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿</p>
 <p>品　　種：しぶき2号</p>
 <p>収穫時期：11月～12月</p>
 <p>種　まき：7月25日</p>
+<p>植付時期：8/25～8/30c</p>
+<p>＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿</p>
+<p>例えば今回「キャベツの品種」に出てきたしぶき2号は基本的に11月に収獲ができる品種なので、7/25に種をまくと30日後の8/25に苗を植えることができます。</p>
+<p>8/25～8/30に植えれば11月～12月まで収獲ができます。</p>
+<p>しかし、しぶき2号で1月も2月も収穫しようとして9/5に植えてしまえば収獲は1月になり、出来が悪くなるんですよね。</p>
+<p>理由は12月用の品種は1月の寒さに耐えられないからです。</p>
+<p>わざわざ出来の悪くなる時期に作らなくてもいいし、品種を変える理由は一番できのいいキャベツを収穫するためです。</p>
+<p>特に少量作りたい方は種を使い切りたいので購入した種を使い切ってしまいたいと思うのですが、種を使い切ることが目的ではなく、いいキャベツを収穫することが目的なので…</p></div>
+      </details>
     </div>
     
     
@@ -1496,9 +1647,10 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">🌱 ソルゴー3兄弟（根・葉・種）の役割</span><span class="src">PLAUDエルさんフォルダ／既存原稿</span><span class="effect">各兄弟の具体的機能と植える順番で +10点</span></li>
-<li><span class="ttl">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="src">memory/reference_plaud_elsan_recordings.md</span><span class="effect">+10点</span></li>
-<li><span class="ttl">16年・100t出荷の年数エビデンス</span><span class="src">knowledge/aina-chan-product-message-source.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">🌱 ソルゴー3兄弟（根・葉・種）の役割</span><span class="src">PLAUDエルさんフォルダ／既存原稿</span><span class="effect">各兄弟の具体的機能と植える順番で +10点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#10 ナレッジ追加 🌱 ソルゴー3兄弟（根・葉・種）の役割 (PLAUDエルさんフォルダ／既存原稿)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
+<li><div class="kg-row"><span class="ttl">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="src">memory/reference_plaud_elsan_recordings.md</span><span class="effect">+10点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#10 ナレッジ追加 PLAUDエルさんフォルダ（渇望ナレッジ原典） (memory/reference_plaud_elsan_recordings.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
+<li><div class="kg-row"><span class="ttl">16年・100t出荷の年数エビデンス</span><span class="src">knowledge/aina-chan-product-message-source.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#10 ナレッジ追加 16年・100t出荷の年数エビデンス (knowledge/aina-chan-product-message-source.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1530,14 +1682,18 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>ここまで解説してきた内容は、僕は年間100tを超える加工向けのキャベツを作っている中で実践してきたことです。</p>
 <p>加工向けのキャベツというのは、コンビニのサラダに入る千切りキャベツなどに使われるお惣菜向けのキャベツのことで、食べたことがある方もいますよね。</p>
 <p>以前の僕が有機JAS栽培や自然農法を行っていた時の土づくりを実践し、1個で2kg～4kgを越えるようなサイズのキャベツを作って、質の良い野菜を流通させています。</p>
-<p>身近な店舗で体に良い野菜が手軽に食べられたら嬉しいですよね。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り1段落）▼</summary>
+        <div class="script-more-body"><p>身近な店舗で体に良い野菜が手軽に食べられたら嬉しいですよね。</p></div>
+      </details>
     </div>
     
     
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#11 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1569,13 +1725,17 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>ここからは【より美味しい、見た目のいいキャベツを作る】という話ですが、農家としてキャベツを作る環境について少し深く話していこうと思います。</p>
 <p>これからしっかりと美味しいキャベツを育てたい、そして商品としていいキャベツを売っていきたいと考えているならぜひ知ってほしい内容です。</p>
 <p>家庭菜園で「とにかく美味しいキャベツがいい」と思っている方も必見です</p>
-<p>今回のこの動画のキャベツ栽培完全ガイドのことなんですが、どうでしたでしょうか。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り8段落）▼</summary>
+        <div class="script-more-body"><p>今回のこの動画のキャベツ栽培完全ガイドのことなんですが、どうでしたでしょうか。</p>
 <p>しっかりと栽培できる流れとポイントが詰まっていましたよね。</p>
 <p>この栽培方法を知らないままで野菜を作り始めると、農地があって、キャベツをたくさん植えたとしてもそもそもまともに収穫できるキャベツができないんですよね。</p>
 <p>まともにできないってどういうこと？って思いませんか？</p>
 <p>実際のところしっかりと収穫量を整える野菜作りって簡単じゃないんですよね。</p>
 <p>具体的には100株植えて100株を収穫できずに、20株くらい収穫できて残り80株収穫できずに終わってしまうっていうことなんです。</p>
 <p>なぜそんなことが起こるのかというと、均一に作るための肥料、水はけ、苗の生育などをきちんと整えていないからなんですね。</p>
+<p>すべてのバランスが高値で整っていないと20％ほど収穫できて終わり。そんな結果になり「野菜は難しい」と撤退してしまうパターンもよくあります。</p></div>
+      </details>
     </div>
     
     
@@ -1589,7 +1749,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#12 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1621,20 +1782,46 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
 <p>ここまでが、</p>
 <p>キャベツ栽培の基本のすべてです。</p>
-<p>種まきから、土づくり、苗、追肥、農薬、収穫まで。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り29段落）▼</summary>
+        <div class="script-more-body"><p>種まきから、土づくり、苗、追肥、農薬、収穫まで。</p>
 <p>この流れを、その通りに、丁寧にやっていけば、</p>
 <p>キャベツは、ちゃんと収穫まで持っていけます。</p>
 <p>でもね、</p>
 <p>ここで、もう一段、</p>
 <p>「プロのキャベツ」 に近づくための話を、</p>
 <p>最後にお伝えさせてください。</p>
+<p>冒頭でお話しした、</p>
+<p>1.5キロのキャベツと、500グラムのキャベツ。</p>
+<p>同じ品種、同じ日に植えて、3倍違うキャベツ2玉。</p>
+<p>なぜ、こんなに差がつくのか。</p>
+<p>その答えが、ここからです。</p>
+<p>プロと初心者を分ける、決定的な違い、3つ。</p>
+<p>聞いてください。</p>
+<p>1つめ、土を作っているか。</p>
+<p>土。畑の土壌そのもの。</p>
+<p>2つめ、苗の植え付け日付を守っているか。</p>
+<p>日付。スケジュール管理。</p>
+<p>3つめ、日付通りに、順調に育てているか。</p>
+<p>日々の観察と管理。</p>
+<p>たったこれだけです。</p>
+<p>「えっ、それだけ？」と思ったかもしれません。</p>
+<p>そう、それだけなんです。</p>
+<p>でも、この3つができてるか、できてないかで、</p>
+<p>冒頭のキャベツみたいに、結果が3倍違ってきます。</p>
+<p>3倍ですよ。</p>
+<p>家庭菜園で1.5キロのキャベツを作るのと、500グラムしか作れないのは、</p>
+<p>この3つの差なんです。</p>
+<p>このあと、1つずつ深掘りしていきます。</p></div>
+      </details>
     </div>
     
     
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#13 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1677,7 +1864,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#14 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1709,13 +1897,36 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
 <p>それじゃ、いきます。</p>
 <p>決定的な違い、1つめ。</p>
-<p>「土を作っているか」</p>
+      <details class="script-more">
+        <summary>続きを開く（残り26段落）▼</summary>
+        <div class="script-more-body"><p>「土を作っているか」</p>
 <p>ここがプロと初心者を分ける、</p>
 <p>最初の、そして最大のポイントです。</p>
 <p>なぜ「最大」かというと、</p>
 <p>ここを外すと、その後の何をやっても、上に積み上がらないからです。</p>
 <p>逆に、ここが整ってると、</p>
 <p>その後の管理が多少甘くても、それなりの結果が出る。</p>
+<p>それくらい、土が全部の土台になっています。</p>
+<p>土って、見た目は同じに見えるけど、</p>
+<p>中身が全然違うんです。</p>
+<p>家庭菜園で「あれ、なんかうまく育たない」って思った方、</p>
+<p>おそらく原因の半分以上が、ここにあります。</p>
+<p>肥料を増やしても、水をたっぷりやっても、</p>
+<p>土ができてないと、なかなか育たない。</p>
+<p>そういう経験、ありませんか？</p>
+<p>→ 編集挿入: 「違い① 土を作っているか」見出しスライド
+→ 編集挿入: 良い土と痩せた土の比較イラスト（いらすとや）</p>
+<p>土を作る、</p>
+<p>その中心にあるのが、</p>
+<p>地力窒素（ちりょくちっそ） という考え方です。</p>
+<p>土の中の有機物から、</p>
+<p>時間をかけて、ゆっくり出てくる窒素のこと。</p>
+<p>肥料袋から「ドバッ」と入れる窒素じゃなくて、</p>
+<p>土自体が持ってる栄養の蓄えです。</p>
+<p>この地力窒素が、</p>
+<p>ちゃんと畑にあるかどうか、</p>
+<p>ここが、プロと初心者の最初の分かれ道です。</p></div>
+      </details>
     </div>
     
     
@@ -1729,7 +1940,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#15 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1761,20 +1973,47 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
 <p>それじゃ、2つめにいきます。</p>
 <p>決定的な違い、2つめ。</p>
-<p>「苗の植え付け日付を守っているか」</p>
+      <details class="script-more">
+        <summary>続きを開く（残り29段落）▼</summary>
+        <div class="script-more-body"><p>「苗の植え付け日付を守っているか」</p>
 <p>これがね、</p>
 <p>地味に、けっこう、</p>
 <p>プロと初心者を分けます。</p>
 <p>数字でいうと、たった1週間の差。</p>
 <p>でも、結果は天と地ほど変わるんです。</p>
 <p>「日付を守る」って、すごく地味な話なんですよ。</p>
+<p>「いや、当たり前じゃないか」って思うかもしれません。</p>
+<p>でも、地味に思えるからこそ、</p>
+<p>多くの初心者の方が「まあ、ちょっとくらい遅れても」って、</p>
+<p>軽く考えてしまうんです。</p>
+<p>ここが守れないだけで、</p>
+<p>その先の苦労が、全部空回りになる。</p>
+<p>土をしっかり作っても、</p>
+<p>管理を頑張っても、</p>
+<p>日付がズレてたら、結果が出ない。</p>
+<p>そういうポイントです。</p>
+<p>「地味だけど、外せない」、</p>
+<p>これが2つめの違いです。</p>
+<p>→ 編集挿入: 「違い② 日付を守っているか」見出しスライド
+→ 編集挿入: カレンダーいらすとや（日付を意識するイメージ）</p>
+<p>キャベツって、</p>
+<p>品種ごとに、</p>
+<p>種を蒔く日が、ほぼ決まってる んです。</p>
+<p>「いつ蒔いてもいい」じゃないんです。</p>
+<p>その品種、その地域、</p>
+<p>それぞれに「この日に蒔く」っていう、</p>
+<p>逆算された日付がある。</p>
+<p>種の袋にも書いてあるし、</p>
+<p>種苗店で聞けば教えてくれます。</p></div>
+      </details>
     </div>
     
     
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#16 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1806,13 +2045,41 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
 <p>それじゃ、3つめいきます。</p>
 <p>決定的な違い、3つめ。</p>
-<p>「日付通り、順調に育てているか」</p>
+      <details class="script-more">
+        <summary>続きを開く（残り31段落）▼</summary>
+        <div class="script-more-body"><p>「日付通り、順調に育てているか」</p>
 <p>ここが、</p>
 <p>プロと初心者の差が、</p>
 <p>いちばん「結果」として出る部分です。</p>
 <p>土を作って、</p>
 <p>日付通りに植えて、</p>
 <p>ここまでは多くの方ができます。</p>
+<p>でも、植え付けてから収穫までの2-3ヶ月、</p>
+<p>この期間の管理で差が出ます。</p>
+<p>植え付けの日付を守れても、</p>
+<p>そこから先の管理ができていないと、</p>
+<p>やっぱり結果が出ません。</p>
+<p>土を作って、</p>
+<p>日付通りに植えて、</p>
+<p>そこからの管理で勝負が決まる、</p>
+<p>そう思ってください。</p>
+<p>ここからは、</p>
+<p>僕が16年やってきて、</p>
+<p>「これだけは絶対外せない」って確信した管理ポイントを、</p>
+<p>時系列で全部お伝えします。</p>
+<p>→ 編集挿入: 「違い③ 順調に育てているか」見出しスライド
+→ 編集挿入: 「植付→2〜3ヶ月→収穫」期間スライド</p>
+<p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
+<p>順調に育てるためにやってる管理、</p>
+<p>時系列で整理します。</p>
+<p>まず、元肥をやって、苗を植える。</p>
+<p>そこから先、絶対外せないのが、</p>
+<p>「草に負けないようにする」 ということ。</p>
+<p>キャベツの苗は、</p>
+<p>草に巻かれたら、もう一発で負けます。</p>
+<p>植え付けたばかりの苗って、</p>
+<p>まだ小さくて弱いんです。</p></div>
+      </details>
     </div>
     
     
@@ -1826,7 +2093,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#17 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1858,21 +2126,43 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
 <p>今日の話、整理します。</p>
 <p>ここはぜひ、もう一度聞いて、頭に入れてください。</p>
-<p>プロと初心者の、決定的な違いは、3つ。</p>
+      <details class="script-more">
+        <summary>続きを開く（残り24段落）▼</summary>
+        <div class="script-more-body"><p>プロと初心者の、決定的な違いは、3つ。</p>
 <p>1つめ、土を作っているか。</p>
 <p>地力窒素を確保するための、</p>
 <p>牛糞堆肥、緑肥、元肥、</p>
 <p>この3つを、しっかり、思い切って投資する。</p>
 <p>「もったいない」じゃなくて、「ここは絶対やる」って決める。</p>
 <p>2つめ、苗の植え付け日付を守っているか。</p>
+<p>品種ごとに決まった種まき日、</p>
+<p>種まきから25〜30日後の苗植え、</p>
+<p>その先の収穫までのスケジュールを、</p>
+<p>ピタッと守る。</p>
+<p>1週間ズレたら、もう収穫できないレベル、と思ってください。</p>
+<p>3つめ、日付通りに順調に育てているか。</p>
+<p>草に負けない。</p>
+<p>植え付けから20日後、1回目追肥。</p>
+<p>40日後、2回目追肥。</p>
+<p>順調じゃないサイン（大きく育ってない）に気づいたら、すぐ手を打つ。</p>
+<p>そして、収穫タイミングは「出荷計画から逆算する」プロの視点。</p>
+<p>→ 編集挿入: ①②③再整理スライド（大文字3行）
+→ 編集挿入: 各章の要点アイコン（土・カレンダー・キャベツ）</p>
+<p>画面： 畑にイチロウ立ち位置・視聴者に正面</p>
+<p>この3つを押さえれば、</p>
+<p>初心者の方でも、</p>
+<p>確実にプロのキャベツに近づきます。</p>
+<p>冒頭の、3倍違うキャベツ2玉、</p></div>
+      </details>
     </div>
     
     
     
     <div class="knowledge-guide">
       <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">読み上げペース基準（6字/秒・30秒/スライド）</span><span class="src">memory/feedback_video_script_pacing.md</span><span class="effect">+3点</span></li>
-<li><span class="ttl">動画収録ワークフロー（36px・【Scroll】）</span><span class="src">memory/project_video_recording_workflow.md</span><span class="effect">+2点</span></li></ul>
+      <ul><li><div class="kg-row"><span class="ttl">読み上げペース基準（6字/秒・30秒/スライド）</span><span class="src">memory/feedback_video_script_pacing.md</span><span class="effect">+3点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#18 ナレッジ追加 読み上げペース基準（6字/秒・30秒/スライド） (memory/feedback_video_script_pacing.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
+<li><div class="kg-row"><span class="ttl">動画収録ワークフロー（36px・【Scroll】）</span><span class="src">memory/project_video_recording_workflow.md</span><span class="effect">+2点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#18 ナレッジ追加 動画収録ワークフロー（36px・【Scroll】） (memory/project_video_recording_workflow.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
+      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
     </div>
   </div>
 </section>
@@ -1880,7 +2170,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
 
   <footer class="footer">
-    Generated 2026-05-26 22:51 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
+    Generated 2026-05-26 22:54 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
   </footer>
 
 </div>
