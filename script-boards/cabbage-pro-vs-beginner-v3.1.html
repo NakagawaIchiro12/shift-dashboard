@@ -272,6 +272,45 @@ html, body {
   font-weight: 600;
 }
 
+/* 撮影区分バッジ — 🆕 新規撮影 / ♻️ 既存動画素材 */
+.shoot-banner {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  border: 2px solid rgba(255,255,255,0.5);
+}
+.shoot-banner.new {
+  background: linear-gradient(135deg, #ff3d00 0%, #ff8c1a 100%);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.shoot-banner.reuse {
+  background: linear-gradient(135deg, #00b894 0%, #1abc9c 100%);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.shoot-banner .icon { font-size: 16px; }
+@media (max-width: 720px) {
+  .shoot-banner {
+    position: static;
+    margin-bottom: 8px;
+    align-self: flex-start;
+  }
+}
+
+.section.shoot-new { border-left: 6px solid #ff3d00; }
+.section.shoot-reuse { border-left: 6px solid #00b894; }
+
 .section .head.hook { background: linear-gradient(135deg, #ff6b35 0%, #d04612 100%); }
 .section .head.core { background: linear-gradient(135deg, #4a6fff 0%, #1f3fcf 100%); }
 .section .head.cta  { background: linear-gradient(135deg, #06a77d 0%, #047a59 100%); }
@@ -621,6 +660,67 @@ html, body {
 .section.appendix .head.normal { background: transparent; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .section.appendix .body { padding: 14px 24px; font-size: 13px; color: #6a7290; }
 
+/* appendix-card — 制作者向け補足セクション（採点・撮影方式・素材リスト・渇望設計 等） */
+/* 本編カードと明確に区別する：左ボーダー破線、薄背景、フラットデザイン */
+.section.appendix-card {
+  background: rgba(138, 146, 168, 0.04);
+  border: 1px dashed rgba(138, 146, 168, 0.25);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 16px;
+  box-shadow: none;
+}
+.section.appendix-card .ap-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed rgba(138, 146, 168, 0.18);
+}
+.section.appendix-card .ap-badge {
+  background: rgba(138, 146, 168, 0.18);
+  color: #b8c4dd;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.section.appendix-card .ap-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #b8c4dd;
+  flex: 1;
+}
+.section.appendix-card .ap-body {
+  font-size: 13px;
+  color: #8a98b8;
+  line-height: 1.7;
+}
+.section.appendix-card .ap-body h4 {
+  font-size: 14px;
+  color: #c8d2e8;
+  margin: 14px 0 6px;
+  font-weight: 700;
+  border-left: 3px solid rgba(255,216,122,0.4);
+  padding-left: 10px;
+}
+.section.appendix-card .ap-body p {
+  margin: 6px 0;
+}
+.section.appendix-card .ap-body li {
+  margin-left: 1em;
+  list-style: disc;
+}
+.section.appendix-card .ap-table-row {
+  font-family: monospace;
+  font-size: 12px;
+  padding: 2px 0;
+  color: #8a98b8;
+}
+
 .footer {
   text-align: center;
   padding: 40px 24px 60px;
@@ -639,18 +739,11 @@ html, body {
 </style>
 </head>
 <body>
-<aside class="emotion-sidebar"><div class="sb-title">心理動線</div><nav class="path"><a href="#sec-01" class="normal" data-target="sec-01"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">01</span><span class="emotion">把握</span><span class="sb-score" style="color: #06a77d;">71点</span></a>
-<a href="#sec-02" class="normal" data-target="sec-02"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">02</span><span class="emotion">把握</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
-<a href="#sec-03" class="hook" data-target="sec-03"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">03</span><span class="emotion">興味</span><span class="sb-score" style="color: #ff9f43;">66点</span></a>
-<a href="#sec-04" class="normal" data-target="sec-04"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">04</span><span class="emotion">把握</span><span class="sb-score" style="color: #ff9f43;">67点</span></a>
-<a href="#sec-05" class="normal" data-target="sec-05"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">05</span><span class="emotion">把握</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
-<a href="#sec-06" class="normal" data-target="sec-06"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">06</span><span class="emotion">把握</span><span class="sb-score" style="color: #ff9f43;">65点</span></a>
-<a href="#sec-07" class="support" data-target="sec-07"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">07</span><span class="emotion">行動</span><span class="sb-score" style="color: #06a77d;">73点</span></a>
-<a href="#sec-08" class="normal" data-target="sec-08"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">08</span><span class="emotion">把握</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
-<a href="#sec-09" class="support" data-target="sec-09"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">09</span><span class="emotion">整理</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
-<a href="#sec-10" class="normal" data-target="sec-10"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">10</span><span class="emotion">把握</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
-<a href="#sec-11" class="normal" data-target="sec-11"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">11</span><span class="emotion">把握</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
-<a href="#sec-12" class="normal" data-target="sec-12"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">12</span><span class="emotion">把握</span><span class="sb-score" style="color: #06a77d;">70点</span></a></nav></aside>
+<aside class="emotion-sidebar"><div class="sb-title">心理動線</div><nav class="path"><a href="#sec-01" class="hook" data-target="sec-01"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">01</span><span class="emotion">興味</span><span class="sb-score" style="color: #ff9f43;">66点</span></a>
+<a href="#sec-02" class="normal" data-target="sec-02"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">02</span><span class="emotion">把握</span><span class="sb-score" style="color: #ff9f43;">67点</span></a>
+<a href="#sec-03" class="normal" data-target="sec-03"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">03</span><span class="emotion">把握</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
+<a href="#sec-04" class="normal" data-target="sec-04"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">04</span><span class="emotion">把握</span><span class="sb-score" style="color: #ff9f43;">65点</span></a>
+<a href="#sec-05" class="support" data-target="sec-05"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">05</span><span class="emotion">行動</span><span class="sb-score" style="color: #06a77d;">73点</span></a></nav></aside>
 <div class="page">
 
   <section class="hero">
@@ -661,9 +754,9 @@ html, body {
     <h1>「プロが作る畑と、初心者が初めて作るキャベツ」読み上げ台本（v3.1）</h1>
     <div class="subtitle">視聴者がどう動くかを台本制作者が体験するボード</div>
     <div class="stats">
-      <div class="stat"><div class="num">12</div><div class="lab">セクション</div></div>
-      <div class="stat"><div class="num">12,144</div><div class="lab">文字数</div></div>
-      <div class="stat"><div class="num">33.7<small style="font-size:14px">分</small></div><div class="lab">推定尺</div></div>
+      <div class="stat"><div class="num">5</div><div class="lab">セクション</div></div>
+      <div class="stat"><div class="num">12,161</div><div class="lab">文字数</div></div>
+      <div class="stat"><div class="num">33.8<small style="font-size:14px">分</small></div><div class="lab">推定尺</div></div>
       <div class="stat"><div class="num">1+0</div><div class="lab">フック+CTA</div></div>
     </div>
   </section>
@@ -689,89 +782,10 @@ html, body {
     </div>
 
     
-<section class="section normal" id="sec-01">
-  <div class="head normal">
-    <div class="position">#01 / 12 · 📄 セクション</div>
-    <div class="title">渇望設計3階段</div>
-    <div class="subtitle">撮影前に必ず確認</div>
-    <span class="duration-pill">⏱ 約18秒 / 106字</span>
-    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
-      <span class="score-num">71</span><span class="score-max">/100</span>
-    </span>
-  </div>
-  <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">注視</span>
-      <span class="arrow">→</span>
-      <span class="to">把握</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「ふむふむ」</div>
-<div class="thought">「次に何が出てくるか」</div>
-<div class="thought highlight">「ここも聞いておこう」</div>
-    </div>
-    <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
-      <p>```
-① サムネ「親指 vs トウモロコシ」
-↓ タイトル読みたい
-② タイトル「【親指 or トウモロコシ?】3倍差ができる決定的な違い」
-↓ 動画見たい
-③ 動画開幕「これ、見てください。3倍違うキャベツ2玉です」
-↓ 次が聞きたい
-```</p>
-    </div>
-    
-    
-    
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
-    </div>
-  </div>
-</section>
-<section class="section normal" id="sec-02">
-  <div class="head normal">
-    <div class="position">#02 / 12 · 📄 セクション</div>
-    <div class="title">撮影方式</div>
-    <div class="subtitle">v3.1で確定</div>
-    <span class="duration-pill">⏱ 約16秒 / 97字</span>
-    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
-      <span class="score-num">70</span><span class="score-max">/100</span>
-    </span>
-  </div>
-  <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">注視</span>
-      <span class="arrow">→</span>
-      <span class="to">把握</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「ふむふむ」</div>
-<div class="thought">「次に何が出てくるか」</div>
-<div class="thought highlight">「ここも聞いておこう」</div>
-    </div>
-    <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
-      <p>🌾 撮影は「畑に立って話す」だけ
-👕 いつもの撮影衣装
-🎤 基本早口で読み上げる
-🖼 実物・小道具・カレンダー・キャベツ比較・苗比較・根の張り具合 → ぜんぶ編集時に画像挿入</p>
-    </div>
-    
-    
-    
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
-    </div>
-  </div>
-</section>
-<section class="section hook" id="sec-03">
+<section class="section hook" id="sec-01">
   <div class="head hook">
-    <div class="position">#03 / 12 · 🎯 冒頭フック</div>
+    
+    <div class="position">#01 / 5 · 🎯 冒頭フック</div>
     <div class="title">章1：オープニング</div>
     <div class="subtitle">畑撮影・約2:30</div>
     <span class="duration-pill">⏱ 約269秒 / 1615字</span>
@@ -811,7 +825,7 @@ html, body {
       <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
       <ul><li>⚠️ 固定挨拶『こんにちは！100t農家のイチローです』が無い（最優先で入れる）</li></ul>
       <div class="request-hint">
-        ご主人様の指示例：Discord で <code>#03 ブラッシュアップ</code> または <code>#03 ⚠️ 固定挨拶『こんにちは！100t…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+        ご主人様の指示例：Discord で <code>#01 ブラッシュアップ</code> または <code>#01 ⚠️ 固定挨拶『こんにちは！100t…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
       </div>
     </div>
     
@@ -822,9 +836,10 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-04">
+<section class="section normal" id="sec-02">
   <div class="head normal">
-    <div class="position">#04 / 12 · 📄 セクション</div>
+    
+    <div class="position">#02 / 5 · 📄 セクション</div>
     <div class="title">章2：違い①「土を作っているか」</div>
     <div class="subtitle">畑撮影・約5:30</div>
     <span class="duration-pill">⏱ 約410秒 / 2462字</span>
@@ -863,7 +878,7 @@ html, body {
       <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
       <ul><li>曖昧表現が1件（断定型に書き換え）</li></ul>
       <div class="request-hint">
-        ご主人様の指示例：Discord で <code>#04 ブラッシュアップ</code> または <code>#04 曖昧表現が1件（断定型に書き換え）…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+        ご主人様の指示例：Discord で <code>#02 ブラッシュアップ</code> または <code>#02 曖昧表現が1件（断定型に書き換え）…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
       </div>
     </div>
     
@@ -873,9 +888,10 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-05">
+<section class="section normal" id="sec-03">
   <div class="head normal">
-    <div class="position">#05 / 12 · 📄 セクション</div>
+    
+    <div class="position">#03 / 5 · 📄 セクション</div>
     <div class="title">章3：違い②「苗の植え付け日付を守る」</div>
     <div class="subtitle">畑撮影・約4:30</div>
     <span class="duration-pill">⏱ 約302秒 / 1810字</span>
@@ -917,9 +933,10 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-06">
+<section class="section normal" id="sec-04">
   <div class="head normal">
-    <div class="position">#06 / 12 · 📄 セクション</div>
+    
+    <div class="position">#04 / 5 · 📄 セクション</div>
     <div class="title">章4：違い③「日付通りに順調に育てる」</div>
     <div class="subtitle">畑撮影・約6:00</div>
     <span class="duration-pill">⏱ 約455秒 / 2731字</span>
@@ -958,7 +975,7 @@ html, body {
       <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
       <ul><li>尺が長すぎる可能性。分割を検討</li></ul>
       <div class="request-hint">
-        ご主人様の指示例：Discord で <code>#06 ブラッシュアップ</code> または <code>#06 尺が長すぎる可能性。分割を検討…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+        ご主人様の指示例：Discord で <code>#04 ブラッシュアップ</code> または <code>#04 尺が長すぎる可能性。分割を検討…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
       </div>
     </div>
     
@@ -968,9 +985,10 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section support" id="sec-07">
+<section class="section support" id="sec-05">
   <div class="head support">
-    <div class="position">#07 / 12 · 📎 補足</div>
+    
+    <div class="position">#05 / 5 · 📎 補足</div>
     <div class="title">章5：整理とCTA</div>
     <div class="subtitle">畑撮影・約3:30</div>
     <span class="duration-pill">⏱ 約257秒 / 1542字</span>
@@ -1013,234 +1031,176 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-08">
-  <div class="head normal">
-    <div class="position">#08 / 12 · 📄 セクション</div>
-    <div class="title">全体L3採点</div>
-    
-    <span class="duration-pill">⏱ 約30秒 / 183字</span>
-    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
-      <span class="score-num">70</span><span class="score-max">/100</span>
-    </span>
+    <div class="appendix-heading">📎 付帯セクション（撮影外）</div>
+<section class="section appendix-card">
+  <div class="ap-head">
+    <span class="ap-badge">📎 制作者向け</span>
+    <div class="ap-title">渇望設計3階段</div>
   </div>
-  <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">注視</span>
-      <span class="arrow">→</span>
-      <span class="to">把握</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「ふむふむ」</div>
-<div class="thought">「次に何が出てくるか」</div>
-<div class="thought highlight">「ここも聞いておこう」</div>
-    </div>
-    <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
-      <p>| 章 | L3機能 | L3立体 | L3感情 | おさる④ |
-|---|---|---|---|---|
-| 章1：オープニング | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |
-| 章2：違い①土 | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |
-| 章3：違い②日付 | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |
-| 章4：違い③育て方 | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| 章5：整理＋CTA | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |</p>
-    </div>
-    
-    
-    
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
-    </div>
+  <div class="ap-body">
+    <p>```</p>
+<p>① サムネ「親指 vs トウモロコシ」</p>
+<p>   ↓ タイトル読みたい</p>
+<p>② タイトル「【親指 or トウモロコシ?】3倍差ができる決定的な違い」</p>
+<p>   ↓ 動画見たい</p>
+<p>③ 動画開幕「これ、見てください。3倍違うキャベツ2玉です」</p>
+<p>   ↓ 次が聞きたい</p>
+<p>```</p>
   </div>
 </section>
-<section class="section support" id="sec-09">
-  <div class="head support">
-    <div class="position">#09 / 12 · 📎 補足</div>
-    <div class="title">撮影方式まとめ</div>
-    <div class="subtitle">v3.1 最終</div>
-    <span class="duration-pill">⏱ 約40秒 / 237字</span>
-    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
-      <span class="score-num">70</span><span class="score-max">/100</span>
-    </span>
+<section class="section appendix-card">
+  <div class="ap-head">
+    <span class="ap-badge">📎 制作者向け</span>
+    <div class="ap-title">撮影方式</div>
   </div>
-  <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">理解</span>
-      <span class="arrow">→</span>
-      <span class="to">納得</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「補足、ありがたい」</div>
-<div class="thought">「ここ確認しておこう」</div>
-<div class="thought highlight">「メモしておく」</div>
-    </div>
-    <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
-      <p>🌾 撮影はこれだけ：
-いつもの撮影衣装で、畑に立つ
-各セクション、視聴者に正面で語りかける（カメラ目線）
-章3-Dだけ畝を歩きながら話す（変化を持たせる用、無理なら全部立ち位置でも可）
-「（間）」は短め1秒、章末★最重要だけ1.5-2秒
-早口で、数字・キーワードはハッキリ強調</p>
-<p>🎯 小道具・実物はゼロ：
-キャベツ2玉 → 編集挿入の画像
-土・堆肥 → 編集挿入の画像
-カレンダー・手帳 → 編集挿入の画像
-苗・根 → 編集挿入の画像
-すべて編集時にいらすとや・実績写真で対応</p>
-    </div>
-    
-    
-    
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">読み上げペース基準（6字/秒・30秒/スライド）</span><span class="src">memory/feedback_video_script_pacing.md</span><span class="effect">+3点</span></li>
-<li><span class="ttl">動画収録ワークフロー（36px・【Scroll】）</span><span class="src">memory/project_video_recording_workflow.md</span><span class="effect">+2点</span></li></ul>
-    </div>
+  <div class="ap-body">
+    <p>🌾 **撮影は「畑に立って話す」だけ**</p>
+<p>👕 **いつもの撮影衣装**</p>
+<p>🎤 **基本早口で読み上げる**</p>
+<p>🖼 **実物・小道具・カレンダー・キャベツ比較・苗比較・根の張り具合 → ぜんぶ編集時に画像挿入**</p>
+
+<p>---</p>
   </div>
 </section>
-<section class="section normal" id="sec-10">
-  <div class="head normal">
-    <div class="position">#10 / 12 · 📄 セクション</div>
-    <div class="title">編集時に挿入するスライド・画像素材リスト</div>
-    <div class="subtitle">v3.1 拡張版</div>
-    <span class="duration-pill">⏱ 約153秒 / 917字</span>
-    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
-      <span class="score-num">70</span><span class="score-max">/100</span>
-    </span>
+<section class="section appendix-card">
+  <div class="ap-head">
+    <span class="ap-badge">📎 制作者向け</span>
+    <div class="ap-title">全体L3採点</div>
   </div>
-  <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">注視</span>
-      <span class="arrow">→</span>
-      <span class="to">把握</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「ふむふむ」</div>
-<div class="thought">「次に何が出てくるか」</div>
-<div class="thought highlight">「ここも聞いておこう」</div>
-    </div>
-    <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
-      <p>撮影完了後、編集時にこれらを画面挿入する。
-レオさんGPT・いらすとや・実績写真を組み合わせて作成。</p>
-<p>1. 「同品種・同日植え／1.5kg vs 500g／3倍差」テロップ（1-A）
-2. 「16年・100t出荷・本日のテーマ」タイトル（1-C）
-3. ①②③ 縦並び大文字スライド（1-D・5-A 再整理）
-4. 「違い① 土を作っているか」見出し（2-A）
-5. 「違い② 日付を守っているか」見出し（3-A）
-6. 「違い③ 順調に育てているか」見出し（4-A）</p>
-<p>7. 「地力窒素」概念図（2-B）
-8. 「①牛糞堆肥 ②緑肥 ③元肥」3本柱（2-C）
-9. 4種類の肥料一覧（化成・液肥・追肥・堆肥）（2-D）
-10. 「堆肥 → 元肥 → 追肥 → 液肥」順番フロー（2-D）
-11. 「1年目＝答え合わせ」コンセプト（2-F）
-12. 品種別 種まき日 早見表（3-B）
-13. 「種まき → 25〜30日 → 苗植え」タイムライン（3-C）
-14. 「植付 → 20日 → 40日 → 結球」タイムライン（4-C）
-15. 「畑1枚 → 畑全体 → 年単位」レイヤー図（5-B）
-16. 「11月1日出荷1t」逆算スケジュール（4-G）</p>
-    </div>
-    
-    
-    
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
-    </div>
+  <div class="ap-body">
+    <div class='ap-table-row'>| 章 | L3機能 | L3立体 | L3感情 | おさる④ |</div>
+<div class='ap-table-row'>|---|---|---|---|---|</div>
+<div class='ap-table-row'>| 章1：オープニング | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |</div>
+<div class='ap-table-row'>| 章2：違い①土 | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |</div>
+<div class='ap-table-row'>| 章3：違い②日付 | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |</div>
+<div class='ap-table-row'>| 章4：違い③育て方 | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |</div>
+<div class='ap-table-row'>| 章5：整理＋CTA | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |</div>
+
+<p>---</p>
   </div>
 </section>
-<section class="section normal" id="sec-11">
-  <div class="head normal">
-    <div class="position">#11 / 12 · 📄 セクション</div>
-    <div class="title">文字数・時間見込み</div>
-    <div class="subtitle">v3.1</div>
-    <span class="duration-pill">⏱ 約14秒 / 87字</span>
-    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
-      <span class="score-num">70</span><span class="score-max">/100</span>
-    </span>
+<section class="section appendix-card">
+  <div class="ap-head">
+    <span class="ap-badge">📎 制作者向け</span>
+    <div class="ap-title">撮影方式まとめ</div>
   </div>
-  <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">注視</span>
-      <span class="arrow">→</span>
-      <span class="to">把握</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「ふむふむ」</div>
-<div class="thought">「次に何が出てくるか」</div>
-<div class="thought highlight">「ここも聞いておこう」</div>
-    </div>
-    <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
-      <p>総文字数：本文は v3 と同等（約13,100字）
-早口ペース（6.5字/秒）：生・間込み 約33分
-カット後（ジェットカット・無音削除）：約20-22分 ★目標達成</p>
-    </div>
-    
-    
-    
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
-    </div>
+  <div class="ap-body">
+    <p>🌾 **撮影はこれだけ：**</p>
+<li>いつもの撮影衣装で、畑に立つ</li>
+<li>各セクション、視聴者に正面で語りかける（カメラ目線）</li>
+<li>章3-Dだけ畝を歩きながら話す（変化を持たせる用、無理なら全部立ち位置でも可）</li>
+<li>「（間）」は短め1秒、章末★最重要だけ1.5-2秒</li>
+<li>早口で、数字・キーワードはハッキリ強調</li>
+
+<p>🎯 **小道具・実物はゼロ：**</p>
+<li>キャベツ2玉 → 編集挿入の画像</li>
+<li>土・堆肥 → 編集挿入の画像</li>
+<li>カレンダー・手帳 → 編集挿入の画像</li>
+<li>苗・根 → 編集挿入の画像</li>
+<li>すべて編集時にいらすとや・実績写真で対応</li>
+
+<p>---</p>
   </div>
 </section>
-<section class="section normal" id="sec-12">
-  <div class="head normal">
-    <div class="position">#12 / 12 · 📄 セクション</div>
-    <div class="title">撮影時のコツ</div>
-    <div class="subtitle">v3.1</div>
-    <span class="duration-pill">⏱ 約60秒 / 357字</span>
-    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
-      <span class="score-num">70</span><span class="score-max">/100</span>
-    </span>
+<section class="section appendix-card">
+  <div class="ap-head">
+    <span class="ap-badge">📎 制作者向け</span>
+    <div class="ap-title">編集時に挿入するスライド・画像素材リスト</div>
   </div>
-  <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">注視</span>
-      <span class="arrow">→</span>
-      <span class="to">把握</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「ふむふむ」</div>
-<div class="thought">「次に何が出てくるか」</div>
-<div class="thought highlight">「ここも聞いておこう」</div>
-    </div>
-    <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
-      <p>衣装はいつもの撮影衣装、カメラ位置は固定でOK
-カメラ目線で視聴者に直接語りかける
-章ごとに少しだけ立ち位置を変える程度でOK（背景の変化）</p>
-<p>「（間）」は意識的に1秒以内
-数字・キーワード（「3倍」「16年」「100t」「20日」「40日」「逆算」）は0.5音強めに
-読点「、」での間は最小限、読点超えで一気に
-ただし章末・★最重要メッセージは1.5-2秒の間を確保</p>
-<p>地力窒素／牛糞堆肥／緑肥（りょくひ）／輪作／元肥（もとごえ）／化成肥料／液肥／追肥／結球／畝間（うねま）／出荷計画</p>
-<p>「たぶん」「多分」「だいたい」NG
-比喩は最小限（「ドミノ倒し」「カードゲーム」程度はOK）
-絵文字なし
-第三者の声を入れるなら必ず匿名化</p>
-    </div>
-    
-    
-    
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></li></ul>
-    </div>
+  <div class="ap-body">
+    <p>撮影完了後、編集時にこれらを画面挿入する。</p>
+<p>レオさんGPT・いらすとや・実績写真を組み合わせて作成。</p>
+
+<h4>A. テロップ・タイトル系（6点）</h4>
+<p>1. 「同品種・同日植え／1.5kg vs 500g／3倍差」テロップ（1-A）</p>
+<p>2. 「16年・100t出荷・本日のテーマ」タイトル（1-C）</p>
+<p>3. ①②③ 縦並び大文字スライド（1-D・5-A 再整理）</p>
+<p>4. 「違い① 土を作っているか」見出し（2-A）</p>
+<p>5. 「違い② 日付を守っているか」見出し（3-A）</p>
+<p>6. 「違い③ 順調に育てているか」見出し（4-A）</p>
+
+<h4>B. 概念図・スライド系（10点）</h4>
+<p>7. 「地力窒素」概念図（2-B）</p>
+<p>8. 「①牛糞堆肥 ②緑肥 ③元肥」3本柱（2-C）</p>
+<p>9. 4種類の肥料一覧（化成・液肥・追肥・堆肥）（2-D）</p>
+<p>10. 「堆肥 → 元肥 → 追肥 → 液肥」順番フロー（2-D）</p>
+<p>11. 「1年目＝答え合わせ」コンセプト（2-F）</p>
+<p>12. 品種別 種まき日 早見表（3-B）</p>
+<p>13. 「種まき → 25〜30日 → 苗植え」タイムライン（3-C）</p>
+<p>14. 「植付 → 20日 → 40日 → 結球」タイムライン（4-C）</p>
+<p>15. 「畑1枚 → 畑全体 → 年単位」レイヤー図（5-B）</p>
+<p>16. 「11月1日出荷1t」逆算スケジュール（4-G）</p>
+
+<h4>C. 比較・対比画像（5点）</h4>
+<p>17. キャベツ2玉比較（1.5kg vs 500g）（1-A）★最重要</p>
+<p>18. 「予定日 vs 1週間遅れ」結球サイズ比較（3-E）</p>
+<p>19. 上から見た畑＋畝間埋まる図（順調 vs 順調じゃない）（3-F）</p>
+<p>20. 大きい苗 vs 小さい苗（4-D）</p>
+<p>21. 「活着している根 vs 張れていない根」（4-F）</p>
+
+<h4>D. いらすとや（生活・農業）（7点）</h4>
+<p>22. 牛糞堆肥（袋／散布）（2-C）</p>
+<p>23. 緑肥のすき込み（2-C）</p>
+<p>24. 元肥を畝に入れる（2-C）</p>
+<p>25. 草に巻かれた苗（4-B）</p>
+<p>26. 追肥・液肥（4-C・4-E）</p>
+<p>27. 土をほぐす・水管理を見直す（4-F）</p>
+<p>28. 家庭菜園 / 専業農家 / 副業 の3パターン（5-B）</p>
+
+<h4>E. 実績写真（あれば差し込み）</h4>
+<p>29. 中川農産の畑全景（1-C）</p>
+<p>30. 中川農産の堆肥・肥料投入実績（2-G）</p>
+<p>31. 中川農産の出荷数字（4-G）</p>
+
+<p>合計：約27〜31点。レオさんGPT＋いらすとや＋中川農産実績の3系統で揃える。</p>
+
+<p>---</p>
   </div>
 </section>
-    
+<section class="section appendix-card">
+  <div class="ap-head">
+    <span class="ap-badge">📎 制作者向け</span>
+    <div class="ap-title">文字数・時間見込み</div>
+  </div>
+  <div class="ap-body">
+    <li>総文字数：本文は v3 と同等（約13,100字）</li>
+<li>早口ペース（6.5字/秒）：生・間込み 約33分</li>
+<li>カット後（ジェットカット・無音削除）：**約20-22分** ★目標達成</li>
+
+<p>---</p>
+  </div>
+</section>
+<section class="section appendix-card">
+  <div class="ap-head">
+    <span class="ap-badge">📎 制作者向け</span>
+    <div class="ap-title">撮影時のコツ</div>
+  </div>
+  <div class="ap-body">
+    <h4>撮影は本当に「立って話す」だけ</h4>
+<li>衣装はいつもの撮影衣装、カメラ位置は固定でOK</li>
+<li>カメラ目線で視聴者に直接語りかける</li>
+<li>章ごとに少しだけ立ち位置を変える程度でOK（背景の変化）</li>
+
+<h4>早口で読むコツ</h4>
+<li>「（間）」は意識的に1秒以内</li>
+<li>数字・キーワード（「3倍」「16年」「100t」「20日」「40日」「逆算」）は0.5音強めに</li>
+<li>読点「、」での間は最小限、読点超えで一気に</li>
+<li>ただし**章末・★最重要メッセージ**は1.5-2秒の間を確保</li>
+
+<h4>用語確認</h4>
+<p>地力窒素（ちりょくちっそ）／牛糞堆肥／緑肥（りょくひ）／輪作／元肥（もとひ）／化成肥料／液肥／追肥／結球／畝間（うねま）／出荷計画／抽苔（とうだち）</p>
+
+<h4>撮影禁忌</h4>
+<li>「たぶん」「多分」「だいたい」NG</li>
+<li>比喩は最小限（「ドミノ倒し」「カードゲーム」程度はOK）</li>
+<li>絵文字なし</li>
+<li>第三者の声を入れるなら必ず匿名化</li>
+  </div>
+</section>
   </div>
 
   <footer class="footer">
-    Generated 2026-05-25 20:46 JST from 2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md
+    Generated 2026-05-26 19:49 JST from 2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md
   </footer>
 
 </div>

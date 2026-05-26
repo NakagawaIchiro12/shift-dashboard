@@ -660,6 +660,67 @@ html, body {
 .section.appendix .head.normal { background: transparent; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .section.appendix .body { padding: 14px 24px; font-size: 13px; color: #6a7290; }
 
+/* appendix-card — 制作者向け補足セクション（採点・撮影方式・素材リスト・渇望設計 等） */
+/* 本編カードと明確に区別する：左ボーダー破線、薄背景、フラットデザイン */
+.section.appendix-card {
+  background: rgba(138, 146, 168, 0.04);
+  border: 1px dashed rgba(138, 146, 168, 0.25);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 16px;
+  box-shadow: none;
+}
+.section.appendix-card .ap-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed rgba(138, 146, 168, 0.18);
+}
+.section.appendix-card .ap-badge {
+  background: rgba(138, 146, 168, 0.18);
+  color: #b8c4dd;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.section.appendix-card .ap-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #b8c4dd;
+  flex: 1;
+}
+.section.appendix-card .ap-body {
+  font-size: 13px;
+  color: #8a98b8;
+  line-height: 1.7;
+}
+.section.appendix-card .ap-body h4 {
+  font-size: 14px;
+  color: #c8d2e8;
+  margin: 14px 0 6px;
+  font-weight: 700;
+  border-left: 3px solid rgba(255,216,122,0.4);
+  padding-left: 10px;
+}
+.section.appendix-card .ap-body p {
+  margin: 6px 0;
+}
+.section.appendix-card .ap-body li {
+  margin-left: 1em;
+  list-style: disc;
+}
+.section.appendix-card .ap-table-row {
+  font-family: monospace;
+  font-size: 12px;
+  padding: 2px 0;
+  color: #8a98b8;
+}
+
 .footer {
   text-align: center;
   padding: 40px 24px 60px;
@@ -1602,7 +1663,7 @@ html, body {
   </div>
 
   <footer class="footer">
-    Generated 2026-05-26 15:38 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
+    Generated 2026-05-26 19:49 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
   </footer>
 
 </div>
