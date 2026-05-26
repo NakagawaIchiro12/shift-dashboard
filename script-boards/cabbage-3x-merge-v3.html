@@ -890,6 +890,31 @@ html, body {
   font-size: 12px;
   white-space: nowrap;
 }
+.gk-progress {
+  font-size: 13px;
+  color: #06a77d;
+  font-weight: 700;
+  margin-left: 8px;
+}
+.gk-item.gk-item-done {
+  opacity: 0.55;
+  background: rgba(6, 167, 125, 0.06);
+  border-color: rgba(6, 167, 125, 0.25);
+}
+.gk-item.gk-item-done .gk-knowledge-title {
+  text-decoration: line-through;
+  color: #b8c4dd;
+}
+.gk-injected-badge {
+  align-self: center;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #06a77d 0%, #048a64 100%);
+  color: #fff;
+  border-radius: 8px;
+  white-space: nowrap;
+}
 @media (max-width: 480px) {
   .global-knowledge { margin: 12px 8px 14px; padding: 16px 14px; }
   .global-knowledge h3 { font-size: 17px; }
@@ -1168,7 +1193,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </div>
   </section>
 
-  <section class="global-knowledge"><h3>💡 全体ナレッジ投入計画</h3><p class="gk-hint">点数の低いセクションから順に並んでいます。 「💡入れる」 を押すとコピーされます。 Discordに貼って送ると、 私が該当セクションを修正＋再デプロイします🌸</p><ul class="gk-list"><li class="gk-item"><div class="gk-sec-info"><a href="#sec-08" class="gk-sec-link">#08</a><span class="gk-sec-name">◆用意するものと使い方</span><span class="gk-sec-score" style="color:#ff9f43;">51点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#08 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+  <section class="global-knowledge"><h3>💡 全体ナレッジ投入計画 <span class="gk-progress">(0/25 投入済)</span></h3><p class="gk-hint">未投入は点数低い順、 投入済みは下に。 「💡入れる」 ボタン押下でDiscord貼付用テキストがコピーされます🌸</p><ul class="gk-list"><li class="gk-item"><div class="gk-sec-info"><a href="#sec-08" class="gk-sec-link">#08</a><span class="gk-sec-name">◆用意するものと使い方</span><span class="gk-sec-score" style="color:#ff9f43;">51点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#08 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
 <li class="gk-item"><div class="gk-sec-info"><a href="#sec-12" class="gk-sec-link">#12</a><span class="gk-sec-name">◎＋αの 話</span><span class="gk-sec-score" style="color:#ff9f43;">55点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#12 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
 <li class="gk-item"><div class="gk-sec-info"><a href="#sec-14" class="gk-sec-link">#14</a><span class="gk-sec-name">後半：プロと初心者の、決定的な違い3つ</span><span class="gk-sec-score" style="color:#ff9f43;">55点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#14 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
 <li class="gk-item"><div class="gk-sec-info"><a href="#sec-05" class="gk-sec-link">#05</a><span class="gk-sec-name">◎視聴者の悩みの言語化</span><span class="gk-sec-score" style="color:#ff9f43;">60点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#05 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
@@ -2227,7 +2252,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
 
   <footer class="footer">
-    Generated 2026-05-27 06:30 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
+    Generated 2026-05-27 06:51 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
   </footer>
 
 </div>

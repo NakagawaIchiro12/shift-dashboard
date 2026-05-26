@@ -890,6 +890,31 @@ html, body {
   font-size: 12px;
   white-space: nowrap;
 }
+.gk-progress {
+  font-size: 13px;
+  color: #06a77d;
+  font-weight: 700;
+  margin-left: 8px;
+}
+.gk-item.gk-item-done {
+  opacity: 0.55;
+  background: rgba(6, 167, 125, 0.06);
+  border-color: rgba(6, 167, 125, 0.25);
+}
+.gk-item.gk-item-done .gk-knowledge-title {
+  text-decoration: line-through;
+  color: #b8c4dd;
+}
+.gk-injected-badge {
+  align-self: center;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #06a77d 0%, #048a64 100%);
+  color: #fff;
+  border-radius: 8px;
+  white-space: nowrap;
+}
 @media (max-width: 480px) {
   .global-knowledge { margin: 12px 8px 14px; padding: 16px 14px; }
   .global-knowledge h3 { font-size: 17px; }
@@ -1130,7 +1155,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 </style>
 </head>
 <body>
-<aside class="emotion-sidebar"><div class="sb-title">心理動線</div><nav class="path"><a href="#sec-01" class="hook" data-target="sec-01"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">01</span><span class="emotion">興味</span><span class="sb-score" style="color: #ff9f43;">66点</span></a>
+<aside class="emotion-sidebar"><div class="sb-title">心理動線</div><nav class="path"><a href="#sec-01" class="hook" data-target="sec-01"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">01</span><span class="emotion">興味</span><span class="sb-score" style="color: #ff9f43;">69点</span></a>
 <a href="#sec-02" class="normal" data-target="sec-02"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">02</span><span class="emotion">把握</span><span class="sb-score" style="color: #ff9f43;">67点</span></a>
 <a href="#sec-03" class="normal" data-target="sec-03"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">03</span><span class="emotion">把握</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
 <a href="#sec-04" class="normal" data-target="sec-04"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">04</span><span class="emotion">把握</span><span class="sb-score" style="color: #ff9f43;">65点</span></a>
@@ -1146,8 +1171,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <div class="subtitle">視聴者がどう動くかを台本制作者が体験するボード</div>
     <div class="stats">
       <div class="stat"><div class="num">5</div><div class="lab">セクション</div></div>
-      <div class="stat"><div class="num">12,223</div><div class="lab">文字数</div></div>
-      <div class="stat"><div class="num">34.0<small style="font-size:14px">分</small></div><div class="lab">推定尺</div></div>
+      <div class="stat"><div class="num">12,348</div><div class="lab">文字数</div></div>
+      <div class="stat"><div class="num">34.3<small style="font-size:14px">分</small></div><div class="lab">推定尺</div></div>
       <div class="stat"><div class="num">1+0</div><div class="lab">フック+CTA</div></div>
     </div>
     <div class="read-script-link">
@@ -1155,13 +1180,13 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </div>
   </section>
 
-  <section class="global-knowledge"><h3>💡 全体ナレッジ投入計画</h3><p class="gk-hint">点数の低いセクションから順に並んでいます。 「💡入れる」 を押すとコピーされます。 Discordに貼って送ると、 私が該当セクションを修正＋再デプロイします🌸</p><ul class="gk-list"><li class="gk-item"><div class="gk-sec-info"><a href="#sec-04" class="gk-sec-link">#04</a><span class="gk-sec-name">章4：違い③「日付通りに順調に育てる」</span><span class="gk-sec-score" style="color:#ff9f43;">65点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#04 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
-<li class="gk-item"><div class="gk-sec-info"><a href="#sec-01" class="gk-sec-link">#01</a><span class="gk-sec-name">章1：オープニング</span><span class="gk-sec-score" style="color:#ff9f43;">66点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">100t→200tの年商成長 権威数字</span><span class="gk-knowledge-effect">+8点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#01 ナレッジ追加 100t→200tの年商成長 権威数字 (knowledge/aina-chan-brain-product-summary.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
-<li class="gk-item"><div class="gk-sec-info"><a href="#sec-01" class="gk-sec-link">#01</a><span class="gk-sec-name">章1：オープニング</span><span class="gk-sec-score" style="color:#ff9f43;">66点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">自己診断フレーム（エルさん5問版）</span><span class="gk-knowledge-effect">+6点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#01 ナレッジ追加 自己診断フレーム（エルさん5問版） (部署_YouTube動画/knowledge/elsan_katsubo_framework_v2_from_plaud.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+  <section class="global-knowledge"><h3>💡 全体ナレッジ投入計画 <span class="gk-progress">(2/7 投入済)</span></h3><p class="gk-hint">未投入は点数低い順、 投入済みは下に。 「💡入れる」 ボタン押下でDiscord貼付用テキストがコピーされます🌸</p><ul class="gk-list"><li class="gk-item"><div class="gk-sec-info"><a href="#sec-04" class="gk-sec-link">#04</a><span class="gk-sec-name">章4：違い③「日付通りに順調に育てる」</span><span class="gk-sec-score" style="color:#ff9f43;">65点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#04 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
 <li class="gk-item"><div class="gk-sec-info"><a href="#sec-02" class="gk-sec-link">#02</a><span class="gk-sec-name">章2：違い①「土を作っているか」</span><span class="gk-sec-score" style="color:#ff9f43;">67点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#02 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
 <li class="gk-item"><div class="gk-sec-info"><a href="#sec-03" class="gk-sec-link">#03</a><span class="gk-sec-name">章3：違い②「苗の植え付け日付を守る」</span><span class="gk-sec-score" style="color:#06a77d;">70点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#03 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
 <li class="gk-item"><div class="gk-sec-info"><a href="#sec-05" class="gk-sec-link">#05</a><span class="gk-sec-name">章5：整理とCTA</span><span class="gk-sec-score" style="color:#06a77d;">73点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">読み上げペース基準（6字/秒・30秒/スライド）</span><span class="gk-knowledge-effect">+3点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#05 ナレッジ追加 読み上げペース基準（6字/秒・30秒/スライド） (memory/feedback_video_script_pacing.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
-<li class="gk-item"><div class="gk-sec-info"><a href="#sec-05" class="gk-sec-link">#05</a><span class="gk-sec-name">章5：整理とCTA</span><span class="gk-sec-score" style="color:#06a77d;">73点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">動画収録ワークフロー（36px・【Scroll】）</span><span class="gk-knowledge-effect">+2点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#05 ナレッジ追加 動画収録ワークフロー（36px・【Scroll】） (memory/project_video_recording_workflow.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li></ul></section>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-05" class="gk-sec-link">#05</a><span class="gk-sec-name">章5：整理とCTA</span><span class="gk-sec-score" style="color:#06a77d;">73点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">動画収録ワークフロー（36px・【Scroll】）</span><span class="gk-knowledge-effect">+2点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#05 ナレッジ追加 動画収録ワークフロー（36px・【Scroll】） (memory/project_video_recording_workflow.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-01" class="gk-sec-link">#01</a><span class="gk-sec-name">章1：オープニング</span><span class="gk-sec-score" style="color:#ff9f43;">69点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">100t→200tの年商成長 権威数字</span><span class="gk-knowledge-effect">+8点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-01" class="gk-sec-link">#01</a><span class="gk-sec-name">章1：オープニング</span><span class="gk-sec-score" style="color:#ff9f43;">69点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">自己診断フレーム（エルさん5問版）</span><span class="gk-knowledge-effect">+6点</span></div><span class="gk-injected-badge">✅ 投入済</span></li></ul></section>
 
   <section class="intro">
     <h2>▼ 視聴者の旅路（上から下へ）</h2>
@@ -1204,9 +1229,9 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <div class="position">#01 / 5 · 🎯 冒頭フック</div>
     <div class="title">章1：オープニング</div>
     <div class="subtitle">畑撮影・約2:30</div>
-    <span class="duration-pill">⏱ 約316秒 / 1899字</span>
+    <span class="duration-pill">⏱ 約337秒 / 2024字</span>
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
-      <span class="score-num">66</span><span class="score-max">/100</span>
+      <span class="score-num">69</span><span class="score-max">/100</span>
     </span>
   </div>
   <div class="body">
@@ -1688,7 +1713,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
 
   <footer class="footer">
-    Generated 2026-05-27 06:30 JST from 2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md
+    Generated 2026-05-27 06:51 JST from 2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md
   </footer>
 
 </div>
