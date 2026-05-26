@@ -803,6 +803,101 @@ html, body {
 }
 .read-script-link a:hover { background: #ffd87a; color: #0a0e1a; }
 
+/* ===== 全体ナレッジ投入計画パネル（ヒーロー直下） ===== */
+.global-knowledge {
+  background: linear-gradient(135deg, rgba(255,216,122,0.07) 0%, rgba(255,216,122,0.02) 100%);
+  border-radius: 14px;
+  margin: 16px 16px 18px;
+  padding: 22px 24px;
+  border-left: 6px solid #ffd87a;
+  border-top: 1px solid rgba(255,216,122,0.18);
+  border-right: 1px solid rgba(255,216,122,0.18);
+  border-bottom: 1px solid rgba(255,216,122,0.18);
+}
+.global-knowledge h3 {
+  font-size: 20px;
+  font-weight: 900;
+  color: #ffd87a;
+  margin: 0 0 8px;
+}
+.gk-hint {
+  font-size: 12px;
+  color: #b8c4dd;
+  margin: 0 0 14px;
+  line-height: 1.7;
+}
+.gk-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.gk-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 14px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 10px;
+  border: 1px solid rgba(255,216,122,0.14);
+}
+.gk-sec-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  grid-column: 1 / 3;
+}
+.gk-sec-link {
+  background: #1a1a1a;
+  color: #ffd87a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 11px;
+}
+.gk-sec-link:hover { background: #ffd87a; color: #1a1a1a; }
+.gk-sec-name {
+  color: #d8dde8;
+  font-weight: 600;
+  font-size: 13px;
+}
+.gk-sec-score {
+  font-weight: 800;
+  font-size: 12px;
+}
+.gk-knowledge {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.gk-knowledge-title {
+  font-size: 14px;
+  color: #ffd87a;
+  font-weight: 700;
+}
+.gk-knowledge-effect {
+  font-size: 11px;
+  color: #06a77d;
+  font-weight: 700;
+}
+.apply-knowledge-btn.gk-btn {
+  align-self: center;
+  margin: 0;
+  padding: 8px 14px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .global-knowledge { margin: 12px 8px 14px; padding: 16px 14px; }
+  .global-knowledge h3 { font-size: 17px; }
+  .gk-item { padding: 10px 12px; }
+  .gk-knowledge-title { font-size: 12px; }
+  .apply-knowledge-btn.gk-btn { font-size: 11px; padding: 6px 10px; }
+}
+
 .appendix-heading {
   margin: 40px 32px 12px;
   padding-top: 18px;
@@ -1073,6 +1168,32 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </div>
   </section>
 
+  <section class="global-knowledge"><h3>💡 全体ナレッジ投入計画</h3><p class="gk-hint">点数の低いセクションから順に並んでいます。 「💡入れる」 を押すとコピーされます。 Discordに貼って送ると、 私が該当セクションを修正＋再デプロイします🌸</p><ul class="gk-list"><li class="gk-item"><div class="gk-sec-info"><a href="#sec-08" class="gk-sec-link">#08</a><span class="gk-sec-name">◆用意するものと使い方</span><span class="gk-sec-score" style="color:#ff9f43;">51点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#08 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-12" class="gk-sec-link">#12</a><span class="gk-sec-name">◎＋αの 話</span><span class="gk-sec-score" style="color:#ff9f43;">55点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#12 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-14" class="gk-sec-link">#14</a><span class="gk-sec-name">後半：プロと初心者の、決定的な違い3つ</span><span class="gk-sec-score" style="color:#ff9f43;">55点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#14 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-05" class="gk-sec-link">#05</a><span class="gk-sec-name">◎視聴者の悩みの言語化</span><span class="gk-sec-score" style="color:#ff9f43;">60点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#05 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-09" class="gk-sec-link">#09</a><span class="gk-sec-name">◆10月からキャベツを収穫する時の年間スケジュール</span><span class="gk-sec-score" style="color:#ff9f43;">60点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">🥬 牛糞なし1反キャベツ肥料設計（具体数値）</span><span class="gk-knowledge-effect">元肥かんらん化成8袋／追肥NK化成20日後2袋＋40日後2袋 等を入れて +15点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#09 ナレッジ追加 🥬 牛糞なし1反キャベツ肥料設計（具体数値） (knowledge/cabbage_fertilizer_design_no_cow_manure.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-09" class="gk-sec-link">#09</a><span class="gk-sec-name">◆10月からキャベツを収穫する時の年間スケジュール</span><span class="gk-sec-score" style="color:#ff9f43;">60点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">📅 ご主人様のソルゴー実践 月別記録</span><span class="gk-knowledge-effect">4月種まき→6月刈り取り→8月鋤き込み等の月数値を確定で +10点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#09 ナレッジ追加 📅 ご主人様のソルゴー実践 月別記録 (ご主人様のソルゴー栽培ノート)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-09" class="gk-sec-link">#09</a><span class="gk-sec-name">◆10月からキャベツを収穫する時の年間スケジュール</span><span class="gk-sec-score" style="color:#ff9f43;">60点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="gk-knowledge-effect">+10点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#09 ナレッジ追加 PLAUDエルさんフォルダ（渇望ナレッジ原典） (memory/reference_plaud_elsan_recordings.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-09" class="gk-sec-link">#09</a><span class="gk-sec-name">◆10月からキャベツを収穫する時の年間スケジュール</span><span class="gk-sec-score" style="color:#ff9f43;">60点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">16年・100t出荷の年数エビデンス</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#09 ナレッジ追加 16年・100t出荷の年数エビデンス (knowledge/aina-chan-product-message-source.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-06" class="gk-sec-link">#06</a><span class="gk-sec-name">◎動画を最後まで観るメリットの提示</span><span class="gk-sec-score" style="color:#ff9f43;">63点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#06 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-17" class="gk-sec-link">#17</a><span class="gk-sec-name">章4：違い③「日付通りに順調に育てる」</span><span class="gk-sec-score" style="color:#ff9f43;">65点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#17 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-15" class="gk-sec-link">#15</a><span class="gk-sec-name">章2：違い①「土を作っているか」</span><span class="gk-sec-score" style="color:#ff9f43;">67点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#15 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-07" class="gk-sec-link">#07</a><span class="gk-sec-name">◎結論</span><span class="gk-sec-score" style="color:#ff9f43;">68点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#07 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-02" class="gk-sec-link">#02</a><span class="gk-sec-name">章0-B：自己紹介＋本日のテーマ</span><span class="gk-sec-score" style="color:#06a77d;">70点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#02 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-03" class="gk-sec-link">#03</a><span class="gk-sec-name">章0-C：基本パートへのつなぎ</span><span class="gk-sec-score" style="color:#06a77d;">70点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#03 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-11" class="gk-sec-link">#11</a><span class="gk-sec-name">◎信憑性のある根拠</span><span class="gk-sec-score" style="color:#06a77d;">70点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#11 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-16" class="gk-sec-link">#16</a><span class="gk-sec-name">章3：違い②「苗の植え付け日付を守る」</span><span class="gk-sec-score" style="color:#06a77d;">70点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#16 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-01" class="gk-sec-link">#01</a><span class="gk-sec-name">章0：開幕フック</span><span class="gk-sec-score" style="color:#06a77d;">71点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#01 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-04" class="gk-sec-link">#04</a><span class="gk-sec-name">前半：キャベツ栽培 完全ガイド</span><span class="gk-sec-score" style="color:#06a77d;">71点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">🥬 牛糞なし1反キャベツ肥料設計（具体数値）</span><span class="gk-knowledge-effect">元肥かんらん化成8袋／追肥NK化成20日後2袋＋40日後2袋 等を入れて +15点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#04 ナレッジ追加 🥬 牛糞なし1反キャベツ肥料設計（具体数値） (knowledge/cabbage_fertilizer_design_no_cow_manure.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-04" class="gk-sec-link">#04</a><span class="gk-sec-name">前半：キャベツ栽培 完全ガイド</span><span class="gk-sec-score" style="color:#06a77d;">71点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#04 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-13" class="gk-sec-link">#13</a><span class="gk-sec-name">つなぎ：基本から、決定的な違いへ</span><span class="gk-sec-score" style="color:#06a77d;">71点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#13 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-18" class="gk-sec-link">#18</a><span class="gk-sec-name">章5：整理とCTA</span><span class="gk-sec-score" style="color:#06a77d;">73点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">読み上げペース基準（6字/秒・30秒/スライド）</span><span class="gk-knowledge-effect">+3点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#18 ナレッジ追加 読み上げペース基準（6字/秒・30秒/スライド） (memory/feedback_video_script_pacing.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-18" class="gk-sec-link">#18</a><span class="gk-sec-name">章5：整理とCTA</span><span class="gk-sec-score" style="color:#06a77d;">73点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">動画収録ワークフロー（36px・【Scroll】）</span><span class="gk-knowledge-effect">+2点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#18 ナレッジ追加 動画収録ワークフロー（36px・【Scroll】） (memory/project_video_recording_workflow.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-10" class="gk-sec-link">#10</a><span class="gk-sec-name">◎結論部分の深掘り</span><span class="gk-sec-score" style="color:#06a77d;">77点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">🌱 ソルゴー3兄弟（根・葉・種）の役割</span><span class="gk-knowledge-effect">各兄弟の具体的機能と植える順番で +10点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#10 ナレッジ追加 🌱 ソルゴー3兄弟（根・葉・種）の役割 (PLAUDエルさんフォルダ／既存原稿)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-10" class="gk-sec-link">#10</a><span class="gk-sec-name">◎結論部分の深掘り</span><span class="gk-sec-score" style="color:#06a77d;">77点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="gk-knowledge-effect">+10点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#10 ナレッジ追加 PLAUDエルさんフォルダ（渇望ナレッジ原典） (memory/reference_plaud_elsan_recordings.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li>
+<li class="gk-item"><div class="gk-sec-info"><a href="#sec-10" class="gk-sec-link">#10</a><span class="gk-sec-name">◎結論部分の深掘り</span><span class="gk-sec-score" style="color:#06a77d;">77点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">16年・100t出荷の年数エビデンス</span><span class="gk-knowledge-effect">+5点</span></div><button class="apply-knowledge-btn gk-btn" onclick="navigator.clipboard.writeText('#10 ナレッジ追加 16年・100t出荷の年数エビデンス (knowledge/aina-chan-product-message-source.md)').then(()=>{this.textContent='✅ コピー完了→Discord貼付';this.classList.add('copied');});">💡 入れる</button></li></ul></section>
+
   <section class="intro">
     <h2>▼ 視聴者の旅路（上から下へ）</h2>
     <p>各セクションをタップするように読み進めると、<br>視聴者がどう動くか体感できます。</p>
@@ -1163,11 +1284,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#01 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-new" id="sec-02">
@@ -1226,11 +1342,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#02 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-new" id="sec-03">
@@ -1272,11 +1383,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#03 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-reuse" id="sec-04">
@@ -1309,12 +1415,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">🥬 牛糞なし1反キャベツ肥料設計（具体数値）</span><span class="src">knowledge/cabbage_fertilizer_design_no_cow_manure.md</span><span class="effect">元肥かんらん化成8袋／追肥NK化成20日後2袋＋40日後2袋 等を入れて +15点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#04 ナレッジ追加 🥬 牛糞なし1反キャベツ肥料設計（具体数値） (knowledge/cabbage_fertilizer_design_no_cow_manure.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
-<li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#04 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-reuse" id="sec-05">
@@ -1369,11 +1469,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       </div>
     </div>
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#05 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-reuse" id="sec-06">
@@ -1429,11 +1524,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       </div>
     </div>
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#06 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-reuse" id="sec-07">
@@ -1487,11 +1577,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       </div>
     </div>
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#07 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-reuse" id="sec-08">
@@ -1544,11 +1629,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       </div>
     </div>
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#08 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section core shoot-reuse" id="sec-09">
@@ -1611,14 +1691,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       </div>
     </div>
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">🥬 牛糞なし1反キャベツ肥料設計（具体数値）</span><span class="src">knowledge/cabbage_fertilizer_design_no_cow_manure.md</span><span class="effect">元肥かんらん化成8袋／追肥NK化成20日後2袋＋40日後2袋 等を入れて +15点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#09 ナレッジ追加 🥬 牛糞なし1反キャベツ肥料設計（具体数値） (knowledge/cabbage_fertilizer_design_no_cow_manure.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
-<li><div class="kg-row"><span class="ttl">📅 ご主人様のソルゴー実践 月別記録</span><span class="src">ご主人様のソルゴー栽培ノート</span><span class="effect">4月種まき→6月刈り取り→8月鋤き込み等の月数値を確定で +10点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#09 ナレッジ追加 📅 ご主人様のソルゴー実践 月別記録 (ご主人様のソルゴー栽培ノート)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
-<li><div class="kg-row"><span class="ttl">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="src">memory/reference_plaud_elsan_recordings.md</span><span class="effect">+10点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#09 ナレッジ追加 PLAUDエルさんフォルダ（渇望ナレッジ原典） (memory/reference_plaud_elsan_recordings.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
-<li><div class="kg-row"><span class="ttl">16年・100t出荷の年数エビデンス</span><span class="src">knowledge/aina-chan-product-message-source.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#09 ナレッジ追加 16年・100t出荷の年数エビデンス (knowledge/aina-chan-product-message-source.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section core shoot-reuse" id="sec-10">
@@ -1678,13 +1750,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       </div>
     </div>
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">🌱 ソルゴー3兄弟（根・葉・種）の役割</span><span class="src">PLAUDエルさんフォルダ／既存原稿</span><span class="effect">各兄弟の具体的機能と植える順番で +10点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#10 ナレッジ追加 🌱 ソルゴー3兄弟（根・葉・種）の役割 (PLAUDエルさんフォルダ／既存原稿)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
-<li><div class="kg-row"><span class="ttl">PLAUDエルさんフォルダ（渇望ナレッジ原典）</span><span class="src">memory/reference_plaud_elsan_recordings.md</span><span class="effect">+10点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#10 ナレッジ追加 PLAUDエルさんフォルダ（渇望ナレッジ原典） (memory/reference_plaud_elsan_recordings.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
-<li><div class="kg-row"><span class="ttl">16年・100t出荷の年数エビデンス</span><span class="src">knowledge/aina-chan-product-message-source.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#10 ナレッジ追加 16年・100t出荷の年数エビデンス (knowledge/aina-chan-product-message-source.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-reuse" id="sec-11">
@@ -1723,11 +1788,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#11 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-reuse" id="sec-12">
@@ -1780,11 +1840,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       </div>
     </div>
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#12 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-new" id="sec-13">
@@ -1851,11 +1906,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#13 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-reuse" id="sec-14">
@@ -1895,11 +1945,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       </div>
     </div>
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#14 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-reuse" id="sec-15">
@@ -1971,11 +2016,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       </div>
     </div>
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#15 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-reuse" id="sec-16">
@@ -2043,11 +2083,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#16 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section normal shoot-reuse" id="sec-17">
@@ -2124,11 +2159,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       </div>
     </div>
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">採点表（おさる×L3×数値判定）</span><span class="src">feature-ideas/2026-05-14_substack-launch/scoring-checklist.md</span><span class="effect">+5点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#17 ナレッジ追加 採点表（おさる×L3×数値判定） (feature-ideas/2026-05-14_substack-launch/scoring-checklist.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
 <section class="section support shoot-reuse" id="sec-18">
@@ -2191,19 +2221,13 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     
     
     
-    <div class="knowledge-guide">
-      <div class="lab">💡 ナレッジ投入ガイド（このセクションに足すと点が上がる）</div>
-      <ul><li><div class="kg-row"><span class="ttl">読み上げペース基準（6字/秒・30秒/スライド）</span><span class="src">memory/feedback_video_script_pacing.md</span><span class="effect">+3点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#18 ナレッジ追加 読み上げペース基準（6字/秒・30秒/スライド） (memory/feedback_video_script_pacing.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li>
-<li><div class="kg-row"><span class="ttl">動画収録ワークフロー（36px・【Scroll】）</span><span class="src">memory/project_video_recording_workflow.md</span><span class="effect">+2点</span></div><button class="apply-knowledge-btn" onclick="navigator.clipboard.writeText('#18 ナレッジ追加 動画収録ワークフロー（36px・【Scroll】） (memory/project_video_recording_workflow.md)').then(()=>{this.textContent='✅ コピー完了→Discordに貼り付け';this.classList.add('copied');});">💡 このナレッジを入れる</button></li></ul>
-      <div class="kg-hint">ボタンを押すとコピーされます。 Discordに貼り付けて送ると、 私がそのセクションだけ修正＋再デプロイします🌸</div>
-    </div>
   </div>
 </section>
     
   </div>
 
   <footer class="footer">
-    Generated 2026-05-26 23:12 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
+    Generated 2026-05-27 06:30 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
   </footer>
 
 </div>
