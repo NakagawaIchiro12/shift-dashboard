@@ -638,6 +638,78 @@ html, body {
   font-weight: 800;
 }
 
+/* ===== 台本の磨き方 (polish-guide) ===== */
+.toricetsu.polish-guide {
+  padding: 20px 22px;
+}
+.toricetsu.polish-guide h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+.polish-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.polish-step {
+  display: flex;
+  align-items: stretch;
+  background: rgba(0,0,0,0.25);
+  border-radius: 10px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 193, 7, 0.18);
+}
+.polish-step .ps-num {
+  flex: 0 0 42px;
+  font-size: 26px;
+  font-weight: 900;
+  color: #0a0e1a;
+  background: #ffc107;
+  border-radius: 99px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 14px;
+}
+.polish-step .ps-body { flex: 1; }
+.polish-step .ps-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffd87a;
+  margin-bottom: 4px;
+}
+.polish-step .ps-desc {
+  font-size: 13px;
+  color: #d8dde8;
+  line-height: 1.65;
+}
+.polish-step .ps-desc code {
+  background: #1a1a1a;
+  color: #ffd87a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 12px;
+}
+.ps-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 2px 4px 2px 0;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.ps-pill.ps-gold   { background: #ffd700; color: #4a3800; }
+.ps-pill.ps-green  { background: #4caf50; color: #ffffff; }
+.ps-pill.ps-yellow { background: #ffc107; color: #4a3800; }
+.ps-pill.ps-red    { background: #f44336; color: #ffffff; }
+@media (max-width: 480px) {
+  .polish-step .ps-num { flex-basis: 36px; height: 36px; font-size: 22px; margin-right: 10px; }
+  .polish-step .ps-title { font-size: 15px; }
+  .polish-step .ps-desc { font-size: 12px; }
+}
+
 .appendix-heading {
   margin: 40px 32px 12px;
   padding-top: 18px;
@@ -859,16 +931,30 @@ html, body {
   </section>
 
   <div class="timeline">
-    <div class="toricetsu">
-      <h3>📖 このボードの使い方（トリセツ）</h3>
-      <ol>
-        <li><strong>右上の点数バッジを見る</strong>：90+はゴールド、70-89緑、50-69黄、&lt;50赤。低い順に修正対象が見える。</li>
-        <li><strong>🛠️ ブラッシュアップ候補を読む</strong>：そのセクションで何が問題かが自動で書かれている。</li>
-        <li><strong>💡 ナレッジ投入ガイドを読む</strong>：ご主人様の既存ナレッジ（PLAUD録音／memory／knowledge）から「ここに何を入れると何点UP」がわかる。</li>
-        <li><strong>右端の心理動線サイドバー</strong>：スクロールに追従して「今ここ」が黄色く光る。タップで該当セクションに飛べる。</li>
-      </ol>
-      <div class="req-example">
-        ⚡ <strong>即修正依頼</strong>：Discord で <code>#01 ブラッシュアップ</code> や <code>#07 牛糞なしキャベツ肥料の数値入れて</code> と送ると、私が該当セクションだけ修正＋再デプロイ → 同URLが更新されます🌸
+    <div class="toricetsu polish-guide">
+      <h3>🔧 台本の磨き方</h3>
+      <div class="polish-steps">
+        <div class="polish-step">
+          <div class="ps-num">1</div>
+          <div class="ps-body">
+            <div class="ps-title">点数を上げる</div>
+            <div class="ps-desc">右上の <span class="ps-pill ps-gold">90+ ゴールド</span> <span class="ps-pill ps-green">70-89 緑</span> <span class="ps-pill ps-yellow">50-69 黄</span> <span class="ps-pill ps-red">&lt;50 赤</span> を見て、低いセクションから修正</div>
+          </div>
+        </div>
+        <div class="polish-step">
+          <div class="ps-num">2</div>
+          <div class="ps-body">
+            <div class="ps-title">「もっとこうして」を直す</div>
+            <div class="ps-desc">🛠️ <strong>ブラッシュアップ候補</strong> に自動で書かれた問題点を読んで、Discordで <code>#01 ブラッシュアップ</code> と送る</div>
+          </div>
+        </div>
+        <div class="polish-step">
+          <div class="ps-num">3</div>
+          <div class="ps-body">
+            <div class="ps-title">ナレッジを入れていく</div>
+            <div class="ps-desc">💡 <strong>ナレッジ投入ガイド</strong> から「ここに何を入れると何点UP」を見て、PLAUD録音／memory／knowledge の中身を肉付けする</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1741,7 +1827,7 @@ html, body {
   </div>
 
   <footer class="footer">
-    Generated 2026-05-26 19:56 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
+    Generated 2026-05-26 19:59 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
   </footer>
 
 </div>
