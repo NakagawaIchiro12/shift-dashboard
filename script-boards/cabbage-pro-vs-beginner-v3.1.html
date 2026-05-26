@@ -808,6 +808,44 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   color: #8a98b8;
 }
 
+/* メタセクション内のテーブル（L3採点表など） */
+.section.appendix-card table.ap-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 13px;
+}
+.section.appendix-card table.ap-table thead th {
+  background: rgba(255, 216, 122, 0.08);
+  color: #ffd87a;
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 2px solid rgba(255, 216, 122, 0.3);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.section.appendix-card table.ap-table tbody td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #d8dde8;
+  vertical-align: middle;
+}
+.section.appendix-card table.ap-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+.section.appendix-card .star-rating {
+  color: #ffd700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+}
+.section.appendix-card .star-extra {
+  font-size: 11px;
+  color: #8a98b8;
+  margin-left: 4px;
+}
+
 /* 渇望設計3階段カード — ①→②→③ の3ステップフロービュー */
 .section.appendix-card.kgs-card {
   background: rgba(255, 107, 53, 0.06);
@@ -1247,13 +1285,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="ap-toggle">タップで開く ▼</span>
   </summary>
   <div class="ap-body">
-    <div class='ap-table-row'>| 章 | L3機能 | L3立体 | L3感情 | おさる④ |</div>
-<div class='ap-table-row'>|---|---|---|---|---|</div>
-<div class='ap-table-row'>| 章1：オープニング | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |</div>
-<div class='ap-table-row'>| 章2：違い①土 | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |</div>
-<div class='ap-table-row'>| 章3：違い②日付 | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |</div>
-<div class='ap-table-row'>| 章4：違い③育て方 | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |</div>
-<div class='ap-table-row'>| 章5：整理＋CTA | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |</div>
+    <table class="ap-table"><thead><tr><th>章</th><th>L3機能</th><th>L3立体</th><th>L3感情</th><th>おさる④</th></tr></thead><tbody><tr><td>章1：オープニング</td><td><span class="star-rating">⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐</span></td></tr><tr><td>章2：違い①土</td><td><span class="star-rating">⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐</span></td></tr><tr><td>章3：違い②日付</td><td><span class="star-rating">⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐</span></td></tr><tr><td>章4：違い③育て方</td><td><span class="star-rating">⭐⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐⭐</span></td></tr><tr><td>章5：整理＋CTA</td><td><span class="star-rating">⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐</span></td><td><span class="star-rating">⭐⭐⭐</span></td></tr></tbody></table>
 
 <p>---</p>
   </div>
@@ -1359,7 +1391,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
 
   <footer class="footer">
-    Generated 2026-05-26 22:36 JST from 2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md
+    Generated 2026-05-26 22:45 JST from 2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md
   </footer>
 
 </div>
