@@ -915,6 +915,49 @@ html, body {
   border-radius: 8px;
   white-space: nowrap;
 }
+
+/* 共通：アコーディオンパネル（💡全体ナレッジ計画 / 🔧台本の磨き方） */
+.collapsible-panel {
+  margin: 0;
+}
+.collapsible-panel .cp-summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 22px;
+  user-select: none;
+}
+.collapsible-panel .cp-summary::-webkit-details-marker { display: none; }
+.collapsible-panel .cp-title {
+  font-size: 17px;
+  font-weight: 900;
+}
+.collapsible-panel .cp-toggle {
+  font-size: 11px;
+  color: #6a7290;
+  white-space: nowrap;
+}
+.collapsible-panel[open] .cp-toggle::after { content: " ▲"; }
+.collapsible-panel[open] .cp-toggle { color: #ffd87a; }
+.collapsible-panel .cp-body {
+  padding: 0 22px 22px;
+}
+/* global-knowledge アコーディオン化に伴う色調整 */
+.global-knowledge.collapsible-panel { padding: 0; }
+.global-knowledge.collapsible-panel .cp-summary { padding: 16px 22px; }
+.global-knowledge.collapsible-panel .cp-title { color: #ffd87a; }
+.global-knowledge.collapsible-panel[open] .cp-summary {
+  border-bottom: 1px dashed rgba(255,216,122,0.25);
+}
+/* toricetsu/polish-guide アコーディオン化に伴う色調整 */
+.toricetsu.polish-guide.collapsible-panel { padding: 0; }
+.toricetsu.polish-guide.collapsible-panel .cp-title { color: #ffd87a; }
+.toricetsu.polish-guide.collapsible-panel[open] .cp-summary {
+  border-bottom: 1px dashed rgba(255,193,7,0.25);
+}
 @media (max-width: 480px) {
   .global-knowledge { margin: 12px 8px 14px; padding: 16px 14px; }
   .global-knowledge h3 { font-size: 17px; }
@@ -1180,13 +1223,13 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </div>
   </section>
 
-  <section class="global-knowledge"><h3>💡 全体ナレッジ投入計画 <span class="gk-progress">(7/7 投入済)</span></h3><p class="gk-hint">未投入は点数低い順、 投入済みは下に。 「💡入れる」 ボタン押下でDiscord貼付用テキストがコピーされます🌸</p><ul class="gk-list"><li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-01" class="gk-sec-link">#01</a><span class="gk-sec-name">章1：オープニング</span><span class="gk-sec-score" style="color:#06a77d;">73点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">100t→200tの年商成長 権威数字</span><span class="gk-knowledge-effect">+8点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+  <details class="global-knowledge collapsible-panel"><summary class="cp-summary"><span class="cp-title">💡 全体ナレッジ投入計画</span><span class="gk-progress">(7/7 投入済)</span><span class="cp-toggle">タップで開く ▼</span></summary><div class="cp-body"><p class="gk-hint">未投入は点数低い順、 投入済みは下に。 「💡入れる」 ボタン押下でDiscord貼付用テキストがコピーされます🌸</p><ul class="gk-list"><li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-01" class="gk-sec-link">#01</a><span class="gk-sec-name">章1：オープニング</span><span class="gk-sec-score" style="color:#06a77d;">73点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">100t→200tの年商成長 権威数字</span><span class="gk-knowledge-effect">+8点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
 <li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-01" class="gk-sec-link">#01</a><span class="gk-sec-name">章1：オープニング</span><span class="gk-sec-score" style="color:#06a77d;">73点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">自己診断フレーム（エルさん5問版）</span><span class="gk-knowledge-effect">+6点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
 <li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-02" class="gk-sec-link">#02</a><span class="gk-sec-name">章2：違い①「土を作っているか」</span><span class="gk-sec-score" style="color:#ff9f43;">67点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
 <li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-03" class="gk-sec-link">#03</a><span class="gk-sec-name">章3：違い②「苗の植え付け日付を守る」</span><span class="gk-sec-score" style="color:#06a77d;">70点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
 <li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-04" class="gk-sec-link">#04</a><span class="gk-sec-name">章4：違い③「日付通りに順調に育てる」</span><span class="gk-sec-score" style="color:#ff9f43;">65点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
 <li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-05" class="gk-sec-link">#05</a><span class="gk-sec-name">章5：整理とCTA</span><span class="gk-sec-score" style="color:#06a77d;">73点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">読み上げペース基準（6字/秒・30秒/スライド）</span><span class="gk-knowledge-effect">+3点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
-<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-05" class="gk-sec-link">#05</a><span class="gk-sec-name">章5：整理とCTA</span><span class="gk-sec-score" style="color:#06a77d;">73点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">動画収録ワークフロー（36px・【Scroll】）</span><span class="gk-knowledge-effect">+2点</span></div><span class="gk-injected-badge">✅ 投入済</span></li></ul></section>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-05" class="gk-sec-link">#05</a><span class="gk-sec-name">章5：整理とCTA</span><span class="gk-sec-score" style="color:#06a77d;">73点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">動画収録ワークフロー（36px・【Scroll】）</span><span class="gk-knowledge-effect">+2点</span></div><span class="gk-injected-badge">✅ 投入済</span></li></ul></div></details>
 
   <section class="intro">
     <h2>▼ 視聴者の旅路（上から下へ）</h2>
@@ -1195,9 +1238,12 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </section>
 
   <div class="timeline">
-    <div class="toricetsu polish-guide">
-      <h3>🔧 台本の磨き方</h3>
-      <div class="polish-steps">
+    <details class="toricetsu polish-guide collapsible-panel">
+      <summary class="cp-summary">
+        <span class="cp-title">🔧 台本の磨き方</span>
+        <span class="cp-toggle">タップで開く ▼</span>
+      </summary>
+      <div class="cp-body polish-steps">
         <div class="polish-step">
           <div class="ps-num">1</div>
           <div class="ps-body">
@@ -1220,7 +1266,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
           </div>
         </div>
       </div>
-    </div>
+    </details>
 
     
 <section class="section appendix-card kgs-card kgs-prefix">
@@ -1715,7 +1761,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
 
   <footer class="footer">
-    Generated 2026-05-27 07:53 JST from 2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md
+    Generated 2026-05-27 07:58 JST from 2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md
   </footer>
 
 </div>
