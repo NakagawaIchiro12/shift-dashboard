@@ -721,6 +721,84 @@ html, body {
   color: #8a98b8;
 }
 
+/* 渇望設計3階段カード — ①→②→③ の3ステップフロービュー */
+.section.appendix-card.kgs-card {
+  background: rgba(255, 107, 53, 0.06);
+  border: 1px dashed rgba(255, 107, 53, 0.45);
+  padding: 22px 24px;
+}
+.section.appendix-card .ap-badge.kgs-badge {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c1a 100%);
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
+  font-size: 12px;
+}
+.kgs-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 8px;
+}
+.kgs-step {
+  display: flex;
+  align-items: stretch;
+  background: #1c2540;
+  border: 2px solid rgba(255, 216, 122, 0.35);
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+.kgs-num {
+  flex: 0 0 56px;
+  font-size: 32px;
+  font-weight: 900;
+  color: #ffd87a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid rgba(255, 216, 122, 0.22);
+  margin-right: 18px;
+}
+.kgs-content {
+  flex: 1;
+  font-size: 17px;
+  line-height: 1.55;
+  color: #ffffff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.kgs-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 4px 16px;
+  color: #ff6b35;
+  font-weight: 700;
+}
+.kgs-arrow-icon {
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1;
+}
+.kgs-arrow-label {
+  font-size: 14px;
+  color: #ffb58c;
+  background: rgba(255, 107, 53, 0.14);
+  padding: 4px 14px;
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+@media (max-width: 480px) {
+  .kgs-num { flex-basis: 44px; font-size: 26px; margin-right: 12px; }
+  .kgs-content { font-size: 15px; }
+  .kgs-arrow-icon { font-size: 22px; }
+  .kgs-arrow-label { font-size: 12px; padding: 3px 10px; }
+}
+
 .footer {
   text-align: center;
   padding: 40px 24px 60px;
@@ -1663,7 +1741,7 @@ html, body {
   </div>
 
   <footer class="footer">
-    Generated 2026-05-26 19:49 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
+    Generated 2026-05-26 19:56 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
   </footer>
 
 </div>
