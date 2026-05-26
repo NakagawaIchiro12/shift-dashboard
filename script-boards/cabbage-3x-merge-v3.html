@@ -771,7 +771,37 @@ html, body {
   .polish-step .ps-num { flex-basis: 36px; height: 36px; font-size: 22px; margin-right: 10px; }
   .polish-step .ps-title { font-size: 15px; }
   .polish-step .ps-desc { font-size: 12px; }
+
+  /* スマホでサイドバーが横幅圧迫しないよう縮める */
+  .emotion-sidebar { width: 52px !important; padding: 12px 0 !important; }
+  .emotion-sidebar .sb-title { font-size: 9px !important; padding: 0 4px !important; }
+  .emotion-sidebar a { font-size: 10px !important; padding: 4px 2px !important; }
+  .emotion-sidebar a .num { font-size: 11px !important; }
+  .emotion-sidebar a .emotion { font-size: 9px !important; }
+  .emotion-sidebar a .sb-score { font-size: 9px !important; }
+  .emotion-sidebar a .here-tag { display: none !important; }
+  .page { padding-right: 52px !important; }
 }
+
+/* 読み上げ用 Markdown台本リンク（ヒーロー内） */
+.read-script-link {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+.read-script-link a {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 2px solid #ffd87a;
+  border-radius: 99px;
+  color: #ffd87a;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  background: rgba(255, 216, 122, 0.08);
+  transition: all 0.2s;
+}
+.read-script-link a:hover { background: #ffd87a; color: #0a0e1a; }
 
 .appendix-heading {
   margin: 40px 32px 12px;
@@ -1037,6 +1067,9 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <div class="stat"><div class="num">48,300</div><div class="lab">文字数</div></div>
       <div class="stat"><div class="num">134.2<small style="font-size:14px">分</small></div><div class="lab">推定尺</div></div>
       <div class="stat"><div class="num">0+0</div><div class="lab">フック+CTA</div></div>
+    </div>
+    <div class="read-script-link">
+      <a href="2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md" target="_blank">📜 読み上げ用 Markdown 台本を開く</a>
     </div>
   </section>
 
@@ -2170,7 +2203,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
 
   <footer class="footer">
-    Generated 2026-05-26 22:54 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
+    Generated 2026-05-26 23:12 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
   </footer>
 
 </div>
