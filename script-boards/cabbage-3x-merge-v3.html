@@ -272,6 +272,45 @@ html, body {
   font-weight: 600;
 }
 
+/* 撮影区分バッジ — 🆕 新規撮影 / ♻️ 既存動画素材 */
+.shoot-banner {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  border: 2px solid rgba(255,255,255,0.5);
+}
+.shoot-banner.new {
+  background: linear-gradient(135deg, #ff3d00 0%, #ff8c1a 100%);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.shoot-banner.reuse {
+  background: linear-gradient(135deg, #00b894 0%, #1abc9c 100%);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.shoot-banner .icon { font-size: 16px; }
+@media (max-width: 720px) {
+  .shoot-banner {
+    position: static;
+    margin-bottom: 8px;
+    align-self: flex-start;
+  }
+}
+
+.section.shoot-new { border-left: 6px solid #ff3d00; }
+.section.shoot-reuse { border-left: 6px solid #00b894; }
+
 .section .head.hook { background: linear-gradient(135deg, #ff6b35 0%, #d04612 100%); }
 .section .head.core { background: linear-gradient(135deg, #4a6fff 0%, #1f3fcf 100%); }
 .section .head.cta  { background: linear-gradient(135deg, #06a77d 0%, #047a59 100%); }
@@ -695,8 +734,9 @@ html, body {
     </div>
 
     
-<section class="section normal" id="sec-01">
+<section class="section normal shoot-new" id="sec-01">
   <div class="head normal">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
     <div class="position">#01 / 18 · 📄 セクション</div>
     <div class="title">章0：開幕フック</div>
     <div class="subtitle">新規撮影 / 畑撮影</div>
@@ -740,8 +780,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-02">
+<section class="section normal shoot-new" id="sec-02">
   <div class="head normal">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
     <div class="position">#02 / 18 · 📄 セクション</div>
     <div class="title">章0-B：自己紹介＋本日のテーマ</div>
     <div class="subtitle">新規撮影 / 畑撮影</div>
@@ -785,8 +826,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-03">
+<section class="section normal shoot-new" id="sec-03">
   <div class="head normal">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
     <div class="position">#03 / 18 · 📄 セクション</div>
     <div class="title">章0-C：基本パートへのつなぎ</div>
     <div class="subtitle">新規撮影 / 畑撮影</div>
@@ -826,8 +868,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-04">
+<section class="section normal shoot-reuse" id="sec-04">
   <div class="head normal">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#04 / 18 · 📄 セクション</div>
     <div class="title">前半：キャベツ栽培 完全ガイド</div>
     <div class="subtitle">既存動画から流用・撮らなくてOK</div>
@@ -862,8 +905,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-05">
+<section class="section normal shoot-reuse" id="sec-05">
   <div class="head normal">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#05 / 18 · 📄 セクション</div>
     <div class="title">◎視聴者の悩みの言語化</div>
     <div class="subtitle">視聴者への共感</div>
@@ -913,8 +957,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-06">
+<section class="section normal shoot-reuse" id="sec-06">
   <div class="head normal">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#06 / 18 · 📄 セクション</div>
     <div class="title">◎動画を最後まで観るメリットの提示</div>
     
@@ -964,8 +1009,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-07">
+<section class="section normal shoot-reuse" id="sec-07">
   <div class="head normal">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#07 / 18 · 📄 セクション</div>
     <div class="title">◎結論</div>
     <div class="subtitle">テーマの中心</div>
@@ -1015,8 +1061,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-08">
+<section class="section normal shoot-reuse" id="sec-08">
   <div class="head normal">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#08 / 18 · 📄 セクション</div>
     <div class="title">◆用意するものと使い方</div>
     
@@ -1067,8 +1114,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section core" id="sec-09">
+<section class="section core shoot-reuse" id="sec-09">
   <div class="head core">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#09 / 18 · 🔥 本論</div>
     <div class="title">◆10月からキャベツを収穫する時の年間スケジュール</div>
     
@@ -1122,8 +1170,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section core" id="sec-10">
+<section class="section core shoot-reuse" id="sec-10">
   <div class="head core">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#10 / 18 · 🔥 本論</div>
     <div class="title">◎結論部分の深掘り</div>
     <div class="subtitle">納得感のある理由</div>
@@ -1175,8 +1224,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-11">
+<section class="section normal shoot-reuse" id="sec-11">
   <div class="head normal">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#11 / 18 · 📄 セクション</div>
     <div class="title">◎信憑性のある根拠</div>
     
@@ -1213,8 +1263,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-12">
+<section class="section normal shoot-reuse" id="sec-12">
   <div class="head normal">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#12 / 18 · 📄 セクション</div>
     <div class="title">◎＋αの 話</div>
     <div class="subtitle">熱量の伝達</div>
@@ -1264,8 +1315,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-13">
+<section class="section normal shoot-new" id="sec-13">
   <div class="head normal">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
     <div class="position">#13 / 18 · 📄 セクション</div>
     <div class="title">つなぎ：基本から、決定的な違いへ</div>
     <div class="subtitle">新規撮影 / 畑撮影</div>
@@ -1308,8 +1360,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-14">
+<section class="section normal shoot-reuse" id="sec-14">
   <div class="head normal">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#14 / 18 · 📄 セクション</div>
     <div class="title">後半：プロと初心者の、決定的な違い3つ</div>
     <div class="subtitle">既存動画から流用・撮らなくてOK</div>
@@ -1350,8 +1403,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-15">
+<section class="section normal shoot-reuse" id="sec-15">
   <div class="head normal">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#15 / 18 · 📄 セクション</div>
     <div class="title">章2：違い①「土を作っているか」</div>
     <div class="subtitle">畑撮影・約5:30</div>
@@ -1401,8 +1455,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-16">
+<section class="section normal shoot-reuse" id="sec-16">
   <div class="head normal">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#16 / 18 · 📄 セクション</div>
     <div class="title">章3：違い②「苗の植え付け日付を守る」</div>
     <div class="subtitle">畑撮影・約4:30</div>
@@ -1445,8 +1500,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section normal" id="sec-17">
+<section class="section normal shoot-reuse" id="sec-17">
   <div class="head normal">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#17 / 18 · 📄 セクション</div>
     <div class="title">章4：違い③「日付通りに順調に育てる」</div>
     <div class="subtitle">畑撮影・約6:00</div>
@@ -1496,8 +1552,9 @@ html, body {
     </div>
   </div>
 </section>
-<section class="section support" id="sec-18">
+<section class="section support shoot-reuse" id="sec-18">
   <div class="head support">
+    <span class="shoot-banner reuse"><span class="icon">♻️</span>既存動画から流用・撮らなくてOK</span>
     <div class="position">#18 / 18 · 📎 補足</div>
     <div class="title">章5：整理とCTA</div>
     <div class="subtitle">畑撮影・約3:30</div>
@@ -1545,7 +1602,7 @@ html, body {
   </div>
 
   <footer class="footer">
-    Generated 2026-05-26 15:21 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
+    Generated 2026-05-26 15:38 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
   </footer>
 
 </div>
