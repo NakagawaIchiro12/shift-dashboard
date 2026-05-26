@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI環境構築 + ナレッジ構築 + スキル作成 パッケージ | 100t農家のイチロウ</title>
+  <style>
+:root {
+  --bg: #0a0e1a;
+  --card: #141b2e;
+  --accent: #ffd87a;
+  --text: #e6ecf5;
+  --muted: #8a98b8;
+  --border: rgba(255,255,255,0.08);
+  --hook: #ff6b35;
+  --cta: #06a77d;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+  font-size: 16px; line-height: 1.75;
+  scroll-behavior: smooth;
+}
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  padding: 32px 24px;
+  border-right: 1px solid var(--border);
+  background: linear-gradient(180deg, #0a0e1a 0%, #131a2b 100%);
+  overflow-y: auto;
+}
+.sidebar h1 {
+  font-size: 16px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.sidebar .sub {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.nav-link {
+  display: block;
+  padding: 8px 10px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+.nav-link:hover {
+  background: rgba(255,216,122,0.08);
+  color: var(--accent);
+}
+main {
+  padding: 48px 56px;
+  max-width: 880px;
+}
+.md-section {
+  margin-bottom: 64px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+.md-section:last-child {
+  border-bottom: none;
+}
+h1, h2, h3, h4 {
+  color: var(--text);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.4;
+}
+h1 {
+  font-size: 32px;
+  color: var(--accent);
+  border-left: 4px solid var(--accent);
+  padding-left: 16px;
+}
+h2 {
+  font-size: 24px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 8px;
+}
+h3 {
+  font-size: 18px;
+  color: var(--accent);
+}
+p { margin: 0.6em 0; color: var(--text); }
+ul, ol { padding-left: 1.6em; }
+li { margin: 0.3em 0; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+code {
+  background: rgba(255,255,255,0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "Cascadia Code", Consolas, Monaco, monospace;
+  font-size: 13px;
+  color: #ffd87a;
+}
+pre {
+  background: #0d1426;
+  padding: 16px 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  font-size: 13px;
+  line-height: 1.6;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: #c8d2e8;
+}
+blockquote {
+  border-left: 4px solid var(--accent);
+  padding-left: 16px;
+  margin: 1em 0;
+  color: var(--muted);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  background: var(--card);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+th {
+  background: rgba(255,216,122,0.08);
+  color: var(--accent);
+  font-weight: 600;
+}
+a {
+  color: var(--cta);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+strong { color: var(--accent); }
+
+@media (max-width: 880px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar {
+    position: relative;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  main { padding: 24px 16px; }
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h1>クライアントさま向け<br>AI環境パッケージ</h1>
+      <div class="sub">100t農家のイチロウ × あいなちゃん</div>
+      <nav>
+        <a href="#cover" class="nav-link">🌸 はじめに</a><a href="#overview" class="nav-link">🗺 パッケージ全体像</a><a href="#environment" class="nav-link">⚙️ 環境構築</a><a href="#knowledge" class="nav-link">🧠 ナレッジ構築</a><a href="#skills" class="nav-link">🛠 スキル一覧+設計フロー</a><a href="#onboarding" class="nav-link">📅 オンボーディング</a><a href="#pricing" class="nav-link">💰 プラン・価格</a>
+      </nav>
+    </aside>
+    <main>
+      <section id="cover" class="md-section"><h1 id="ai">AI環境構築 ＋ ナレッジ構築 ＋ スキル作成 パッケージ</h1>
+<p>「0秒で今すぐ使える」AI環境を、クライアントさまにそのまま渡せる形に体系化しました。</p>
+<hr />
+<h2 id="_1">このパッケージで提供するもの（一言で）</h2>
+<pre><code>クライアントさまが本日「あいなちゃん、議事録お願い」と話しかけたら
+そのままビジネスが回り始める、AI秘書環境一式。
+</code></pre>
+<p>僕（100t農家のイチロウ）が、16年100t出荷の現場仕事の合間に<br />
+AI秘書あいなちゃんを育ててきた経験値を、丸ごとテンプレ化しています。</p>
+<hr />
+<h2 id="_2">このページの構成</h2>
+<ol>
+<li><strong>環境構築</strong> — Claude Code + プラグイン + .env 体系（<a href="02_environment.md">詳細</a>）</li>
+<li><strong>ナレッジ構築</strong> — memory ＋ 部署別ナレッジ運用（<a href="03_knowledge.md">詳細</a>）</li>
+<li><strong>スキル作成</strong> — 既存16スキル＋新規スキル設計フロー（<a href="04_skills.md">詳細</a>）</li>
+<li><strong>オンボーディング</strong> — 初日から1ヶ月の流れ（<a href="05_onboarding.md">詳細</a>）</li>
+<li><strong>プラン・価格</strong> — 1回構築 / 1ヶ月伴走 / 3ヶ月伴走（<a href="06_pricing.md">詳細</a>）</li>
+</ol>
+<hr />
+<h2 id="_3">まず見るならここ</h2>
+<p>🔢 ① 5分で全体像 → 本ページ<br />
+🔢 ② 30分で詳細 → 02〜06 を順に<br />
+🔢 ③ 体験してみる → オンボーディング 1日目「初回zoom」から</p>
+<hr />
+<p>ご質問・実演希望は、LINE 公式アカウントから「環境構築 相談」と一言どうぞ。</p></section><section id="overview" class="md-section"><h1 id="_1">パッケージ全体像</h1>
+<pre><code>┌──────────────────────────────────────────────────────────────┐
+│                                                              │
+│   クライアントさまの AI環境 = 3層構造                          │
+│                                                              │
+│   ┌──────────────────┐  ┌──────────────────┐  ┌────────────┐ │
+│   │ 1. 環境構築      │  │ 2. ナレッジ構築  │  │ 3. スキル化│ │
+│   │  Claude Code     │→│  CLAUDE.md       │→│  16+スキル  │ │
+│   │  ＋プラグイン     │  │  ＋memory/        │  │  ＋オリジナル│ │
+│   │  ＋.env体系       │  │  ＋部署別構成     │  │  作成      │ │
+│   └──────────────────┘  └──────────────────┘  └────────────┘ │
+│                                                              │
+│              ↓ 1ヶ月伴走で「自走できる」状態に                │
+│                                                              │
+│   ┌──────────────────────────────────────────────────────┐   │
+│   │ クライアントさまが、自分のビジネスをAI秘書と         │   │
+│   │ 音声・テキストでぐるぐる回せる状態                   │   │
+│   └──────────────────────────────────────────────────────┘   │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h2 id="3">3層の中身</h2>
+<h3 id="1">1. 環境構築（インフラ層）</h3>
+<ul>
+<li>Claude Code（VS Code拡張）一式</li>
+<li>専用CLAUDE.md（ご主人様/業界/業種に合わせた）</li>
+<li>必須プラグイン（Discord / UTAGE / 議事録 / 動画編集）</li>
+<li>API キーの集約設計（複数PC同期OK）</li>
+</ul>
+<h3 id="2">2. ナレッジ構築（記憶層）</h3>
+<ul>
+<li>memory/ 自動ロード型ファイル</li>
+<li>部署別ナレッジ（YouTube / LP / 個別相談 / 商品企画 / ツール / etc）</li>
+<li>ご主人様の声色・文体ルール</li>
+<li>商品ナレッジ（価格・ターゲット・USP）</li>
+</ul>
+<h3 id="3_1">3. スキル化（実行層）</h3>
+<ul>
+<li>議事録わかるちゃん（gijiroku-chan）</li>
+<li>台本わかるちゃん（script-board-generator）</li>
+<li>パート管理ちゃん / 栽培管理ちゃん / etc</li>
+<li>UTAGE系6スキル（ファネル・LP・配信）</li>
+<li>Remotion系20+スキル（動画編集）</li>
+<li>クライアント業界特化スキル（オリジナル設計）</li>
+</ul>
+<hr />
+<h2 id="100t">実例：100t農家のイチロウの環境</h2>
+<p>僕自身が今、 <strong>9スキル + 愛菜ちゃん本体 + Remotion 20+</strong> で<br />
+以下を回しています：</p>
+<ul>
+<li>📺 YouTube動画の台本生成（台本わかるちゃん）</li>
+<li>📞 個別相談の議事録化（gijiroku-chan）</li>
+<li>📝 LP制作（utage-lp-writer + utage-image-pipeline）</li>
+<li>🏖 商品企画の壁打ち（ChatGPT おさるAI個別相談連携）</li>
+<li>🛠 自動化（X発信 / LINE配信 / Discord音声）</li>
+<li>🌱 栽培管理（saibai-kanri-chan・saibai-quality-chan）</li>
+<li>👥 パート管理（part-kanri-chan）</li>
+</ul>
+<p>→ これを <strong>業界・業種に合わせて再構築</strong> してお渡しします。</p>
+<hr />
+<h2 id="_2">なぜ僕がやるのか</h2>
+<ul>
+<li>16年100t農家としての現場感覚（机上ではない）</li>
+<li>AI秘書を <strong>自分の生活と仕事に組み込んできた1年間</strong> の生の試行錯誤</li>
+<li>Brain商品「あいなちゃん」シリーズの設計者本人</li>
+<li>自分で全部回しているので、 <strong>何が無理で何が回るか</strong> を体感で知っている</li>
+</ul>
+<p>「AI詳しい人」ではなく、 <strong>「16年100t農家が、AIで仕事と生活を整理してきた」</strong> という現場視点で、<br />
+クライアントさまのビジネスに移植します。</p>
+<hr />
+<h2 id="_3">次に読むのは</h2>
+<p>→ <a href="02_environment.md">02_environment.md</a> — 環境構築 詳細</p></section><section id="environment" class="md-section"><h1 id="_1">環境構築 詳細</h1>
+<h2 id="1-claude-codevs-code">① Claude Code（VS Code 拡張）</h2>
+<p>クライアントさまの作業環境を <strong>Claude Code 中心</strong> で組みます。</p>
+<h3 id="_2">何をセットアップするか</h3>
+<ul>
+<li>VS Code に Claude Code 拡張をインストール</li>
+<li>Anthropic アカウントとAPIキー登録（クライアントさま名義）</li>
+<li>既定の作業ディレクトリ設定（業務ごとに分割）</li>
+<li>ターミナル統合（PowerShell / Bash 自動切替）</li>
+</ul>
+<h3 id="vs-code">なぜVS Codeか</h3>
+<ul>
+<li>ファイル編集・コマンド実行・AIチャットが <strong>1画面で完結</strong></li>
+<li>Git 連携・拡張機能が豊富</li>
+<li>業務データを <strong>ローカルPC</strong> に置けるので情報漏洩リスクが低い</li>
+<li>マルチPC運用しやすい</li>
+</ul>
+<hr />
+<h2 id="2-claudemd">② CLAUDE.md（プロジェクト指示書）</h2>
+<p>業界・業種・ご担当者ごとに <strong>専用CLAUDE.md</strong> を書き起こします。</p>
+<h3 id="_3">含まれるもの</h3>
+<pre><code class="language-markdown"># クライアントさま専用 CLAUDE.md
+
+## 🚨 絶対ルール
+（業界の守るべきルール・コンプライアンス・声色 など）
+
+## 🏗 AI 体制図
+（メインAI → サブAI の役割分担）
+
+## 📂 ナレッジマップ
+（部署別フォルダの入口）
+
+## 🎙 受信時の自動アクション
+（音声受信・画像受信時の処理フロー）
+</code></pre>
+<p>→ クライアントさまが「何を言えば何が起こるか」が明示される。<br />
+→ 引き継ぎ・複数人運用が破綻しない。</p>
+<hr />
+<h2 id="3">③ プラグイン構成</h2>
+<p>業務に必要なプラグインを <strong>過不足なく</strong> 入れます。</p>
+<h3 id="_4">基本プラグイン（全クライアント共通）</h3>
+<ul>
+<li><strong>Discord プラグイン</strong>：スマホからAI操作（Bot通信）</li>
+<li><strong>議事録・音声プラグイン</strong>：whisperでローカル文字起こし</li>
+<li><strong>TTS プラグイン</strong>：VOICEVOX / edge-tts でAI返答音声化</li>
+</ul>
+<h3 id="_5">業務特化プラグイン（クライアントさま次第）</h3>
+<ul>
+<li>マーケティング系：UTAGE / Substack / X発信自動化</li>
+<li>動画制作系：Remotion / aislides</li>
+<li>業界系：（クライアントさま業界に合わせて構築）</li>
+</ul>
+<hr />
+<h2 id="4-env-api">④ .env / APIキー 集約設計</h2>
+<h3 id="_6">課題（よくあるトラブル）</h3>
+<ul>
+<li>複数PCで作業する時、片方PCに .env が無くて APIキー使えない</li>
+<li>プロジェクト別 .env が散らばって管理不能</li>
+<li>バックアップが取れない</li>
+</ul>
+<h3 id="_7">僕の解決策</h3>
+<pre><code>~/.openai/config.env          ← OPENAI_API_KEY
+~/.gemini/config.env          ← GEMINI_API_KEY
+~/.youtube-api/config.env     ← YouTube Data API
+~/.x-auto-posting/.env        ← X発信
+~/.claude/channels/discord/.env ← Discord Bot
+~/.{業界専用}/config.env       ← クライアントさま業界固有
+</code></pre>
+<p>→ <strong>6つの中央ファイルだけ</strong> バックアップすれば全PCで動く構造</p>
+<p>→ 1Password / Bitwarden で「中央ファイルの中身」を保管<br />
+→ 新PCではご主人様がメモ帳で開いて貼り付け → 完了</p>
+<p>→ 詳細は実際の設計書 <code>.claude/env-inventory.md</code> を参照</p>
+<hr />
+<h2 id="5-discord-bot">⑤ Discord Bot 接続（オプション）</h2>
+<p>スマホから「あいなちゃん、◯◯お願い」と音声で話しかけて、<br />
+AIに作業させる体験をクライアントさまにも提供できます。</p>
+<ul>
+<li>専用Botをクライアントさま名義で作成</li>
+<li>アクセス制御（access.json）でセキュリティ確保</li>
+<li>部署別フォーラムで案件ごとにスレッド管理</li>
+<li>音声メッセージ→Whisper→Claude→TTS で全部声で完結</li>
+</ul>
+<hr />
+<h2 id="6-5">⑥ セキュリティ5点チェック（毎環境必須）</h2>
+<p>クライアントさまに渡す前に、以下5点を必ず通します：</p>
+<p>🔢 ① APIキー直書きゼロ（.env管理＋ACLロック）<br />
+🔢 ② 認証強度（パスワード・2FA）<br />
+🔢 ③ エラー情報漏洩なし（ログ流出対策）<br />
+🔢 ④ 入力検証（インジェクション対策）<br />
+🔢 ⑤ レート制限（DDoS対策・コスト爆発防止）</p>
+<p>→ 「動く」と「安全に公開できる」は別物。両方クリアして納品。</p>
+<hr />
+<h2 id="_8">完成イメージ</h2>
+<pre><code>クライアントさまのPC：
+  ├── .openai/config.env
+  ├── .gemini/config.env
+  ├── .business-{業種}/config.env
+  └── Documents/
+       └── {会社名}_AI/
+           ├── CLAUDE.md           ← 専用指示書
+           ├── .claude/
+           │   ├── skills/         ← 業務スキル群
+           │   ├── commands/       ← スラッシュコマンド
+           │   └── settings.json   ← 環境設定
+           ├── 部署_営業/
+           ├── 部署_経理/
+           ├── 部署_企画/
+           ├── memory/             ← 自動ロード型ナレッジ
+           └── knowledge/          ← 業務ナレッジ・商品情報
+</code></pre>
+<p>→ クライアントさまは VS Code を開いて「あいなちゃん、議事録お願い」と話すだけ。</p>
+<hr />
+<p>→ 次に読むのは <a href="03_knowledge.md">03_knowledge.md</a> — ナレッジ構築 詳細</p></section><section id="knowledge" class="md-section"><h1 id="_1">ナレッジ構築 詳細</h1>
+<h2 id="1-memory">① memory/ 自動ロード型ナレッジ</h2>
+<p>クライアントさまの <strong>個性・声色・好み・過去事例</strong> を、<br />
+AI（Claude）が <strong>会話のたびに自動で読み込む</strong> 形に整理します。</p>
+<h3 id="memory">memory/ の中身</h3>
+<pre><code>memory/
+├── MEMORY.md                       ← インデックス（最大200行）
+├── user_profile.md                 ← クライアントさまの基本情報
+├── feedback_voice.md               ← 声色・文体ルール
+├── feedback_no_xxx.md              ← NGルール（やってはいけない事）
+├── project_xxx.md                  ← 進行中プロジェクト
+├── reference_xxx.md                ← 外部リソース（Linear / Slack 等）
+└── ...
+</code></pre>
+<h3 id="_2">自動ロードの仕組み</h3>
+<ul>
+<li>VS Codeで Claude Code 起動するたびに <code>MEMORY.md</code> を読み込む</li>
+<li>ご主人様の質問に応じて、関連する個別ファイルを参照</li>
+<li>ご主人様が「これ覚えて」と言うと、私（Claude）が自動で新規memoryを作成</li>
+</ul>
+<p>→ クライアントさまは <strong>「これ覚えて」「これ忘れて」と言うだけ</strong> で、<br />
+　 AI秘書の記憶が育っていく。</p>
+<hr />
+<h2 id="2">② 部署別フォルダ構成</h2>
+<p>業務領域ごとに <strong>フォルダ分割</strong> して、情報の動線を整理します。</p>
+<h3 id="100t">例：100t農家のイチロウの場合</h3>
+<pre><code>部署_YouTube動画/        ← 動画台本・撮影記録・編集ノート
+部署_LP制作/             ← LP原稿・LPボード生成物
+部署_UTAGEちゃん/        ← LINE配信・ファネル
+部署_Substack/           ← 長文記事
+部署_すらいどちゃん/      ← プレゼン用スライド
+部署_サムネ設計/          ← YouTubeサムネ・X記事サムネ
+部署_労務管理/            ← パートさん管理
+部署_個別相談/            ← 個別相談 案件
+部署_作業ログ/            ← 議事録・進捗
+</code></pre>
+<p>→ クライアントさま業界に合わせて 5〜10部署 設計します。</p>
+<h3 id="_3">ルール</h3>
+<ul>
+<li>部署フォルダ直下には <strong>README.md</strong> を置く（その部署の運用ルール）</li>
+<li>案件ごとに <strong>日付＋プロジェクト名</strong> のサブフォルダ</li>
+<li>完了案件は archive/ に移動</li>
+</ul>
+<hr />
+<h2 id="3-knowledge">③ knowledge/ 業務ナレッジ</h2>
+<p>商品・顧客・業界の <strong>不変ナレッジ</strong> をここに集約。</p>
+<h3 id="_4">中身の例</h3>
+<pre><code>knowledge/
+├── products/                       ← 商品ごと 1ファイル
+│   ├── basic_19000.md
+│   ├── industry_98000.md
+│   └── pro_300000.md
+├── customer-personas/              ← 顧客ペルソナ
+├── industry-knowledge/             ← 業界の常識・トレンド
+└── funnel-plan.md                  ← 商品間の関係性 一元化
+</code></pre>
+<h3 id="_5">重要ルール</h3>
+<ul>
+<li><strong>1商品 1ファイル</strong>（混ぜない）</li>
+<li>商品間の関係性は <code>funnel-plan.md</code> に集約</li>
+<li>商品ファイルに他商品の情報を混ぜると、AI混乱の原因</li>
+</ul>
+<p>→ これは僕が農場経営で「キャベツ・白菜・人参を別ファイル管理」で<br />
+　 学んだ教訓を、商品ナレッジに適用したもの。</p>
+<hr />
+<h2 id="4-feedback_voice">④ 声色・文体ルール（feedback_voice）</h2>
+<p>クライアントさまの <strong>個性が滲む発信</strong> をAIが模倣できるように、<br />
+以下を文字化します：</p>
+<pre><code>🎤 一人称（僕 / 私 / 俺 / etc）
+🎤 文末（です・ます / だ・である）
+🎤 絵文字（使う / 使わない）
+🎤 比喩（OK / NG）
+🎤 過剰自虐（OK / NG）
+🎤 数字を出すか
+🎤 体験談ベース or 理論ベース
+🎤 「ぜひ」「実は」など好み避け語
+</code></pre>
+<p>→ これがあると、X発信・LINE配信・LPコピー がご自身の声でしっくり出てくる。</p>
+<hr />
+<h2 id="5">⑤ ナレッジ更新フロー（運用設計）</h2>
+<p>ナレッジは <strong>生もの</strong>。3ヶ月で陳腐化する。</p>
+<p>僕の運用：</p>
+<p>🔢 ① 週次：新しい学び・経験を memory に追加<br />
+🔢 ② 月次：商品ナレッジ・価格・USPの見直し<br />
+🔢 ③ 半年：MEMORY.md インデックスの整理・古いmemoryアーカイブ<br />
+🔢 ④ 年次：部署構成・フォルダ構成の見直し</p>
+<p>→ 「ナレッジ管理」自体をクライアントさまの <strong>定期業務</strong> に組み込みます。</p>
+<hr />
+<h2 id="6-chatgpt-gpts">⑥ ChatGPT GPTs との連携</h2>
+<p>クライアントさまが既に ChatGPT GPTs を持っている場合、<br />
+Claude Code 側のナレッジを GPTs にもインポートできます：</p>
+<ul>
+<li>knowledge/ の内容を GPT カスタム指示に投入</li>
+<li>ご主人様が Claude Code でも ChatGPT GPTs でも同じ AI体験</li>
+</ul>
+<p>→ 「ChatGPT派」のクライアントさまも、ナレッジ資産を活かせる。</p>
+<hr />
+<h2 id="_6">完成イメージ</h2>
+<pre><code>3ヶ月後のクライアントさま：
+
+「あいなちゃん、先週の◯◯さんとの打ち合わせ、
+　決まったこと教えて」
+
+→ AI が memory + 部署_営業/2026-05-XX_◯◯_meeting.md を
+　 自動参照して、3秒で回答
+
+「あいなちゃん、来週の◯◯記事、僕の声で書いて」
+
+→ AI が feedback_voice + knowledge/products を参照して、
+　 クライアントさま本人の声で記事生成
+</code></pre>
+<hr />
+<p>→ 次に読むのは <a href="04_skills.md">04_skills.md</a> — スキル一覧 + 新規設計フロー</p></section><section id="skills" class="md-section"><h1 id="_1">スキル一覧 + 新規スキル設計フロー</h1>
+<h2 id="1">① 既存スキル（汎用テンプレ）</h2>
+<p>クライアントさまにそのまま渡せる、<strong>業界共通スキル群</strong>：</p>
+<h3 id="_2">議事録・対話系</h3>
+<table>
+<thead>
+<tr>
+<th>スキル名</th>
+<th>役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gijiroku-chan</code></td>
+<td>録音→要点／決定事項／宿題 3項整理</td>
+</tr>
+<tr>
+<td><code>愛菜ちゃん本体</code></td>
+<td>司令塔（業務担当ミニAIを呼び出す）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="utage">マーケティング系（UTAGEファミリー）</h3>
+<table>
+<thead>
+<tr>
+<th>スキル名</th>
+<th>役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>utage-knowledge-builder-leo</code></td>
+<td>自社ビジネスのナレッジ構造化</td>
+</tr>
+<tr>
+<td><code>utage-lp-writer-leo</code></td>
+<td>LP雛形 → コピー清書 → UTAGE反映</td>
+</tr>
+<tr>
+<td><code>utage-image-pipeline-leo</code></td>
+<td>FV画像＋特典画像 一式生成</td>
+</tr>
+<tr>
+<td><code>utage-step-writer-leo</code></td>
+<td>LINEステップ配信文 + ペイロード生成</td>
+</tr>
+<tr>
+<td><code>utage-funnel-connect-leo</code></td>
+<td>ファネル全体の接続（LP→シナリオ→event）</td>
+</tr>
+<tr>
+<td><code>utage-skillpack-installer-leo</code></td>
+<td>CAMP特典ZIPの自動展開</td>
+</tr>
+</tbody>
+</table>
+<h3 id="remotion">動画制作系（Remotionファミリー）</h3>
+<table>
+<thead>
+<tr>
+<th>スキル名</th>
+<th>役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>step01-context</code> 〜 <code>step20-highlight-final</code></td>
+<td>動画制作20段階完全自動化</td>
+</tr>
+<tr>
+<td><code>remotion-best-practices</code></td>
+<td>Remotion設計ベストプラクティス</td>
+</tr>
+<tr>
+<td><code>naoki-slide</code></td>
+<td>プレゼンスライド HTML生成</td>
+</tr>
+</tbody>
+</table>
+<h3 id="web">Web制作系</h3>
+<table>
+<thead>
+<tr>
+<th>スキル名</th>
+<th>役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wireframe-chan</code></td>
+<td>LPワイヤフレーム ASCII図＋HTMLモック</td>
+</tr>
+<tr>
+<td><code>script-board-generator</code></td>
+<td>動画台本→LPボード形式の視覚化</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">業務特化系（業界によって取捨選択）</h3>
+<table>
+<thead>
+<tr>
+<th>スキル名</th>
+<th>役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>part-kanri-chan</code></td>
+<td>パートさん出勤管理（労務系）</td>
+</tr>
+<tr>
+<td><code>saibai-kanri-chan</code></td>
+<td>栽培計画立案（農業系）</td>
+</tr>
+<tr>
+<td><code>saibai-quality-chan</code></td>
+<td>計画の品質チェック</td>
+</tr>
+<tr>
+<td><code>launch-chan</code></td>
+<td>ローンチ商品設計伴走</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2">② 新規スキル設計フロー（クライアントさま業界特化）</h2>
+<p>クライアントさまの業務に合わせて <strong>オリジナルスキル</strong> を作る5ステップ：</p>
+<h3 id="step-130zoom">Step 1：業務棚卸し（30分zoom）</h3>
+<p>「毎日・毎週・毎月、何度も繰り返す業務」を5〜10個リストアップ。<br />
+各業務について：<br />
+- 入力（何を見て）<br />
+- 加工（どう変換して）<br />
+- 出力（何を作るか）</p>
+<h3 id="step-2">Step 2：自動化候補の絞り込み</h3>
+<p>「これがAIに渡せたら楽」な3〜5個を選定。<br />
+基準：<br />
+- 頻度が高い（週1以上）<br />
+- 形式が定型（プロンプトに落とせる）<br />
+- 失敗してもリカバリー可能</p>
+<h3 id="step-3">Step 3：スキル仕様書 作成</h3>
+<p>各スキルに対して：</p>
+<pre><code class="language-yaml">name: skill-name
+description: 何をするか
+inputs: 何を受け取るか
+processing: 何を行うか
+outputs: 何を出すか
+triggers: いつ起動するか
+</code></pre>
+<h3 id="step-4">Step 4：実装＋テスト</h3>
+<p>僕が実装＋セルフテスト＋クライアントさまレビュー。</p>
+<h3 id="step-5">Step 5：本番投入＋運用ドキュメント</h3>
+<p>クライアントさま用 README に「使い方・トラブルシュート・改善ポイント」を整理。</p>
+<hr />
+<h2 id="3">③ スキル設計の哲学</h2>
+<p>僕がスキルを作る時の <strong>3原則</strong>：</p>
+<h3 id="1-0">1. 「0秒で今すぐ使える」状態で渡す</h3>
+<p>クライアントさまが受け取って、<strong>勉強しなくても使える</strong> こと。<br />
+チュートリアル不要、起動コマンド1個で完結。</p>
+<h3 id="2_1">2. 「クライアントさま自身が育てられる」設計</h3>
+<p>僕がいなくなっても、クライアントさま本人が修正・拡張できるように：<br />
+- スキルファイルは Markdown（プログラミング不要）<br />
+- 起動条件は自然言語のキーワード<br />
+- ナレッジファイルは平易な日本語</p>
+<h3 id="3_1">3. 「他のスキルと連携できる」設計</h3>
+<p>単体で完結するのではなく、 <strong>連鎖</strong> できる：<br />
+- <code>gijiroku-chan</code> → <code>learn-share</code> → <code>utage-step-writer</code> のように<br />
+- スキル同士の入出力を Markdown ファイルでつなぐ</p>
+<hr />
+<h2 id="4-learn-share">④ 学習＋発信の自動化（/learn-share コマンド）</h2>
+<p>クライアントさまが学んだこと（外部講義・読書・対話）を<br />
+<strong>48時間以内に X投稿 + LINE配信 + ブログ</strong> の3形態に加工する<br />
+スラッシュコマンドも提供します。</p>
+<pre><code>/learn-share &lt;音声 or URL or テキスト&gt;
+  ↓
+  Phase 1: 取り込み（whisperで文字起こし）
+  Phase 2: 学びの抽出（5項目）
+  Phase 3: 3形態生成（X / LINE / Substack）
+  Phase 4: 自動投稿準備（オプション）
+  Phase 5: 48時間期限管理
+</code></pre>
+<p>→ クライアントさまの <strong>発信頻度</strong> が劇的に上がります。<br />
+　 学び→放置 のループから抜け出せる。</p>
+<hr />
+<h2 id="5-zip">⑤ 既存ZIPからのスキルパック展開</h2>
+<p>CAMP特典・他講座の特典 等で受け取った <strong>スキルパックZIP</strong> は、<br />
+<code>utage-skillpack-installer-leo</code> で自動展開できます：</p>
+<ul>
+<li>ZIPを受け取る</li>
+<li><code>スキルパックをセットアップして</code> と言う</li>
+<li><code>.claude/skills/</code> <code>knowledge-pack/</code> <code>templates/</code> に自動配置</li>
+</ul>
+<p>→ クライアントさまが講座で受け取ったスキル資産を活かせる。</p>
+<hr />
+<h2 id="6">⑥ スキル一覧 確認方法</h2>
+<p>セットアップ後、クライアントさまはいつでも：</p>
+<pre><code>あいなちゃん、今使えるスキル一覧 教えて
+</code></pre>
+<p>→ AI が <code>.claude/skills/</code> を走査して、 使える機能を整理して提示。</p>
+<hr />
+<p>→ 次に読むのは <a href="05_onboarding.md">05_onboarding.md</a> — オンボーディングの流れ</p></section><section id="onboarding" class="md-section"><h1 id="1">オンボーディング 初日〜1ヶ月の流れ</h1>
+<h2 id="_1">概要</h2>
+<p>「契約 → 1ヶ月後に自走できる」状態までの <strong>5週間ロードマップ</strong>。<br />
+クライアントさまが何をすべきか、僕が何を提供するかが透明な設計。</p>
+<hr />
+<h2 id="week-0">Week 0：契約 → 環境準備（事前）</h2>
+<h3 id="_2">クライアントさま側</h3>
+<ul>
+<li>契約書サイン</li>
+<li>Anthropic アカウント作成</li>
+<li>主要API取得（OpenAI / Gemini / その他業界特化API）</li>
+<li>VS Code インストール</li>
+<li>Discord アカウント準備（任意）</li>
+</ul>
+<h3 id="_3">僕側</h3>
+<ul>
+<li>業界・業務のリサーチ</li>
+<li>専用CLAUDE.md の下書き</li>
+<li>スキル選定（既存16スキルから業界特化版を 3〜5個選ぶ）</li>
+<li>不足スキルのカスタム設計</li>
+</ul>
+<hr />
+<h2 id="week-1zoom-90">Week 1：初回zoom 90分 + 環境セットアップ</h2>
+<h3 id="day-1zoom-90">Day 1：初回zoom 90分</h3>
+<p>📅 90分zoom（画面共有 + 操作実演）</p>
+<p>🔢 ① クライアントさまPCに Claude Code セットアップ<br />
+🔢 ② CLAUDE.md 投入（その場で読み合わせ）<br />
+🔢 ③ memory/ 基本構造 作成<br />
+🔢 ④ 既存スキル 3〜5個 を一気にインストール<br />
+🔢 ⑤ サンプルタスクで体験（議事録生成・LP雛形 等）</p>
+<p>→ ここで <strong>「あいなちゃん」がクライアントさま PC で稼働開始</strong>。</p>
+<h3 id="day-2-7">Day 2-7：自主練 + 質問対応</h3>
+<ul>
+<li>クライアントさまが触ってみる</li>
+<li>質問は LINE で受付・24時間以内回答</li>
+<li>5日目に 30分 zoom で「困りごと棚卸し」</li>
+</ul>
+<hr />
+<h2 id="week-2">Week 2：ナレッジ構築</h2>
+<h3 id="day-8-10">Day 8-10：ご主人様（クライアントさま自身）のナレッジ抽出</h3>
+<p>📅 60分zoom × 2回</p>
+<ul>
+<li>商品ナレッジ整理（価格・USP・ターゲット）</li>
+<li>顧客ペルソナ言語化</li>
+<li>過去事例の匿名化</li>
+<li>声色・文体ルール文字化</li>
+</ul>
+<h3 id="day-11-14memory-knowledge">Day 11-14：memory / knowledge への投入</h3>
+<ul>
+<li>抽出した情報を memory/ と knowledge/ に整理</li>
+<li>自動ロード型ナレッジ動作確認</li>
+<li>「あいなちゃん、僕の声で◯◯書いて」が刺さる状態に</li>
+</ul>
+<hr />
+<h2 id="week-3">Week 3：業務スキル化</h2>
+<h3 id="day-15-17">Day 15-17：業務棚卸し + 自動化候補選定</h3>
+<p>📅 60分zoom</p>
+<ul>
+<li>毎日・毎週・毎月の業務をリストアップ</li>
+<li>自動化に向く 3〜5個を選定</li>
+<li>各スキルの仕様書 作成</li>
+</ul>
+<h3 id="day-18-21">Day 18-21：スキル実装 + テスト</h3>
+<ul>
+<li>僕がスキル実装</li>
+<li>クライアントさまテスト</li>
+<li>微調整・本番投入</li>
+</ul>
+<p>→ Week 3 終了時点で <strong>5〜10個のオリジナルスキル</strong> が稼働。</p>
+<hr />
+<h2 id="week-4">Week 4：運用定着 + 卒業準備</h2>
+<h3 id="day-22-25">Day 22-25：運用定着</h3>
+<ul>
+<li>毎日の業務で実際に使う</li>
+<li>困りごとは LINE で都度対応</li>
+<li>「これも自動化できる？」案件があれば即追加</li>
+</ul>
+<h3 id="day-26-281-3">Day 26-28：1ヶ月の総括 + 次の3ヶ月の計画</h3>
+<p>📅 60分zoom</p>
+<ul>
+<li>1ヶ月の効果測定</li>
+<li>浮いた時間 / 改善した業務 / 残った課題</li>
+<li>次の3ヶ月「自走 or 継続伴走」の判断</li>
+</ul>
+<hr />
+<h2 id="1_1">1ヶ月完了時のチェックリスト</h2>
+<p>クライアントさまが、1ヶ月後に次の状態になっていたら成功：</p>
+<p>✅ Claude Code を毎日触っている（VS Code が日常の道具）<br />
+✅ 自分でスキルを呼び出せる（コマンド or 自然言語）<br />
+✅ memory / knowledge を自分で更新できる<br />
+✅ 議事録・LP・配信 などの日常業務がAIで回る<br />
+✅ 「困った時の質問先（僕）」が明確<br />
+✅ 次の改善ポイントが自分で見える</p>
+<p>→ 5項目以上 ✅ なら卒業 OK<br />
+→ 3項目以下 ✅ なら継続伴走 推奨</p>
+<hr />
+<h2 id="_4">卒業後のサポート</h2>
+<h3 id="_5">単発相談（無料）</h3>
+<p>LINE で月1回まで、 30分程度の質問対応 無料。</p>
+<h3 id="30000">月額サポート（任意・¥30,000/月）</h3>
+<ul>
+<li>月2回の30分zoom（テーマ自由）</li>
+<li>LINE質問 24時間以内回答</li>
+<li>新スキル追加（3ヶ月で1個まで）</li>
+</ul>
+<h3 id="1-98000">半年に1回 リファクタリング（¥98,000 / 回）</h3>
+<ul>
+<li>memory / knowledge / スキル の総点検</li>
+<li>古いものアーカイブ・新しいものインストール</li>
+<li>業務フローの最適化</li>
+</ul>
+<hr />
+<h2 id="_6">よくある質問</h2>
+<h3 id="q1">Q1：自分でメンテできるか不安です</h3>
+<p>→ Week 1〜2 で <strong>「ナレッジ更新」</strong> を一緒にやるので、<br />
+　 ルーティンとして身につきます。<br />
+　 また、メンテ手順は README に整理して渡します。</p>
+<h3 id="q2">Q2：他のクライアントさまと同じ環境になる？</h3>
+<p>→ いいえ。<strong>業界・業種・声色・商品</strong> が全部違うので、<br />
+　 アウトプットは完全にオリジナルです。<br />
+　 共通するのは「Claude Code＋スキル＋ナレッジ」という <strong>設計思想</strong> だけ。</p>
+<h3 id="q3">Q3：途中で辞めたい場合は？</h3>
+<p>→ 残り月数分の <strong>一部返金</strong> あり。<br />
+　 押し付け・お尻叩きをしない設計です。</p>
+<h3 id="q4pc">Q4：複数PCで使えますか？</h3>
+<p>→ はい。.env 集約設計（環境構築章）で、 PCごとに <strong>6つの中央ファイル</strong> だけバックアップすれば動きます。</p>
+<hr />
+<p>→ 次に読むのは <a href="06_pricing.md">06_pricing.md</a> — プラン・価格</p></section><section id="pricing" class="md-section"><h1 id="_1">プラン・価格</h1>
+<h2 id="3">3つのプラン</h2>
+<pre><code>┌─────────────────────────┐  ┌─────────────────────────┐  ┌─────────────────────────┐
+│   Light                 │  │   Standard ★おすすめ     │  │   Pro                    │
+│   1回 環境構築           │  │   1ヶ月 伴走             │  │   3ヶ月 伴走              │
+│                         │  │                         │  │                         │
+│   ¥198,000              │  │   ¥498,000              │  │   ¥980,000              │
+└─────────────────────────┘  └─────────────────────────┘  └─────────────────────────┘
+</code></pre>
+<hr />
+<h2 id="light1-198000">Light：1回 環境構築 ¥198,000</h2>
+<h3 id="_2">含まれるもの</h3>
+<ul>
+<li>初回zoom 90分（環境セットアップ + 操作実演）</li>
+<li>専用CLAUDE.md</li>
+<li>既存スキル 5個 インストール</li>
+<li>memory/ 基本構造</li>
+<li>セットアップ後 1週間 LINE質問対応</li>
+</ul>
+<h3 id="_3">向いている人</h3>
+<ul>
+<li>既にAI触り慣れている</li>
+<li>自分でナレッジを構築できる</li>
+<li>「土台だけ整えれば自走できる」自信がある</li>
+</ul>
+<h3 id="_4">含まれないもの</h3>
+<ul>
+<li>ナレッジ抽出・整理</li>
+<li>オリジナルスキル作成</li>
+<li>業務棚卸し</li>
+</ul>
+<hr />
+<h2 id="standard1-498000">Standard：1ヶ月 伴走 ¥498,000 ★おすすめ</h2>
+<h3 id="_5">含まれるもの</h3>
+<ul>
+<li><strong>Light の全部</strong> ＋</li>
+<li>ナレッジ抽出 zoom × 3回（合計 4-5時間）</li>
+<li>業務棚卸し zoom × 2回</li>
+<li><strong>オリジナルスキル 3〜5個 作成</strong></li>
+<li>1ヶ月間 LINE質問 24時間以内回答</li>
+<li>週次 進捗確認 zoom × 4回（各30-60分）</li>
+<li>Week 4 で 1ヶ月総括 + 卒業判定</li>
+</ul>
+<h3 id="_6">向いている人</h3>
+<ul>
+<li>AI活用に本気で投資したい</li>
+<li>1ヶ月で「自走できる状態」を作りたい</li>
+<li>業務効率化・発信自動化を狙う</li>
+<li><strong>大多数のクライアントさまはここ</strong></li>
+</ul>
+<h3 id="standard-1">Standard の標準成果物（1ヶ月後）</h3>
+<ul>
+<li>完全カスタマイズされた CLAUDE.md</li>
+<li>30〜50個の memory ファイル</li>
+<li>10〜20個の knowledge ファイル</li>
+<li>5〜10個の稼働中スキル</li>
+<li>毎日の業務フローに組み込み済み</li>
+</ul>
+<hr />
+<h2 id="pro3-980000">Pro：3ヶ月 伴走 ¥980,000</h2>
+<h3 id="_7">含まれるもの</h3>
+<ul>
+<li><strong>Standard の全部</strong> ＋</li>
+<li>業務 5〜10個 の完全自動化</li>
+<li>オリジナルスキル <strong>10〜15個 作成</strong></li>
+<li>月次 戦略zoom × 3回（各90分）</li>
+<li>LINE質問 無制限</li>
+<li>ChatGPT GPTs 連携設計</li>
+<li>Discord Bot セットアップ</li>
+<li>半年後 リファクタリング 1回 無料（¥98,000相当）</li>
+</ul>
+<h3 id="_8">向いている人</h3>
+<ul>
+<li>経営者・チーム運用</li>
+<li>AI を <strong>事業の中核</strong> に据えたい</li>
+<li>自社サービスにAI機能を組み込みたい</li>
+<li>後輩・社員にも展開したい</li>
+</ul>
+<h3 id="pro">Pro の典型的アウトプット</h3>
+<ul>
+<li>自社専用 AI秘書環境（家族・社員も使える）</li>
+<li>業務 5-10個の完全自動化</li>
+<li>月次レポート自動生成</li>
+<li>クライアント別ナレッジベース</li>
+<li>スキル拡張のセルフ運用体制</li>
+</ul>
+<hr />
+<h2 id="_9">卒業後の継続サポート（任意）</h2>
+<table>
+<thead>
+<tr>
+<th>プラン</th>
+<th>価格</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>単発相談</td>
+<td>無料</td>
+<td>LINE 月1回 30分質問対応</td>
+</tr>
+<tr>
+<td>月額サポート</td>
+<td>¥30,000 / 月</td>
+<td>月2回30分zoom + LINE質問対応 + 新スキル年4個</td>
+</tr>
+<tr>
+<td>半年リファクタリング</td>
+<td>¥98,000 / 回</td>
+<td>memory/knowledge/スキル 総点検＋最適化</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_10">支払い方法</h2>
+<ul>
+<li>銀行振込（一括 or 分割）</li>
+<li>クレジットカード（Stripe）</li>
+<li>分割：Standard以上は <strong>3回分割</strong> OK（手数料なし）</li>
+</ul>
+<hr />
+<h2 id="_11">返金ポリシー</h2>
+<ul>
+<li>Week 1 の初回zoom後 7日以内：100%返金</li>
+<li>Week 2 終了時点：60%返金（ナレッジ抽出済み分のみ請求）</li>
+<li>Week 3 終了時点：30%返金（スキル実装済み分のみ請求）</li>
+<li>Week 4 終了時点：返金なし</li>
+</ul>
+<p>→ 「お尻叩き役にならない、押し付けない」設計に基づく安心設計。</p>
+<hr />
+<h2 id="1">1期定員</h2>
+<ul>
+<li>Light：月 2名 まで</li>
+<li>Standard：月 3名 まで</li>
+<li>Pro：月 1名 まで</li>
+</ul>
+<p>→ 受講感を担保するため、 <strong>同時進行は最大 6名</strong> に絞ります。</p>
+<hr />
+<h2 id="_12">申し込み方法</h2>
+<p>公式LINEから 「環境構築 相談希望」 と一言どうぞ。<br />
+60分の無料zoomで、 <strong>どのプランが合うか・どの業務から始めるか</strong> を整理します。</p>
+<p>→ そのzoomで「合わない」と判断したら、 押し付けません。<br />
+→ 「Lightで十分」「やっぱり自分でやってみる」も大歓迎の答えです。</p>
+<hr />
+<h2 id="_13">よくある質問</h2>
+<h3 id="q1">Q1：どのプランがいいか分かりません</h3>
+<p>→ 60分無料zoomで決めます。 押しません。</p>
+<h3 id="q2ai">Q2：他のAIコンサルとの違いは？</h3>
+<p>→ 僕は <strong>16年100t農家の現場経験</strong> が土台。<br />
+　 「机上のAI詳しい人」ではなく、 <strong>「現場でAI使い倒してる人」</strong> として<br />
+　 移植します。</p>
+<h3 id="q3">Q3：私の業界では使えないかも</h3>
+<p>→ 業界より「業務」が共通します。<br />
+　 議事録・LP・配信・スキル化・ナレッジ管理 は どの業界でも回ります。<br />
+　 不安なら、無料zoomで具体例を出して判定します。</p>
+<h3 id="q4">Q4：法人契約は可能ですか？</h3>
+<p>→ Pro帯は <strong>法人契約OK</strong>。請求書発行・領収書対応可。</p>
+<hr />
+<p>→ もどる <a href="00_cover.md">00_cover.md</a></p></section>
+      <div style="text-align:center; color:var(--muted); font-size:12px; padding-top:48px;">
+        生成日：2026-05-26 / 100t農家のイチロウ × AI秘書あいなちゃん
+      </div>
+    </main>
+  </div>
+</body>
+</html>
