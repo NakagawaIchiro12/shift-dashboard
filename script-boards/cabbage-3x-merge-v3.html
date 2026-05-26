@@ -733,44 +733,59 @@ html, body {
 .section.appendix .body { padding: 14px 24px; font-size: 13px; color: #6a7290; }
 
 /* appendix-card — 制作者向け補足セクション（採点・撮影方式・素材リスト・渇望設計 等） */
-/* 本編カードと明確に区別する：左ボーダー破線、薄背景、フラットデザイン */
-.section.appendix-card {
+/* デフォルトは折りたたみ、タップで開く。本編カードと完全に異なる見た目 */
+details.section.appendix-card {
   background: rgba(138, 146, 168, 0.04);
-  border: 1px dashed rgba(138, 146, 168, 0.25);
-  border-radius: 10px;
-  padding: 18px 22px;
-  margin-bottom: 16px;
+  border: 1px solid rgba(138, 146, 168, 0.18);
+  border-radius: 8px;
+  padding: 0;
+  margin-bottom: 8px;
   box-shadow: none;
 }
-.section.appendix-card .ap-head {
+details.section.appendix-card .ap-summary {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed rgba(138, 146, 168, 0.18);
+  padding: 12px 16px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  font-size: 14px;
 }
-.section.appendix-card .ap-badge {
-  background: rgba(138, 146, 168, 0.18);
-  color: #b8c4dd;
-  font-size: 11px;
-  padding: 3px 10px;
-  border-radius: 99px;
-  letter-spacing: 0.04em;
-  font-weight: 600;
-  white-space: nowrap;
+details.section.appendix-card .ap-summary::-webkit-details-marker { display: none; }
+details.section.appendix-card[open] .ap-summary {
+  border-bottom: 1px dashed rgba(138, 146, 168, 0.20);
 }
-.section.appendix-card .ap-title {
-  font-size: 16px;
+details.section.appendix-card .ap-icon {
+  font-size: 18px;
+  flex: 0 0 auto;
+}
+details.section.appendix-card .ap-title {
+  font-size: 14px;
   font-weight: 700;
   color: #b8c4dd;
   flex: 1;
 }
-.section.appendix-card .ap-body {
+details.section.appendix-card .ap-toggle {
+  font-size: 11px;
+  color: #6a7290;
+  white-space: nowrap;
+}
+details.section.appendix-card[open] .ap-toggle::after { content: " ▲"; }
+details.section.appendix-card[open] .ap-toggle { color: #b8c4dd; }
+details.section.appendix-card .ap-body {
   font-size: 13px;
   color: #8a98b8;
   line-height: 1.7;
+  padding: 14px 18px 18px;
 }
+
+/* タイプ別アイコン色 */
+details.section.appendix-card.ap-score .ap-icon { color: #06a77d; }
+details.section.appendix-card.ap-shoot-method .ap-icon { color: #4a6fff; }
+details.section.appendix-card.ap-assets .ap-icon { color: #ff6b35; }
+details.section.appendix-card.ap-duration .ap-icon { color: #ffd87a; }
+details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 .section.appendix-card .ap-body h4 {
   font-size: 14px;
   color: #c8d2e8;
@@ -1827,7 +1842,7 @@ html, body {
   </div>
 
   <footer class="footer">
-    Generated 2026-05-26 19:59 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
+    Generated 2026-05-26 20:01 JST from 2026-05-26_cabbage-3x-complete-merge_v3_yomiage.md
   </footer>
 
 </div>

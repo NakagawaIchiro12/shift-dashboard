@@ -733,44 +733,59 @@ html, body {
 .section.appendix .body { padding: 14px 24px; font-size: 13px; color: #6a7290; }
 
 /* appendix-card — 制作者向け補足セクション（採点・撮影方式・素材リスト・渇望設計 等） */
-/* 本編カードと明確に区別する：左ボーダー破線、薄背景、フラットデザイン */
-.section.appendix-card {
+/* デフォルトは折りたたみ、タップで開く。本編カードと完全に異なる見た目 */
+details.section.appendix-card {
   background: rgba(138, 146, 168, 0.04);
-  border: 1px dashed rgba(138, 146, 168, 0.25);
-  border-radius: 10px;
-  padding: 18px 22px;
-  margin-bottom: 16px;
+  border: 1px solid rgba(138, 146, 168, 0.18);
+  border-radius: 8px;
+  padding: 0;
+  margin-bottom: 8px;
   box-shadow: none;
 }
-.section.appendix-card .ap-head {
+details.section.appendix-card .ap-summary {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed rgba(138, 146, 168, 0.18);
+  padding: 12px 16px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  font-size: 14px;
 }
-.section.appendix-card .ap-badge {
-  background: rgba(138, 146, 168, 0.18);
-  color: #b8c4dd;
-  font-size: 11px;
-  padding: 3px 10px;
-  border-radius: 99px;
-  letter-spacing: 0.04em;
-  font-weight: 600;
-  white-space: nowrap;
+details.section.appendix-card .ap-summary::-webkit-details-marker { display: none; }
+details.section.appendix-card[open] .ap-summary {
+  border-bottom: 1px dashed rgba(138, 146, 168, 0.20);
 }
-.section.appendix-card .ap-title {
-  font-size: 16px;
+details.section.appendix-card .ap-icon {
+  font-size: 18px;
+  flex: 0 0 auto;
+}
+details.section.appendix-card .ap-title {
+  font-size: 14px;
   font-weight: 700;
   color: #b8c4dd;
   flex: 1;
 }
-.section.appendix-card .ap-body {
+details.section.appendix-card .ap-toggle {
+  font-size: 11px;
+  color: #6a7290;
+  white-space: nowrap;
+}
+details.section.appendix-card[open] .ap-toggle::after { content: " ▲"; }
+details.section.appendix-card[open] .ap-toggle { color: #b8c4dd; }
+details.section.appendix-card .ap-body {
   font-size: 13px;
   color: #8a98b8;
   line-height: 1.7;
+  padding: 14px 18px 18px;
 }
+
+/* タイプ別アイコン色 */
+details.section.appendix-card.ap-score .ap-icon { color: #06a77d; }
+details.section.appendix-card.ap-shoot-method .ap-icon { color: #4a6fff; }
+details.section.appendix-card.ap-assets .ap-icon { color: #ff6b35; }
+details.section.appendix-card.ap-duration .ap-icon { color: #ffd87a; }
+details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 .section.appendix-card .ap-body h4 {
   font-size: 14px;
   color: #c8d2e8;
@@ -1210,11 +1225,12 @@ html, body {
 <div class="kgs-arrow"><span class="kgs-arrow-icon">↓</span><span class="kgs-arrow-label">次が聞きたい</span></div>
   </div>
 </section>
-<section class="section appendix-card">
-  <div class="ap-head">
-    <span class="ap-badge">📎 制作者向け</span>
-    <div class="ap-title">撮影方式</div>
-  </div>
+<details class="section appendix-card ap-shoot-method">
+  <summary class="ap-summary">
+    <span class="ap-icon">🎥</span>
+    <span class="ap-title">撮影方式</span>
+    <span class="ap-toggle">タップで開く ▼</span>
+  </summary>
   <div class="ap-body">
     <p>🌾 **撮影は「畑に立って話す」だけ**</p>
 <p>👕 **いつもの撮影衣装**</p>
@@ -1223,12 +1239,13 @@ html, body {
 
 <p>---</p>
   </div>
-</section>
-<section class="section appendix-card">
-  <div class="ap-head">
-    <span class="ap-badge">📎 制作者向け</span>
-    <div class="ap-title">全体L3採点</div>
-  </div>
+</details>
+<details class="section appendix-card ap-score">
+  <summary class="ap-summary">
+    <span class="ap-icon">📊</span>
+    <span class="ap-title">全体L3採点</span>
+    <span class="ap-toggle">タップで開く ▼</span>
+  </summary>
   <div class="ap-body">
     <div class='ap-table-row'>| 章 | L3機能 | L3立体 | L3感情 | おさる④ |</div>
 <div class='ap-table-row'>|---|---|---|---|---|</div>
@@ -1240,12 +1257,13 @@ html, body {
 
 <p>---</p>
   </div>
-</section>
-<section class="section appendix-card">
-  <div class="ap-head">
-    <span class="ap-badge">📎 制作者向け</span>
-    <div class="ap-title">撮影方式まとめ</div>
-  </div>
+</details>
+<details class="section appendix-card ap-shoot-method">
+  <summary class="ap-summary">
+    <span class="ap-icon">🎥</span>
+    <span class="ap-title">撮影方式まとめ</span>
+    <span class="ap-toggle">タップで開く ▼</span>
+  </summary>
   <div class="ap-body">
     <p>🌾 **撮影はこれだけ：**</p>
 <li>いつもの撮影衣装で、畑に立つ</li>
@@ -1263,12 +1281,13 @@ html, body {
 
 <p>---</p>
   </div>
-</section>
-<section class="section appendix-card">
-  <div class="ap-head">
-    <span class="ap-badge">📎 制作者向け</span>
-    <div class="ap-title">編集時に挿入するスライド・画像素材リスト</div>
-  </div>
+</details>
+<details class="section appendix-card ap-assets">
+  <summary class="ap-summary">
+    <span class="ap-icon">🖼</span>
+    <span class="ap-title">編集時に挿入するスライド・画像素材リスト</span>
+    <span class="ap-toggle">タップで開く ▼</span>
+  </summary>
   <div class="ap-body">
     <p>撮影完了後、編集時にこれらを画面挿入する。</p>
 <p>レオさんGPT・いらすとや・実績写真を組み合わせて作成。</p>
@@ -1318,12 +1337,13 @@ html, body {
 
 <p>---</p>
   </div>
-</section>
-<section class="section appendix-card">
-  <div class="ap-head">
-    <span class="ap-badge">📎 制作者向け</span>
-    <div class="ap-title">文字数・時間見込み</div>
-  </div>
+</details>
+<details class="section appendix-card ap-duration">
+  <summary class="ap-summary">
+    <span class="ap-icon">⏱</span>
+    <span class="ap-title">文字数・時間見込み</span>
+    <span class="ap-toggle">タップで開く ▼</span>
+  </summary>
   <div class="ap-body">
     <li>総文字数：本文は v3 と同等（約13,100字）</li>
 <li>早口ペース（6.5字/秒）：生・間込み 約33分</li>
@@ -1331,12 +1351,13 @@ html, body {
 
 <p>---</p>
   </div>
-</section>
-<section class="section appendix-card">
-  <div class="ap-head">
-    <span class="ap-badge">📎 制作者向け</span>
-    <div class="ap-title">撮影時のコツ</div>
-  </div>
+</details>
+<details class="section appendix-card ap-memo">
+  <summary class="ap-summary">
+    <span class="ap-icon">📎</span>
+    <span class="ap-title">撮影時のコツ</span>
+    <span class="ap-toggle">タップで開く ▼</span>
+  </summary>
   <div class="ap-body">
     <h4>撮影は本当に「立って話す」だけ</h4>
 <li>衣装はいつもの撮影衣装、カメラ位置は固定でOK</li>
@@ -1358,11 +1379,11 @@ html, body {
 <li>絵文字なし</li>
 <li>第三者の声を入れるなら必ず匿名化</li>
   </div>
-</section>
+</details>
   </div>
 
   <footer class="footer">
-    Generated 2026-05-26 19:59 JST from 2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md
+    Generated 2026-05-26 20:01 JST from 2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md
   </footer>
 
 </div>
