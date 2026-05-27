@@ -462,6 +462,48 @@ html, body {
 .emo-spot.emo-整理 .emo-label { background: #1abc9c; color: #fff; }
 .emo-spot.emo-補足 { background: rgba(149, 165, 166, 0.22); }
 .emo-spot.emo-補足 .emo-label { background: #95a5a6; color: #fff; }
+
+/* 章ヘッダーの感情アイコン予告（この章にどの感情があるか一目） */
+.head-emo-icons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+.head-emo-icons .he-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.85);
+  margin-right: 4px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.head-emo-icons .he-icon {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.head-emo-icons .he-icon.emo-興味 { background: #ff6b35; }
+.head-emo-icons .he-icon.emo-気づき { background: #ffd87a; color: #1a1a1a; }
+.head-emo-icons .he-icon.emo-不安 { background: #9b59b6; }
+.head-emo-icons .he-icon.emo-信頼 { background: #3498db; }
+.head-emo-icons .he-icon.emo-学び { background: #4a90e2; }
+.head-emo-icons .he-icon.emo-理解 { background: #74b9ff; }
+.head-emo-icons .he-icon.emo-応用 { background: #e84393; }
+.head-emo-icons .he-icon.emo-共感 { background: #c66de8; }
+.head-emo-icons .he-icon.emo-確信 { background: #06a77d; }
+.head-emo-icons .he-icon.emo-警戒 { background: #e74c3c; }
+.head-emo-icons .he-icon.emo-行動 { background: #2ecc71; }
+.head-emo-icons .he-icon.emo-決意 { background: #ffd700; color: #4a3800; }
+.head-emo-icons .he-icon.emo-整理 { background: #1abc9c; }
+.head-emo-icons .he-icon.emo-補足 { background: #95a5a6; }
 .diff-legend {
   display: inline-flex;
   align-items: center;
@@ -1689,6 +1731,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">65</span><span class="score-max">/100</span>
     </span>
+    <div class="head-emo-icons"><span class="he-label">この章の感情：</span><span class="he-icon emo-気づき" title="気づき">気づき</span><span class="he-icon emo-信頼" title="信頼">信頼</span></div>
   </div>
   <div class="body">
     <div class="script-body">
@@ -1756,6 +1799,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
       <span class="score-num">70</span><span class="score-max">/100</span>
     </span>
+    <div class="head-emo-icons"><span class="he-label">この章の感情：</span><span class="he-icon emo-信頼" title="信頼">信頼</span><span class="he-icon emo-共感" title="共感">共感</span></div>
   </div>
   <div class="body">
     <div class="script-body">
@@ -1812,6 +1856,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">59</span><span class="score-max">/100</span>
     </span>
+    <div class="head-emo-icons"><span class="he-label">この章の感情：</span><span class="he-icon emo-警戒" title="警戒">警戒</span></div>
   </div>
   <div class="body">
     <div class="script-body">
@@ -1896,6 +1941,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">59</span><span class="score-max">/100</span>
     </span>
+    <div class="head-emo-icons"><span class="he-label">この章の感情：</span><span class="he-icon emo-学び" title="学び">学び</span></div>
   </div>
   <div class="body">
     <div class="script-body">
@@ -1974,6 +2020,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
       <span class="score-num">70</span><span class="score-max">/100</span>
     </span>
+    <div class="head-emo-icons"><span class="he-label">この章の感情：</span><span class="he-icon emo-確信" title="確信">確信</span><span class="he-icon emo-共感" title="共感">共感</span></div>
   </div>
   <div class="body">
     <div class="script-body">
@@ -2038,6 +2085,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">58</span><span class="score-max">/100</span>
     </span>
+    <div class="head-emo-icons"><span class="he-label">この章の感情：</span><span class="he-icon emo-共感" title="共感">共感</span></div>
   </div>
   <div class="body">
     <div class="script-body">
@@ -2094,6 +2142,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">67</span><span class="score-max">/100</span>
     </span>
+    <div class="head-emo-icons"><span class="he-label">この章の感情：</span><span class="he-icon emo-気づき" title="気づき">気づき</span><span class="he-icon emo-共感" title="共感">共感</span></div>
   </div>
   <div class="body">
     <div class="script-body">
@@ -2166,6 +2215,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
       <span class="score-num">70</span><span class="score-max">/100</span>
     </span>
+    <div class="head-emo-icons"><span class="he-label">この章の感情：</span><span class="he-icon emo-整理" title="整理">整理</span></div>
   </div>
   <div class="body">
     <div class="script-body">
@@ -2228,6 +2278,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">56</span><span class="score-max">/100</span>
     </span>
+    <div class="head-emo-icons"><span class="he-label">この章の感情：</span><span class="he-icon emo-行動" title="行動">行動</span><span class="he-icon emo-信頼" title="信頼">信頼</span></div>
   </div>
   <div class="body">
     <div class="script-body">
@@ -2362,6 +2413,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
       <span class="score-num">71</span><span class="score-max">/100</span>
     </span>
+    <div class="head-emo-icons"><span class="he-label">この章の感情：</span><span class="he-icon emo-気づき" title="気づき">気づき</span><span class="he-icon emo-決意" title="決意">決意</span></div>
   </div>
   <div class="body">
     <div class="script-body">
@@ -2685,7 +2737,7 @@ LINEに次のご案内と、
   </div>
 
   <footer class="footer">
-    Generated 2026-05-27 22:56 JST from nogyo-game-change-v4.md
+    Generated 2026-05-27 23:04 JST from nogyo-game-change-v4.md
   </footer>
 
 </div>
