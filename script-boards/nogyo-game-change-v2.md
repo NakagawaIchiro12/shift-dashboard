@@ -1,6 +1,8 @@
 ---
 title: 「農業のゲームチェンジ」LINE登録後動画 再撮影台本（v2・LINEフィット版）
 date: 2026-05-27
+version_label: v2・LINEフィット
+version_purpose: 動画前後LINEに合うよう冒頭・CTA訴求軸・締めを調整＋差分色換え機能
 shoot_doc_url: https://docs.google.com/document/d/17tWkWZeOSKvMdAHx_Ia1e5-_eAgsEniUcQP-yM5Zawk/edit?usp=sharing
 shoot_doc_label: 撮影用 Googleドキュメント（本編+追加スライド+編集者向け指示書）
 target_minutes: 完成尺 約15-20分（本編+追加スライド・スライド進行つき）

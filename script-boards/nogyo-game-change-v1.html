@@ -406,6 +406,30 @@ html, body {
   white-space: pre-wrap;
 }
 .script-body p:last-child { margin-bottom: 0; }
+.script-body mark.diff-new {
+  background: linear-gradient(transparent 55%, rgba(255, 216, 122, 0.45) 55%);
+  color: #fff5d6;
+  padding: 1px 3px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+.diff-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 216, 122, 0.08);
+  border: 1px solid rgba(255, 216, 122, 0.3);
+  border-radius: 99px;
+  padding: 4px 12px;
+  font-size: 11px;
+  color: #ffd87a;
+  margin-top: 14px;
+}
+.diff-legend mark {
+  background: linear-gradient(transparent 55%, rgba(255, 216, 122, 0.45) 55%);
+  color: #fff5d6;
+  padding: 0 4px;
+}
 
 .greeting-warning {
   background: rgba(255, 193, 7, 0.12);
@@ -444,11 +468,40 @@ html, body {
 }
 
 .improve-box {
-  background: linear-gradient(135deg, rgba(255, 159, 67, 0.10) 0%, rgba(255, 159, 67, 0.04) 100%);
-  border: 2px solid rgba(255, 159, 67, 0.5);
-  border-radius: 12px;
-  padding: 14px 18px;
-  margin-top: 16px;
+  background: linear-gradient(135deg, rgba(255, 159, 67, 0.06) 0%, rgba(255, 159, 67, 0.02) 100%);
+  border: 1px solid rgba(255, 159, 67, 0.3);
+  border-radius: 10px;
+  margin-top: 14px;
+}
+.improve-box .improve-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ff9f43;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.improve-box .improve-summary::-webkit-details-marker { display: none; }
+.improve-box .improve-toggle {
+  font-size: 10px;
+  color: #8a92a8;
+  font-weight: 600;
+}
+.improve-box[open] .improve-toggle::after { content: " ▲"; }
+.improve-box[open] .improve-summary {
+  border-bottom: 1px dashed rgba(255, 159, 67, 0.25);
+}
+.improve-box .improve-body {
+  padding: 12px 16px 14px;
+}
+.improve-box.urgent {
+  border-color: rgba(230, 57, 70, 0.4);
+}
+.improve-box.urgent .improve-summary {
+  color: #ff6b7a;
 }
 .improve-box.urgent {
   border-color: rgba(230, 57, 70, 0.6);
@@ -783,6 +836,90 @@ html, body {
   .page { padding-right: 52px !important; }
 }
 
+/* ===== CTA到達力スコア（hero内・最上部） ===== */
+.cta-score-banner {
+  background: linear-gradient(135deg, rgba(255, 216, 122, 0.18) 0%, rgba(255, 140, 66, 0.10) 100%);
+  border: 2px solid rgba(255, 216, 122, 0.55);
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin: 22px auto 0;
+  max-width: 540px;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(255, 216, 122, 0.12);
+}
+.cta-score-banner .lab {
+  font-size: 11px;
+  color: #b8c4dd;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+.cta-score-banner .score-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 900;
+}
+.cta-score-banner .current {
+  font-size: 44px;
+  line-height: 1;
+  color: #ffd87a;
+}
+.cta-score-banner .slash {
+  font-size: 18px;
+  color: #6a7290;
+}
+.cta-score-banner .arrow {
+  font-size: 22px;
+  color: #ff8c42;
+  margin: 0 8px;
+  font-weight: 900;
+}
+.cta-score-banner .target-label {
+  font-size: 11px;
+  color: #b8c4dd;
+  margin-right: 2px;
+  font-weight: 600;
+}
+.cta-score-banner .target {
+  font-size: 30px;
+  color: #06a77d;
+  line-height: 1;
+}
+.cta-score-banner .gap {
+  font-size: 12px;
+  color: #b8c4dd;
+  margin-top: 8px;
+}
+.cta-score-banner .gap strong {
+  font-size: 15px;
+  color: #ff9f43;
+  font-weight: 900;
+}
+
+/* サイドバー最上部：CTA到達力スコア小型表示 */
+.emotion-sidebar .sb-cta-score {
+  background: rgba(255, 216, 122, 0.10);
+  border: 1px solid rgba(255, 216, 122, 0.30);
+  border-radius: 8px;
+  padding: 6px 4px;
+  margin: 0 6px 10px;
+  text-align: center;
+}
+.emotion-sidebar .sb-cta-score .num {
+  font-size: 17px;
+  font-weight: 900;
+  color: #ffd87a;
+  line-height: 1.1;
+}
+.emotion-sidebar .sb-cta-score .sub {
+  font-size: 8px;
+  color: #06a77d;
+  margin-top: 2px;
+  font-weight: 700;
+}
+
 /* 読み上げ用 Markdown台本リンク（ヒーロー内） */
 .read-script-link {
   margin-top: 18px;
@@ -802,6 +939,82 @@ html, body {
   transition: all 0.2s;
 }
 .read-script-link a:hover { background: #ffd87a; color: #0a0e1a; }
+
+/* ===== バージョンタブ（hero直下） ===== */
+.version-tabs {
+  background: linear-gradient(135deg, rgba(106, 165, 232, 0.08) 0%, rgba(106, 165, 232, 0.02) 100%);
+  border: 1px solid rgba(106, 165, 232, 0.3);
+  border-radius: 14px;
+  margin: 16px 16px 18px;
+  padding: 16px 18px;
+}
+.version-tabs .vt-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #6ba5e8;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+.version-tabs .vt-tabs-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.version-tabs .vt-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(106, 165, 232, 0.25);
+  color: #b8c4dd;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  flex-wrap: wrap;
+}
+.version-tabs .vt-tab:hover {
+  border-color: rgba(106, 165, 232, 0.6);
+  background: rgba(106, 165, 232, 0.08);
+  color: #ffffff;
+}
+.version-tabs .vt-tab.active {
+  border-color: #ffd87a;
+  background: rgba(255, 216, 122, 0.10);
+  color: #ffffff;
+  cursor: default;
+}
+.version-tabs .vt-label {
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffd87a;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.version-tabs .vt-tab.active .vt-label {
+  color: #ffd87a;
+}
+.version-tabs .vt-current-tag {
+  font-size: 10px;
+  font-weight: 800;
+  background: #ffd87a;
+  color: #0a0e1a;
+  padding: 2px 8px;
+  border-radius: 99px;
+  letter-spacing: 0.05em;
+  flex: 0 0 auto;
+}
+.version-tabs .vt-purpose {
+  font-size: 12px;
+  color: #b8c4dd;
+  line-height: 1.5;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+@media (max-width: 480px) {
+  .version-tabs { margin: 12px 8px 14px; padding: 14px 14px; }
+  .version-tabs .vt-purpose { font-size: 11px; flex-basis: 100%; }
+}
 
 /* ===== 制作フロー（Naokiさん向け視覚化）— hero 直下 ===== */
 .production-flow {
@@ -1333,6 +1546,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </div>
     <h1>「農業のゲームチェンジ」LINE登録後動画 再撮影台本（v1）</h1>
     <div class="subtitle">視聴者がどう動くかを台本制作者が体験するボード</div>
+    
     <div class="stats">
       <div class="stat"><div class="num">10</div><div class="lab">セクション</div></div>
       <div class="stat"><div class="num">11,982</div><div class="lab">文字数</div></div>
@@ -1343,6 +1557,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <a href="nogyo-game-change-v1.md" target="_blank">📜 読み上げ用 Markdown 台本を開く</a>
     </div>
   </section>
+
+  <div class="version-tabs"><div class="vt-title">📚 バージョン一覧</div><div class="vt-tabs-row"><div class="vt-tab active" title="撮影済みオリジナル台本を10章+appendixに整形（章分けと撮影バッジ）"><span class="vt-label">v1</span><span class="vt-current-tag">今ここ</span><span class="vt-purpose">撮影済みオリジナル台本を10章+appendixに整形（章分けと撮影バッジ）</span></div><a class="vt-tab" href="nogyo-game-change-v2.html" title="動画前後LINEに合うよう冒頭・CTA訴求軸・締めを調整＋差分色換え機能"><span class="vt-label">v2・LINEフィット</span><span class="vt-purpose">動画前後LINEに合うよう冒頭・CTA訴求軸・締めを調整＋差分色換え機能</span></a><a class="vt-tab" href="nogyo-game-change-v3.html" title="章ごとの心理導線アンカーを手動指定で感情の波を再設計（台本本文は無変更）"><span class="vt-label">v3・ジェットコースター</span><span class="vt-purpose">章ごとの心理導線アンカーを手動指定で感情の波を再設計（台本本文は無変更）</span></a></div></div>
 
   <details class="production-flow collapsible-panel" open><summary class="cp-summary"><span class="cp-title">🎬 制作フロー（台本ボード → ドキュメント → 撮影）</span><span class="cp-toggle">タップで開閉 ▼</span></summary><div class="cp-body"><p class="pf-lead">視覚化で快適に台本を作るための3ステップ。①でブラッシュアップしたら、②の撮影用ドキュメントを開いて読み上げ撮影 → ③ブループリント編集で動画化。</p><div class="pf-steps"><div class="pf-step current"><span class="pf-num">①</span><span class="pf-title">📋 台本ボードで視覚化・調整</span><span class="pf-desc">いまここ。章ごとの感情曲線・採点・ブラッシュアップ候補を一目で見ながら台本を磨く</span></div><div class="pf-arrow">→</div><div class="pf-step"><span class="pf-num">②</span><span class="pf-title">📄 撮影用ドキュメントで撮影</span><span class="pf-desc">章＋【Scroll】マーカーつき。スマホで開いて読み上げながら撮影</span><a class="pf-link" href="https://docs.google.com/document/d/17tWkWZeOSKvMdAHx_Ia1e5-_eAgsEniUcQP-yM5Zawk/edit?usp=sharing" target="_blank" rel="noopener">📄 ドキュメントを開く →</a></div><div class="pf-arrow">→</div><div class="pf-step"><span class="pf-num">③</span><span class="pf-title">🎞 ブループリント編集 → 公開</span><span class="pf-desc">読み上げ撮影した素材をブループリントで編集、スパッと動画化してYouTubeへ</span></div></div></div></details>
 
@@ -1361,7 +1577,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-10" class="gk-sec-link">#10</a><span class="gk-sec-name">章10：追加スライドCTA強化（LINE 6数字返信誘導）</span><span class="gk-sec-score" style="color:#ff9f43;">61点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">ヤスさん流 個別相談プロトコル</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li></ul></div></details>
 
   <section class="intro">
-    <h2>▼ 視聴者の旅路（上から下へ）</h2>
+    <h2>視聴者の心情変化</h2>
     <p>各セクションをタップするように読み進めると、<br>視聴者がどう動くか体感できます。</p>
     <div class="arrow">▼</div>
   </section>
@@ -1426,25 +1642,10 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </span>
   </div>
   <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">油断・無防備</span>
-      <span class="arrow">→</span>
-      <span class="to">期待・好奇心</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「えっ、なにそれ?」</div>
-<div class="thought">「自分のことだ…」</div>
-<div class="thought highlight">「もっと聞きたい」</div>
-    </div>
     <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
-      <p>画面： タイトルスライド / 話者カメラ顔アップ→半身</p>
-<p>売り先がないから稼げない。</p>
+      <p>売り先がないから稼げない。</p>
 <p>こう思っていませんか？</p>
-      <details class="script-more">
-        <summary>続きを開く（残り17段落）▼</summary>
-        <div class="script-more-body"><p>でも、正直なところ、
+<p>でも、正直なところ、
 それ、半分合っていて、
 半分ズレています。</p>
 <p>農業って、
@@ -1453,11 +1654,10 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 そのもっと手前で
 稼げなくなっていることが多いんです。</p>
 <p>要は、</p>
-<p>**売れないから稼げないんじゃなくて、
-稼げない流れに入っているから売れなくなる。**</p>
+<p><strong>売れないから稼げないんじゃなくて、
+稼げない流れに入っているから売れなくなる。</strong></p>
 <p>こっちなんです。</p>
 <p>今日はこの話をします。</p>
-<p>→ 編集挿入: タイトルテロップ「売り先がないから稼げない、は勘違いです」</p>
 <p>もし今あなたが、</p>
 <p>頑張ってるのに利益が残らない。
 売上が伸びない。
@@ -1469,26 +1669,25 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 農業で稼げなくなる構造と、
 そこから抜けるための
 最初のゲームチェンジを整理します。</p>
-<p>画面： 話者カメラ、スライドを見せながら</p>
 <p>ちなみに僕自身の話を先にしておくと——</p>
 <p>16年間途切れなく出荷してきて、
 年間出荷量を100tから200tに伸ばして、
 今は日本一の部会に所属しています。</p>
 <p>この経験から今日の話をします。</p>
 <p>最初の数年は、何をどの順番でやればいいか分からなくて、
-かなり遠回りしました。</p></div>
-      </details>
+かなり遠回りしました。</p>
     </div>
     <div class="greeting-warning">⚠️ 固定挨拶 「こんにちは！100t農家のイチローです」 が検出できませんでした。必ず冒頭に入れてください（メモリ feedback_youtube_channel_positioning 準拠）</div>
     
-    <div class="improve-box">
-      <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
-      <ul><li>⚠️ 固定挨拶『こんにちは！100t農家のイチローです』が無い（最優先で入れる）</li></ul>
-      <div class="request-hint">
-        ご主人様の指示例：Discord で <code>#01 ブラッシュアップ</code> または <code>#01 ⚠️ 固定挨拶『こんにちは！100t…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+    <details class="improve-box">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>⚠️ 固定挨拶『こんにちは！100t農家のイチローです』が無い（最優先で入れる）</li></ul>
+        <div class="request-hint">
+          Discord で <code>#01 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
       </div>
-    </div>
-    
+    </details>
   </div>
 </section>
 <section class="section normal shoot-new" id="sec-02">
@@ -1503,36 +1702,21 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </span>
   </div>
   <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">注視</span>
-      <span class="arrow">→</span>
-      <span class="to">把握</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「ふむふむ」</div>
-<div class="thought">「次に何が出てくるか」</div>
-<div class="thought highlight">「ここも聞いておこう」</div>
-    </div>
     <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
       <p>最初に一つだけ、
 はっきり言っておきます。</p>
 <p>この動画は、
 全部の答えを渡し切る動画ではないです。</p>
 <p>そうではなくて、</p>
-      <details class="script-more">
-        <summary>続きを開く（残り19段落）▼</summary>
-        <div class="script-more-body"><p>**全体像を見て、
-自分は何から変えるべきかを考える動画**です。</p>
+<p><strong>全体像を見て、
+自分は何から変えるべきかを考える動画</strong>です。</p>
 <p>ここを間違えると、
 知識は増えたけど動けない、
 になりやすいです。</p>
 <p>なので今日は、</p>
 <p>何を知るか、より
-自分はどこで稼げなくなっているのか。
+<strong>自分はどこで稼げなくなっているのか。</strong>
 ここを見ながら聞いてください。</p>
-<p>画面： 話者カメラ、表情を見せる</p>
 <p>ここで、僕の話を少しします。</p>
 <p>僕は農業を始めた頃、
 先に売り先を作ろうとしました。</p>
@@ -1540,8 +1724,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 飛び込みもしました。
 何件か取引先も決まりました。</p>
 <p>でも、そのあとに何が起きたか。</p>
-<p>**納品日の2週間前に、
-出せる量が半分になった**んです。</p>
+<p><strong>納品日の2週間前に、
+出せる量が半分になった</strong>んです。</p>
 <p>あの時、
 取引先に電話するのが本当に怖かったです。</p>
 <p>今思えば、
@@ -1549,17 +1733,15 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <p>売り先を作るのが悪かったわけじゃないです。</p>
 <p>営業が悪かったわけでもないです。</p>
 <p>その前に、</p>
-<p>安定して出せる状態ができていなかった。</p>
+<p><strong>安定して出せる状態ができていなかった。</strong></p>
 <p>要は、</p>
-<p>**稼げない原因は、
-売り先の前にあった**
+<p><strong>稼げない原因は、
+売り先の前にあった</strong>
 ってことなんです。</p>
 <p>今日は、この遠回りを
 あなたにしてほしくないので、
-この話をしています。</p></div>
-      </details>
+この話をしています。</p>
     </div>
-    
     
     
   </div>
@@ -1576,19 +1758,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </span>
   </div>
   <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">注視</span>
-      <span class="arrow">→</span>
-      <span class="to">把握</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「ふむふむ」</div>
-<div class="thought">「次に何が出てくるか」</div>
-<div class="thought highlight">「ここも聞いておこう」</div>
-    </div>
     <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
       <p>ここで一回、
 言葉をはっきりさせます。</p>
 <p>僕は講座でも
@@ -1596,12 +1766,10 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 という言い方をしてきました。</p>
 <p>でも今回の動画では、
 もう少しはっきり言います。</p>
-      <details class="script-more">
-        <summary>続きを開く（残り22段落）▼</summary>
-        <div class="script-more-body"><p>農業で止まるっていうのは、</p>
-<p>**農業で稼げなくなる
+<p>農業で止まるっていうのは、</p>
+<p><strong>農業で稼げなくなる
 農業が伸びなくなる
-利益が残らなくなる**</p>
+利益が残らなくなる</strong></p>
 <p>こういう状態のことです。</p>
 <p>たとえば、</p>
 <p>売り先はある。
@@ -1616,7 +1784,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 農業で止まっている状態です。</p>
 <p>つまり、
 ただ悩んでいるんじゃなくて、</p>
-<p>稼げる形に進めなくなっている状態</p>
+<p><strong>稼げる形に進めなくなっている状態</strong></p>
 <p>これを今日は扱います。</p>
 <p>農業の話をしていると、
 よく出てくる悩みがあります。</p>
@@ -1629,29 +1797,37 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <p>これ、どれも本物の悩みです。</p>
 <p>でも、
 ここで大事なのは、</p>
-<p>**この悩みが、そのまま
-稼げない原因とは限らない**
+<p><strong>この悩みが、そのまま
+稼げない原因とは限らない</strong>
 ということです。</p>
 <p>そう見えてるけど、
 実は原因は別のところにある。</p>
 <p>ここを見誤ると、
 頑張ってるのに
 ずっとしんどいままになります。</p>
-<p>画面： 話者カメラ、視聴者に語りかける</p>
 <p>ここで一回、自分に聞いてみてください。</p>
-<p>今の自分が一番しんどいのは、この中のどれですか？</p></div>
-      </details>
+<p>今の自分が一番しんどいのは、この中のどれですか？</p>
+<p>売り先が決まらない。
+単価が上がらない。
+品質や量が安定しない。
+広げたいけど怖い。
+収入の波が不安。</p>
+<p>……たぶん、1つか2つ、すぐ浮かんだと思います。</p>
+<p>でも、ここからが大事です。</p>
+<p><strong>その悩み、本当の原因じゃないかもしれない。</strong></p>
+<p>次のスライドで、その話をします。</p>
     </div>
     
     
-    <div class="improve-box urgent">
-      <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
-      <ul><li>曖昧表現が3件（断定型に書き換え）</li></ul>
-      <div class="request-hint">
-        ご主人様の指示例：Discord で <code>#03 ブラッシュアップ</code> または <code>#03 曖昧表現が3件（断定型に書き換え）…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+    <details class="improve-box urgent">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>曖昧表現が3件（断定型に書き換え）</li></ul>
+        <div class="request-hint">
+          Discord で <code>#03 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
       </div>
-    </div>
-    
+    </details>
   </div>
 </section>
 <section class="section normal shoot-new" id="sec-04">
@@ -1666,26 +1842,11 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </span>
   </div>
   <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">注視</span>
-      <span class="arrow">→</span>
-      <span class="to">把握</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「ふむふむ」</div>
-<div class="thought">「次に何が出てくるか」</div>
-<div class="thought highlight">「ここも聞いておこう」</div>
-    </div>
     <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
-      <p>画面： 話者カメラ→スライド</p>
-<p>ここが、
+      <p>ここが、
 今日の一番大事なポイントです。</p>
 <p>たとえば、</p>
-      <details class="script-more">
-        <summary>続きを開く（残り22段落）▼</summary>
-        <div class="script-more-body"><p>売り先が増えない。
+<p>売り先が増えない。
 でも実は、
 安定して出せないから
 増やせないのかもしれない。</p>
@@ -1698,15 +1859,15 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 その前の土台が整っていないから
 広げる判断が怖いのかもしれない。</p>
 <p>要は、</p>
-<p>**表面の悩みと、
+<p><strong>表面の悩みと、
 本当に稼げなくなっている原因は
-ズレていることが多い。**</p>
+ズレていることが多い。</strong></p>
 <p>ここなんです。</p>
 <p>だから問いも変わります。</p>
 <p>「なぜ売れないんだろう」
 じゃなくて、</p>
-<p>**「その前に、
-安定はできているか？」**</p>
+<p><strong>「その前に、
+安定はできているか？」</strong></p>
 <p>ここを見るんです。</p>
 <p>じゃあ実際に、
 どういう流れで
@@ -1725,25 +1886,26 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 設備投資も怖い。
 面積を広げるのも怖い。</p>
 <p>その結果、</p>
-<p>**動きたいのに動けない。
-頑張ってるのに利益が残らない。**</p>
+<p><strong>動きたいのに動けない。
+頑張ってるのに利益が残らない。</strong></p>
 <p>こうなるんです。</p>
 <p>つまり、
 農業で稼げない人って、</p>
 <p>努力していないんじゃなくて、
-利益が出る順番で動けていないことが多い。</p></div>
-      </details>
+<strong>利益が出る順番で動けていないことが多い。</strong></p>
+<p>これなんです。</p>
     </div>
     
     
-    <div class="improve-box urgent">
-      <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
-      <ul><li>曖昧表現が3件（断定型に書き換え）</li></ul>
-      <div class="request-hint">
-        ご主人様の指示例：Discord で <code>#04 ブラッシュアップ</code> または <code>#04 曖昧表現が3件（断定型に書き換え）…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+    <details class="improve-box urgent">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>曖昧表現が3件（断定型に書き換え）</li></ul>
+        <div class="request-hint">
+          Discord で <code>#04 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
       </div>
-    </div>
-    
+    </details>
   </div>
 </section>
 <section class="section normal shoot-new" id="sec-05">
@@ -1758,31 +1920,17 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </span>
   </div>
   <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">注視</span>
-      <span class="arrow">→</span>
-      <span class="to">把握</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「ふむふむ」</div>
-<div class="thought">「次に何が出てくるか」</div>
-<div class="thought highlight">「ここも聞いておこう」</div>
-    </div>
     <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
       <p>ここで、
 今日の核心を置きます。</p>
 <p>農業を成立させる
 基本の順番はこれです。</p>
-<p>**安定
+<p><strong>安定
 ↓
 売り先
 ↓
-拡大**</p>
-      <details class="script-more">
-        <summary>続きを開く（残り21段落）▼</summary>
-        <div class="script-more-body"><p>この順番です。</p>
+拡大</strong></p>
+<p>この順番です。</p>
 <p>まず安定。</p>
 <p>品質、量、収量。
 再現性を作って、
@@ -1800,7 +1948,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 かなり苦しくなります。</p>
 <p>ここで一つだけ、今日から意識してほしいことがあります。</p>
 <p>今の自分の悩みが出てきた時に、</p>
-<p>「これは安定の話か、売り先の話か、拡大の話か」</p>
+<p><strong>「これは安定の話か、売り先の話か、拡大の話か」</strong></p>
 <p>この3つのどれに当たるか、分けてみてください。</p>
 <p>たとえば、
 「売り先が決まらない」と思った時に、
@@ -1808,19 +1956,18 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 それは売り先の問題じゃなくて安定の問題です。</p>
 <p>この仕分けができるだけで、
 次に何をやるべきかの優先度がかなり変わります。</p>
-<p>要は、悩みの仕分けが、最初のゲームチェンジなんです。</p>
+<p>要は、<strong>悩みの仕分けが、最初のゲームチェンジ</strong>なんです。</p>
 <p>実際、この話を講座でした時に、
 反応がかなり分かりやすかったです。</p>
 <p>たとえば感想でも、</p>
-<p>「まず安定が一番だと気づいた」</p>
+<p><strong>「まず安定が一番だと気づいた」</strong></p>
 <p>こういう声がありました。</p>
 <p>これって、
 ただ知識が増えたんじゃなくて、</p>
-<p>見方が変わった
-ってことなんです。</p></div>
-      </details>
+<p><strong>見方が変わった</strong>
+ってことなんです。</p>
+<p>ここは大きいです。</p>
     </div>
-    
     
     
   </div>
@@ -1837,28 +1984,14 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </span>
   </div>
   <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">注視</span>
-      <span class="arrow">→</span>
-      <span class="to">把握</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「ふむふむ」</div>
-<div class="thought">「次に何が出てくるか」</div>
-<div class="thought highlight">「ここも聞いておこう」</div>
-    </div>
     <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
       <p>ただ、
 ここで終わるとダメなんです。</p>
 <p>「なるほど、安定が先なんですね」
 で終わると、
 また一般論で終わります。</p>
 <p>ここで大事なのは、</p>
-      <details class="script-more">
-        <summary>続きを開く（残り14段落）▼</summary>
-        <div class="script-more-body"><p>これは一般論だ
+<p><strong>これは一般論だ</strong>
 ということです。</p>
 <p>骨格としては合っています。</p>
 <p>でも、
@@ -1878,21 +2011,21 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <p>別事業として見ている人なら、
 収入構造の設計が先かもしれない。</p>
 <p>つまり、</p>
-<p>**同じ「稼げない」でも、
-ゲームチェンジの場所は人によって違う。**</p>
-<p>ここなんです。</p></div>
-      </details>
+<p><strong>同じ「稼げない」でも、
+ゲームチェンジの場所は人によって違う。</strong></p>
+<p>ここなんです。</p>
     </div>
     
     
-    <div class="improve-box urgent">
-      <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
-      <ul><li>曖昧表現が3件（断定型に書き換え）</li></ul>
-      <div class="request-hint">
-        ご主人様の指示例：Discord で <code>#06 ブラッシュアップ</code> または <code>#06 曖昧表現が3件（断定型に書き換え）…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+    <details class="improve-box urgent">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>曖昧表現が3件（断定型に書き換え）</li></ul>
+        <div class="request-hint">
+          Discord で <code>#06 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
       </div>
-    </div>
-    
+    </details>
   </div>
 </section>
 <section class="section normal shoot-new" id="sec-07">
@@ -1907,27 +2040,13 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </span>
   </div>
   <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">注視</span>
-      <span class="arrow">→</span>
-      <span class="to">把握</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「ふむふむ」</div>
-<div class="thought">「次に何が出てくるか」</div>
-<div class="thought highlight">「ここも聞いておこう」</div>
-    </div>
     <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
       <p>ここで大事なのは、</p>
-<p>行きたい場所じゃなくて、
-今いる場所を見ることです。</p>
+<p><strong>行きたい場所</strong>じゃなくて、
+<strong>今いる場所</strong>を見ることです。</p>
 <p>人って、
 どうしても先を見ます。</p>
-      <details class="script-more">
-        <summary>続きを開く（残り21段落）▼</summary>
-        <div class="script-more-body"><p>早く売上を上げたい。
+<p>早く売上を上げたい。
 早く販路を広げたい。
 早く大きくしたい。</p>
 <p>でも、
@@ -1940,10 +2059,9 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <p>ここです。</p>
 <p>ここが見えるだけで、
 次の動き方がかなり変わります。</p>
-<p>画面： 話者カメラ→0-5ステージ図（最初3秒無言）</p>
 <p>ここで、もう一回だけ自分に聞いてみてください。</p>
 <p>今の自分は、どの段階にいますか？</p>
-<p>（3秒間、無言で図を見せる）</p>
+<p><strong>（3秒間、無言で図を見せる）</strong></p>
 <p>ゼロ。まだ始める前。
 イチ。作れる状態を安定させる段階。
 ニ。売り先を固める段階。
@@ -1952,27 +2070,34 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 ゴ。規模を伸ばす段階。</p>
 <p>……どこかに当てはまったと思います。</p>
 <p>でも、こうも思いませんでしたか？</p>
-<p>「たぶんここだと思うけど、本当に合ってるか分からない」</p>
+<p><strong>「たぶんここだと思うけど、本当に合ってるか分からない」</strong></p>
 <p>それが普通です。
 自分の現在地って、自分では正確に見えないものなんです。</p>
 <p>だからこそ、整理する意味があります。</p>
 <p>これも感想で、
 かなり象徴的だったんですけど、</p>
-<p>「入口と現在地を分けて考えたことがなかった」</p>
+<p><strong>「入口と現在地を分けて考えたことがなかった」</strong></p>
 <p>こういう声がありました。</p>
-<p>これ、かなり本質なんですよね。</p></div>
-      </details>
+<p>これ、かなり本質なんですよね。</p>
+<p>農業で動けなくなる時って、
+知識が足りないというより、</p>
+<p><strong>自分が今どこにいるかが
+見えていないこと</strong>
+が多いんです。</p>
+<p>だから、
+まず整理が必要なんです。</p>
     </div>
     
     
-    <div class="improve-box">
-      <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
-      <ul><li>曖昧表現が1件（断定型に書き換え）</li></ul>
-      <div class="request-hint">
-        ご主人様の指示例：Discord で <code>#07 ブラッシュアップ</code> または <code>#07 曖昧表現が1件（断定型に書き換え）…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+    <details class="improve-box">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>曖昧表現が1件（断定型に書き換え）</li></ul>
+        <div class="request-hint">
+          Discord で <code>#07 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
       </div>
-    </div>
-    
+    </details>
   </div>
 </section>
 <section class="section normal shoot-new" id="sec-08">
@@ -1987,35 +2112,21 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </span>
   </div>
   <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">注視</span>
-      <span class="arrow">→</span>
-      <span class="to">把握</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「ふむふむ」</div>
-<div class="thought">「次に何が出てくるか」</div>
-<div class="thought highlight">「ここも聞いておこう」</div>
-    </div>
     <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
       <p>今回の講座でも、
 反応が良かったのは
 実務の細かい話より、</p>
-<p>見方が変わる瞬間
+<p><strong>見方が変わる瞬間</strong>
 でした。</p>
 <p>たとえば、</p>
-      <details class="script-more">
-        <summary>続きを開く（残り19段落）▼</summary>
-        <div class="script-more-body"><p>「これから農業を始めたい人が
+<p>「これから農業を始めたい人が
 聞きたいことが詰まっていた」</p>
 <p>「生産側の安定供給が
 こんなに難しいと初めて分かった」</p>
 <p>こういう反応です。</p>
 <p>要は、</p>
-<p>知識が増えたより、
-見方が変わった
+<p><strong>知識が増えた</strong>より、
+<strong>見方が変わった</strong>
 の方が価値が大きかったんです。</p>
 <p>だから今回の動画も、
 細かい実務を全部渡すことはしません。</p>
@@ -2023,12 +2134,12 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 満足感だけじゃなくて
 完結感まで出すぎるからです。</p>
 <p>今回はそうじゃなくて、</p>
-<p>**全体像が見えた。
-でも自分の場合はここから先を整理したい。**</p>
+<p><strong>全体像が見えた。
+でも自分の場合はここから先を整理したい。</strong></p>
 <p>この状態を作るのが目的です。</p>
 <p>ここで、
 今回のタイトルにもしている</p>
-<p>ゲームチェンジ</p>
+<p><strong>ゲームチェンジ</strong></p>
 <p>この話をします。</p>
 <p>ゲームチェンジって聞くと、
 何か派手なことをやるとか、
@@ -2038,15 +2149,15 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 僕はもっと地味で、
 もっと本質的なものだと思っています。</p>
 <p>それは何かというと、</p>
-<p>**自分が今どこで稼げなくなっているのかを見て、
-変えるべき順番を変えること。**</p>
+<p><strong>自分が今どこで稼げなくなっているのかを見て、
+変えるべき順番を変えること。</strong></p>
 <p>これです。</p>
 <p>売り先を増やす前に、安定を見直す。
 拡大を考える前に、出荷量が読める状態を作る。
-何を作るかの前に、どう成立させるかを考える。</p></div>
-      </details>
+何を作るかの前に、どう成立させるかを考える。</p>
+<p>これが、
+農業のゲームチェンジです。</p>
     </div>
-    
     
     
   </div>
@@ -2063,28 +2174,14 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </span>
   </div>
   <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">確信</span>
-      <span class="arrow">→</span>
-      <span class="to">行動衝動</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「今日から動きたい」</div>
-<div class="thought">「LINEで詳しく聞きたい」</div>
-<div class="thought highlight">「忘れないうちに登録しよう」</div>
-    </div>
     <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
       <p>ここまで聞いて、
 たぶん今あなたの中に
 2つあると思います。</p>
 <p>一つは、</p>
 <p>「たしかに自分は
 表面の悩みで見ていたな」</p>
-      <details class="script-more">
-        <summary>続きを開く（残り19段落）▼</summary>
-        <div class="script-more-body"><p>もう一つは、</p>
+<p>もう一つは、</p>
 <p>「じゃあ自分は
 何から変えればいいんだろう」</p>
 <p>こっちです。</p>
@@ -2100,7 +2197,6 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 今は何をやらなくていいのか</p>
 <p>ここは、
 一般論だけでは決めきれません。</p>
-<p>画面： 話者カメラ正面、目線をカメラに</p>
 <p>正直に言います。</p>
 <p>ここまでの話で、全体像は見えたと思います。</p>
 <p>でも、自分一人で
@@ -2114,25 +2210,88 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 自分の条件と照らし合わせないと分かりません。</p>
 <p>僕自身も、最初は一人で考えて、
 順番を間違えて、10年遠回りしました。</p>
-<p>だから、整理できる人と一緒に見ることに意味があるんです。</p>
+<p><strong>だから、整理できる人と一緒に見ることに意味があるんです。</strong></p>
 <p>だから、
 個別相談に意味があります。</p>
 <p>個別相談って、
 何かすごいノウハウを
-一方的にもらう場じゃないです。</p></div>
-      </details>
+一方的にもらう場じゃないです。</p>
+<p>そうじゃなくて、</p>
+<p><strong>あなたの今の止まり方を整理して、
+あなたにとってのゲームチェンジを見つける場</strong>です。</p>
+<p>そしてここで決めるのは、
+すごくシンプルです。</p>
+<p><strong>個別相談では、
+あなたが今どの段階かと、
+次に何から変えるかを決めます。</strong></p>
+<p>ここです。</p>
+<p>これが決まると、
+かなり動きやすくなります。</p>
+<p>逆にこれが決まっていないと、
+知識を増やしても
+あれもこれも気になって進みにくいです。</p>
+<p>もし今あなたが、</p>
+<p>頑張ってるのに利益が残らない。
+何を優先すべきか分からない。
+売り先の問題なのか、
+安定の問題なのか、
+広げ方の問題なのか整理できない。</p>
+<p>あるいは、</p>
+<p>これから始めるにしても、
+遠回りせずに進みたい。</p>
+<p>そう思っているなら、
+個別相談に来てください。</p>
+<p>ここでは、
+一般論の続きをやるんじゃなくて、</p>
+<p><strong>あなたのケースに当てはめて
+順番を引き直す</strong></p>
+<p>そこをやります。</p>
+<p>だから、
+知識を増やすためというより、</p>
+<p><strong>自分の現在地と、
+次の一手を決めるために来る場所</strong>
+だと思ってください。</p>
+<p>最後に、今日の話をまとめます。</p>
+<p>農業で稼げなくなる時って、
+努力不足より、
+順番のズレであることが多いです。</p>
+<p>表面の悩みは、
+売り先、単価、人、拡大、収入不安、
+いろいろあります。</p>
+<p>でも、本当の原因は
+その手前にあることが多い。</p>
+<p>だから大事なのは、</p>
+<p><strong>自分は今、どの段階で、
+何が稼げない原因になっているのかを見ること。</strong></p>
+<p>そして骨格は、</p>
+<p><strong>安定 → 売り先 → 拡大</strong></p>
+<p>です。</p>
+<p>ただし、
+ここから先は一般論じゃなく、
+自分の条件で見ないと決めきれません。</p>
+<p>だから必要なのが、
+あなた自身のゲームチェンジです。</p>
+<p>もし
+「全体像は分かった。
+でも自分は何から変えるべきか整理したい」</p>
+<p>そう思ったなら、
+個別相談で一緒に見ていきましょう。</p>
+<p>ここから、
+あなたの農業のゲームチェンジを
+始めていきましょう。</p>
     </div>
     
     
-    <div class="improve-box urgent">
-      <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
-      <ul><li>曖昧表現が3件（断定型に書き換え）</li>
+    <details class="improve-box urgent">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>曖昧表現が3件（断定型に書き換え）</li>
 <li>CTA誘導文言（公式LINE／概要欄／登録）が弱い</li></ul>
-      <div class="request-hint">
-        ご主人様の指示例：Discord で <code>#09 ブラッシュアップ</code> または <code>#09 曖昧表現が3件（断定型に書き換え）…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+        <div class="request-hint">
+          Discord で <code>#09 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
       </div>
-    </div>
-    
+    </details>
   </div>
 </section>
 <section class="section cta shoot-new" id="sec-10">
@@ -2147,22 +2306,10 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </span>
   </div>
   <div class="body">
-    <div class="emotion-arrow">
-      <span class="from">確信</span>
-      <span class="arrow">→</span>
-      <span class="to">行動衝動</span>
-    </div>
-    <div class="viewer-thoughts">
-      <div class="lab">🎬 視聴者の頭の中</div>
-      <div class="thought">「今日から動きたい」</div>
-<div class="thought">「LINEで詳しく聞きたい」</div>
-<div class="thought highlight">「忘れないうちに登録しよう」</div>
-    </div>
     <div class="script-body">
-      <span class="lab">📜 台本本文（読み上げ用）</span>
       <p>僕自身、
 この地域で、何をどうやったら
-稼げる農業になるのかに気づくまで、
+<strong>稼げる農業になるのか</strong>に気づくまで、
 10年かかりました。</p>
 <p>もし最初から順番を整理できていたら、
 200tどころか、300t、400tまで
@@ -2171,11 +2318,9 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 その意味を深く理解できなかったし、
 実際にどう動けばいいかも
 分かっていませんでした。</p>
-      <details class="script-more">
-        <summary>続きを開く（残り11段落）▼</summary>
-        <div class="script-more-body"><p>そして何より、</p>
-<p>**ちゃんと実績を持って、
-自分の状況に合わせて見てくれる人がいなかった。**</p>
+<p>そして何より、</p>
+<p><strong>ちゃんと実績を持って、
+自分の状況に合わせて見てくれる人がいなかった。</strong></p>
 <p>だから、遠回りしました。</p>
 <p>ここまで見ている時点で、</p>
 <p>自分の今のやり方を見直したい
@@ -2188,30 +2333,107 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 僕が出しているマイナビ農業の記事を見ても、
 情報だけでは前に進まないことがあります。</p>
 <p>その理由は、
-**あなたの地域、作物、面積、売り先、人の使い方に、
-ぴったり合った答えではないからです。**</p>
+<strong>あなたの地域、作物、面積、売り先、人の使い方に、
+ぴったり合った答えではないからです。</strong></p>
 <p>今必要なのは、
 もっと情報を集めることではなく、
-今の自分の現在地を整理することです。</p>
+<strong>今の自分の現在地を整理することです。</strong></p>
 <p>今まで僕は、
 YouTubeで3年間、
 メンバーシップでも濃い情報を
 発信し続けてきました。</p>
 <p>実際に、
-成果や感想はたくさんいただいています。</p></div>
-      </details>
+成果や感想はたくさんいただいています。</p>
+<p>でも、
+<strong>それだけで、これから先もずっと稼げる農業にするところまでは届かなかった。</strong></p>
+<p>なぜかというと、
+一人ひとりのケースに
+当てはめきれなかったからです。</p>
+<p>同じ作物でも、
+地域が違えば売り先が違う。
+面積が違えば、利益の出し方も違う。
+人を使うかどうかで、組み方も変わる。</p>
+<p>つまり、
+<strong>一般論だけでは足りない。</strong></p>
+<p>だから僕はさらに学んで、
+<strong>個別にケースに合わせて整理する</strong>
+ということを始めました。</p>
+<p>その結果、</p>
+<p>販売単価を上げられた方
+出荷量を増やせた方
+未経験から新規で農業を始められた方</p>
+<p>こうした変化が、実際に出てきています。</p>
+<p>ここまで聞いて、
+もう分かってると思います。</p>
+<p>全体像は見えた。
+順番も分かった。
+一般論では決めきれないことも分かった。</p>
+<p>たぶん今、こう思ってませんか？</p>
+<p><strong>「で、自分はどうすればいいの？」</strong></p>
+<p>そう思えているなら、
+この動画の目的は達成です。</p>
+<p>ここから先は、あなたの話です。</p>
+<p><strong>（3秒間の間）</strong></p>
+<p>答えはシンプルです。</p>
+<p><strong>整理できる人に見てもらって、
+今の段階をはっきりさせること。</strong></p>
+<p>一人で考えていても、
+自分では見えていないズレには
+気づきにくいです。</p>
+<p>だからまずは、
+今の自分の位置を
+はっきりさせることから始めます。</p>
+<p><strong>0.</strong> まだ始める前（これからゼロイチを始める）
+<strong>1.</strong> 作れる状態を安定させる段階
+<strong>2.</strong> 売り先を固める段階
+<strong>3.</strong> 面積あたりの利益を残す段階
+<strong>4.</strong> 人に任せて回す段階
+<strong>5.</strong> 規模を伸ばす段階</p>
+<p>返信をくれた方には、
+あなたの今の段階に合わせて、
+次に何を準備すべきかを個別で見ていきます。</p>
+<p>たとえば、</p>
+<p>今年1年で何を優先するべきか
+今の仕事を続けながらどこまで進めるか
+何から固めれば利益が残りやすくなるか
+ゼロイチならまず何を作るべきか</p>
+<p>このあたりを整理するだけでも、
+今年の動き方はかなり変わります。</p>
+<p><strong>【ここから追加カットG】</strong></p>
+<p>で、一つだけ先に言っておくと、</p>
+<p>個別相談は、一回で全部を決める場所ではないです。</p>
+<p>まずは今の段階をはっきりさせて、
+次の一手を決める。</p>
+<p>そこから先、
+実際にやっていく中で出てくる壁や判断については、
+必要に応じて一緒に見ていく形も取れます。</p>
+<p>ただ、まずは今の現在地の整理が最初です。</p>
+<p>だから、まずは数字だけ返信してください。
+そこから始めましょう。</p>
+<p>こうして個別で見られる機会は、
+ずっと続けられるわけではありません。</p>
+<p>また1年遠回りする前に、
+今の自分を整理したい方は、
+<strong>このLINEに数字だけ返信してください。</strong></p>
+<p>あなたの農業も、
+<strong>もっと楽しくなる、
+もっと利益の出る農業にしたい。</strong></p>
+<p>そう思う方は、
+このLINEに数字を返信して、
+個別相談してみてください。</p>
     </div>
     
     
-    <div class="improve-box">
-      <div class="lab">🛠️ ブラッシュアップ候補（自動診断）</div>
-      <ul><li>曖昧表現が2件（断定型に書き換え）</li>
+    <details class="improve-box">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>曖昧表現が2件（断定型に書き換え）</li>
 <li>CTA誘導文言（公式LINE／概要欄／登録）が弱い</li></ul>
-      <div class="request-hint">
-        ご主人様の指示例：Discord で <code>#10 ブラッシュアップ</code> または <code>#10 曖昧表現が2件（断定型に書き換え）…</code> と送ると、私がこのセクションだけ直して再デプロイします🌸
+        <div class="request-hint">
+          Discord で <code>#10 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
       </div>
-    </div>
-    
+    </details>
   </div>
 </section>
     <div class="appendix-heading">📎 付帯セクション（撮影外）</div>
@@ -2392,7 +2614,7 @@ YouTubeで3年間、
   </div>
 
   <footer class="footer">
-    Generated 2026-05-27 20:00 JST from nogyo-game-change-v1.md
+    Generated 2026-05-27 22:45 JST from nogyo-game-change-v1.md
   </footer>
 
 </div>

@@ -940,6 +940,82 @@ html, body {
 }
 .read-script-link a:hover { background: #ffd87a; color: #0a0e1a; }
 
+/* ===== バージョンタブ（hero直下） ===== */
+.version-tabs {
+  background: linear-gradient(135deg, rgba(106, 165, 232, 0.08) 0%, rgba(106, 165, 232, 0.02) 100%);
+  border: 1px solid rgba(106, 165, 232, 0.3);
+  border-radius: 14px;
+  margin: 16px 16px 18px;
+  padding: 16px 18px;
+}
+.version-tabs .vt-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #6ba5e8;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+.version-tabs .vt-tabs-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.version-tabs .vt-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(106, 165, 232, 0.25);
+  color: #b8c4dd;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  flex-wrap: wrap;
+}
+.version-tabs .vt-tab:hover {
+  border-color: rgba(106, 165, 232, 0.6);
+  background: rgba(106, 165, 232, 0.08);
+  color: #ffffff;
+}
+.version-tabs .vt-tab.active {
+  border-color: #ffd87a;
+  background: rgba(255, 216, 122, 0.10);
+  color: #ffffff;
+  cursor: default;
+}
+.version-tabs .vt-label {
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffd87a;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.version-tabs .vt-tab.active .vt-label {
+  color: #ffd87a;
+}
+.version-tabs .vt-current-tag {
+  font-size: 10px;
+  font-weight: 800;
+  background: #ffd87a;
+  color: #0a0e1a;
+  padding: 2px 8px;
+  border-radius: 99px;
+  letter-spacing: 0.05em;
+  flex: 0 0 auto;
+}
+.version-tabs .vt-purpose {
+  font-size: 12px;
+  color: #b8c4dd;
+  line-height: 1.5;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+@media (max-width: 480px) {
+  .version-tabs { margin: 12px 8px 14px; padding: 14px 14px; }
+  .version-tabs .vt-purpose { font-size: 11px; flex-basis: 100%; }
+}
+
 /* ===== 制作フロー（Naokiさん向け視覚化）— hero 直下 ===== */
 .production-flow {
   background: linear-gradient(135deg, rgba(74, 144, 226, 0.10) 0%, rgba(6, 167, 125, 0.10) 100%);
@@ -1481,6 +1557,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <a href="nogyo-game-change-v3.md" target="_blank">📜 読み上げ用 Markdown 台本を開く</a>
     </div>
   </section>
+
+  <div class="version-tabs"><div class="vt-title">📚 バージョン一覧</div><div class="vt-tabs-row"><a class="vt-tab" href="nogyo-game-change-v1.html" title="撮影済みオリジナル台本を10章+appendixに整形（章分けと撮影バッジ）"><span class="vt-label">v1</span><span class="vt-purpose">撮影済みオリジナル台本を10章+appendixに整形（章分けと撮影バッジ）</span></a><a class="vt-tab" href="nogyo-game-change-v2.html" title="動画前後LINEに合うよう冒頭・CTA訴求軸・締めを調整＋差分色換え機能"><span class="vt-label">v2・LINEフィット</span><span class="vt-purpose">動画前後LINEに合うよう冒頭・CTA訴求軸・締めを調整＋差分色換え機能</span></a><div class="vt-tab active" title="章ごとの心理導線アンカーを手動指定で感情の波を再設計（台本本文は無変更）"><span class="vt-label">v3・ジェットコースター</span><span class="vt-current-tag">今ここ</span><span class="vt-purpose">章ごとの心理導線アンカーを手動指定で感情の波を再設計（台本本文は無変更）</span></div></div></div>
 
   <details class="production-flow collapsible-panel" open><summary class="cp-summary"><span class="cp-title">🎬 制作フロー（台本ボード → ドキュメント → 撮影）</span><span class="cp-toggle">タップで開閉 ▼</span></summary><div class="cp-body"><p class="pf-lead">視覚化で快適に台本を作るための3ステップ。①でブラッシュアップしたら、②の撮影用ドキュメントを開いて読み上げ撮影 → ③ブループリント編集で動画化。</p><div class="pf-steps"><div class="pf-step current"><span class="pf-num">①</span><span class="pf-title">📋 台本ボードで視覚化・調整</span><span class="pf-desc">いまここ。章ごとの感情曲線・採点・ブラッシュアップ候補を一目で見ながら台本を磨く</span></div><div class="pf-arrow">→</div><div class="pf-step"><span class="pf-num">②</span><span class="pf-title">📄 撮影用ドキュメントで撮影</span><span class="pf-desc">章＋【Scroll】マーカーつき。スマホで開いて読み上げながら撮影</span><a class="pf-link" href="https://docs.google.com/document/d/17tWkWZeOSKvMdAHx_Ia1e5-_eAgsEniUcQP-yM5Zawk/edit?usp=sharing" target="_blank" rel="noopener">📄 ドキュメントを開く →</a></div><div class="pf-arrow">→</div><div class="pf-step"><span class="pf-num">③</span><span class="pf-title">🎞 ブループリント編集 → 公開</span><span class="pf-desc">読み上げ撮影した素材をブループリントで編集、スパッと動画化してYouTubeへ</span></div></div></div></details>
 
@@ -2558,7 +2636,7 @@ LINEに次のご案内と、
   </div>
 
   <footer class="footer">
-    Generated 2026-05-27 22:42 JST from nogyo-game-change-v3.md
+    Generated 2026-05-27 22:45 JST from nogyo-game-change-v3.md
   </footer>
 
 </div>

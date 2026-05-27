@@ -1,6 +1,8 @@
 ---
 title: 「農業のゲームチェンジ」LINE登録後動画 再撮影台本（v1）
 date: 2026-05-27
+version_label: v1
+version_purpose: 撮影済みオリジナル台本を10章+appendixに整形（章分けと撮影バッジ）
 shoot_doc_url: https://docs.google.com/document/d/17tWkWZeOSKvMdAHx_Ia1e5-_eAgsEniUcQP-yM5Zawk/edit?usp=sharing
 shoot_doc_label: 撮影用 Googleドキュメント（本編+追加スライド+編集者向け指示書）
 target_minutes: 完成尺 約15-20分（本編+追加スライド・スライド進行つき）

@@ -1,6 +1,8 @@
 ---
 title: 「農業のゲームチェンジ」LINE登録後動画 再撮影台本（v3・感情ジェットコースター版）
 date: 2026-05-27
+version_label: v3・ジェットコースター
+version_purpose: 章ごとの心理導線アンカーを手動指定で感情の波を再設計（台本本文は無変更）
 shoot_doc_url: https://docs.google.com/document/d/17tWkWZeOSKvMdAHx_Ia1e5-_eAgsEniUcQP-yM5Zawk/edit?usp=sharing
 shoot_doc_label: 撮影用 Googleドキュメント（本編+追加スライド+編集者向け指示書）
 target_minutes: 完成尺 約15-20分（本編+追加スライド・スライド進行つき）
