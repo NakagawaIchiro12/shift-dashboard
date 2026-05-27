@@ -1,0 +1,2617 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+  <title>📋 「農業のゲームチェンジ」LINE登録後動画 再撮影台本（v3・感情ジェットコースター版） | 台本ボードLP</title>
+  <style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: 'Yu Gothic', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  background: #0a0e1a;
+  color: #e8ebf2;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 760px; margin: 0 auto; padding-right: 76px; }
+@media (max-width: 580px) {
+  .page { padding-right: 60px; }
+}
+
+/* ===== 心理動線 サイドバー ===== */
+.emotion-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 76px;
+  background: rgba(10, 14, 26, 0.96);
+  z-index: 100;
+  padding: 14px 0;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-left: 1px solid rgba(255,255,255,0.06);
+}
+.emotion-sidebar::-webkit-scrollbar { width: 0; }
+.emotion-sidebar .sb-title {
+  font-size: 10px;
+  color: #ffd87a;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+  padding: 0 4px;
+  line-height: 1.3;
+}
+.emotion-sidebar .path {
+  position: relative;
+  padding: 0 8px 14px;
+}
+.emotion-sidebar .path::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  bottom: 14px;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: linear-gradient(180deg,
+    #ff6b35 0%, #ff6b35 22%,
+    #4a6fff 22%, #4a6fff 78%,
+    #06a77d 78%, #06a77d 100%);
+  opacity: 0.5;
+}
+.emotion-sidebar a {
+  display: block;
+  text-align: center;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  position: relative;
+  padding: 6px 2px;
+  transition: transform 0.12s ease;
+}
+.emotion-sidebar a:hover { transform: scale(1.05); color: #ffd87a; }
+.emotion-sidebar a .dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.25);
+  border: 2px solid #0a0e1a;
+  margin-bottom: 4px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.15s ease;
+}
+.emotion-sidebar a.hook .dot { background: #ff6b35; }
+.emotion-sidebar a.core .dot { background: #4a6fff; }
+.emotion-sidebar a.cta  .dot { background: #06a77d; }
+.emotion-sidebar a.support .dot { background: #8a8a8a; }
+.emotion-sidebar a .num {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.1;
+}
+.emotion-sidebar a .emotion {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+.emotion-sidebar a.active .dot {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 2px;
+  box-shadow: 0 0 0 4px rgba(255, 216, 122, 0.35), 0 0 12px rgba(255, 216, 122, 0.5);
+  border-color: #ffd87a;
+}
+.emotion-sidebar a.active .emotion {
+  color: #ffd87a;
+  font-size: 13px;
+}
+.emotion-sidebar a.active .num { color: #ffd87a; }
+.emotion-sidebar .here-tag {
+  display: none;
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffd87a;
+  color: #0a0e1a;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px 0 0 4px;
+  white-space: nowrap;
+  margin-right: -2px;
+}
+.emotion-sidebar a.active .here-tag {
+  display: block;
+}
+@media (max-width: 580px) {
+  .emotion-sidebar { width: 60px; }
+  .emotion-sidebar a .emotion { font-size: 11px; }
+  .emotion-sidebar a .dot { width: 12px; height: 12px; }
+  .emotion-sidebar a.active .dot { width: 16px; height: 16px; }
+}
+
+.hero {
+  background: linear-gradient(135deg, #0a0e1a 0%, #1a2238 100%);
+  padding: 56px 28px 44px;
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.hero .badge-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.hero .badge {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 12px;
+  color: #ffd87a;
+}
+.hero h1 {
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  margin-bottom: 14px;
+  color: #ffffff;
+}
+.hero h1 .accent {
+  color: #ffd87a;
+  display: inline-block;
+}
+.hero .subtitle {
+  font-size: 16px;
+  color: #b8c4dd;
+  margin-top: 12px;
+}
+.hero .stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 32px;
+}
+.hero .stat {
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 14px 8px;
+}
+.hero .stat .num {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffd87a;
+}
+.hero .stat .lab {
+  font-size: 11px;
+  color: #b8c4dd;
+  margin-top: 4px;
+}
+
+.intro {
+  background: #0f1424;
+  color: #e8ebf2;
+  padding: 36px 28px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.intro h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffd87a;
+  margin-bottom: 8px;
+}
+.intro p {
+  font-size: 15px;
+  color: #a0a8b8;
+}
+.intro .arrow {
+  margin: 20px auto 0;
+  font-size: 28px;
+  color: #ffd87a;
+}
+
+.timeline {
+  background: #0a0e1a;
+  padding: 16px 0 56px;
+}
+
+.section {
+  background: #141b2e;
+  margin: 0 16px 18px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.section .head {
+  padding: 22px 24px 18px;
+  position: relative;
+}
+.section .head .position {
+  font-size: 13px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.04em;
+}
+.section .head .title {
+  font-size: 30px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.3;
+  margin: 4px 0 6px;
+  word-break: keep-all;
+}
+.section .head .subtitle {
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  font-weight: 600;
+}
+.section .head .duration-pill {
+  display: inline-block;
+  background: rgba(0,0,0,0.18);
+  border-radius: 99px;
+  padding: 3px 12px;
+  font-size: 12px;
+  color: #fff;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* 撮影区分バッジ — 🆕 新規撮影 / ♻️ 既存動画素材 */
+.shoot-banner {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  border: 2px solid rgba(255,255,255,0.5);
+}
+.shoot-banner.new {
+  background: linear-gradient(135deg, #ff3d00 0%, #ff8c1a 100%);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.shoot-banner.reuse {
+  background: linear-gradient(135deg, #00b894 0%, #1abc9c 100%);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+.shoot-banner .icon { font-size: 16px; }
+@media (max-width: 720px) {
+  .shoot-banner {
+    position: static;
+    margin-bottom: 8px;
+    align-self: flex-start;
+  }
+}
+
+.section.shoot-new { border-left: 6px solid #ff3d00; }
+.section.shoot-reuse { border-left: 6px solid #00b894; }
+
+.section .head.hook { background: linear-gradient(135deg, #ff6b35 0%, #d04612 100%); }
+.section .head.core { background: linear-gradient(135deg, #4a6fff 0%, #1f3fcf 100%); }
+.section .head.cta  { background: linear-gradient(135deg, #06a77d 0%, #047a59 100%); }
+.section .head.support { background: linear-gradient(135deg, #6a7280 0%, #4a5260 100%); }
+.section .head.normal { background: linear-gradient(135deg, #5d6d7e 0%, #34495e 100%); }
+
+.section .body {
+  padding: 24px;
+}
+
+.emotion-arrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #a0a8b8;
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+}
+.emotion-arrow .from { color: #8a92a8; }
+.emotion-arrow .arrow { color: #ff8c42; font-weight: 800; font-size: 18px; }
+.emotion-arrow .to { color: #ffb168; font-weight: 800; }
+
+.section.core .emotion-arrow .arrow { color: #6b8eff; }
+.section.core .emotion-arrow .to { color: #8aa5ff; }
+.section.cta .emotion-arrow .arrow { color: #2dd4a6; }
+.section.cta .emotion-arrow .to { color: #5fe3bd; }
+
+.viewer-thoughts {
+  background: linear-gradient(135deg, #1f2640 0%, #2a3050 100%);
+  border-left: 5px solid #ffd87a;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 18px 0;
+}
+.viewer-thoughts .lab {
+  font-size: 13px;
+  font-weight: 800;
+  color: #ffd87a;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+.viewer-thoughts .thought {
+  font-size: 16px;
+  color: #e8ebf2;
+  margin-bottom: 8px;
+  padding-left: 22px;
+  position: relative;
+  font-weight: 500;
+}
+.viewer-thoughts .thought::before {
+  content: "💬";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.viewer-thoughts .thought.highlight {
+  background: rgba(255, 216, 122, 0.18);
+  border: 1px solid rgba(255, 216, 122, 0.4);
+  padding: 8px 12px 8px 32px;
+  border-radius: 8px;
+  margin-top: 8px;
+  font-weight: 700;
+  color: #ffd87a;
+}
+
+.script-body {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 22px 24px 20px;
+  margin-top: 18px;
+  font-size: 15px;
+  color: #d8dde8;
+  line-height: 1.85;
+  position: relative;
+}
+.script-body .lab {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  color: #a0a8b8;
+  background: rgba(255,255,255,0.06);
+  padding: 3px 10px;
+  border-radius: 99px;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+.script-body p {
+  margin: 0 0 12px;
+  white-space: pre-wrap;
+}
+.script-body p:last-child { margin-bottom: 0; }
+.script-body mark.diff-new {
+  background: linear-gradient(transparent 55%, rgba(255, 216, 122, 0.45) 55%);
+  color: #fff5d6;
+  padding: 1px 3px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+.diff-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 216, 122, 0.08);
+  border: 1px solid rgba(255, 216, 122, 0.3);
+  border-radius: 99px;
+  padding: 4px 12px;
+  font-size: 11px;
+  color: #ffd87a;
+  margin-top: 14px;
+}
+.diff-legend mark {
+  background: linear-gradient(transparent 55%, rgba(255, 216, 122, 0.45) 55%);
+  color: #fff5d6;
+  padding: 0 4px;
+}
+
+.greeting-warning {
+  background: rgba(255, 193, 7, 0.12);
+  border: 2px solid #ffc107;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 14px 0 0;
+  font-size: 14px;
+  color: #ffd87a;
+  font-weight: 700;
+}
+
+/* ===== スコア・改善提案 ===== */
+.score-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 99px;
+  padding: 5px 14px 5px 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-weight: 900;
+  color: #ffffff;
+  font-size: 13px;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+.score-badge .score-num {
+  font-size: 22px;
+  line-height: 1;
+}
+.score-badge .score-max {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.improve-box {
+  background: linear-gradient(135deg, rgba(255, 159, 67, 0.06) 0%, rgba(255, 159, 67, 0.02) 100%);
+  border: 1px solid rgba(255, 159, 67, 0.3);
+  border-radius: 10px;
+  margin-top: 14px;
+}
+.improve-box .improve-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ff9f43;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.improve-box .improve-summary::-webkit-details-marker { display: none; }
+.improve-box .improve-toggle {
+  font-size: 10px;
+  color: #8a92a8;
+  font-weight: 600;
+}
+.improve-box[open] .improve-toggle::after { content: " ▲"; }
+.improve-box[open] .improve-summary {
+  border-bottom: 1px dashed rgba(255, 159, 67, 0.25);
+}
+.improve-box .improve-body {
+  padding: 12px 16px 14px;
+}
+.improve-box.urgent {
+  border-color: rgba(230, 57, 70, 0.4);
+}
+.improve-box.urgent .improve-summary {
+  color: #ff6b7a;
+}
+.improve-box.urgent {
+  border-color: rgba(230, 57, 70, 0.6);
+  background: linear-gradient(135deg, rgba(230, 57, 70, 0.12) 0%, rgba(230, 57, 70, 0.04) 100%);
+}
+.improve-box .lab {
+  font-size: 12px;
+  font-weight: 800;
+  color: #ff9f43;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+.improve-box.urgent .lab { color: #ff6b7a; }
+.improve-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.improve-box li {
+  font-size: 14px;
+  color: #e8ebf2;
+  padding: 4px 0 4px 22px;
+  position: relative;
+  line-height: 1.6;
+}
+.improve-box li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  color: #ff9f43;
+  font-weight: 900;
+}
+.improve-box.urgent li::before { color: #ff6b7a; }
+.improve-box .request-hint {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #a0a8b8;
+}
+.improve-box .request-hint code {
+  background: #1a1a1a;
+  color: #ffd87a;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'SF Mono', Menlo, monospace;
+  font-weight: 800;
+}
+
+/* スコアバッジを各重要度ヘッダーに乗せる用 */
+.section .head { position: relative; }
+
+/* サイドバーにスコアを併記 */
+.emotion-sidebar a .sb-score {
+  display: block;
+  font-size: 9px;
+  font-weight: 800;
+  margin-top: 1px;
+  opacity: 0.85;
+}
+
+/* ===== ナレッジ投入ガイド ===== */
+.knowledge-guide {
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.10) 0%, rgba(74, 144, 226, 0.04) 100%);
+  border: 2px solid rgba(74, 144, 226, 0.5);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-top: 14px;
+}
+.knowledge-guide .lab {
+  font-size: 12px;
+  font-weight: 800;
+  color: #6ba5e8;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+.knowledge-guide ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.knowledge-guide li {
+  padding: 8px 0 8px 28px;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.6;
+  border-bottom: 1px dashed rgba(74, 144, 226, 0.25);
+}
+.knowledge-guide li:last-child { border-bottom: none; }
+.knowledge-guide li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.knowledge-guide .kg-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+}
+.apply-knowledge-btn {
+  align-self: flex-start;
+  background: linear-gradient(135deg, #ffd87a 0%, #ffb84a 100%);
+  color: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+.apply-knowledge-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,216,122,0.3); }
+.apply-knowledge-btn.copied { background: linear-gradient(135deg, #06a77d 0%, #048a64 100%); color: #fff; }
+.kg-hint {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(255,216,122,0.08);
+  border-left: 3px solid #ffd87a;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #b8c4dd;
+}
+
+/* セクション本文の「続きを開く」 */
+.section .body details.script-more {
+  margin-top: 12px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.section .body details.script-more summary {
+  cursor: pointer;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #ffd87a;
+  list-style: none;
+  user-select: none;
+  background: rgba(255,216,122,0.05);
+  border-radius: 8px;
+  font-weight: 600;
+}
+.section .body details.script-more summary::-webkit-details-marker { display: none; }
+.section .body details.script-more[open] summary {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px 8px 0 0;
+}
+.section .body details.script-more[open] summary::after { content: " ▲"; }
+.section .body details.script-more .script-more-body {
+  padding: 12px 18px;
+}
+.knowledge-guide li::before {
+  content: "📚";
+  position: absolute;
+  left: 0;
+  top: 7px;
+}
+.knowledge-guide .ttl {
+  font-weight: 800;
+  color: #e8ebf2;
+  display: block;
+}
+.knowledge-guide .src {
+  font-size: 11px;
+  color: #8aa5c8;
+  font-family: 'SF Mono', Menlo, monospace;
+  display: block;
+  margin-top: 2px;
+  word-break: break-all;
+}
+.knowledge-guide .effect {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffffff;
+  background: #4a90e2;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+/* ===== トップ トリセツ パネル ===== */
+.toricetsu {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.10) 0%, rgba(255, 193, 7, 0.04) 100%);
+  border-radius: 14px;
+  margin: 16px 16px 18px;
+  padding: 22px 24px;
+  border-left: 6px solid #ffc107;
+  border-top: 1px solid rgba(255,193,7,0.2);
+  border-right: 1px solid rgba(255,193,7,0.2);
+  border-bottom: 1px solid rgba(255,193,7,0.2);
+}
+.toricetsu h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #ffd87a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.toricetsu ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: step;
+}
+.toricetsu ol li {
+  counter-increment: step;
+  padding: 8px 0 8px 36px;
+  position: relative;
+  font-size: 14px;
+  color: #e8ebf2;
+  line-height: 1.65;
+}
+.toricetsu ol li strong { color: #ffd87a; }
+.toricetsu ol li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 26px;
+  height: 26px;
+  background: #ffc107;
+  color: #0a0e1a;
+  font-weight: 900;
+  font-size: 14px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.toricetsu .req-example {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+  font-size: 13px;
+  color: #a0a8b8;
+}
+.toricetsu .req-example code {
+  background: #1a1a1a;
+  color: #ffd87a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'SF Mono', Menlo, monospace;
+  font-weight: 800;
+}
+
+/* ===== 台本の磨き方 (polish-guide) ===== */
+.toricetsu.polish-guide {
+  padding: 20px 22px;
+}
+.toricetsu.polish-guide h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+.polish-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.polish-step {
+  display: flex;
+  align-items: stretch;
+  background: rgba(0,0,0,0.25);
+  border-radius: 10px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 193, 7, 0.18);
+}
+.polish-step .ps-num {
+  flex: 0 0 42px;
+  font-size: 26px;
+  font-weight: 900;
+  color: #0a0e1a;
+  background: #ffc107;
+  border-radius: 99px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 14px;
+}
+.polish-step .ps-body { flex: 1; }
+.polish-step .ps-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffd87a;
+  margin-bottom: 4px;
+}
+.polish-step .ps-desc {
+  font-size: 13px;
+  color: #d8dde8;
+  line-height: 1.65;
+}
+.polish-step .ps-desc code {
+  background: #1a1a1a;
+  color: #ffd87a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 12px;
+}
+.ps-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 2px 4px 2px 0;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.ps-pill.ps-gold   { background: #ffd700; color: #4a3800; }
+.ps-pill.ps-green  { background: #4caf50; color: #ffffff; }
+.ps-pill.ps-yellow { background: #ffc107; color: #4a3800; }
+.ps-pill.ps-red    { background: #f44336; color: #ffffff; }
+@media (max-width: 480px) {
+  .polish-step .ps-num { flex-basis: 36px; height: 36px; font-size: 22px; margin-right: 10px; }
+  .polish-step .ps-title { font-size: 15px; }
+  .polish-step .ps-desc { font-size: 12px; }
+
+  /* スマホでサイドバーが横幅圧迫しないよう縮める */
+  .emotion-sidebar { width: 52px !important; padding: 12px 0 !important; }
+  .emotion-sidebar .sb-title { font-size: 9px !important; padding: 0 4px !important; }
+  .emotion-sidebar a { font-size: 10px !important; padding: 4px 2px !important; }
+  .emotion-sidebar a .num { font-size: 11px !important; }
+  .emotion-sidebar a .emotion { font-size: 9px !important; }
+  .emotion-sidebar a .sb-score { font-size: 9px !important; }
+  .emotion-sidebar a .here-tag { display: none !important; }
+  .page { padding-right: 52px !important; }
+}
+
+/* ===== CTA到達力スコア（hero内・最上部） ===== */
+.cta-score-banner {
+  background: linear-gradient(135deg, rgba(255, 216, 122, 0.18) 0%, rgba(255, 140, 66, 0.10) 100%);
+  border: 2px solid rgba(255, 216, 122, 0.55);
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin: 22px auto 0;
+  max-width: 540px;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(255, 216, 122, 0.12);
+}
+.cta-score-banner .lab {
+  font-size: 11px;
+  color: #b8c4dd;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+.cta-score-banner .score-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 900;
+}
+.cta-score-banner .current {
+  font-size: 44px;
+  line-height: 1;
+  color: #ffd87a;
+}
+.cta-score-banner .slash {
+  font-size: 18px;
+  color: #6a7290;
+}
+.cta-score-banner .arrow {
+  font-size: 22px;
+  color: #ff8c42;
+  margin: 0 8px;
+  font-weight: 900;
+}
+.cta-score-banner .target-label {
+  font-size: 11px;
+  color: #b8c4dd;
+  margin-right: 2px;
+  font-weight: 600;
+}
+.cta-score-banner .target {
+  font-size: 30px;
+  color: #06a77d;
+  line-height: 1;
+}
+.cta-score-banner .gap {
+  font-size: 12px;
+  color: #b8c4dd;
+  margin-top: 8px;
+}
+.cta-score-banner .gap strong {
+  font-size: 15px;
+  color: #ff9f43;
+  font-weight: 900;
+}
+
+/* サイドバー最上部：CTA到達力スコア小型表示 */
+.emotion-sidebar .sb-cta-score {
+  background: rgba(255, 216, 122, 0.10);
+  border: 1px solid rgba(255, 216, 122, 0.30);
+  border-radius: 8px;
+  padding: 6px 4px;
+  margin: 0 6px 10px;
+  text-align: center;
+}
+.emotion-sidebar .sb-cta-score .num {
+  font-size: 17px;
+  font-weight: 900;
+  color: #ffd87a;
+  line-height: 1.1;
+}
+.emotion-sidebar .sb-cta-score .sub {
+  font-size: 8px;
+  color: #06a77d;
+  margin-top: 2px;
+  font-weight: 700;
+}
+
+/* 読み上げ用 Markdown台本リンク（ヒーロー内） */
+.read-script-link {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+.read-script-link a {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 2px solid #ffd87a;
+  border-radius: 99px;
+  color: #ffd87a;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  background: rgba(255, 216, 122, 0.08);
+  transition: all 0.2s;
+}
+.read-script-link a:hover { background: #ffd87a; color: #0a0e1a; }
+
+/* ===== 制作フロー（Naokiさん向け視覚化）— hero 直下 ===== */
+.production-flow {
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.10) 0%, rgba(6, 167, 125, 0.10) 100%);
+  border-radius: 14px;
+  margin: 16px 16px 18px;
+  padding: 0;
+  border-left: 6px solid #4a90e2;
+  border-top: 1px solid rgba(74, 144, 226, 0.18);
+  border-right: 1px solid rgba(74, 144, 226, 0.18);
+  border-bottom: 1px solid rgba(74, 144, 226, 0.18);
+}
+.production-flow .cp-summary { padding: 16px 22px; }
+.production-flow .cp-title { color: #6ba5e8; }
+.production-flow .pf-lead {
+  font-size: 13px;
+  color: #b8c4dd;
+  margin: 0 0 14px;
+  line-height: 1.7;
+}
+.production-flow .pf-steps {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+.production-flow .pf-step {
+  flex: 1 1 0;
+  min-width: 0;
+  background: rgba(0,0,0,0.28);
+  border: 2px solid rgba(74, 144, 226, 0.3);
+  border-radius: 12px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.production-flow .pf-step.current {
+  border-color: #ffd87a;
+  box-shadow: 0 0 0 3px rgba(255, 216, 122, 0.18);
+  background: rgba(255, 216, 122, 0.06);
+}
+.production-flow .pf-num {
+  font-size: 22px;
+  font-weight: 900;
+  color: #6ba5e8;
+  line-height: 1;
+}
+.production-flow .pf-step.current .pf-num { color: #ffd87a; }
+.production-flow .pf-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #e8ebf2;
+  line-height: 1.35;
+}
+.production-flow .pf-desc {
+  font-size: 12px;
+  color: #b8c4dd;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+.production-flow .pf-link {
+  margin-top: 4px;
+  display: inline-block;
+  padding: 9px 12px;
+  background: linear-gradient(135deg, #4a90e2 0%, #2e7bd5 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.production-flow .pf-link:hover {
+  background: linear-gradient(135deg, #5da8f5 0%, #4a8be0 100%);
+}
+.production-flow .pf-arrow {
+  align-self: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: #6ba5e8;
+  flex: 0 0 auto;
+}
+@media (max-width: 720px) {
+  .production-flow .pf-steps { flex-wrap: wrap; }
+  .production-flow .pf-step { flex: 1 1 100%; }
+  .production-flow .pf-arrow { transform: rotate(90deg); margin: 2px auto; }
+}
+
+/* ===== 全体ナレッジ投入計画パネル（ヒーロー直下） ===== */
+.global-knowledge {
+  background: linear-gradient(135deg, rgba(255,216,122,0.07) 0%, rgba(255,216,122,0.02) 100%);
+  border-radius: 14px;
+  margin: 16px 16px 18px;
+  padding: 22px 24px;
+  border-left: 6px solid #ffd87a;
+  border-top: 1px solid rgba(255,216,122,0.18);
+  border-right: 1px solid rgba(255,216,122,0.18);
+  border-bottom: 1px solid rgba(255,216,122,0.18);
+}
+.global-knowledge h3 {
+  font-size: 20px;
+  font-weight: 900;
+  color: #ffd87a;
+  margin: 0 0 8px;
+}
+.gk-hint {
+  font-size: 12px;
+  color: #b8c4dd;
+  margin: 0 0 14px;
+  line-height: 1.7;
+}
+.gk-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.gk-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 14px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 10px;
+  border: 1px solid rgba(255,216,122,0.14);
+}
+.gk-sec-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  grid-column: 1 / 3;
+}
+.gk-sec-link {
+  background: #1a1a1a;
+  color: #ffd87a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 11px;
+}
+.gk-sec-link:hover { background: #ffd87a; color: #1a1a1a; }
+.gk-sec-name {
+  color: #d8dde8;
+  font-weight: 600;
+  font-size: 13px;
+}
+.gk-sec-score {
+  font-weight: 800;
+  font-size: 12px;
+}
+.gk-knowledge {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.gk-knowledge-title {
+  font-size: 14px;
+  color: #ffd87a;
+  font-weight: 700;
+}
+.gk-knowledge-effect {
+  font-size: 11px;
+  color: #06a77d;
+  font-weight: 700;
+}
+.apply-knowledge-btn.gk-btn {
+  align-self: center;
+  margin: 0;
+  padding: 8px 14px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.gk-progress {
+  font-size: 13px;
+  color: #06a77d;
+  font-weight: 700;
+  margin-left: 8px;
+}
+.gk-item.gk-item-done {
+  opacity: 0.55;
+  background: rgba(6, 167, 125, 0.06);
+  border-color: rgba(6, 167, 125, 0.25);
+}
+.gk-item.gk-item-done .gk-knowledge-title {
+  text-decoration: line-through;
+  color: #b8c4dd;
+}
+.gk-injected-badge {
+  align-self: center;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #06a77d 0%, #048a64 100%);
+  color: #fff;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+/* 共通：アコーディオンパネル（💡全体ナレッジ計画 / 🔧台本の磨き方） */
+.collapsible-panel {
+  margin: 0;
+}
+.collapsible-panel .cp-summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 22px;
+  user-select: none;
+}
+.collapsible-panel .cp-summary::-webkit-details-marker { display: none; }
+.collapsible-panel .cp-title {
+  font-size: 17px;
+  font-weight: 900;
+}
+.collapsible-panel .cp-toggle {
+  font-size: 11px;
+  color: #6a7290;
+  white-space: nowrap;
+}
+.collapsible-panel[open] .cp-toggle::after { content: " ▲"; }
+.collapsible-panel[open] .cp-toggle { color: #ffd87a; }
+.collapsible-panel .cp-body {
+  padding: 0 22px 22px;
+}
+/* global-knowledge アコーディオン化に伴う色調整 */
+.global-knowledge.collapsible-panel { padding: 0; }
+.global-knowledge.collapsible-panel .cp-summary { padding: 16px 22px; }
+.global-knowledge.collapsible-panel .cp-title { color: #ffd87a; }
+.global-knowledge.collapsible-panel[open] .cp-summary {
+  border-bottom: 1px dashed rgba(255,216,122,0.25);
+}
+/* toricetsu/polish-guide アコーディオン化に伴う色調整 */
+.toricetsu.polish-guide.collapsible-panel { padding: 0; }
+.toricetsu.polish-guide.collapsible-panel .cp-title { color: #ffd87a; }
+.toricetsu.polish-guide.collapsible-panel[open] .cp-summary {
+  border-bottom: 1px dashed rgba(255,193,7,0.25);
+}
+@media (max-width: 480px) {
+  .global-knowledge { margin: 12px 8px 14px; padding: 16px 14px; }
+  .global-knowledge h3 { font-size: 17px; }
+  .gk-item { padding: 10px 12px; }
+  .gk-knowledge-title { font-size: 12px; }
+  .apply-knowledge-btn.gk-btn { font-size: 11px; padding: 6px 10px; }
+}
+
+.appendix-heading {
+  margin: 40px 32px 12px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 14px;
+  color: #6a7290;
+  font-weight: 700;
+  text-align: center;
+}
+.section.appendix {
+  background: rgba(255,255,255,0.025);
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.04);
+  margin-bottom: 10px;
+}
+.section.appendix .head {
+  padding: 14px 24px;
+}
+.section.appendix .head .title { font-size: 18px; color: #8a92a8; }
+.section.appendix .head.normal { background: transparent; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.section.appendix .body { padding: 14px 24px; font-size: 13px; color: #6a7290; }
+
+/* appendix-card — 制作者向け補足セクション（採点・撮影方式・素材リスト・渇望設計 等） */
+/* デフォルトは折りたたみ、タップで開く。本編カードと完全に異なる見た目 */
+details.section.appendix-card {
+  background: rgba(138, 146, 168, 0.04);
+  border: 1px solid rgba(138, 146, 168, 0.18);
+  border-radius: 8px;
+  padding: 0;
+  margin-bottom: 8px;
+  box-shadow: none;
+}
+details.section.appendix-card .ap-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  font-size: 14px;
+}
+details.section.appendix-card .ap-summary::-webkit-details-marker { display: none; }
+details.section.appendix-card[open] .ap-summary {
+  border-bottom: 1px dashed rgba(138, 146, 168, 0.20);
+}
+details.section.appendix-card .ap-icon {
+  font-size: 18px;
+  flex: 0 0 auto;
+}
+details.section.appendix-card .ap-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #b8c4dd;
+  flex: 1;
+}
+details.section.appendix-card .ap-toggle {
+  font-size: 11px;
+  color: #6a7290;
+  white-space: nowrap;
+}
+details.section.appendix-card[open] .ap-toggle::after { content: " ▲"; }
+details.section.appendix-card[open] .ap-toggle { color: #b8c4dd; }
+details.section.appendix-card .ap-body {
+  font-size: 13px;
+  color: #8a98b8;
+  line-height: 1.7;
+  padding: 14px 18px 18px;
+}
+
+/* タイプ別アイコン色 */
+details.section.appendix-card.ap-score .ap-icon { color: #06a77d; }
+details.section.appendix-card.ap-shoot-method .ap-icon { color: #4a6fff; }
+details.section.appendix-card.ap-assets .ap-icon { color: #ff6b35; }
+details.section.appendix-card.ap-duration .ap-icon { color: #ffd87a; }
+details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
+.section.appendix-card .ap-body h4 {
+  font-size: 14px;
+  color: #c8d2e8;
+  margin: 14px 0 6px;
+  font-weight: 700;
+  border-left: 3px solid rgba(255,216,122,0.4);
+  padding-left: 10px;
+}
+.section.appendix-card .ap-body p {
+  margin: 6px 0;
+}
+.section.appendix-card .ap-body li {
+  margin-left: 1em;
+  list-style: disc;
+}
+.section.appendix-card .ap-body ul {
+  margin: 8px 0 12px 4px;
+  padding-left: 1.2em;
+}
+.section.appendix-card .ap-body strong {
+  color: #ffd87a;
+  font-weight: 800;
+}
+.section.appendix-card .ap-body pre.ap-code {
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 10px 0;
+  overflow-x: auto;
+  font-family: 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  color: #d8dde8;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.section.appendix-card .ap-body pre.ap-code code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+.section.appendix-card .ap-table-row {
+  font-family: monospace;
+  font-size: 12px;
+  padding: 2px 0;
+  color: #8a98b8;
+}
+
+/* メタセクション内のテーブル（L3採点表など） */
+.section.appendix-card table.ap-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 13px;
+}
+.section.appendix-card table.ap-table thead th {
+  background: rgba(255, 216, 122, 0.08);
+  color: #ffd87a;
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 2px solid rgba(255, 216, 122, 0.3);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.section.appendix-card table.ap-table tbody td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #d8dde8;
+  vertical-align: middle;
+}
+.section.appendix-card table.ap-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+.section.appendix-card .star-rating {
+  color: #ffd700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+}
+.section.appendix-card .star-extra {
+  font-size: 11px;
+  color: #8a98b8;
+  margin-left: 4px;
+}
+
+/* 渇望設計3階段カード — ①→②→③ の3ステップフロービュー */
+.section.appendix-card.kgs-card {
+  background: rgba(255, 107, 53, 0.06);
+  border: 1px dashed rgba(255, 107, 53, 0.45);
+  padding: 22px 24px;
+}
+.section.appendix-card .ap-badge.kgs-badge {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c1a 100%);
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
+  font-size: 12px;
+}
+.kgs-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 8px;
+}
+.kgs-step {
+  display: flex;
+  align-items: stretch;
+  background: #1c2540;
+  border: 2px solid rgba(255, 216, 122, 0.35);
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+.kgs-num {
+  flex: 0 0 56px;
+  font-size: 32px;
+  font-weight: 900;
+  color: #ffd87a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid rgba(255, 216, 122, 0.22);
+  margin-right: 18px;
+}
+.kgs-content {
+  flex: 1;
+  font-size: 17px;
+  line-height: 1.55;
+  color: #ffffff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.kgs-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 4px 16px;
+  color: #ff6b35;
+  font-weight: 700;
+}
+.kgs-arrow-icon {
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1;
+}
+.kgs-arrow-label {
+  font-size: 14px;
+  color: #ffb58c;
+  background: rgba(255, 107, 53, 0.14);
+  padding: 4px 14px;
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+@media (max-width: 480px) {
+  .kgs-num { flex-basis: 44px; font-size: 26px; margin-right: 12px; }
+  .kgs-content { font-size: 15px; }
+  .kgs-arrow-icon { font-size: 22px; }
+  .kgs-arrow-label { font-size: 12px; padding: 3px 10px; }
+}
+
+.footer {
+  text-align: center;
+  padding: 40px 24px 60px;
+  color: #6a7290;
+  background: #0a0e1a;
+  font-size: 12px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 26px; }
+  .hero .stats { grid-template-columns: repeat(2, 1fr); }
+  .section .head .title { font-size: 24px; }
+  .section { margin: 0 10px 18px; }
+}
+</style>
+</head>
+<body>
+<aside class="emotion-sidebar"><div class="sb-cta-score"><div class="num">82</div><div class="sub">→ 99</div></div><div class="sb-title">心理動線</div><nav class="path"><a href="#sec-01" class="hook" data-target="sec-01"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">01</span><span class="emotion">興味</span><span class="sb-score" style="color: #ff9f43;">65点</span></a>
+<a href="#sec-02" class="normal" data-target="sec-02"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">02</span><span class="emotion">信頼</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
+<a href="#sec-03" class="normal" data-target="sec-03"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">03</span><span class="emotion">警戒</span><span class="sb-score" style="color: #ff9f43;">59点</span></a>
+<a href="#sec-04" class="normal" data-target="sec-04"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">04</span><span class="emotion">学び</span><span class="sb-score" style="color: #ff9f43;">59点</span></a>
+<a href="#sec-05" class="normal" data-target="sec-05"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">05</span><span class="emotion">確信</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
+<a href="#sec-06" class="normal" data-target="sec-06"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">06</span><span class="emotion">共感</span><span class="sb-score" style="color: #ff9f43;">58点</span></a>
+<a href="#sec-07" class="normal" data-target="sec-07"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">07</span><span class="emotion">気づき</span><span class="sb-score" style="color: #ff9f43;">67点</span></a>
+<a href="#sec-08" class="normal" data-target="sec-08"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">08</span><span class="emotion">整理</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
+<a href="#sec-09" class="cta" data-target="sec-09"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">09</span><span class="emotion">行動</span><span class="sb-score" style="color: #ff9f43;">56点</span></a>
+<a href="#sec-10" class="cta" data-target="sec-10"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">10</span><span class="emotion">決意</span><span class="sb-score" style="color: #06a77d;">71点</span></a></nav></aside>
+<div class="page">
+
+  <section class="hero">
+    <div class="badge-row">
+      <span class="badge">📋 台本ボード</span>
+      <span class="badge">視聴者目線レビュー</span>
+    </div>
+    <h1>「農業のゲームチェンジ」LINE登録後動画 再撮影台本（v3・感情ジェットコースター版）</h1>
+    <div class="subtitle">視聴者がどう動くかを台本制作者が体験するボード</div>
+    <div class="cta-score-banner"><div class="lab">📈 CTA到達力（エルさん渇望フレームワーク7軸）</div><div class="score-row"><span class="current">82</span><span class="slash">/100</span><span class="arrow">→</span><span class="target-label">目指す</span><span class="target">99</span></div><div class="gap">目標まで <strong>+17</strong> 点</div></div>
+    <div class="stats">
+      <div class="stat"><div class="num">10</div><div class="lab">セクション</div></div>
+      <div class="stat"><div class="num">10,631</div><div class="lab">文字数</div></div>
+      <div class="stat"><div class="num">29.5<small style="font-size:14px">分</small></div><div class="lab">推定尺</div></div>
+      <div class="stat"><div class="num">1+3</div><div class="lab">フック+CTA</div></div>
+    </div>
+    <div class="read-script-link">
+      <a href="nogyo-game-change-v3.md" target="_blank">📜 読み上げ用 Markdown 台本を開く</a>
+    </div>
+  </section>
+
+  <details class="production-flow collapsible-panel" open><summary class="cp-summary"><span class="cp-title">🎬 制作フロー（台本ボード → ドキュメント → 撮影）</span><span class="cp-toggle">タップで開閉 ▼</span></summary><div class="cp-body"><p class="pf-lead">視覚化で快適に台本を作るための3ステップ。①でブラッシュアップしたら、②の撮影用ドキュメントを開いて読み上げ撮影 → ③ブループリント編集で動画化。</p><div class="pf-steps"><div class="pf-step current"><span class="pf-num">①</span><span class="pf-title">📋 台本ボードで視覚化・調整</span><span class="pf-desc">いまここ。章ごとの感情曲線・採点・ブラッシュアップ候補を一目で見ながら台本を磨く</span></div><div class="pf-arrow">→</div><div class="pf-step"><span class="pf-num">②</span><span class="pf-title">📄 撮影用ドキュメントで撮影</span><span class="pf-desc">章＋【Scroll】マーカーつき。スマホで開いて読み上げながら撮影</span><a class="pf-link" href="https://docs.google.com/document/d/17tWkWZeOSKvMdAHx_Ia1e5-_eAgsEniUcQP-yM5Zawk/edit?usp=sharing" target="_blank" rel="noopener">📄 ドキュメントを開く →</a></div><div class="pf-arrow">→</div><div class="pf-step"><span class="pf-num">③</span><span class="pf-title">🎞 ブループリント編集 → 公開</span><span class="pf-desc">読み上げ撮影した素材をブループリントで編集、スパッと動画化してYouTubeへ</span></div></div></div></details>
+
+  <details class="global-knowledge collapsible-panel"><summary class="cp-summary"><span class="cp-title">💡 全体ナレッジ投入計画</span><span class="gk-progress">(13/13 投入済)</span><span class="cp-toggle">タップで開く ▼</span></summary><div class="cp-body"><p class="gk-hint">未投入は点数低い順、 投入済みは下に。 「💡入れる」 ボタン押下でDiscord貼付用テキストがコピーされます🌸</p><ul class="gk-list"><li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-01" class="gk-sec-link">#01</a><span class="gk-sec-name">章1：オープニング - 売り先勘違いフック</span><span class="gk-sec-score" style="color:#ff9f43;">65点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">100t→200tの年商成長 権威数字</span><span class="gk-knowledge-effect">+8点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-01" class="gk-sec-link">#01</a><span class="gk-sec-name">章1：オープニング - 売り先勘違いフック</span><span class="gk-sec-score" style="color:#ff9f43;">65点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">自己診断フレーム（エルさん5問版）</span><span class="gk-knowledge-effect">+6点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-02" class="gk-sec-link">#02</a><span class="gk-sec-name">章2：動画の役割＋失敗談</span><span class="gk-sec-score" style="color:#06a77d;">70点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-03" class="gk-sec-link">#03</a><span class="gk-sec-name">章3：止まるの意味＋表面の悩み</span><span class="gk-sec-score" style="color:#ff9f43;">59点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-04" class="gk-sec-link">#04</a><span class="gk-sec-name">章4：本当の原因＋稼げない構造</span><span class="gk-sec-score" style="color:#ff9f43;">59点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-05" class="gk-sec-link">#05</a><span class="gk-sec-name">章5：基本の順番＋感想①＋ミニ行動提案</span><span class="gk-sec-score" style="color:#06a77d;">70点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-06" class="gk-sec-link">#06</a><span class="gk-sec-name">章6：一般論宣言＋人によって変わる</span><span class="gk-sec-score" style="color:#ff9f43;">58点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-07" class="gk-sec-link">#07</a><span class="gk-sec-name">章7：今いる場所＋診断型②＋感想②</span><span class="gk-sec-score" style="color:#ff9f43;">67点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-08" class="gk-sec-link">#08</a><span class="gk-sec-name">章8：講座で起きたこと＋ゲームチェンジの意味</span><span class="gk-sec-score" style="color:#06a77d;">70点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-09" class="gk-sec-link">#09</a><span class="gk-sec-name">章9：個別相談へ繋ぐ＋CTA本体＋締め</span><span class="gk-sec-score" style="color:#ff9f43;">56点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">公式LINE『農業のゲームチェンジ』動画ナレッジ</span><span class="gk-knowledge-effect">+10点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-09" class="gk-sec-link">#09</a><span class="gk-sec-name">章9：個別相談へ繋ぐ＋CTA本体＋締め</span><span class="gk-sec-score" style="color:#ff9f43;">56点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">ヤスさん流 個別相談プロトコル</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-10" class="gk-sec-link">#10</a><span class="gk-sec-name">章10：追加スライドCTA強化（LINE 6数字返信誘導）</span><span class="gk-sec-score" style="color:#06a77d;">71点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">公式LINE『農業のゲームチェンジ』動画ナレッジ</span><span class="gk-knowledge-effect">+10点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-10" class="gk-sec-link">#10</a><span class="gk-sec-name">章10：追加スライドCTA強化（LINE 6数字返信誘導）</span><span class="gk-sec-score" style="color:#06a77d;">71点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">ヤスさん流 個別相談プロトコル</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li></ul></div></details>
+
+  <section class="intro">
+    <h2>視聴者の心情変化</h2>
+    <p>各セクションをタップするように読み進めると、<br>視聴者がどう動くか体感できます。</p>
+    <div class="arrow">▼</div>
+  </section>
+
+  <div class="timeline">
+    <details class="toricetsu polish-guide collapsible-panel">
+      <summary class="cp-summary">
+        <span class="cp-title">🔧 台本の磨き方</span>
+        <span class="cp-toggle">タップで開く ▼</span>
+      </summary>
+      <div class="cp-body polish-steps">
+        <div class="polish-step">
+          <div class="ps-num">1</div>
+          <div class="ps-body">
+            <div class="ps-title">点数を上げる</div>
+            <div class="ps-desc">右上の <span class="ps-pill ps-gold">90+ ゴールド</span> <span class="ps-pill ps-green">70-89 緑</span> <span class="ps-pill ps-yellow">50-69 黄</span> <span class="ps-pill ps-red">&lt;50 赤</span> を見て、低いセクションから修正</div>
+          </div>
+        </div>
+        <div class="polish-step">
+          <div class="ps-num">2</div>
+          <div class="ps-body">
+            <div class="ps-title">「もっとこうして」を直す</div>
+            <div class="ps-desc">🛠️ <strong>ブラッシュアップ候補</strong> に自動で書かれた問題点を読んで、Discordで <code>#01 ブラッシュアップ</code> と送る</div>
+          </div>
+        </div>
+        <div class="polish-step">
+          <div class="ps-num">3</div>
+          <div class="ps-body">
+            <div class="ps-title">ナレッジを入れていく</div>
+            <div class="ps-desc">💡 <strong>ナレッジ投入ガイド</strong> から「ここに何を入れると何点UP」を見て、PLAUD録音／memory／knowledge の中身を肉付けする</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    
+<section class="section appendix-card kgs-card kgs-prefix">
+  <div class="ap-head">
+    <span class="ap-badge kgs-badge">🎯 渇望設計</span>
+    <div class="ap-title">渇望設計3階段</div>
+  </div>
+  <div class="kgs-flow">
+    <div class="kgs-step"><div class="kgs-num">①</div><div class="kgs-content">LINE登録「ありがとうございます。あなたの農業を稼げる農業にするために整理しましょう」</div></div>
+<div class="kgs-arrow"><span class="kgs-arrow-icon">↓</span><span class="kgs-arrow-label">6数字（0-5）の自己診断→「ここが自分かも」</span></div>
+<div class="kgs-step"><div class="kgs-num">②</div><div class="kgs-content">動画開幕「売り先がないから稼げない、は勘違いです」</div></div>
+<div class="kgs-arrow"><span class="kgs-arrow-icon">↓</span><span class="kgs-arrow-label">暴かれたい（自分の悩みは本当の原因じゃないかも）</span></div>
+<div class="kgs-step"><div class="kgs-num">③</div><div class="kgs-content">全体像→「一般論では決めきれない」→「個別相談で現在地と次の一手を決める」</div></div>
+<div class="kgs-arrow"><span class="kgs-arrow-icon">↓</span><span class="kgs-arrow-label">動きたい衝動・申込</span></div>
+  </div>
+</section>
+
+    
+<section class="section hook shoot-new" id="sec-01">
+  <div class="head hook">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
+    <div class="position">#01 / 10 · 🎯 冒頭フック</div>
+    <div class="title">章1：オープニング - 売り先勘違いフック</div>
+    <div class="subtitle">約1:30</div>
+    <span class="duration-pill">⏱ 約129秒 / 773字</span>
+    <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
+      <span class="score-num">65</span><span class="score-max">/100</span>
+    </span>
+  </div>
+  <div class="body">
+    <div class="script-body">
+      <p><mark class="diff-new">LINE登録、ありがとうございます。</mark></p>
+<p><mark class="diff-new">そして、先ほど、
+0から5の数字の中から、
+今の自分に一番近いものを、
+1つ選んでくれましたね。</mark></p>
+<p><mark class="diff-new">その番号、頭に置きながら、
+これからの話を聞いてください。</mark></p>
+<p>売り先がないから稼げない。</p>
+<p>こう思っていませんか？</p>
+<p>でも、正直なところ、
+それ、半分合っていて、
+半分ズレています。</p>
+<p>農業って、
+売り先がないから稼げないこともあります。</p>
+<p>でも実際は、
+そのもっと手前で
+稼げなくなっていることが多いんです。</p>
+<p>要は、</p>
+<p><strong>売れないから稼げないんじゃなくて、
+稼げない流れに入っているから売れなくなる。</strong></p>
+<p>こっちなんです。</p>
+<p>今日はこの話をします。</p>
+<p>もし今あなたが、</p>
+<p>頑張ってるのに利益が残らない。
+売上が伸びない。
+広げたいけど怖い。
+何から変えればいいか分からない。</p>
+<p>こういう状態なら、
+今日の動画はかなり大事です。</p>
+<p>今日は、
+農業で稼げなくなる構造と、
+そこから抜けるための
+最初のゲームチェンジを整理します。</p>
+<p>ちなみに僕自身の話を先にしておくと——</p>
+<p>16年間途切れなく出荷してきて、
+年間出荷量を100tから200tに伸ばして、
+今は日本一の部会に所属しています。</p>
+<p>この経験から今日の話をします。</p>
+<p>最初の数年は、何をどの順番でやればいいか分からなくて、
+かなり遠回りしました。</p>
+    </div>
+    <div class="greeting-warning">⚠️ 固定挨拶 「こんにちは！100t農家のイチローです」 が検出できませんでした。必ず冒頭に入れてください（メモリ feedback_youtube_channel_positioning 準拠）</div>
+    
+    <details class="improve-box">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>⚠️ 固定挨拶『こんにちは！100t農家のイチローです』が無い（最優先で入れる）</li></ul>
+        <div class="request-hint">
+          Discord で <code>#01 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+<section class="section normal shoot-new" id="sec-02">
+  <div class="head normal">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
+    <div class="position">#02 / 10 · 📄 セクション</div>
+    <div class="title">章2：動画の役割＋失敗談</div>
+    <div class="subtitle">約2:00</div>
+    <span class="duration-pill">⏱ 約86秒 / 516字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">70</span><span class="score-max">/100</span>
+    </span>
+  </div>
+  <div class="body">
+    <div class="script-body">
+      <p>最初に一つだけ、
+はっきり言っておきます。</p>
+<p>この動画は、
+全部の答えを渡し切る動画ではないです。</p>
+<p>そうではなくて、</p>
+<p><strong>全体像を見て、
+自分は何から変えるべきかを考える動画</strong>です。</p>
+<p>ここを間違えると、
+知識は増えたけど動けない、
+になりやすいです。</p>
+<p>なので今日は、</p>
+<p>何を知るか、より
+<strong>自分はどこで稼げなくなっているのか。</strong>
+ここを見ながら聞いてください。</p>
+<p>ここで、僕の話を少しします。</p>
+<p>僕は農業を始めた頃、
+先に売り先を作ろうとしました。</p>
+<p>営業もしました。
+飛び込みもしました。
+何件か取引先も決まりました。</p>
+<p>でも、そのあとに何が起きたか。</p>
+<p><strong>納品日の2週間前に、
+出せる量が半分になった</strong>んです。</p>
+<p>あの時、
+取引先に電話するのが本当に怖かったです。</p>
+<p>今思えば、
+順番が逆でした。</p>
+<p>売り先を作るのが悪かったわけじゃないです。</p>
+<p>営業が悪かったわけでもないです。</p>
+<p>その前に、</p>
+<p><strong>安定して出せる状態ができていなかった。</strong></p>
+<p>要は、</p>
+<p><strong>稼げない原因は、
+売り先の前にあった</strong>
+ってことなんです。</p>
+<p>今日は、この遠回りを
+あなたにしてほしくないので、
+この話をしています。</p>
+    </div>
+    
+    
+  </div>
+</section>
+<section class="section normal shoot-new" id="sec-03">
+  <div class="head normal">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
+    <div class="position">#03 / 10 · 📄 セクション</div>
+    <div class="title">章3：止まるの意味＋表面の悩み</div>
+    <div class="subtitle">約2:00</div>
+    <span class="duration-pill">⏱ 約122秒 / 731字</span>
+    <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
+      <span class="score-num">59</span><span class="score-max">/100</span>
+    </span>
+  </div>
+  <div class="body">
+    <div class="script-body">
+      <p>ここで一回、
+言葉をはっきりさせます。</p>
+<p>僕は講座でも
+「農業で止まる」
+という言い方をしてきました。</p>
+<p>でも今回の動画では、
+もう少しはっきり言います。</p>
+<p>農業で止まるっていうのは、</p>
+<p><strong>農業で稼げなくなる
+農業が伸びなくなる
+利益が残らなくなる</strong></p>
+<p>こういう状態のことです。</p>
+<p>たとえば、</p>
+<p>売り先はある。
+でも出せない。</p>
+<p>作ってはいる。
+でも安定しない。</p>
+<p>頑張っている。
+でも利益が残らない。</p>
+<p>広げたい。
+でも怖くて動けない。</p>
+<p>これが、
+農業で止まっている状態です。</p>
+<p>つまり、
+ただ悩んでいるんじゃなくて、</p>
+<p><strong>稼げる形に進めなくなっている状態</strong></p>
+<p>これを今日は扱います。</p>
+<p>農業の話をしていると、
+よく出てくる悩みがあります。</p>
+<p>売り先が決まらない。
+単価が上がらない。
+品質や量が安定しない。
+広げたいけど踏み切れない。
+人や体制をどうするか分からない。
+収入の波が不安。</p>
+<p>これ、どれも本物の悩みです。</p>
+<p>でも、
+ここで大事なのは、</p>
+<p><strong>この悩みが、そのまま
+稼げない原因とは限らない</strong>
+ということです。</p>
+<p>そう見えてるけど、
+実は原因は別のところにある。</p>
+<p>ここを見誤ると、
+頑張ってるのに
+ずっとしんどいままになります。</p>
+<p>ここで一回、自分に聞いてみてください。</p>
+<p>今の自分が一番しんどいのは、この中のどれですか？</p>
+<p>売り先が決まらない。
+単価が上がらない。
+品質や量が安定しない。
+広げたいけど怖い。
+収入の波が不安。</p>
+<p>……たぶん、1つか2つ、すぐ浮かんだと思います。</p>
+<p>でも、ここからが大事です。</p>
+<p><strong>その悩み、本当の原因じゃないかもしれない。</strong></p>
+<p>次のスライドで、その話をします。</p>
+    </div>
+    
+    
+    <details class="improve-box urgent">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>曖昧表現が3件（断定型に書き換え）</li></ul>
+        <div class="request-hint">
+          Discord で <code>#03 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+<section class="section normal shoot-new" id="sec-04">
+  <div class="head normal">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
+    <div class="position">#04 / 10 · 📄 セクション</div>
+    <div class="title">章4：本当の原因＋稼げない構造</div>
+    <div class="subtitle">約2:30</div>
+    <span class="duration-pill">⏱ 約94秒 / 566字</span>
+    <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
+      <span class="score-num">59</span><span class="score-max">/100</span>
+    </span>
+  </div>
+  <div class="body">
+    <div class="script-body">
+      <p>ここが、
+今日の一番大事なポイントです。</p>
+<p>たとえば、</p>
+<p>売り先が増えない。
+でも実は、
+安定して出せないから
+増やせないのかもしれない。</p>
+<p>人が足りない。
+でも実は、
+品質や作業の再現性が弱くて
+任せられないのかもしれない。</p>
+<p>拡大できない。
+でも実は、
+その前の土台が整っていないから
+広げる判断が怖いのかもしれない。</p>
+<p>要は、</p>
+<p><strong>表面の悩みと、
+本当に稼げなくなっている原因は
+ズレていることが多い。</strong></p>
+<p>ここなんです。</p>
+<p>だから問いも変わります。</p>
+<p>「なぜ売れないんだろう」
+じゃなくて、</p>
+<p><strong>「その前に、
+安定はできているか？」</strong></p>
+<p>ここを見るんです。</p>
+<p>じゃあ実際に、
+どういう流れで
+稼げなくなるのか。</p>
+<p>流れはかなりシンプルです。</p>
+<p>まず、
+品質や量が安定しない。</p>
+<p>すると、
+出荷量が読めなくなる。</p>
+<p>出荷量が読めないと、
+売上が読めなくなる。</p>
+<p>売上が読めないと、
+判断が重くなります。</p>
+<p>売り先を増やすのも怖い。
+人を入れるのも怖い。
+設備投資も怖い。
+面積を広げるのも怖い。</p>
+<p>その結果、</p>
+<p><strong>動きたいのに動けない。
+頑張ってるのに利益が残らない。</strong></p>
+<p>こうなるんです。</p>
+<p>つまり、
+農業で稼げない人って、</p>
+<p>努力していないんじゃなくて、
+<strong>利益が出る順番で動けていないことが多い。</strong></p>
+<p>これなんです。</p>
+    </div>
+    
+    
+    <details class="improve-box urgent">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>曖昧表現が3件（断定型に書き換え）</li></ul>
+        <div class="request-hint">
+          Discord で <code>#04 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+<section class="section normal shoot-new" id="sec-05">
+  <div class="head normal">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
+    <div class="position">#05 / 10 · 📄 セクション</div>
+    <div class="title">章5：基本の順番＋感想①＋ミニ行動提案</div>
+    <div class="subtitle">約2:30</div>
+    <span class="duration-pill">⏱ 約100秒 / 598字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">70</span><span class="score-max">/100</span>
+    </span>
+  </div>
+  <div class="body">
+    <div class="script-body">
+      <p>ここで、
+今日の核心を置きます。</p>
+<p>農業を成立させる
+基本の順番はこれです。</p>
+<p><strong>安定
+↓
+売り先
+↓
+拡大</strong></p>
+<p>この順番です。</p>
+<p>まず安定。</p>
+<p>品質、量、収量。
+再現性を作って、
+出荷量が読める状態を作る。</p>
+<p>その次に売り先。</p>
+<p>安定して出せるからこそ、
+販路、単価、関係性を
+強くできます。</p>
+<p>最後に拡大。</p>
+<p>面積、人、設備。
+ここは、
+安定と売り先が
+ある程度固まってからが本筋です。</p>
+<p>この順番を逆にすると、
+かなり苦しくなります。</p>
+<p>ここで一つだけ、今日から意識してほしいことがあります。</p>
+<p>今の自分の悩みが出てきた時に、</p>
+<p><strong>「これは安定の話か、売り先の話か、拡大の話か」</strong></p>
+<p>この3つのどれに当たるか、分けてみてください。</p>
+<p>たとえば、
+「売り先が決まらない」と思った時に、
+実はその手前の安定がまだできていないなら、
+それは売り先の問題じゃなくて安定の問題です。</p>
+<p>この仕分けができるだけで、
+次に何をやるべきかの優先度がかなり変わります。</p>
+<p>要は、<strong>悩みの仕分けが、最初のゲームチェンジ</strong>なんです。</p>
+<p>実際、この話を講座でした時に、
+反応がかなり分かりやすかったです。</p>
+<p>たとえば感想でも、</p>
+<p><strong>「まず安定が一番だと気づいた」</strong></p>
+<p>こういう声がありました。</p>
+<p>これって、
+ただ知識が増えたんじゃなくて、</p>
+<p><strong>見方が変わった</strong>
+ってことなんです。</p>
+<p>ここは大きいです。</p>
+    </div>
+    
+    
+  </div>
+</section>
+<section class="section normal shoot-new" id="sec-06">
+  <div class="head normal">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
+    <div class="position">#06 / 10 · 📄 セクション</div>
+    <div class="title">章6：一般論宣言＋人によって変わる</div>
+    <div class="subtitle">約1:30</div>
+    <span class="duration-pill">⏱ 約67秒 / 404字</span>
+    <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
+      <span class="score-num">58</span><span class="score-max">/100</span>
+    </span>
+  </div>
+  <div class="body">
+    <div class="script-body">
+      <p>ただ、
+ここで終わるとダメなんです。</p>
+<p>「なるほど、安定が先なんですね」
+で終わると、
+また一般論で終わります。</p>
+<p>ここで大事なのは、</p>
+<p><strong>これは一般論だ</strong>
+ということです。</p>
+<p>骨格としては合っています。</p>
+<p>でも、
+あなたの地域、作物、売り方、
+収入の形、働き方によって、</p>
+<p>何から変えるべきかは変わります。</p>
+<p>ここがかなり大事です。</p>
+<p>たとえば、</p>
+<p>これから農業を始める人と、
+すでに作っていて販路で悩んでいる人と、
+副業で農業を考えている人では、</p>
+<p>最初に整理すべきことが違います。</p>
+<p>これから始める人なら、
+関わり方や始め方の設計が先かもしれない。</p>
+<p>すでに作っている人なら、
+安定と販路の見直しが先かもしれない。</p>
+<p>別事業として見ている人なら、
+収入構造の設計が先かもしれない。</p>
+<p>つまり、</p>
+<p><strong>同じ「稼げない」でも、
+ゲームチェンジの場所は人によって違う。</strong></p>
+<p>ここなんです。</p>
+    </div>
+    
+    
+    <details class="improve-box urgent">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>曖昧表現が3件（断定型に書き換え）</li></ul>
+        <div class="request-hint">
+          Discord で <code>#06 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+<section class="section normal shoot-new" id="sec-07">
+  <div class="head normal">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
+    <div class="position">#07 / 10 · 📄 セクション</div>
+    <div class="title">章7：今いる場所＋診断型②＋感想②</div>
+    <div class="subtitle">約2:00</div>
+    <span class="duration-pill">⏱ 約114秒 / 682字</span>
+    <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
+      <span class="score-num">67</span><span class="score-max">/100</span>
+    </span>
+  </div>
+  <div class="body">
+    <div class="script-body">
+      <p>ここで大事なのは、</p>
+<p><strong>行きたい場所</strong>じゃなくて、
+<strong>今いる場所</strong>を見ることです。</p>
+<p>人って、
+どうしても先を見ます。</p>
+<p>早く売上を上げたい。
+早く販路を広げたい。
+早く大きくしたい。</p>
+<p>でも、
+順番は飛ばすと苦しくなります。</p>
+<p>だから先に見るべきなのは、</p>
+<p>今の自分は
+どの段階にいるのか。</p>
+<p>今の悩みは
+本当に原因なのか。</p>
+<p>ここです。</p>
+<p>ここが見えるだけで、
+次の動き方がかなり変わります。</p>
+<p>ここで、もう一回だけ自分に聞いてみてください。</p>
+<p>今の自分は、どの段階にいますか？</p>
+<p><strong>（3秒間、無言で図を見せる）</strong></p>
+<p>ゼロ。まだ始める前。
+イチ。作れる状態を安定させる段階。
+ニ。売り先を固める段階。
+サン。面積あたりの利益を残す段階。
+ヨン。人に任せて回す段階。
+ゴ。規模を伸ばす段階。</p>
+<p>……どこかに当てはまったと思います。</p>
+<p>でも、こうも思いませんでしたか？</p>
+<p><strong>「たぶんここだと思うけど、本当に合ってるか分からない」</strong></p>
+<p>それが普通です。
+自分の現在地って、自分では正確に見えないものなんです。</p>
+<p>だからこそ、整理する意味があります。</p>
+<p>これも感想で、
+かなり象徴的だったんですけど、</p>
+<p><strong>「入口と現在地を分けて考えたことがなかった」</strong></p>
+<p>こういう声がありました。</p>
+<p>これ、かなり本質なんですよね。</p>
+<p>農業で動けなくなる時って、
+知識が足りないというより、</p>
+<p><strong>自分が今どこにいるかが
+見えていないこと</strong>
+が多いんです。</p>
+<p>だから、
+まず整理が必要なんです。</p>
+    </div>
+    
+    
+    <details class="improve-box">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>曖昧表現が1件（断定型に書き換え）</li></ul>
+        <div class="request-hint">
+          Discord で <code>#07 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+<section class="section normal shoot-new" id="sec-08">
+  <div class="head normal">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
+    <div class="position">#08 / 10 · 📄 セクション</div>
+    <div class="title">章8：講座で起きたこと＋ゲームチェンジの意味</div>
+    <div class="subtitle">約2:00</div>
+    <span class="duration-pill">⏱ 約99秒 / 593字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">70</span><span class="score-max">/100</span>
+    </span>
+  </div>
+  <div class="body">
+    <div class="script-body">
+      <p>今回の講座でも、
+反応が良かったのは
+実務の細かい話より、</p>
+<p><strong>見方が変わる瞬間</strong>
+でした。</p>
+<p>たとえば、</p>
+<p>「これから農業を始めたい人が
+聞きたいことが詰まっていた」</p>
+<p>「生産側の安定供給が
+こんなに難しいと初めて分かった」</p>
+<p>こういう反応です。</p>
+<p>要は、</p>
+<p><strong>知識が増えた</strong>より、
+<strong>見方が変わった</strong>
+の方が価値が大きかったんです。</p>
+<p>だから今回の動画も、
+細かい実務を全部渡すことはしません。</p>
+<p>そこまでやると、
+満足感だけじゃなくて
+完結感まで出すぎるからです。</p>
+<p>今回はそうじゃなくて、</p>
+<p><strong>全体像が見えた。
+でも自分の場合はここから先を整理したい。</strong></p>
+<p>この状態を作るのが目的です。</p>
+<p>ここで、
+今回のタイトルにもしている</p>
+<p><strong>ゲームチェンジ</strong></p>
+<p>この話をします。</p>
+<p>ゲームチェンジって聞くと、
+何か派手なことをやるとか、
+新しいことを始めるとか、
+そういうイメージがあるかもしれません。</p>
+<p>でも、農業でのゲームチェンジって、
+僕はもっと地味で、
+もっと本質的なものだと思っています。</p>
+<p>それは何かというと、</p>
+<p><strong>自分が今どこで稼げなくなっているのかを見て、
+変えるべき順番を変えること。</strong></p>
+<p>これです。</p>
+<p>売り先を増やす前に、安定を見直す。
+拡大を考える前に、出荷量が読める状態を作る。
+何を作るかの前に、どう成立させるかを考える。</p>
+<p>これが、
+農業のゲームチェンジです。</p>
+    </div>
+    
+    
+  </div>
+</section>
+<section class="section cta shoot-new" id="sec-09">
+  <div class="head cta">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
+    <div class="position">#09 / 10 · 📣 CTA・誘導</div>
+    <div class="title">章9：個別相談へ繋ぐ＋CTA本体＋締め</div>
+    <div class="subtitle">約3:00</div>
+    <span class="duration-pill">⏱ 約244秒 / 1467字</span>
+    <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
+      <span class="score-num">56</span><span class="score-max">/100</span>
+    </span>
+  </div>
+  <div class="body">
+    <div class="script-body">
+      <p>ここまで聞いて、
+たぶん今あなたの中に
+2つあると思います。</p>
+<p>一つは、</p>
+<p>「たしかに自分は
+表面の悩みで見ていたな」</p>
+<p>もう一つは、</p>
+<p>「じゃあ自分は
+何から変えればいいんだろう」</p>
+<p>こっちです。</p>
+<p>ここが大事です。</p>
+<p>この動画で、
+全体像は見えます。</p>
+<p>でも、</p>
+<p>あなたの地域、作物、働き方、
+売り方、今の収入の形に当てはめて、</p>
+<p>今の自分はどの段階なのか
+表面の悩みの奥にある本当の原因は何か
+何から変えるべきか
+今は何をやらなくていいのか</p>
+<p>ここは、
+一般論だけでは決めきれません。</p>
+<p>正直に言います。</p>
+<p>ここまでの話で、全体像は見えたと思います。</p>
+<p>でも、自分一人で
+「じゃあ自分は何から変えるべきか」
+を正確に決めるのは、かなり難しいです。</p>
+<p>なぜかというと、
+自分のことは、自分が一番見えていないからです。</p>
+<p>さっきの0から5の段階も、
+「たぶんここかな」とは思えても、
+本当にそこが原因なのかは、
+自分の条件と照らし合わせないと分かりません。</p>
+<p>僕自身も、最初は一人で考えて、
+順番を間違えて、10年遠回りしました。</p>
+<p><strong>だから、整理できる人と一緒に見ることに意味があるんです。</strong></p>
+<p>だから、
+個別相談に意味があります。</p>
+<p><mark class="diff-new">個別相談は、</mark></p>
+<p><mark class="diff-new"><strong>16年の知識と経験を、
+無料で、直接活用できる30分</strong>です。</mark></p>
+<p><mark class="diff-new">何かすごいノウハウを
+一方的にもらう場じゃありません。</mark></p>
+<p>そうじゃなくて、</p>
+<p><strong>あなたの今の止まり方を整理して、
+あなたにとってのゲームチェンジを見つける場</strong>です。</p>
+<p>そしてここで決めるのは、
+すごくシンプルです。</p>
+<p><strong>個別相談では、
+あなたが今どの段階かと、
+次に何から変えるかを決めます。</strong></p>
+<p>ここです。</p>
+<p>これが決まると、
+かなり動きやすくなります。</p>
+<p>逆にこれが決まっていないと、
+知識を増やしても
+あれもこれも気になって進みにくいです。</p>
+<p>もし今あなたが、</p>
+<p>頑張ってるのに利益が残らない。
+何を優先すべきか分からない。
+売り先の問題なのか、
+安定の問題なのか、
+広げ方の問題なのか整理できない。</p>
+<p>あるいは、</p>
+<p>これから始めるにしても、
+遠回りせずに進みたい。</p>
+<p>そう思っているなら、
+個別相談に来てください。</p>
+<p>ここでは、
+一般論の続きをやるんじゃなくて、</p>
+<p><strong>あなたのケースに当てはめて
+順番を引き直す</strong></p>
+<p>そこをやります。</p>
+<p>だから、
+知識を増やすためというより、</p>
+<p><strong>自分の現在地と、
+次の一手を決めるために来る場所</strong>
+だと思ってください。</p>
+<p>最後に、今日の話をまとめます。</p>
+<p>農業で稼げなくなる時って、
+努力不足より、
+順番のズレであることが多いです。</p>
+<p>表面の悩みは、
+売り先、単価、人、拡大、収入不安、
+いろいろあります。</p>
+<p>でも、本当の原因は
+その手前にあることが多い。</p>
+<p>だから大事なのは、</p>
+<p><strong>自分は今、どの段階で、
+何が稼げない原因になっているのかを見ること。</strong></p>
+<p>そして骨格は、</p>
+<p><strong>安定 → 売り先 → 拡大</strong></p>
+<p>です。</p>
+<p>ただし、
+ここから先は一般論じゃなく、
+自分の条件で見ないと決めきれません。</p>
+<p>だから必要なのが、
+あなた自身のゲームチェンジです。</p>
+<p>もし
+「全体像は分かった。
+でも自分は何から変えるべきか整理したい」</p>
+<p>そう思ったなら、
+個別相談で一緒に見ていきましょう。</p>
+<p>ここから、
+あなたの農業のゲームチェンジを
+始めていきましょう。</p>
+    </div>
+    
+    
+    <details class="improve-box urgent">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>曖昧表現が3件（断定型に書き換え）</li>
+<li>CTA誘導文言（公式LINE／概要欄／登録）が弱い</li></ul>
+        <div class="request-hint">
+          Discord で <code>#09 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+<section class="section cta shoot-new" id="sec-10">
+  <div class="head cta">
+    <span class="shoot-banner new"><span class="icon">🆕</span>新規撮影 必要</span>
+    <div class="position">#10 / 10 · 📣 CTA・誘導</div>
+    <div class="title">章10：追加スライドCTA強化（LINE 6数字返信誘導）</div>
+    <div class="subtitle">約4:00</div>
+    <span class="duration-pill">⏱ 約365秒 / 2189字</span>
+    <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
+      <span class="score-num">71</span><span class="score-max">/100</span>
+    </span>
+  </div>
+  <div class="body">
+    <div class="script-body">
+      <p>僕自身、
+この地域で、何をどうやったら
+<strong>稼げる農業になるのか</strong>に気づくまで、
+10年かかりました。</p>
+<p>もし最初から順番を整理できていたら、
+200tどころか、300t、400tまで
+行けていたかもしれません。</p>
+<p>「こうしたら今より良くなるよ」と言われても、
+その意味を深く理解できなかったし、
+実際にどう動けばいいかも
+分かっていませんでした。</p>
+<p>そして何より、</p>
+<p><strong>ちゃんと実績を持って、
+自分の状況に合わせて見てくれる人がいなかった。</strong></p>
+<p>だから、遠回りしました。</p>
+<p>ここまで見ている時点で、</p>
+<p>自分の今のやり方を見直したい
+今のままでいいのか整理したい
+今より稼ぎたい
+今よりうまく作りたい
+今より売上を伸ばして、家族との時間も取りたい</p>
+<p>そう思って、ここまで来ているはずです。</p>
+<p>たとえば、
+僕が出しているマイナビ農業の記事を見ても、
+情報だけでは前に進まないことがあります。</p>
+<p>その理由は、
+<strong>あなたの地域、作物、面積、売り先、人の使い方に、
+ぴったり合った答えではないからです。</strong></p>
+<p>今必要なのは、
+もっと情報を集めることではなく、
+<strong>今の自分の現在地を整理することです。</strong></p>
+<p>今まで僕は、
+YouTubeで3年間、
+メンバーシップでも濃い情報を
+発信し続けてきました。</p>
+<p>実際に、
+成果や感想はたくさんいただいています。</p>
+<p>でも、
+<strong>それだけで、これから先もずっと稼げる農業にするところまでは届かなかった。</strong></p>
+<p>なぜかというと、
+一人ひとりのケースに
+当てはめきれなかったからです。</p>
+<p>同じ作物でも、
+地域が違えば売り先が違う。
+面積が違えば、利益の出し方も違う。
+人を使うかどうかで、組み方も変わる。</p>
+<p>つまり、
+<strong>一般論だけでは足りない。</strong></p>
+<p>だから僕はさらに学んで、
+<strong>個別にケースに合わせて整理する</strong>
+ということを始めました。</p>
+<p>その結果、</p>
+<p>販売単価を上げられた方
+出荷量を増やせた方
+未経験から新規で農業を始められた方</p>
+<p>こうした変化が、実際に出てきています。</p>
+<p>ここまで聞いて、
+もう分かってると思います。</p>
+<p>全体像は見えた。
+順番も分かった。
+一般論では決めきれないことも分かった。</p>
+<p>たぶん今、こう思ってませんか？</p>
+<p><strong>「で、自分はどうすればいいの？」</strong></p>
+<p>そう思えているなら、
+この動画の目的は達成です。</p>
+<p>ここから先は、あなたの話です。</p>
+<p><strong>（3秒間の間）</strong></p>
+<p>答えはシンプルです。</p>
+<p><strong>整理できる人に見てもらって、
+今の段階をはっきりさせること。</strong></p>
+<p>一人で考えていても、
+自分では見えていないズレには
+気づきにくいです。</p>
+<p>だからまずは、
+今の自分の位置を
+はっきりさせることから始めます。</p>
+<p><mark class="diff-new">LINE登録直後に、
+0から5の中から、
+今の自分に一番近い番号を、
+1つ選んでくれましたね。</mark></p>
+<p><strong>0.</strong> まだ始める前（これからゼロイチを始める）
+<strong>1.</strong> 作れる状態を安定させる段階
+<strong>2.</strong> 売り先を固める段階
+<strong>3.</strong> 面積あたりの利益を残す段階
+<strong>4.</strong> 人に任せて回す段階
+<strong>5.</strong> 規模を伸ばす段階</p>
+<p><mark class="diff-new">その番号に合わせて、</mark>
+あなたの今の段階に合わせて、
+次に何を準備すべきかを個別で見ていきます。</p>
+<p>たとえば、</p>
+<p>今年1年で何を優先するべきか
+今の仕事を続けながらどこまで進めるか
+何から固めれば利益が残りやすくなるか
+ゼロイチならまず何を作るべきか</p>
+<p>このあたりを整理するだけでも、
+今年の動き方はかなり変わります。</p>
+<p><strong>【ここから追加カットG】</strong></p>
+<p>で、一つだけ先に言っておくと、</p>
+<p>個別相談は、一回で全部を決める場所ではないです。</p>
+<p>まずは今の段階をはっきりさせて、
+次の一手を決める。</p>
+<p>そこから先、
+実際にやっていく中で出てくる壁や判断については、
+必要に応じて一緒に見ていく形も取れます。</p>
+<p>ただ、まずは今の現在地の整理が最初です。</p>
+<p><mark class="diff-new">このあと、LINEに案内が届きます。
+そこから、あなたの番号に合わせて、
+個別相談を申し込んでください。
+そこから始めましょう。</mark></p>
+<p>こうして個別で見られる機会は、
+ずっと続けられるわけではありません。</p>
+<p>また1年遠回りする前に、
+今の自分を整理したい方は、
+<mark class="diff-new"><strong>このあとLINEに届く案内から、個別相談に申し込んでください。</strong></mark></p>
+<p>あなたの農業も、
+<strong>もっと楽しくなる、
+もっと利益の出る農業にしたい。</strong></p>
+<p>そう思う方は、
+<mark class="diff-new">このあとLINEに届く案内から、</mark>
+個別相談してみてください。</p>
+<p>最後まで見てくれて、
+ありがとうございました。</p>
+<p><mark class="diff-new"><strong>ここまで見てくれた方には、
+LINEに次のご案内と、
+ささやかな特典が、
+このあと自動で届きます。</strong></mark></p>
+<p><mark class="diff-new">ぜひ受け取って、
+次の一歩を踏み出してください。</mark></p>
+    </div>
+    
+    
+    <details class="improve-box">
+      <summary class="improve-summary">🛠️ ブラッシュアップ候補 <span class="improve-toggle">タップで開く ▼</span></summary>
+      <div class="improve-body">
+        <ul><li>曖昧表現が2件（断定型に書き換え）</li></ul>
+        <div class="request-hint">
+          Discord で <code>#10 ブラッシュアップ</code> と送ると、このセクションだけ直して再デプロイします🌸
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+    <div class="appendix-heading">📎 付帯セクション（撮影外）</div>
+<details class="section appendix-card ap-shoot-method">
+  <summary class="ap-summary">
+    <span class="ap-icon">🎥</span>
+    <span class="ap-title">撮影方式</span>
+    <span class="ap-toggle">タップで開く ▼</span>
+  </summary>
+  <div class="ap-body">
+    <p>🎬 <strong>スライド表示をメインに進行、話者は要所でカメラ全画面</strong></p>
+<p>👕 <strong>本編と同じ服装・背景・照明</strong></p>
+<p>🎤 <strong>ジェットカット前提（撮影時はノンストップでOK）</strong></p>
+<p>🖼 <strong>スライド19+追加10+追加カットA-G用新規スライドを編集で差し込み</strong></p>
+
+  </div>
+</details>
+<details class="section appendix-card ap-score">
+  <summary class="ap-summary">
+    <span class="ap-icon">📊</span>
+    <span class="ap-title">採点表</span>
+    <span class="ap-toggle">タップで開く ▼</span>
+  </summary>
+  <div class="ap-body">
+    <table class="ap-table"><thead><tr><th>評価軸</th><th>既存</th><th>追加後</th><th>加点理由</th></tr></thead><tbody><tr><td>① 渇望創出力</td><td>19/25</td><td>25/25</td><td>B+Dで診断型2回挿入「暴かれたい」完成</td></tr><tr><td>② 専門性証明</td><td>14/15</td><td>15/15</td><td>A で冒頭30秒に実績＋人間味</td></tr><tr><td>③ 不可能性示唆</td><td>12/15</td><td>15/15</td><td>Eで「一人では無理」を直球で明言</td></tr><tr><td>④ 完結感排除</td><td>14/15</td><td>15/15</td><td>Fで「もう分かった→だから診断して」転換</td></tr><tr><td>⑤ スリッパリースライド</td><td>8/10</td><td>10/10</td><td>Cで「悩みの仕分け」のミニ行動提案</td></tr><tr><td>⑥ バックエンド逆算</td><td>6/10</td><td>9/10</td><td>Gで「一緒に見ていく形も取れます」布石</td></tr><tr><td>⑦ CTA設計</td><td>9/10</td><td>10/10</td><td>本編18の軽量化＋追加8への集約で重複解消</td></tr><tr><td><strong>合計</strong></td><td><strong>82</strong></td><td><strong>99</strong></td><td></td></tr></tbody></table>
+
+<p>※ ⑥ -1 は動画内では匂わせレベルにとどめる正しい設計（LINEシナリオ側で回収）</p>
+
+  </div>
+</details>
+<details class="section appendix-card ap-assets">
+  <summary class="ap-summary">
+    <span class="ap-icon">🖼</span>
+    <span class="ap-title">編集挿入カットA-G 撮影リスト</span>
+    <span class="ap-toggle">タップで開く ▼</span>
+  </summary>
+  <div class="ap-body">
+    <table class="ap-table"><thead><tr><th>#</th><th>挿入位置</th><th>狙い</th><th>加点</th></tr></thead><tbody><tr><td>A</td><td>章1-C（スライド1直後）</td><td>冒頭30秒の専門性証明</td><td>+1</td></tr><tr><td>B</td><td>章3-C（スライド5→6の間）</td><td>診断型「暴かれたい」①</td><td>+3</td></tr><tr><td>C</td><td>章5-B（スライド8直後）</td><td>ミニ行動提案</td><td>+2</td></tr><tr><td>D</td><td>章7-B（スライド12直後）</td><td>診断型「暴かれたい」②</td><td>+3</td></tr><tr><td>E</td><td>章9-B（スライド16→17の間）</td><td>「一人では無理」一撃</td><td>+3</td></tr><tr><td>F</td><td>章10-G（追加スライド6→7の間）</td><td>「だから早く診断して」転換</td><td>+1</td></tr><tr><td>G</td><td>章10-I内（追加スライド8に組み込み）</td><td>バックエンド布石＋CTA重複解消</td><td>+3</td></tr></tbody></table>
+
+<p>合計加点：+10点 → 82→99点</p>
+
+  </div>
+</details>
+<details class="section appendix-card ap-memo">
+  <summary class="ap-summary">
+    <span class="ap-icon">📎</span>
+    <span class="ap-title">制作者メモ</span>
+    <span class="ap-toggle">タップで開く ▼</span>
+  </summary>
+  <div class="ap-body">
+    <h4>出すテロップ（強調文言）</h4>
+<p>1. 売り先がないから稼げない、は勘違いです</p>
+<p>2. 農業で止まる＝稼げなくなること</p>
+<p>3. 表面の悩みと本当の原因はズレている</p>
+<p>4. 安定 → 売り先 → 拡大</p>
+<p>5. これは一般論です</p>
+<p>6. 変えるべき順番を変えること</p>
+<p>7. 今どの段階か / 次に何から変えるか</p>
+
+<h4>編集方針</h4>
+<ul>
+<li>スライド表示メイン、話者ワイプ小さめ</li>
+<li>ジェットカット基本、無音・言い直し削除</li>
+<li>感想は3箇所だけ短く差し込み（証拠として）</li>
+<li>CTA前後は煽らない、シンプルに</li>
+<li>BGM薄め、CTA前は更に薄く or なし</li>
+</ul>
+
+<h4>感想差し込み位置（3箇所）</h4>
+<ul>
+<li>感想① ＝ 章5-C「安定→売り先→拡大」直後（鈴木さん感想）</li>
+<li>感想② ＝ 章7-C「今いる場所」直後（たきたさん or 灰色背景の感想）</li>
+<li>感想③ ＝ 章8-A「見方が変わった」直後（三輪さん感想）</li>
+</ul>
+
+  </div>
+</details>
+<details class="section appendix-card ap-memo">
+  <summary class="ap-summary">
+    <span class="ap-icon">📎</span>
+    <span class="ap-title">全体マップ</span>
+    <span class="ap-toggle">タップで開く ▼</span>
+  </summary>
+  <div class="ap-body">
+    <h4>動画前（LINE登録直後）</h4>
+<pre class="ap-code"><code>ありがとうございます。
+あなたの農業を「稼げる農業」にするために、
+少し整理してみましょう。
+
+下の6つの中から、
+今の自分に一番近い数字を1つだけ
+このLINEに返信してください。
+━━━━━━━━━━━━
+0. まだ始める前
+1. 生産の安定
+2. 売り先
+3. 1反で利益
+4. 仕組み化
+5. 規模拡大
+━━━━━━━━━━━━
+
+数字1つだけで大丈夫です。
+返信をもらえた方から、
+次の動画のご案内を送ります。</code></pre>
+
+<h4>動画視聴後</h4>
+<pre class="ap-code"><code>動画の視聴ありがとうございます！
+ただ、動画ではどうしても
+一般化した情報になってしまいます。
+
+なので、
+「私の場合はどうしたらいいの？」
+「もっと詳しく話を聞きたい」
+「直接お話ししたい」
+
+という方には無料で個別に相談できる時間を30分プレゼントします！🎁
+
+あなたの段階に合わせて
+次の一歩を一緒に整理したい方はこちらからお申し込みをどうぞ。
+
+さらに、個別相談を受けてくれた方には
+
+僕が16年かけてたどり着いた
+「売上を毎年上げるための
+　100t農家が実際に
+　売上を上げた施策3選」
+をお届けします！
+
+少しだけ次の世界を覗いてみませんか？</code></pre>
+
+  </div>
+</details>
+<details class="section appendix-card ap-duration">
+  <summary class="ap-summary">
+    <span class="ap-icon">⏱</span>
+    <span class="ap-title">文字数・時間見込み</span>
+    <span class="ap-toggle">タップで開く ▼</span>
+  </summary>
+  <div class="ap-body">
+    <ul>
+<li>動画本編：約12,000字</li>
+<li>スライド進行ペース（5字/秒）：生・間込み 約40分</li>
+<li>カット後（ジェットカット・無音削除）：<strong>約15-20分</strong> ★目標</li>
+</ul>
+
+  </div>
+</details>
+<details class="section appendix-card ap-memo">
+  <summary class="ap-summary">
+    <span class="ap-icon">📎</span>
+    <span class="ap-title">撮影時のコツ</span>
+    <span class="ap-toggle">タップで開く ▼</span>
+  </summary>
+  <div class="ap-body">
+    <h4>共通</h4>
+<ul>
+<li>スライド表示と話者カメラを切替で進行</li>
+<li>章ごとに少しだけ立ち位置を変えてもOK</li>
+<li>数字・キーワード（「16年」「100t」「200t」「3つの順番」「6段階」）は強調</li>
+</ul>
+
+<h4>追加カット撮影注意</h4>
+<ul>
+<li>本編と同じ服装・背景・照明</li>
+<li>30秒〜1分程度（長くしすぎない）</li>
+<li>B・D・Eはカメラ目線で視聴者への語りかけ意識</li>
+<li>新規スライド必要：0-5ステージ図、悩み5つ並べ、3つの箱</li>
+</ul>
+
+<h4>撮影禁忌</h4>
+<ul>
+<li>「たぶん」「だいたい」「かもしれない」（CTA以外）NG</li>
+<li>過剰絵文字なし</li>
+<li>第三者の声を入れるなら必ず匿名化</li>
+</ul>
+  </div>
+</details>
+  </div>
+
+  <footer class="footer">
+    Generated 2026-05-27 22:42 JST from nogyo-game-change-v3.md
+  </footer>
+
+</div>
+<script>
+(function(){
+  const sidebar = document.querySelector('.emotion-sidebar');
+  if (!sidebar) return;
+  const links = Array.from(sidebar.querySelectorAll('a[data-target]'));
+  const sections = links
+    .map(a => document.getElementById(a.dataset.target))
+    .filter(Boolean);
+
+  function activate(idx) {
+    links.forEach((a, i) => a.classList.toggle('active', i === idx));
+    // Scroll sidebar to keep active in view
+    if (idx >= 0 && links[idx]) {
+      const a = links[idx];
+      const sbRect = sidebar.getBoundingClientRect();
+      const aRect = a.getBoundingClientRect();
+      const targetTop = a.offsetTop - sbRect.height / 2 + aRect.height / 2;
+      sidebar.scrollTo({ top: targetTop, behavior: 'smooth' });
+    }
+  }
+
+  // Smooth scroll on click
+  links.forEach((a, i) => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      sections[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Track scroll position; active = section whose top is just above 30% viewport
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const ref = window.innerHeight * 0.30;
+      let activeIdx = 0;
+      for (let i = 0; i < sections.length; i++) {
+        const rect = sections[i].getBoundingClientRect();
+        if (rect.top - ref <= 0) activeIdx = i;
+        else break;
+      }
+      activate(activeIdx);
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  // Initial
+  activate(0);
+})();
+</script>
+</body>
+</html>
