@@ -413,6 +413,158 @@ html, body {
   border-radius: 3px;
   font-weight: 500;
 }
+/* 感情スポットライト（14種） */
+.emo-spot {
+  display: inline;
+  padding: 1px 6px 1px 4px;
+  border-radius: 6px;
+  position: relative;
+  font-weight: 500;
+  line-height: 2.0;
+  white-space: normal;
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,0.1);
+}
+.emo-spot .emo-label {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 900;
+  padding: 1px 5px;
+  border-radius: 4px;
+  margin-right: 4px;
+  letter-spacing: 0.05em;
+  vertical-align: 1px;
+}
+.emo-spot.emo-興味 { background: rgba(255, 107, 53, 0.18); }
+.emo-spot.emo-興味 .emo-label { background: #ff6b35; color: #fff; }
+.emo-spot.emo-気づき { background: rgba(255, 216, 122, 0.22); }
+.emo-spot.emo-気づき .emo-label { background: #ffd87a; color: #1a1a1a; }
+.emo-spot.emo-不安 { background: rgba(155, 89, 182, 0.22); }
+.emo-spot.emo-不安 .emo-label { background: #9b59b6; color: #fff; }
+.emo-spot.emo-信頼 { background: rgba(52, 152, 219, 0.22); }
+.emo-spot.emo-信頼 .emo-label { background: #3498db; color: #fff; }
+.emo-spot.emo-学び { background: rgba(74, 144, 226, 0.22); }
+.emo-spot.emo-学び .emo-label { background: #4a90e2; color: #fff; }
+.emo-spot.emo-理解 { background: rgba(116, 185, 255, 0.22); }
+.emo-spot.emo-理解 .emo-label { background: #74b9ff; color: #fff; }
+.emo-spot.emo-応用 { background: rgba(232, 67, 147, 0.18); }
+.emo-spot.emo-応用 .emo-label { background: #e84393; color: #fff; }
+.emo-spot.emo-共感 { background: rgba(198, 109, 232, 0.22); }
+.emo-spot.emo-共感 .emo-label { background: #c66de8; color: #fff; }
+.emo-spot.emo-確信 { background: rgba(6, 167, 125, 0.22); }
+.emo-spot.emo-確信 .emo-label { background: #06a77d; color: #fff; }
+.emo-spot.emo-警戒 { background: rgba(231, 76, 60, 0.22); }
+.emo-spot.emo-警戒 .emo-label { background: #e74c3c; color: #fff; }
+.emo-spot.emo-行動 { background: rgba(46, 204, 113, 0.22); }
+.emo-spot.emo-行動 .emo-label { background: #2ecc71; color: #fff; }
+.emo-spot.emo-決意 { background: rgba(255, 215, 0, 0.22); }
+.emo-spot.emo-決意 .emo-label { background: #ffd700; color: #1a1a1a; }
+.emo-spot.emo-整理 { background: rgba(26, 188, 156, 0.22); }
+.emo-spot.emo-整理 .emo-label { background: #1abc9c; color: #fff; }
+.emo-spot.emo-補足 { background: rgba(149, 165, 166, 0.22); }
+.emo-spot.emo-補足 .emo-label { background: #95a5a6; color: #fff; }
+
+/* 章ヘッダーの感情アイコン予告（この章にどの感情があるか一目） */
+.head-emo-icons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+.head-emo-icons .he-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.85);
+  margin-right: 4px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.head-emo-icons .he-icon {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.head-emo-icons .he-icon.emo-興味 { background: #ff6b35; }
+.head-emo-icons .he-icon.emo-気づき { background: #ffd87a; color: #1a1a1a; }
+.head-emo-icons .he-icon.emo-不安 { background: #9b59b6; }
+.head-emo-icons .he-icon.emo-信頼 { background: #3498db; }
+.head-emo-icons .he-icon.emo-学び { background: #4a90e2; }
+.head-emo-icons .he-icon.emo-理解 { background: #74b9ff; }
+.head-emo-icons .he-icon.emo-応用 { background: #e84393; }
+.head-emo-icons .he-icon.emo-共感 { background: #c66de8; }
+.head-emo-icons .he-icon.emo-確信 { background: #06a77d; }
+.head-emo-icons .he-icon.emo-警戒 { background: #e74c3c; }
+.head-emo-icons .he-icon.emo-行動 { background: #2ecc71; }
+.head-emo-icons .he-icon.emo-決意 { background: #ffd700; color: #4a3800; }
+.head-emo-icons .he-icon.emo-整理 { background: #1abc9c; }
+.head-emo-icons .he-icon.emo-補足 { background: #95a5a6; }
+
+/* スライド予告（デフォルトOFF、サイドバートグルでON） */
+.slide-preview {
+  display: none;
+  background: rgba(74, 144, 226, 0.10);
+  border-left: 3px solid #4a90e2;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 8px 0;
+  font-size: 12px;
+  color: #b8c4dd;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+body.show-slides .slide-preview { display: flex; align-items: flex-start; }
+.slide-preview .sp-icon {
+  color: #6ba5e8;
+  font-size: 13px;
+  flex: 0 0 auto;
+}
+.slide-preview .sp-number {
+  font-weight: 800;
+  color: #6ba5e8;
+  font-size: 11px;
+  flex: 0 0 auto;
+  background: rgba(74, 144, 226, 0.18);
+  padding: 1px 7px;
+  border-radius: 4px;
+}
+.slide-preview .sp-content {
+  flex: 1 1 auto;
+  color: #d8dde8;
+  line-height: 1.6;
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* サイドバー上部のスライド予告トグル */
+.emotion-sidebar .sb-slide-toggle {
+  margin: 0 6px 10px;
+  text-align: center;
+}
+.emotion-sidebar .sb-slide-toggle button {
+  background: rgba(74, 144, 226, 0.10);
+  border: 1px solid rgba(74, 144, 226, 0.4);
+  color: #6ba5e8;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 5px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+.emotion-sidebar .sb-slide-toggle button.on {
+  background: rgba(74, 144, 226, 0.25);
+  color: #ffffff;
+  border-color: #6ba5e8;
+}
+.emotion-sidebar .sb-slide-toggle button:hover { background: rgba(74, 144, 226, 0.18); }
 .diff-legend {
   display: inline-flex;
   align-items: center;
@@ -1527,7 +1679,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 </style>
 </head>
 <body>
-<aside class="emotion-sidebar"><div class="sb-title">心理動線</div><nav class="path"><a href="#sec-01" class="hook" data-target="sec-01"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">01</span><span class="emotion">興味</span><span class="sb-score" style="color: #ff9f43;">65点</span></a>
+<aside class="emotion-sidebar"><div class="sb-slide-toggle"><button onclick="toggleSlides(this)" type="button">📺 スライド<br>OFF</button></div><div class="sb-title">心理動線</div><nav class="path"><a href="#sec-01" class="hook" data-target="sec-01"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">01</span><span class="emotion">興味</span><span class="sb-score" style="color: #ff9f43;">65点</span></a>
 <a href="#sec-02" class="normal" data-target="sec-02"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">02</span><span class="emotion">把握</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
 <a href="#sec-03" class="normal" data-target="sec-03"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">03</span><span class="emotion">把握</span><span class="sb-score" style="color: #ff9f43;">59点</span></a>
 <a href="#sec-04" class="normal" data-target="sec-04"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">04</span><span class="emotion">把握</span><span class="sb-score" style="color: #ff9f43;">59点</span></a>
@@ -1558,7 +1710,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </div>
   </section>
 
-  <div class="version-tabs"><div class="vt-title">📚 バージョン一覧</div><div class="vt-tabs-row"><div class="vt-tab active" title="撮影済みオリジナル台本を10章+appendixに整形（章分けと撮影バッジ）"><span class="vt-label">v1</span><span class="vt-current-tag">今ここ</span><span class="vt-purpose">撮影済みオリジナル台本を10章+appendixに整形（章分けと撮影バッジ）</span></div><a class="vt-tab" href="nogyo-game-change-v2.html" title="動画前後LINEに合うよう冒頭・CTA訴求軸・締めを調整＋差分色換え機能"><span class="vt-label">v2・LINEフィット</span><span class="vt-purpose">動画前後LINEに合うよう冒頭・CTA訴求軸・締めを調整＋差分色換え機能</span></a><a class="vt-tab" href="nogyo-game-change-v3.html" title="章ごとの心理導線アンカーを手動指定で感情の波を再設計（台本本文は無変更）"><span class="vt-label">v3・ジェットコースター</span><span class="vt-purpose">章ごとの心理導線アンカーを手動指定で感情の波を再設計（台本本文は無変更）</span></a></div></div>
+  <div class="version-tabs"><div class="vt-title">📚 バージョン一覧</div><div class="vt-tabs-row"><div class="vt-tab active" title="撮影済みオリジナル台本を10章+appendixに整形（章分けと撮影バッジ）"><span class="vt-label">v1</span><span class="vt-current-tag">今ここ</span><span class="vt-purpose">撮影済みオリジナル台本を10章+appendixに整形（章分けと撮影バッジ）</span></div><a class="vt-tab" href="nogyo-game-change-v2.html" title="動画前後LINEに合うよう冒頭・CTA訴求軸・締めを調整＋差分色換え機能"><span class="vt-label">v2・LINEフィット</span><span class="vt-purpose">動画前後LINEに合うよう冒頭・CTA訴求軸・締めを調整＋差分色換え機能</span></a><a class="vt-tab" href="nogyo-game-change-v3.html" title="章ごとの心理導線アンカーを手動指定で感情の波を再設計（台本本文は無変更）"><span class="vt-label">v3・ジェットコースター</span><span class="vt-purpose">章ごとの心理導線アンカーを手動指定で感情の波を再設計（台本本文は無変更）</span></a><a class="vt-tab" href="nogyo-game-change-v4.html" title="本文中の感情の核フレーズに【感情名:文】マーカーでスポットライト（文単位の可視化）"><span class="vt-label">v4・スポットライト</span><span class="vt-purpose">本文中の感情の核フレーズに【感情名:文】マーカーでスポットライト（文単位の可視化）</span></a><a class="vt-tab" href="nogyo-game-change-v5.html" title="沖ケイタ流Xスライド術反映（1枚1メッセージ・短文・視覚訴求で枚数増加）"><span class="vt-label">v5・スライド術</span><span class="vt-purpose">沖ケイタ流Xスライド術反映（1枚1メッセージ・短文・視覚訴求で枚数増加）</span></a></div></div>
 
   <details class="production-flow collapsible-panel" open><summary class="cp-summary"><span class="cp-title">🎬 制作フロー（台本ボード → ドキュメント → 撮影）</span><span class="cp-toggle">タップで開閉 ▼</span></summary><div class="cp-body"><p class="pf-lead">視覚化で快適に台本を作るための3ステップ。①でブラッシュアップしたら、②の撮影用ドキュメントを開いて読み上げ撮影 → ③ブループリント編集で動画化。</p><div class="pf-steps"><div class="pf-step current"><span class="pf-num">①</span><span class="pf-title">📋 台本ボードで視覚化・調整</span><span class="pf-desc">いまここ。章ごとの感情曲線・採点・ブラッシュアップ候補を一目で見ながら台本を磨く</span></div><div class="pf-arrow">→</div><div class="pf-step"><span class="pf-num">②</span><span class="pf-title">📄 撮影用ドキュメントで撮影</span><span class="pf-desc">章＋【Scroll】マーカーつき。スマホで開いて読み上げながら撮影</span><a class="pf-link" href="https://docs.google.com/document/d/17tWkWZeOSKvMdAHx_Ia1e5-_eAgsEniUcQP-yM5Zawk/edit?usp=sharing" target="_blank" rel="noopener">📄 ドキュメントを開く →</a></div><div class="pf-arrow">→</div><div class="pf-step"><span class="pf-num">③</span><span class="pf-title">🎞 ブループリント編集 → 公開</span><span class="pf-desc">読み上げ撮影した素材をブループリントで編集、スパッと動画化してYouTubeへ</span></div></div></div></details>
 
@@ -1640,6 +1792,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">65</span><span class="score-max">/100</span>
     </span>
+    
   </div>
   <div class="body">
     <div class="script-body">
@@ -1700,6 +1853,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
       <span class="score-num">70</span><span class="score-max">/100</span>
     </span>
+    
   </div>
   <div class="body">
     <div class="script-body">
@@ -1756,6 +1910,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">59</span><span class="score-max">/100</span>
     </span>
+    
   </div>
   <div class="body">
     <div class="script-body">
@@ -1840,6 +1995,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">59</span><span class="score-max">/100</span>
     </span>
+    
   </div>
   <div class="body">
     <div class="script-body">
@@ -1918,6 +2074,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
       <span class="score-num">70</span><span class="score-max">/100</span>
     </span>
+    
   </div>
   <div class="body">
     <div class="script-body">
@@ -1982,6 +2139,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">58</span><span class="score-max">/100</span>
     </span>
+    
   </div>
   <div class="body">
     <div class="script-body">
@@ -2038,6 +2196,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">67</span><span class="score-max">/100</span>
     </span>
+    
   </div>
   <div class="body">
     <div class="script-body">
@@ -2110,6 +2269,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
       <span class="score-num">71</span><span class="score-max">/100</span>
     </span>
+    
   </div>
   <div class="body">
     <div class="script-body">
@@ -2172,6 +2332,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">56</span><span class="score-max">/100</span>
     </span>
+    
   </div>
   <div class="body">
     <div class="script-body">
@@ -2304,6 +2465,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">61</span><span class="score-max">/100</span>
     </span>
+    
   </div>
   <div class="body">
     <div class="script-body">
@@ -2614,11 +2776,16 @@ YouTubeで3年間、
   </div>
 
   <footer class="footer">
-    Generated 2026-05-27 22:45 JST from nogyo-game-change-v1.md
+    Generated 2026-05-27 23:41 JST from nogyo-game-change-v1.md
   </footer>
 
 </div>
 <script>
+function toggleSlides(btn) {
+  const on = document.body.classList.toggle('show-slides');
+  btn.classList.toggle('on', on);
+  btn.innerHTML = on ? '📺 スライド<br>ON' : '📺 スライド<br>OFF';
+}
 (function(){
   const sidebar = document.querySelector('.emotion-sidebar');
   if (!sidebar) return;

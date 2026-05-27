@@ -1,6 +1,8 @@
 ---
 title: 「プロが作る畑と、初心者が初めて作るキャベツ」読み上げ台本（v3.1）
 date: 2026-05-18
+shoot_doc_url: https://docs.google.com/document/d/1kJEPlyCUGZfzQ8eA7752An_4NWiULV2a_JGl6OP1XW8/edit?usp=drivesdk
+shoot_doc_label: 撮影用 Googleドキュメント（章＋【Scroll】形式）
 target_minutes: 完成尺20分以上（早口読み・約13,100字）
 shoot_mode: 🌾 全シーン畑撮影（衣装で立つ・歩く・話すだけ）
 slide_handling: 編集時に画面挿入（実物・小道具・カレンダー・キャベツ比較・苗比較・根 すべて画像挿入）

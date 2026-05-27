@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
-  <title>📋 動画収録ワークフロー（36px・【Scroll】） | 台本ボードLP</title>
+  <title>📋 「プロが作る畑と、初心者が初めて作るキャベツ」読み上げ台本（v3.1） | 台本ボードLP</title>
   <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
@@ -803,6 +803,95 @@ html, body {
 }
 .read-script-link a:hover { background: #ffd87a; color: #0a0e1a; }
 
+/* ===== 制作フロー（Naokiさん向け視覚化）— hero 直下 ===== */
+.production-flow {
+  background: linear-gradient(135deg, rgba(74, 144, 226, 0.10) 0%, rgba(6, 167, 125, 0.10) 100%);
+  border-radius: 14px;
+  margin: 16px 16px 18px;
+  padding: 0;
+  border-left: 6px solid #4a90e2;
+  border-top: 1px solid rgba(74, 144, 226, 0.18);
+  border-right: 1px solid rgba(74, 144, 226, 0.18);
+  border-bottom: 1px solid rgba(74, 144, 226, 0.18);
+}
+.production-flow .cp-summary { padding: 16px 22px; }
+.production-flow .cp-title { color: #6ba5e8; }
+.production-flow .pf-lead {
+  font-size: 13px;
+  color: #b8c4dd;
+  margin: 0 0 14px;
+  line-height: 1.7;
+}
+.production-flow .pf-steps {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+.production-flow .pf-step {
+  flex: 1 1 0;
+  min-width: 0;
+  background: rgba(0,0,0,0.28);
+  border: 2px solid rgba(74, 144, 226, 0.3);
+  border-radius: 12px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.production-flow .pf-step.current {
+  border-color: #ffd87a;
+  box-shadow: 0 0 0 3px rgba(255, 216, 122, 0.18);
+  background: rgba(255, 216, 122, 0.06);
+}
+.production-flow .pf-num {
+  font-size: 22px;
+  font-weight: 900;
+  color: #6ba5e8;
+  line-height: 1;
+}
+.production-flow .pf-step.current .pf-num { color: #ffd87a; }
+.production-flow .pf-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #e8ebf2;
+  line-height: 1.35;
+}
+.production-flow .pf-desc {
+  font-size: 12px;
+  color: #b8c4dd;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+.production-flow .pf-link {
+  margin-top: 4px;
+  display: inline-block;
+  padding: 9px 12px;
+  background: linear-gradient(135deg, #4a90e2 0%, #2e7bd5 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.production-flow .pf-link:hover {
+  background: linear-gradient(135deg, #5da8f5 0%, #4a8be0 100%);
+}
+.production-flow .pf-arrow {
+  align-self: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: #6ba5e8;
+  flex: 0 0 auto;
+}
+@media (max-width: 720px) {
+  .production-flow .pf-steps { flex-wrap: wrap; }
+  .production-flow .pf-step { flex: 1 1 100%; }
+  .production-flow .pf-arrow { transform: rotate(90deg); margin: 2px auto; }
+}
+
 /* ===== 全体ナレッジ投入計画パネル（ヒーロー直下） ===== */
 .global-knowledge {
   background: linear-gradient(135deg, rgba(255,216,122,0.07) 0%, rgba(255,216,122,0.02) 100%);
@@ -1210,7 +1299,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <span class="badge">📋 台本ボード</span>
       <span class="badge">視聴者目線レビュー</span>
     </div>
-    <h1>動画収録ワークフロー（36px・【Scroll】）</h1>
+    <h1>「プロが作る畑と、初心者が初めて作るキャベツ」読み上げ台本（v3.1）</h1>
     <div class="subtitle">視聴者がどう動くかを台本制作者が体験するボード</div>
     <div class="stats">
       <div class="stat"><div class="num">5</div><div class="lab">セクション</div></div>
@@ -1219,9 +1308,11 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
       <div class="stat"><div class="num">1+0</div><div class="lab">フック+CTA</div></div>
     </div>
     <div class="read-script-link">
-      <a href="2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md" target="_blank">📜 読み上げ用 Markdown 台本を開く</a>
+      <a href="cabbage-pro-vs-beginner-v3.1.md" target="_blank">📜 読み上げ用 Markdown 台本を開く</a>
     </div>
   </section>
+
+  <details class="production-flow collapsible-panel" open><summary class="cp-summary"><span class="cp-title">🎬 制作フロー（台本ボード → ドキュメント → 撮影）</span><span class="cp-toggle">タップで開閉 ▼</span></summary><div class="cp-body"><p class="pf-lead">視覚化で快適に台本を作るための3ステップ。①でブラッシュアップしたら、②の撮影用ドキュメントを開いて読み上げ撮影 → ③ブループリント編集で動画化。</p><div class="pf-steps"><div class="pf-step current"><span class="pf-num">①</span><span class="pf-title">📋 台本ボードで視覚化・調整</span><span class="pf-desc">いまここ。章ごとの感情曲線・採点・ブラッシュアップ候補を一目で見ながら台本を磨く</span></div><div class="pf-arrow">→</div><div class="pf-step"><span class="pf-num">②</span><span class="pf-title">📄 撮影用ドキュメントで撮影</span><span class="pf-desc">章＋【Scroll】マーカーつき。スマホで開いて読み上げながら撮影</span><a class="pf-link" href="https://docs.google.com/document/d/1kJEPlyCUGZfzQ8eA7752An_4NWiULV2a_JGl6OP1XW8/edit?usp=drivesdk" target="_blank" rel="noopener">📄 ドキュメントを開く →</a></div><div class="pf-arrow">→</div><div class="pf-step"><span class="pf-num">③</span><span class="pf-title">🎞 ブループリント編集 → 公開</span><span class="pf-desc">読み上げ撮影した素材をブループリントで編集、スパッと動画化してYouTubeへ</span></div></div></div></details>
 
   <details class="global-knowledge collapsible-panel"><summary class="cp-summary"><span class="cp-title">💡 全体ナレッジ投入計画</span><span class="gk-progress">(7/7 投入済)</span><span class="cp-toggle">タップで開く ▼</span></summary><div class="cp-body"><p class="gk-hint">未投入は点数低い順、 投入済みは下に。 「💡入れる」 ボタン押下でDiscord貼付用テキストがコピーされます🌸</p><ul class="gk-list"><li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-01" class="gk-sec-link">#01</a><span class="gk-sec-name">章1：オープニング</span><span class="gk-sec-score" style="color:#06a77d;">73点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">100t→200tの年商成長 権威数字</span><span class="gk-knowledge-effect">+8点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
 <li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-01" class="gk-sec-link">#01</a><span class="gk-sec-name">章1：オープニング</span><span class="gk-sec-score" style="color:#06a77d;">73点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">自己診断フレーム（エルさん5問版）</span><span class="gk-knowledge-effect">+6点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
@@ -1761,7 +1852,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
 
   <footer class="footer">
-    Generated 2026-05-27 07:58 JST from 2026-05-18_cabbage-pro-vs-beginner_yomiage_v3.1.md
+    Generated 2026-05-27 15:59 JST from cabbage-pro-vs-beginner-v3.1.md
   </footer>
 
 </div>
