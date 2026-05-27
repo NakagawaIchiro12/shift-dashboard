@@ -504,6 +504,67 @@ html, body {
 .head-emo-icons .he-icon.emo-決意 { background: #ffd700; color: #4a3800; }
 .head-emo-icons .he-icon.emo-整理 { background: #1abc9c; }
 .head-emo-icons .he-icon.emo-補足 { background: #95a5a6; }
+
+/* スライド予告（デフォルトOFF、サイドバートグルでON） */
+.slide-preview {
+  display: none;
+  background: rgba(74, 144, 226, 0.10);
+  border-left: 3px solid #4a90e2;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 8px 0;
+  font-size: 12px;
+  color: #b8c4dd;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+body.show-slides .slide-preview { display: flex; align-items: flex-start; }
+.slide-preview .sp-icon {
+  color: #6ba5e8;
+  font-size: 13px;
+  flex: 0 0 auto;
+}
+.slide-preview .sp-number {
+  font-weight: 800;
+  color: #6ba5e8;
+  font-size: 11px;
+  flex: 0 0 auto;
+  background: rgba(74, 144, 226, 0.18);
+  padding: 1px 7px;
+  border-radius: 4px;
+}
+.slide-preview .sp-content {
+  flex: 1 1 auto;
+  color: #d8dde8;
+  line-height: 1.6;
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* サイドバー上部のスライド予告トグル */
+.emotion-sidebar .sb-slide-toggle {
+  margin: 0 6px 10px;
+  text-align: center;
+}
+.emotion-sidebar .sb-slide-toggle button {
+  background: rgba(74, 144, 226, 0.10);
+  border: 1px solid rgba(74, 144, 226, 0.4);
+  color: #6ba5e8;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 5px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+.emotion-sidebar .sb-slide-toggle button.on {
+  background: rgba(74, 144, 226, 0.25);
+  color: #ffffff;
+  border-color: #6ba5e8;
+}
+.emotion-sidebar .sb-slide-toggle button:hover { background: rgba(74, 144, 226, 0.18); }
 .diff-legend {
   display: inline-flex;
   align-items: center;
@@ -1618,14 +1679,14 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 </style>
 </head>
 <body>
-<aside class="emotion-sidebar"><div class="sb-cta-score"><div class="num">82</div><div class="sub">→ 99</div></div><div class="sb-title">心理動線</div><nav class="path"><a href="#sec-01" class="hook" data-target="sec-01"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">01</span><span class="emotion">興味</span><span class="sb-score" style="color: #ff9f43;">65点</span></a>
+<aside class="emotion-sidebar"><div class="sb-cta-score"><div class="num">82</div><div class="sub">→ 99</div></div><div class="sb-slide-toggle"><button onclick="toggleSlides(this)" type="button">📺 スライド<br>OFF</button></div><div class="sb-title">心理動線</div><nav class="path"><a href="#sec-01" class="hook" data-target="sec-01"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">01</span><span class="emotion">興味</span><span class="sb-score" style="color: #ff9f43;">65点</span></a>
 <a href="#sec-02" class="normal" data-target="sec-02"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">02</span><span class="emotion">信頼</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
 <a href="#sec-03" class="normal" data-target="sec-03"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">03</span><span class="emotion">警戒</span><span class="sb-score" style="color: #ff9f43;">59点</span></a>
 <a href="#sec-04" class="normal" data-target="sec-04"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">04</span><span class="emotion">学び</span><span class="sb-score" style="color: #ff9f43;">59点</span></a>
 <a href="#sec-05" class="normal" data-target="sec-05"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">05</span><span class="emotion">確信</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
 <a href="#sec-06" class="normal" data-target="sec-06"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">06</span><span class="emotion">共感</span><span class="sb-score" style="color: #ff9f43;">58点</span></a>
 <a href="#sec-07" class="normal" data-target="sec-07"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">07</span><span class="emotion">気づき</span><span class="sb-score" style="color: #ff9f43;">67点</span></a>
-<a href="#sec-08" class="normal" data-target="sec-08"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">08</span><span class="emotion">整理</span><span class="sb-score" style="color: #06a77d;">70点</span></a>
+<a href="#sec-08" class="normal" data-target="sec-08"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">08</span><span class="emotion">整理</span><span class="sb-score" style="color: #06a77d;">71点</span></a>
 <a href="#sec-09" class="cta" data-target="sec-09"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">09</span><span class="emotion">行動</span><span class="sb-score" style="color: #ff9f43;">56点</span></a>
 <a href="#sec-10" class="cta" data-target="sec-10"><span class="here-tag">▶ 今ここ</span><span class="dot"></span><span class="num">10</span><span class="emotion">決意</span><span class="sb-score" style="color: #06a77d;">71点</span></a></nav></aside>
 <div class="page">
@@ -1640,8 +1701,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <div class="cta-score-banner"><div class="lab">📈 CTA到達力（エルさん渇望フレームワーク7軸）</div><div class="score-row"><span class="current">82</span><span class="slash">/100</span><span class="arrow">→</span><span class="target-label">目指す</span><span class="target">99</span></div><div class="gap">目標まで <strong>+17</strong> 点</div></div>
     <div class="stats">
       <div class="stat"><div class="num">10</div><div class="lab">セクション</div></div>
-      <div class="stat"><div class="num">10,740</div><div class="lab">文字数</div></div>
-      <div class="stat"><div class="num">29.8<small style="font-size:14px">分</small></div><div class="lab">推定尺</div></div>
+      <div class="stat"><div class="num">11,680</div><div class="lab">文字数</div></div>
+      <div class="stat"><div class="num">32.4<small style="font-size:14px">分</small></div><div class="lab">推定尺</div></div>
       <div class="stat"><div class="num">1+3</div><div class="lab">フック+CTA</div></div>
     </div>
     <div class="read-script-link">
@@ -1661,7 +1722,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-05" class="gk-sec-link">#05</a><span class="gk-sec-name">章5：基本の順番＋感想①＋ミニ行動提案</span><span class="gk-sec-score" style="color:#06a77d;">70点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
 <li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-06" class="gk-sec-link">#06</a><span class="gk-sec-name">章6：一般論宣言＋人によって変わる</span><span class="gk-sec-score" style="color:#ff9f43;">58点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
 <li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-07" class="gk-sec-link">#07</a><span class="gk-sec-name">章7：今いる場所＋診断型②＋感想②</span><span class="gk-sec-score" style="color:#ff9f43;">67点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
-<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-08" class="gk-sec-link">#08</a><span class="gk-sec-name">章8：講座で起きたこと＋ゲームチェンジの意味</span><span class="gk-sec-score" style="color:#06a77d;">70点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
+<li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-08" class="gk-sec-link">#08</a><span class="gk-sec-name">章8：講座で起きたこと＋ゲームチェンジの意味</span><span class="gk-sec-score" style="color:#06a77d;">71点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">採点表（おさる×L3×数値判定）</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
 <li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-09" class="gk-sec-link">#09</a><span class="gk-sec-name">章9：個別相談へ繋ぐ＋CTA本体＋締め</span><span class="gk-sec-score" style="color:#ff9f43;">56点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">公式LINE『農業のゲームチェンジ』動画ナレッジ</span><span class="gk-knowledge-effect">+10点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
 <li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-09" class="gk-sec-link">#09</a><span class="gk-sec-name">章9：個別相談へ繋ぐ＋CTA本体＋締め</span><span class="gk-sec-score" style="color:#ff9f43;">56点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">ヤスさん流 個別相談プロトコル</span><span class="gk-knowledge-effect">+5点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
 <li class="gk-item gk-item-done"><div class="gk-sec-info"><a href="#sec-10" class="gk-sec-link">#10</a><span class="gk-sec-name">章10：追加スライドCTA強化（LINE 6数字返信誘導）</span><span class="gk-sec-score" style="color:#06a77d;">71点</span></div><div class="gk-knowledge"><span class="gk-knowledge-title">公式LINE『農業のゲームチェンジ』動画ナレッジ</span><span class="gk-knowledge-effect">+10点</span></div><span class="gk-injected-badge">✅ 投入済</span></li>
@@ -1727,7 +1788,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <div class="position">#01 / 10 · 🎯 冒頭フック</div>
     <div class="title">章1：オープニング - 売り先勘違いフック</div>
     <div class="subtitle">約1:30</div>
-    <span class="duration-pill">⏱ 約131秒 / 784字</span>
+    <span class="duration-pill">⏱ 約138秒 / 827字</span>
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">65</span><span class="score-max">/100</span>
     </span>
@@ -1735,7 +1796,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
   <div class="body">
     <div class="script-body">
-      <p><mark class="diff-new">LINE登録、ありがとうございます。</mark></p>
+      <p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 1</span><span class="sp-content">タイトル＋サブコピー「努力不足ではなく、順番のズレかもしれません」</span></span></p>
+<p><mark class="diff-new">LINE登録、ありがとうございます。</mark></p>
 <p><mark class="diff-new">そして、先ほど、
 0から5の数字の中から、
 今の自分に一番近いものを、
@@ -1795,7 +1857,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <div class="position">#02 / 10 · 📄 セクション</div>
     <div class="title">章2：動画の役割＋失敗談</div>
     <div class="subtitle">約2:00</div>
-    <span class="duration-pill">⏱ 約88秒 / 526字</span>
+    <span class="duration-pill">⏱ 約109秒 / 656字</span>
     <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
       <span class="score-num">70</span><span class="score-max">/100</span>
     </span>
@@ -1803,7 +1865,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
   <div class="body">
     <div class="script-body">
-      <p>最初に一つだけ、
+      <p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 2</span><span class="sp-content">見出し「この動画の役割」／全体像を整理する／稼げない原因の見方を変える／自分は何から変えるべきか考える</span></span></p>
+<p>最初に一つだけ、
 はっきり言っておきます。</p>
 <p>この動画は、
 全部の答えを渡し切る動画ではないです。</p>
@@ -1817,6 +1880,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <p>何を知るか、より
 <strong>自分はどこで稼げなくなっているのか。</strong>
 ここを見ながら聞いてください。</p>
+<p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 3</span><span class="sp-content">感情が乗るスライド／大「納品日の2週間前、出せる量が半分になった」／小「順番が逆だったと気づいたのは、だいぶ後でした」</span></span></p>
 <p>ここで、僕の話を少しします。</p>
 <p>僕は農業を始めた頃、
 先に売り先を作ろうとしました。</p>
@@ -1852,7 +1916,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <div class="position">#03 / 10 · 📄 セクション</div>
     <div class="title">章3：止まるの意味＋表面の悩み</div>
     <div class="subtitle">約2:00</div>
-    <span class="duration-pill">⏱ 約123秒 / 736字</span>
+    <span class="duration-pill">⏱ 約140秒 / 841字</span>
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">59</span><span class="score-max">/100</span>
     </span>
@@ -1860,7 +1924,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
   <div class="body">
     <div class="script-body">
-      <p>ここで一回、
+      <p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 4</span><span class="sp-content">見出し「農業で『止まる』＝稼げなくなること」／稼げない・伸びない・利益が残らない</span></span></p>
+<p>ここで一回、
 言葉をはっきりさせます。</p>
 <p>僕は講座でも
 「農業で止まる」
@@ -1887,6 +1952,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 ただ悩んでいるんじゃなくて、</p>
 <p><strong>稼げる形に進めなくなっている状態</strong></p>
 <p>これを今日は扱います。</p>
+<p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 5</span><span class="sp-content">見出し「農業で稼げなくなる時、表面に出やすい悩み」／赤字「でも、原因は別にあることが多い」</span></span></p>
 <p>農業の話をしていると、
 よく出てくる悩みがあります。</p>
 <p>売り先が決まらない。
@@ -1937,7 +2003,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <div class="position">#04 / 10 · 📄 セクション</div>
     <div class="title">章4：本当の原因＋稼げない構造</div>
     <div class="subtitle">約2:30</div>
-    <span class="duration-pill">⏱ 約96秒 / 576字</span>
+    <span class="duration-pill">⏱ 約114秒 / 684字</span>
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">59</span><span class="score-max">/100</span>
     </span>
@@ -1945,7 +2011,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
   <div class="body">
     <div class="script-body">
-      <p>ここが、
+      <p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 6</span><span class="sp-content">左に表面の悩み／右に本当の原因／3セット／大「問いを変えると、見る場所が変わる」</span></span></p>
+<p>ここが、
 今日の一番大事なポイントです。</p>
 <p>たとえば、</p>
 <p>売り先が増えない。
@@ -1971,6 +2038,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <p><strong>「その前に、
 安定はできているか？」</strong></p>
 <p>ここを見るんです。</p>
+<p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 7</span><span class="sp-content">縦フロー5段：①安定しない②出荷量が読めない③売上が読めない④判断が重い⑤稼げない・広げられない</span></span></p>
 <p>じゃあ実際に、
 どういう流れで
 稼げなくなるのか。</p>
@@ -2016,7 +2084,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <div class="position">#05 / 10 · 📄 セクション</div>
     <div class="title">章5：基本の順番＋感想①＋ミニ行動提案</div>
     <div class="subtitle">約2:30</div>
-    <span class="duration-pill">⏱ 約101秒 / 608字</span>
+    <span class="duration-pill">⏱ 約119秒 / 715字</span>
     <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
       <span class="score-num">70</span><span class="score-max">/100</span>
     </span>
@@ -2024,7 +2092,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
   <div class="body">
     <div class="script-body">
-      <p>ここで、
+      <p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 8</span><span class="sp-content">「安定→売り先→拡大」だけ／補足：安定＝再現性／売り先＝販路・単価・関係性／拡大＝面積・人・設備</span></span></p>
+<p>ここで、
 今日の核心を置きます。</p>
 <p>農業を成立させる
 基本の順番はこれです。</p>
@@ -2060,6 +2129,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <p>この仕分けができるだけで、
 次に何をやるべきかの優先度がかなり変わります。</p>
 <p>要は、<span class="emo-spot emo-確信"><span class="emo-label">確信</span><strong>悩みの仕分けが、最初のゲームチェンジ</strong>なんです。</span></p>
+<p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 9</span><span class="sp-content">参加者感想／実名なし／大「まず安定が一番だと気づいた」／小「講座後の感想より」</span></span></p>
 <p>実際、この話を講座でした時に、
 反応がかなり分かりやすかったです。</p>
 <p>たとえば感想でも、</p>
@@ -2081,7 +2151,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <div class="position">#06 / 10 · 📄 セクション</div>
     <div class="title">章6：一般論宣言＋人によって変わる</div>
     <div class="subtitle">約1:30</div>
-    <span class="duration-pill">⏱ 約68秒 / 409字</span>
+    <span class="duration-pill">⏱ 約82秒 / 494字</span>
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">58</span><span class="score-max">/100</span>
     </span>
@@ -2089,7 +2159,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
   <div class="body">
     <div class="script-body">
-      <p>ただ、
+      <p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 10</span><span class="sp-content">見出し「これは一般論です」／地域・作物・売り方・収入の形・働き方で変わる</span></span></p>
+<p>ただ、
 ここで終わるとダメなんです。</p>
 <p>「なるほど、安定が先なんですね」
 で終わると、
@@ -2103,6 +2174,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 収入の形、働き方によって、</p>
 <p>何から変えるべきかは変わります。</p>
 <p>ここがかなり大事です。</p>
+<p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 11</span><span class="sp-content">3パターン／大「ゲームチェンジの場所は人によって違う」</span></span></p>
 <p>たとえば、</p>
 <p>これから農業を始める人と、
 すでに作っていて販路で悩んでいる人と、
@@ -2138,7 +2210,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <div class="position">#07 / 10 · 📄 セクション</div>
     <div class="title">章7：今いる場所＋診断型②＋感想②</div>
     <div class="subtitle">約2:00</div>
-    <span class="duration-pill">⏱ 約116秒 / 699字</span>
+    <span class="duration-pill">⏱ 約131秒 / 788字</span>
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">67</span><span class="score-max">/100</span>
     </span>
@@ -2146,7 +2218,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
   <div class="body">
     <div class="script-body">
-      <p>ここで大事なのは、</p>
+      <p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 12</span><span class="sp-content">見出し「行きたい場所ではなく、今いる場所」／ワーク風段階表示</span></span></p>
+<p>ここで大事なのは、</p>
 <p><span class="emo-spot emo-気づき"><span class="emo-label">気づき</span><strong>行きたい場所</strong>じゃなくて、
 <strong>今いる場所</strong>を見ることです。</span></p>
 <p>人って、
@@ -2179,6 +2252,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <p>それが普通です。
 <span class="emo-spot emo-気づき"><span class="emo-label">気づき</span>自分の現在地って、自分では正確に見えないものなんです。</span></p>
 <p>だからこそ、整理する意味があります。</p>
+<p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 13</span><span class="sp-content">参加者感想2枚目／実名なし／大「入口と現在地を分けて考えたことがなかった」</span></span></p>
 <p>これも感想で、
 かなり象徴的だったんですけど、</p>
 <p><span class="emo-spot emo-共感"><span class="emo-label">共感</span><strong>「入口と現在地を分けて考えたことがなかった」</strong></span></p>
@@ -2211,15 +2285,16 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <div class="position">#08 / 10 · 📄 セクション</div>
     <div class="title">章8：講座で起きたこと＋ゲームチェンジの意味</div>
     <div class="subtitle">約2:00</div>
-    <span class="duration-pill">⏱ 約100秒 / 603字</span>
+    <span class="duration-pill">⏱ 約116秒 / 694字</span>
     <span class="score-badge" style="border-color: #06a77d; color: #06a77d;">
-      <span class="score-num">70</span><span class="score-max">/100</span>
+      <span class="score-num">71</span><span class="score-max">/100</span>
     </span>
     <div class="head-emo-icons"><span class="he-label">この章の感情：</span><span class="he-icon emo-整理" title="整理">整理</span></div>
   </div>
   <div class="body">
     <div class="script-body">
-      <p>今回の講座でも、
+      <p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 14</span><span class="sp-content">感想2つ／見出し「今回、反応が良かったのは『見方の変化』でした」</span></span></p>
+<p>今回の講座でも、
 反応が良かったのは
 実務の細かい話より、</p>
 <p><strong>見方が変わる瞬間</strong>
@@ -2243,6 +2318,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <p><strong>全体像が見えた。
 でも自分の場合はここから先を整理したい。</strong></p>
 <p>この状態を作るのが目的です。</p>
+<p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 15</span><span class="sp-content">見出し「農業のゲームチェンジとは？」／中央大「変えるべき順番を変えること」</span></span></p>
 <p>ここで、
 今回のタイトルにもしている</p>
 <p><strong>ゲームチェンジ</strong></p>
@@ -2274,7 +2350,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     <div class="position">#09 / 10 · 📣 CTA・誘導</div>
     <div class="title">章9：個別相談へ繋ぐ＋CTA本体＋締め</div>
     <div class="subtitle">約3:00</div>
-    <span class="duration-pill">⏱ 約247秒 / 1482字</span>
+    <span class="duration-pill">⏱ 約277秒 / 1664字</span>
     <span class="score-badge" style="border-color: #ff9f43; color: #ff9f43;">
       <span class="score-num">56</span><span class="score-max">/100</span>
     </span>
@@ -2282,7 +2358,8 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
   </div>
   <div class="body">
     <div class="script-body">
-      <p>ここまで聞いて、
+      <p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 16</span><span class="sp-content">見出し「ここから先は『自分の場合』の話です」／箇条書き4つ</span></span></p>
+<p>ここまで聞いて、
 たぶん今あなたの中に
 2つあると思います。</p>
 <p>一つは、</p>
@@ -2318,6 +2395,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <p>僕自身も、最初は一人で考えて、
 順番を間違えて、10年遠回りしました。</p>
 <p><span class="emo-spot emo-行動"><span class="emo-label">行動</span><strong>だから、整理できる人と一緒に見ることに意味があるんです。</strong></span></p>
+<p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 17</span><span class="sp-content">超重要／大「あなたが今どの段階か」「次に何から変えるか」／小「これを個別相談で決めます」</span></span></p>
 <p>だから、
 個別相談に意味があります。</p>
 <p><mark class="diff-new">個別相談は、</mark></p>
@@ -2339,6 +2417,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <p>逆にこれが決まっていないと、
 知識を増やしても
 あれもこれも気になって進みにくいです。</p>
+<p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 18</span><span class="sp-content">CTA／今の段階を整理する／本当の原因を見つける／次の一手を決める</span></span></p>
 <p>もし今あなたが、</p>
 <p>頑張ってるのに利益が残らない。
 何を優先すべきか分からない。
@@ -2360,6 +2439,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
 <p><strong>自分の現在地と、
 次の一手を決めるために来る場所</strong>
 だと思ってください。</p>
+<p><span class="slide-preview"><span class="sp-icon">📺</span><span class="sp-number">スライド 19</span><span class="sp-content">余韻／中央「全体像は分かった。次は、自分の順番を決める番です。」</span></span></p>
 <p>最後に、今日の話をまとめます。</p>
 <p>農業で稼げなくなる時って、
 努力不足より、
@@ -2737,11 +2817,16 @@ LINEに次のご案内と、
   </div>
 
   <footer class="footer">
-    Generated 2026-05-27 23:04 JST from nogyo-game-change-v4.md
+    Generated 2026-05-27 23:28 JST from nogyo-game-change-v4.md
   </footer>
 
 </div>
 <script>
+function toggleSlides(btn) {
+  const on = document.body.classList.toggle('show-slides');
+  btn.classList.toggle('on', on);
+  btn.innerHTML = on ? '📺 スライド<br>ON' : '📺 スライド<br>OFF';
+}
 (function(){
   const sidebar = document.querySelector('.emotion-sidebar');
   if (!sidebar) return;
