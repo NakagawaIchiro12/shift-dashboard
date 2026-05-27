@@ -540,6 +540,30 @@ body.show-slides .slide-preview { display: flex; align-items: flex-start; }
   min-width: 0;
   word-break: break-word;
 }
+.slide-preview .sp-emo-icon {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  flex: 0 0 auto;
+  color: #fff;
+}
+.slide-preview .sp-emo-icon.emo-興味 { background: #ff6b35; }
+.slide-preview .sp-emo-icon.emo-気づき { background: #ffd87a; color: #1a1a1a; }
+.slide-preview .sp-emo-icon.emo-不安 { background: #9b59b6; }
+.slide-preview .sp-emo-icon.emo-信頼 { background: #3498db; }
+.slide-preview .sp-emo-icon.emo-学び { background: #4a90e2; }
+.slide-preview .sp-emo-icon.emo-理解 { background: #74b9ff; }
+.slide-preview .sp-emo-icon.emo-応用 { background: #e84393; }
+.slide-preview .sp-emo-icon.emo-共感 { background: #c66de8; }
+.slide-preview .sp-emo-icon.emo-確信 { background: #06a77d; }
+.slide-preview .sp-emo-icon.emo-警戒 { background: #e74c3c; }
+.slide-preview .sp-emo-icon.emo-行動 { background: #2ecc71; }
+.slide-preview .sp-emo-icon.emo-決意 { background: #ffd700; color: #4a3800; }
+.slide-preview .sp-emo-icon.emo-整理 { background: #1abc9c; }
+.slide-preview .sp-emo-icon.emo-補足 { background: #95a5a6; }
 
 /* サイドバー上部のスライド予告トグル */
 .emotion-sidebar .sb-slide-toggle {
@@ -1710,7 +1734,7 @@ details.section.appendix-card.ap-glossary .ap-icon { color: #9d4edd; }
     </div>
   </section>
 
-  <div class="version-tabs"><div class="vt-title">📚 バージョン一覧</div><div class="vt-tabs-row"><div class="vt-tab active" title="撮影済みオリジナル台本を10章+appendixに整形（章分けと撮影バッジ）"><span class="vt-label">v1</span><span class="vt-current-tag">今ここ</span><span class="vt-purpose">撮影済みオリジナル台本を10章+appendixに整形（章分けと撮影バッジ）</span></div><a class="vt-tab" href="nogyo-game-change-v2.html" title="動画前後LINEに合うよう冒頭・CTA訴求軸・締めを調整＋差分色換え機能"><span class="vt-label">v2・LINEフィット</span><span class="vt-purpose">動画前後LINEに合うよう冒頭・CTA訴求軸・締めを調整＋差分色換え機能</span></a><a class="vt-tab" href="nogyo-game-change-v3.html" title="章ごとの心理導線アンカーを手動指定で感情の波を再設計（台本本文は無変更）"><span class="vt-label">v3・ジェットコースター</span><span class="vt-purpose">章ごとの心理導線アンカーを手動指定で感情の波を再設計（台本本文は無変更）</span></a><a class="vt-tab" href="nogyo-game-change-v4.html" title="本文中の感情の核フレーズに【感情名:文】マーカーでスポットライト（文単位の可視化）"><span class="vt-label">v4・スポットライト</span><span class="vt-purpose">本文中の感情の核フレーズに【感情名:文】マーカーでスポットライト（文単位の可視化）</span></a><a class="vt-tab" href="nogyo-game-change-v5.html" title="沖ケイタ流Xスライド術反映（1枚1メッセージ・短文・視覚訴求で枚数増加）"><span class="vt-label">v5・スライド術</span><span class="vt-purpose">沖ケイタ流Xスライド術反映（1枚1メッセージ・短文・視覚訴求で枚数増加）</span></a><a class="vt-tab" href="nogyo-game-change-v6.html" title="本文の感情マーカー位置にスライドを配置・いらすとや指示で視覚化（感情名はスライド本体に入れない）"><span class="vt-label">v6・本文位置視覚化</span><span class="vt-purpose">本文の感情マーカー位置にスライドを配置・いらすとや指示で視覚化（感情名はスライド本体に入れない）</span></a></div></div>
+  <div class="version-tabs"><div class="vt-title">📚 バージョン一覧</div><div class="vt-tabs-row"><div class="vt-tab active" title="撮影済みオリジナル台本を10章+appendixに整形（章分けと撮影バッジ）"><span class="vt-label">v1</span><span class="vt-current-tag">今ここ</span><span class="vt-purpose">撮影済みオリジナル台本を10章+appendixに整形（章分けと撮影バッジ）</span></div><a class="vt-tab" href="nogyo-game-change-v2.html" title="動画前後LINEに合うよう冒頭・CTA訴求軸・締めを調整＋差分色換え機能"><span class="vt-label">v2・LINEフィット</span><span class="vt-purpose">動画前後LINEに合うよう冒頭・CTA訴求軸・締めを調整＋差分色換え機能</span></a><a class="vt-tab" href="nogyo-game-change-v3.html" title="章ごとの心理導線アンカーを手動指定で感情の波を再設計（台本本文は無変更）"><span class="vt-label">v3・ジェットコースター</span><span class="vt-purpose">章ごとの心理導線アンカーを手動指定で感情の波を再設計（台本本文は無変更）</span></a><a class="vt-tab" href="nogyo-game-change-v4.html" title="本文中の感情の核フレーズに【感情名:文】マーカーでスポットライト（文単位の可視化）"><span class="vt-label">v4・スポットライト</span><span class="vt-purpose">本文中の感情の核フレーズに【感情名:文】マーカーでスポットライト（文単位の可視化）</span></a><a class="vt-tab" href="nogyo-game-change-v5.html" title="沖ケイタ流Xスライド術反映（1枚1メッセージ・短文・視覚訴求で枚数増加）"><span class="vt-label">v5・スライド術</span><span class="vt-purpose">沖ケイタ流Xスライド術反映（1枚1メッセージ・短文・視覚訴求で枚数増加）</span></a><a class="vt-tab" href="nogyo-game-change-v6.html" title="本文の感情マーカー位置にスライドを配置・いらすとや指示で視覚化（感情名はスライド本体に入れない）"><span class="vt-label">v6・本文位置視覚化</span><span class="vt-purpose">本文の感情マーカー位置にスライドを配置・いらすとや指示で視覚化（感情名はスライド本体に入れない）</span></a><a class="vt-tab" href="nogyo-game-change-v7.html" title="141枚フルスライド構成に各スライドの感情アイコンを付与・視覚で感情の流れが追える"><span class="vt-label">v7・感情アイコン付き</span><span class="vt-purpose">141枚フルスライド構成に各スライドの感情アイコンを付与・視覚で感情の流れが追える</span></a></div></div>
 
   <details class="production-flow collapsible-panel" open><summary class="cp-summary"><span class="cp-title">🎬 制作フロー（台本ボード → ドキュメント → 撮影）</span><span class="cp-toggle">タップで開閉 ▼</span></summary><div class="cp-body"><p class="pf-lead">視覚化で快適に台本を作るための3ステップ。①でブラッシュアップしたら、②の撮影用ドキュメントを開いて読み上げ撮影 → ③ブループリント編集で動画化。</p><div class="pf-steps"><div class="pf-step current"><span class="pf-num">①</span><span class="pf-title">📋 台本ボードで視覚化・調整</span><span class="pf-desc">いまここ。章ごとの感情曲線・採点・ブラッシュアップ候補を一目で見ながら台本を磨く</span></div><div class="pf-arrow">→</div><div class="pf-step"><span class="pf-num">②</span><span class="pf-title">📄 撮影用ドキュメントで撮影</span><span class="pf-desc">章＋【Scroll】マーカーつき。スマホで開いて読み上げながら撮影</span><a class="pf-link" href="https://docs.google.com/document/d/17tWkWZeOSKvMdAHx_Ia1e5-_eAgsEniUcQP-yM5Zawk/edit?usp=sharing" target="_blank" rel="noopener">📄 ドキュメントを開く →</a></div><div class="pf-arrow">→</div><div class="pf-step"><span class="pf-num">③</span><span class="pf-title">🎞 ブループリント編集 → 公開</span><span class="pf-desc">読み上げ撮影した素材をブループリントで編集、スパッと動画化してYouTubeへ</span></div></div></div></details>
 
@@ -2776,7 +2800,7 @@ YouTubeで3年間、
   </div>
 
   <footer class="footer">
-    Generated 2026-05-28 00:09 JST from nogyo-game-change-v1.md
+    Generated 2026-05-28 00:15 JST from nogyo-game-change-v1.md
   </footer>
 
 </div>
