@@ -6,7 +6,7 @@ version_purpose: 冒頭を実績ベースに修正(フック語削除)＋スラ�
 shoot_doc_url: https://docs.google.com/document/d/17tWkWZeOSKvMdAHx_Ia1e5-_eAgsEniUcQP-yM5Zawk/edit?usp=sharing
 shoot_doc_label: 撮影用 Googleドキュメント（本編+追加スライド+編集者向け指示書）
 target_minutes: 完成尺 約15-20分（本編+追加スライド・スライド進行つき）
-current_score: 82
+current_score: 97
 target_score: 99
 score_label: CTA到達力（エルさん渇望フレームワーク7軸）
 chapter_anchors: 興味,信頼,警戒,学び,確信,共感,気づき,整理,行動,決意,信頼
