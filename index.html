@@ -349,6 +349,7 @@ footer {
 <nav class="view-toggle">
   <button class="active" data-view="week">📋 週</button>
   <button data-view="month">📅 月</button>
+  <button data-view="summary">💴 集計</button>
   <button data-view="pattern">📊 パターン</button>
 </nav>
 
@@ -387,6 +388,31 @@ footer {
   <div class="month-grid" id="monthGrid"></div>
 </section>
 
+<!-- SUMMARY / WAGE VIEW -->
+<section id="summaryView" style="display:none;">
+  <div class="week-header">
+    <h2 id="summaryLabel">💴 2026年5月 集計</h2>
+    <div class="week-nav">
+      <button onclick="changeSummaryMonth(-1)">←</button>
+      <button onclick="changeSummaryMonth(0)" title="今月">●</button>
+      <button onclick="changeSummaryMonth(1)">→</button>
+    </div>
+  </div>
+  <p style="font-size:11px; color: var(--ink-soft); margin-bottom: 12px;">
+    出勤日 × 勤務時間 × 時給 から その月の 概算賃金 を自動計算します。<br>
+    時給・時間が未入力の人は 金額¥0（時間だけ集計）。実際の支払いは各自ご確認ください。
+  </p>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-num" id="sumWorkDays">0</div><div class="stat-label">のべ出勤日</div></div>
+    <div class="stat-card"><div class="stat-num" id="sumHours">0</div><div class="stat-label">のべ時間(h)</div></div>
+    <div class="stat-card"><div class="stat-num" id="sumWage" style="font-size:18px;">¥0</div><div class="stat-label">概算賃金合計</div></div>
+  </div>
+  <div id="summaryList"></div>
+  <div style="text-align:right; margin-top:10px;">
+    <button class="btn-secondary" onclick="copySummaryText()">📋 集計テキストをコピー</button>
+  </div>
+</section>
+
 <!-- PATTERN VIEW -->
 <section id="patternView" style="display:none;">
   <div class="week-header">
@@ -400,18 +426,20 @@ footer {
 
 <!-- INPUT SECTION -->
 <section class="input-section">
-  <h2>📝 LINE 休み連絡を貼る</h2>
+  <h2>📝 LINE 連絡を貼る（休み・単発出勤 両対応）</h2>
   <textarea id="linePaste" placeholder="例：
-来週月曜日(5/12) 休みます
-&#10;鈴木：5/13、5/14、5/15 休み希望
-&#10;5/16 田中さん 通院のためお休み"></textarea>
+鈴木：5/13、5/14 休み希望
+&#10;5/16 田中さん 通院のためお休み
+&#10;佐藤さん 5/15 単発 9〜15 収穫
+&#10;山本 5/17 3時間だけ"></textarea>
   <div class="input-buttons">
     <button class="btn-primary" onclick="parseAndPreview()">🔍 解読してプレビュー</button>
     <button class="btn-secondary" onclick="clearPaste()">クリア</button>
   </div>
   <div class="parse-result" id="parseResult"></div>
   <p style="font-size: 11px; color: var(--ink-soft); margin-top: 10px;">
-    💡 画像（LINEスクショ）対応は Phase 3 で追加予定（OCR連携）
+    💡 名簿にない名前は「単発パート」として自動追加（その日だけ表示）。<br>
+    💡「9〜15」「3時間」など時間も自動で読み取り → 集計・賃金に反映。
   </p>
 </section>
 
@@ -518,7 +546,47 @@ const defaultRoster = [
 
 let roster = JSON.parse(localStorage.getItem(ROSTER_KEY) || 'null') || defaultRoster;
 let shifts = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-// shifts format: { '2026-05-12': { 'p1': 'work', 'p2': 'off', ... } }
+// shifts format (backward compatible):
+//   legacy : { '2026-05-12': { 'p1': 'work', 'p2': 'off' } }
+//   v2     : { '2026-05-12': { 'p1': {s:'work', h:6, t:'収穫'} } }
+// roster entry (v2, all new fields optional):
+//   { id, name, wage?:時給, dh?:既定時間, spot?:単発フラグ }
+
+// ---- cell accessors: read either legacy string or v2 object ----
+function cellStatus(v) {
+  if (v == null) return 'unknown';
+  if (typeof v === 'string') return v;
+  return v.s || 'unknown';
+}
+function cellHours(v, member) {
+  if (v && typeof v === 'object' && typeof v.h === 'number') return v.h;
+  // fall back to the person's default hours only when they are marked as working
+  if (cellStatus(v) === 'work' && member && typeof member.dh === 'number') return member.dh;
+  return 0;
+}
+function cellTask(v) {
+  if (v && typeof v === 'object' && v.t) return v.t;
+  return '';
+}
+// Build a cell value: keep it a plain string when there is no hours/task info
+// (avoids bloating existing data), otherwise store the v2 object.
+function makeCell(status, hours, task) {
+  const h = (hours === '' || hours == null) ? null : Number(hours);
+  const t = (task || '').trim();
+  if ((h == null || isNaN(h)) && !t) return status; // legacy-compatible string
+  const o = { s: status };
+  if (h != null && !isNaN(h)) o.h = h;
+  if (t) o.t = t;
+  return o;
+}
+function memberById(id) { return roster.find(p => p.id === id) || null; }
+function yen(n) { return '¥' + Math.round(n).toLocaleString('ja-JP'); }
+// Wage for a single work cell = hours × person 時給. Returns 0 if wage unknown.
+function cellWage(v, member) {
+  if (cellStatus(v) !== 'work') return 0;
+  const w = member && typeof member.wage === 'number' ? member.wage : 0;
+  return cellHours(v, member) * w;
+}
 
 // ============== Supabase Backend (cloud sync) ==============
 // Configured by replacing the two constants below after Supabase project setup.
@@ -664,9 +732,19 @@ function applyImportMerge(data) {
     for (const entry of data.roster) {
       if (!entry || !entry.name) continue;
       const existing = findRosterEntry(entry.id) || findRosterEntry(entry.name);
-      if (existing) continue;
+      if (existing) {
+        // update optional fields if the import supplies them (non-destructive)
+        if (typeof entry.wage === 'number') existing.wage = entry.wage;
+        if (typeof entry.dh === 'number') existing.dh = entry.dh;
+        if (entry.spot === true && existing.spot == null) existing.spot = true;
+        continue;
+      }
       const id = (entry.id && !roster.some(p => p.id === entry.id)) ? entry.id : nextRosterId();
-      roster.push({ id, name: entry.name });
+      const rec = { id, name: entry.name };
+      if (typeof entry.wage === 'number') rec.wage = entry.wage;
+      if (typeof entry.dh === 'number') rec.dh = entry.dh;
+      if (entry.spot === true) rec.spot = true;
+      roster.push(rec);
     }
   }
   // Shifts: merge by date. Within each date, resolve person key (id or name) to roster id,
@@ -695,7 +773,10 @@ function applyImportMerge(data) {
   const HASH_PREFIX = '#import=';
   if (!location.hash.startsWith(HASH_PREFIX)) return;
   try {
-    const encoded = location.hash.slice(HASH_PREFIX.length);
+    let encoded = location.hash.slice(HASH_PREFIX.length);
+    // Accept URL-safe base64 too (part-kanri-chan uses -_$ substitutions):
+    encoded = encoded.replace(/-/g, '+').replace(/_/g, '/').replace(/\$/g, '=');
+    while (encoded.length % 4) encoded += '=';
     // Decode base64 → bytes → UTF-8 string
     const binary = atob(encoded);
     const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
@@ -750,11 +831,84 @@ document.querySelectorAll('.view-toggle button').forEach(btn => {
     const view = btn.dataset.view;
     document.getElementById('weekView').style.display = view === 'week' ? 'block' : 'none';
     document.getElementById('monthView').style.display = view === 'month' ? 'block' : 'none';
+    document.getElementById('summaryView').style.display = view === 'summary' ? 'block' : 'none';
     document.getElementById('patternView').style.display = view === 'pattern' ? 'block' : 'none';
     if (view === 'month') renderMonth();
+    if (view === 'summary') renderSummary();
     if (view === 'pattern') renderPattern();
   });
 });
+
+// ============== Summary / Wage Render ==============
+let summaryMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+function computeMonthlySummary(baseDate) {
+  const year = baseDate.getFullYear(), month = baseDate.getMonth();
+  const lastDay = new Date(year, month + 1, 0).getDate();
+  const rows = roster.map(p => ({ id: p.id, name: p.name, spot: !!p.spot, wage: p.wage, days: 0, hours: 0, amount: 0 }));
+  const byId = {}; rows.forEach(r => byId[r.id] = r);
+  for (let d = 1; d <= lastDay; d++) {
+    const key = fmtDate(new Date(year, month, d));
+    const day = shifts[key]; if (!day) continue;
+    for (const [id, v] of Object.entries(day)) {
+      const p = memberById(id); const r = byId[id];
+      if (!p || !r) continue;
+      if (cellStatus(v) !== 'work') continue;
+      r.days += 1;
+      r.hours += cellHours(v, p);
+      r.amount += cellWage(v, p);
+    }
+  }
+  return rows;
+}
+function renderSummary() {
+  const rows = computeMonthlySummary(summaryMonth);
+  document.getElementById('summaryLabel').textContent =
+    `💴 ${summaryMonth.getFullYear()}年${summaryMonth.getMonth()+1}月 集計`;
+  let totalDays = 0, totalHours = 0, totalAmount = 0;
+  const active = rows.filter(r => r.days > 0);
+  let html = '';
+  if (active.length === 0) {
+    html = '<p style="font-size:12px; color:var(--ink-soft); padding:16px 0;">この月の出勤データはまだありません。</p>';
+  } else {
+    active.sort((a, b) => b.amount - a.amount);
+    active.forEach(r => {
+      totalDays += r.days; totalHours += r.hours; totalAmount += r.amount;
+      const wageTag = (typeof r.wage === 'number') ? `時給¥${r.wage}` : '<span style="color:var(--red);">時給未設定</span>';
+      const spotTag = r.spot ? '<span style="font-size:10px; background:var(--orange); color:#fff; padding:1px 6px; border-radius:8px; margin-left:6px;">単発</span>' : '';
+      html += `<div class="pattern-card" style="border-left-color:var(--green);">
+        <h3>${r.name}${spotTag}</h3>
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; margin-top:4px;">
+          <span style="color:var(--ink-soft);">${r.days}日 ・ ${r.hours}h ・ ${wageTag}</span>
+          <span style="font-size:16px; font-weight:800; color:var(--green-dark);">${yen(r.amount)}</span>
+        </div>
+      </div>`;
+    });
+  }
+  document.getElementById('summaryList').innerHTML = html;
+  document.getElementById('sumWorkDays').textContent = totalDays;
+  document.getElementById('sumHours').textContent = totalHours;
+  document.getElementById('sumWage').textContent = yen(totalAmount);
+}
+function changeSummaryMonth(delta) {
+  if (delta === 0) summaryMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  else summaryMonth = new Date(summaryMonth.getFullYear(), summaryMonth.getMonth() + delta, 1);
+  renderSummary();
+}
+function copySummaryText() {
+  const rows = computeMonthlySummary(summaryMonth).filter(r => r.days > 0);
+  const ym = `${summaryMonth.getFullYear()}年${summaryMonth.getMonth()+1}月`;
+  let t = `【${ym} パート集計】\n`;
+  let tD = 0, tH = 0, tA = 0;
+  rows.sort((a, b) => b.amount - a.amount).forEach(r => {
+    tD += r.days; tH += r.hours; tA += r.amount;
+    t += `${r.name}：${r.days}日 ${r.hours}h ${yen(r.amount)}\n`;
+  });
+  t += `─────\n合計：${tD}日 ${tH}h ${yen(tA)}`;
+  navigator.clipboard.writeText(t).then(
+    () => showSyncStatus('✅ 集計テキストをコピーしました'),
+    () => showSyncStatus('コピー失敗。手動で選択してください', true)
+  );
+}
 
 // ============== Week Render ==============
 function renderWeek() {
@@ -776,16 +930,29 @@ function renderWeek() {
 
   let workCount = 0, offCount = 0, unknownCount = 0;
   roster.forEach(p => {
-    html += `<div class="shift-cell header-col" onclick="editName('${p.id}')">${p.name}</div>`;
+    // Spot (単発) workers only appear on weeks where they actually have a shift,
+    // so the permanent grid stays clean as one-time workers pile up.
+    if (p.spot) {
+      const hasThisWeek = days.some(d => {
+        const c = (shifts[fmtDate(d)] || {})[p.id];
+        return c != null && cellStatus(c) !== 'unknown';
+      });
+      if (!hasThisWeek) return;
+    }
+    const nameTag = p.spot ? `${p.name}<span style="font-size:9px;opacity:.7;"> 単発</span>` : p.name;
+    html += `<div class="shift-cell header-col" onclick="editName('${p.id}')">${nameTag}</div>`;
     days.forEach(d => {
       const dateKey = fmtDate(d);
-      const status = (shifts[dateKey] || {})[p.id] || 'unknown';
+      const cell = (shifts[dateKey] || {})[p.id];
+      const status = cellStatus(cell);
       let cls = 'shift-cell ' + status;
       let label = status === 'work' ? '○' : status === 'off' ? '休' : '?';
+      const hrs = cellHours(cell, p);
+      const timeTag = (status === 'work' && hrs > 0) ? `<span class="time">${hrs}h</span>` : '';
       if (status === 'work') workCount++;
       if (status === 'off') offCount++;
       if (status === 'unknown') unknownCount++;
-      html += `<div class="${cls}" onclick="editShift('${p.id}','${dateKey}')">${label}</div>`;
+      html += `<div class="${cls}" onclick="editShift('${p.id}','${dateKey}')">${label}${timeTag}</div>`;
     });
   });
   grid.innerHTML = html;
@@ -797,8 +964,8 @@ function renderWeek() {
   // Header pills
   const todayKey = fmtDate(today);
   const todayShifts = shifts[todayKey] || {};
-  const todayWork = Object.values(todayShifts).filter(s => s === 'work').length;
-  const todayOff = Object.values(todayShifts).filter(s => s === 'off').length;
+  const todayWork = Object.values(todayShifts).filter(s => cellStatus(s) === 'work').length;
+  const todayOff = Object.values(todayShifts).filter(s => cellStatus(s) === 'off').length;
   document.getElementById('todayLabel').textContent = `📅 ${fmtJP(today)}`;
   document.getElementById('workCountLabel').textContent = `✅ 出勤 ${todayWork}名`;
   document.getElementById('offCountLabel').textContent = `🟥 休み ${todayOff}名`;
@@ -841,8 +1008,8 @@ function renderMonth() {
     const dateKey = fmtDate(date);
     const dayShifts = shifts[dateKey] || {};
     const isWeekend = date.getDay() === 0 || date.getDay() === 6;
-    const offs = Object.values(dayShifts).filter(s => s === 'off').length;
-    const works = Object.values(dayShifts).filter(s => s === 'work').length;
+    const offs = Object.values(dayShifts).filter(s => cellStatus(s) === 'off').length;
+    const works = Object.values(dayShifts).filter(s => cellStatus(s) === 'work').length;
     let badges = '';
     if (offs > 0) badges += `<span class="badge off">休${offs}</span>`;
     if (works > 0) badges += `<span class="badge work">出${works}</span>`;
@@ -873,7 +1040,7 @@ function renderPattern() {
       const dayOfWeek = d.getDay();
       if (dayOfWeek === 0 || dayOfWeek === 6) continue; // skip weekends
       const dateKey = fmtDate(d);
-      const status = (shifts[dateKey] || {})[p.id] || 'unknown';
+      const status = cellStatus((shifts[dateKey] || {})[p.id]);
       cells.push(status);
       if (status === 'work') work++;
       else if (status === 'off') off++;
@@ -898,13 +1065,37 @@ function renderRoster() {
   const list = document.getElementById('rosterList');
   let html = '';
   roster.forEach((p, i) => {
-    html += `<div style="display:flex; align-items:center; gap:8px; padding:8px 0; border-bottom:1px dashed var(--line);">
-      <span style="font-weight:700; color:var(--green-dark); width:24px;">${i+1}.</span>
-      <input type="text" value="${p.name}" onchange="updateName('${p.id}', this.value)" style="flex:1; padding:6px 10px; border:1px solid var(--line); border-radius:4px; font-size:13px;">
-      <button onclick="deleteMember('${p.id}')" style="background:#fff; color:var(--red); border:1px solid var(--red); padding:4px 10px; border-radius:4px; font-size:11px; cursor:pointer;">削除</button>
+    const wage = (typeof p.wage === 'number') ? p.wage : '';
+    const dh = (typeof p.dh === 'number') ? p.dh : '';
+    html += `<div style="padding:8px 0; border-bottom:1px dashed var(--line);">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-weight:700; color:var(--green-dark); width:24px;">${i+1}.</span>
+        <input type="text" value="${p.name}" onchange="updateName('${p.id}', this.value)" style="flex:1; padding:6px 10px; border:1px solid var(--line); border-radius:4px; font-size:13px;">
+        <button onclick="deleteMember('${p.id}')" style="background:#fff; color:var(--red); border:1px solid var(--red); padding:4px 10px; border-radius:4px; font-size:11px; cursor:pointer;">削除</button>
+      </div>
+      <div style="display:flex; align-items:center; gap:6px; margin:6px 0 0 32px; font-size:11px; color:var(--ink-soft); flex-wrap:wrap;">
+        <label>時給¥<input type="number" value="${wage}" min="0" step="10" onchange="updateWage('${p.id}', this.value)" placeholder="1100" style="width:70px; padding:4px 6px; border:1px solid var(--line); border-radius:4px;"></label>
+        <label>既定<input type="number" value="${dh}" min="0" step="0.5" onchange="updateDh('${p.id}', this.value)" placeholder="6" style="width:52px; padding:4px 6px; border:1px solid var(--line); border-radius:4px;">h</label>
+        <label style="display:flex; align-items:center; gap:3px;"><input type="checkbox" ${p.spot?'checked':''} onchange="toggleSpot('${p.id}', this.checked)">単発</label>
+      </div>
     </div>`;
   });
   list.innerHTML = html;
+}
+function updateWage(id, v) {
+  const p = memberById(id); if (!p) return;
+  if (v === '' || v == null) delete p.wage; else p.wage = Number(v);
+  persistAll();
+}
+function updateDh(id, v) {
+  const p = memberById(id); if (!p) return;
+  if (v === '' || v == null) delete p.dh; else p.dh = Number(v);
+  persistAll(); renderWeek();
+}
+function toggleSpot(id, on) {
+  const p = memberById(id); if (!p) return;
+  if (on) p.spot = true; else delete p.spot;
+  persistAll(); renderWeek();
 }
 
 function addMember() {
@@ -946,7 +1137,11 @@ let modalContext = null;
 function editShift(memberId, dateKey) {
   modalContext = { memberId, dateKey };
   const member = roster.find(p => p.id === memberId);
-  const current = (shifts[dateKey] || {})[memberId] || 'unknown';
+  const cell = (shifts[dateKey] || {})[memberId];
+  const current = cellStatus(cell);
+  const curH = cellHours(cell, member) || '';
+  const curT = cellTask(cell);
+  const dhHint = (typeof member.dh === 'number') ? ` 既定${member.dh}h` : '';
   document.getElementById('modalTitle').textContent = `${member.name}・${dateKey}`;
   document.getElementById('modalBody').innerHTML = `
     <label>状態</label>
@@ -955,15 +1150,22 @@ function editShift(memberId, dateKey) {
       <option value="off" ${current==='off'?'selected':''}>休 休み</option>
       <option value="unknown" ${current==='unknown'?'selected':''}>? 不明</option>
     </select>
+    <label>勤務時間（h）${dhHint}<span style="font-weight:400;color:#888;"> ※出勤時のみ・空欄で既定</span></label>
+    <input type="number" id="modalHours" step="0.5" min="0" placeholder="例：6" value="${curH}">
+    <label>作業内容（任意）</label>
+    <input type="text" id="modalTask" placeholder="例：収穫・箱作り" value="${curT.replace(/"/g,'&quot;')}">
   `;
   document.getElementById('editModal').classList.add('active');
 }
 function closeModal() { document.getElementById('editModal').classList.remove('active'); }
 function saveModal() {
   const status = document.getElementById('modalStatus').value;
+  const hours = document.getElementById('modalHours').value;
+  const task = document.getElementById('modalTask').value;
   const { memberId, dateKey } = modalContext;
   if (!shifts[dateKey]) shifts[dateKey] = {};
-  shifts[dateKey][memberId] = status;
+  // Hours/task only meaningful for 出勤; drop them otherwise.
+  shifts[dateKey][memberId] = (status === 'work') ? makeCell(status, hours, task) : status;
   persistAll();
   closeModal();
   renderWeek();
@@ -982,8 +1184,11 @@ function parseAndPreview() {
   }
   let html = '<h4>📋 解読結果（プレビュー）</h4>';
   items.forEach(item => {
+    const hrsTag = (item.status === 'work' && item.hours) ? ` ・ ${item.hours}h` : '';
+    const newTag = item.newName ? ' <span style="font-size:10px;background:var(--orange);color:#fff;padding:1px 6px;border-radius:8px;">単発で新規追加</span>' : '';
+    const missTag = (!item.memberId && !item.newName) ? ' <span style="color:var(--red);font-size:11px;">⚠️名前を特定できず</span>' : '';
     html += `<div class="parse-item">
-      <strong>${item.name}</strong> ・ ${item.date} ・ ${item.status === 'off' ? '🟥 休み' : '✅ 出勤'}
+      <strong>${item.name}</strong> ・ ${item.date} ・ ${item.status === 'off' ? '🟥 休み' : '✅ 出勤'}${hrsTag}${newTag}${missTag}
     </div>`;
   });
   html += `<div style="margin-top:10px; display:flex; gap:8px;">
@@ -994,6 +1199,32 @@ function parseAndPreview() {
   result.classList.add('active');
 }
 
+// Extract explicit work hours from a line. Never guesses — returns null if absent.
+//   time range: 9〜15 / 9-15 / 9:00〜15:30 / 9時〜15時  → end - start
+//   duration  : 3時間 / 3.5h
+function parseHoursFromLine(line) {
+  const rng = line.match(/(\d{1,2})(?::(\d{2}))?\s*時?\s*[〜~～\-–ー]\s*(\d{1,2})(?::(\d{2}))?\s*時?/);
+  if (rng) {
+    const s = parseInt(rng[1]) + (rng[2] ? parseInt(rng[2]) / 60 : 0);
+    const e = parseInt(rng[3]) + (rng[4] ? parseInt(rng[4]) / 60 : 0);
+    if (e > s && e <= 24 && s >= 0) return Math.round((e - s) * 10) / 10;
+  }
+  const dur = line.match(/(\d+(?:\.\d+)?)\s*(?:時間|h|H)/);
+  if (dur) { const h = parseFloat(dur[1]); if (h > 0 && h <= 24) return h; }
+  return null;
+}
+// Capture a person name candidate that is not yet in the roster (leading token,
+// stripping a trailing さん). Only used when explicitly present in the message.
+function newNameCandidate(line) {
+  // First token before a delimiter (space / colon / comma), honorific stripped.
+  const head = (line.trim().split(/[\s　:：,、]/)[0] || '');
+  const name = head.replace(/(さん|君|くん|ちゃん)$/u, '').trim();
+  if (!name || name.length > 10) return null;
+  if (/\d/.test(name)) return null;
+  // Reject obvious non-name phrases (status/particles) to avoid junk spot entries.
+  if (/(出勤|休|お仕事|よろしく|通常|みんな|全員|は$|が$|を$|に$)/.test(name)) return null;
+  return name;
+}
 function parseLine(text) {
   const items = [];
   const lines = text.split(/\r?\n/);
@@ -1009,13 +1240,12 @@ function parseLine(text) {
         break;
       }
     }
-    // If no match by name, try first 2-3 chars before pattern like "5/12"
+    // If no match by name, try first 2-4 chars before pattern like "5/12"
     if (!memberId) {
       const match = line.match(/^(\S{1,4})/);
       if (match) {
-        // Try to find loose match
         for (const p of roster) {
-          if (p.name && (p.name.includes(match[1]) || match[1].includes(p.name))) {
+          if (p.name && !p.name.startsWith('パートさん') && (p.name.includes(match[1]) || match[1].includes(p.name))) {
             memberId = p.id;
             memberName = p.name;
             break;
@@ -1023,18 +1253,26 @@ function parseLine(text) {
         }
       }
     }
+    // Explicit new (spot) name candidate when no roster match
+    const newName = memberId ? null : newNameCandidate(line);
     // Find dates (e.g., 5/12, 5月12日)
-    const dateMatches = line.matchAll(/(\d{1,2})[\/月](\d{1,2})/g);
+    const dateMatches = [...line.matchAll(/(\d{1,2})[\/月](\d{1,2})/g)];
     const status = /休|オフ|お休み|休み希望/.test(line) ? 'off' : 'work';
+    const hours = (status === 'work') ? parseHoursFromLine(line) : null;
+    const spot = /単発|スポット|1日だけ|一日だけ|今日だけ/.test(line);
+    // No explicit date on the line → skip (never infer a date)
     for (const m of dateMatches) {
       const month = parseInt(m[1]);
       const day = parseInt(m[2]);
       const date = `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
       items.push({
-        name: memberName || '?要選択?',
+        name: memberName || newName || '?要選択?',
         memberId: memberId,
+        newName: memberId ? null : newName,
         date: date,
-        status: status
+        status: status,
+        hours: hours,
+        spot: spot
       });
     }
   });
@@ -1042,17 +1280,30 @@ function parseLine(text) {
 }
 
 function applyParsedItems(items) {
-  let applied = 0, skipped = 0;
+  let applied = 0, skipped = 0, added = 0;
   items.forEach(item => {
-    if (!item.memberId) { skipped++; return; }
+    let memberId = item.memberId;
+    // Auto-add an explicitly-named new person as a 単発 worker (no roster pollution:
+    // spot rows only show on days they worked). Only when the message named them.
+    if (!memberId && item.newName) {
+      const rec = { id: nextRosterId(), name: item.newName, spot: true };
+      roster.push(rec);
+      memberId = rec.id;
+      added++;
+    }
+    if (!memberId) { skipped++; return; }
     if (!shifts[item.date]) shifts[item.date] = {};
-    shifts[item.date][item.memberId] = item.status;
+    shifts[item.date][memberId] =
+      (item.status === 'work') ? makeCell('work', item.hours, '') : item.status;
     applied++;
   });
   persistAll();
-  alert(`${applied}件 反映しました${skipped > 0 ? `\n（${skipped}件は名前が特定できずスキップ／名簿を編集してください）` : ''}`);
+  alert(`${applied}件 反映しました`
+    + (added > 0 ? `\n（うち${added}名を単発パートとして新規追加）` : '')
+    + (skipped > 0 ? `\n（${skipped}件は名前が特定できずスキップ／名簿を編集してください）` : ''));
   document.getElementById('linePaste').value = '';
   document.getElementById('parseResult').classList.remove('active');
+  renderRoster();
   renderWeek();
 }
 
