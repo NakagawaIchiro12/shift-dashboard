@@ -1458,8 +1458,34 @@ if (window.__hashImportApplied) {
   }, 300);
 }
 
-// クラウド同期を開始（Supabase設定済みで ?ws=<uuid> が指定されている場合のみ動作）
-initCloudSync();
+// ============== GitHub橋（あいなが書いた shifts.json を開いた時に自動取り込み）==============
+// あいな(AI)はSupabaseへ直接書けないが、このダッシュボードと同じGitHub Pages上の
+// shifts.json には git で書ける。ダッシュボードを開いた瞬間にそれを取り込む＝
+// ご主人様はタップも入力も不要（アイコンを開くだけ）で最新シフトが反映される。
+// 形式は #import と同じ（applyImportMergeで非破壊マージ）＋ _meta.ts で二重適用を防ぐ。
+async function loadFromGitHub() {
+  try {
+    const res = await fetch('./shifts.json?t=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) return; // shifts.json が無ければ何もしない
+    const data = await res.json();
+    if (!data._meta || data._meta.app !== 'part-shift-dashboard') return;
+    const ts = String(data._meta.ts || '');
+    if (!ts || localStorage.getItem('gh_last_ts') === ts) return; // 未更新なら適用しない
+    applyImportMerge(data);
+    persistAll();
+    localStorage.setItem('gh_last_ts', ts);
+    renderWeek(); renderRoster();
+    showSyncStatus('🔄 あいなが更新したシフトを反映しました');
+    // ご主人様のブラウザはSupabaseに届くので、取り込んだ内容をクラウドへ同期
+    if (supabaseClient && typeof saveToCloud === 'function') {
+      localStorage.setItem('shift_last_save', Date.now().toString());
+      await saveToCloud();
+    }
+  } catch (e) { console.warn('github bridge:', e); }
+}
+
+// クラウド同期を開始 → その後 GitHub橋を取り込み（クラウドの上にマージして再同期）
+initCloudSync().then(loadFromGitHub).catch(loadFromGitHub);
 </script>
 
 </body>
