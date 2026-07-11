@@ -36,11 +36,13 @@ h2{font-size:16px;margin:22px 0 8px;padding-bottom:6px;border-bottom:1px solid #
 <div class="sub">2026-07-11 更新 ｜ 「AI社員の最初のプロンプト（OpenClaw型リポジトリ再配置）」通りに出来てるかの実機チェック（構築 進行中）</div>
 
 <div class="big">
-  <div class="pct">約25%</div>
-  <div class="pctlabel">出来てる（Phase1＝土台ファイル 完了 ✅ ／ 中身はこれから）</div>
-  <div class="bar"><div class="fill" style="width:25%;background:linear-gradient(90deg,#c99a3a,#e6be5a)"></div></div>
-  <div class="oneline">🆕 <b>Phase1完了</b>＝トップの土台9ファイル（MEMORY.md館内マップ 等）を仕様通り＋中川農産の実データで作成しE2E確認済み。<br>
-  次の欠け：<span class="bad">AI部署・会社ナレッジ・移行台帳が まだ空／不在（Phase2で構築中）</span></div>
+  <div class="pct">約55%</div>
+  <div class="pctlabel">出来てる（Phase1土台＋Phase2 AI部署・会社ナレッジ 完了 ✅ ／ 移行台帳・ルールが残り）</div>
+  <div class="bar"><div class="fill" style="width:55%;background:linear-gradient(90deg,#3fae6e,#5ad28c)"></div></div>
+  <div class="oneline">🆕 <b>Phase2完了</b>＝空だった中核2フォルダを中川農産の実データで構築しE2E確認済み：<br>
+  ・<b>03-AI部署＝44ファイル</b>（制作/マーケ運用/農場管理 3部署×役割・スキル）<br>
+  ・<b>02-会社ナレッジ＝23ファイル</b>（会社概要/事業/人/案件/取引先＝実データ由来・連絡先や私的は非掲載）<br>
+  残り：<span class="bad">migration移行台帳・00-rules・04/05フォルダの中身（Phase3で構築）</span></div>
 </div>
 
 <h2>① トップ直下の土台ファイル <span class="count">9 / 9 出来てる ✅</span></h2>
@@ -48,21 +50,21 @@ h2{font-size:16px;margin:22px 0 8px;padding-bottom:6px;border-bottom:1px solid #
 <div class="item ok"><span class="mark">✅</span><div class="body"><div class="name">AGENTS.md / SOUL.md / USER.md / IDENTITY.md</div><div class="note">🆕作成。会社の憲法・理念・オーナー像・範囲を実データで記述</div></div></div>
 <div class="item ok"><span class="mark">✅</span><div class="body"><div class="name">HEARTBEAT.md / TOOLS.md / BACKLOG.md / README.md</div><div class="note">🆕作成（README除く）。定期運用・道具一覧・残タスクを記述</div></div></div>
 
-<h2>② 番号フォルダ（土台の部屋）<span class="count">殻は6個・中身入りは1〜2個</span></h2>
-<div class="item ok"><span class="mark">✅</span><div class="body"><div class="name">01-private/（個人・日記・信念）</div><div class="note">実働。日記3件＋信念/物語＋ルール＋テンプレ3種で回ってる＝唯一の合格</div></div></div>
-<div class="item part"><span class="mark">⚠️</span><div class="body"><div class="name">00-rules/</div><div class="note">部屋は有るが 中が完全に空（ルール類 全欠け）</div></div></div>
-<div class="item part"><span class="mark">⚠️</span><div class="body"><div class="name">02-company_knowledge/（会社ナレッジ）</div><div class="note">空。会社4層も事業ナレッジも無し＝AI社員の"店の文脈"がゼロ</div></div></div>
-<div class="item part"><span class="mark">⚠️</span><div class="body"><div class="name">03-AI_departments/（AI部署）</div><div class="note">空。仕様の絶対条件「空フォルダ禁止」に真っ向違反＝部署/役割/スキル 全欠け</div></div></div>
-<div class="item part"><span class="mark">⚠️</span><div class="body"><div class="name">04-output/ ・ 05-resources/</div><div class="note">部屋とサブ棚は有るが 中は全部空・ルール無し</div></div></div>
-<div class="item no"><span class="mark">❌</span><div class="body"><div class="name">memory/ archive/ vault/ config/ docs/ code/ migration/ ほか</div><div class="note">丸ごと不在（06_Configだけ仕様外の追加物として有り）</div></div></div>
+<h2>② 番号フォルダ（土台の部屋）<span class="count">中核3フォルダ 中身入り ✅</span></h2>
+<div class="item ok"><span class="mark">✅</span><div class="body"><div class="name">03-AI_departments/（AI部署）🆕</div><div class="note">44ファイル構築＝制作部(LP/スライド/YouTube/サムネ)・マーケ運用部(UTAGE/Substack)・農場管理部(労務)。各役割にルール/スキル入り</div></div></div>
+<div class="item ok"><span class="mark">✅</span><div class="body"><div class="name">02-company_knowledge/（会社ナレッジ）🆕</div><div class="note">23ファイル構築＝会社概要/切り花・AI事業/人/案件/取引先。実データ由来・連絡先や私的は非掲載</div></div></div>
+<div class="item ok"><span class="mark">✅</span><div class="body"><div class="name">01-private/（個人・日記・信念）</div><div class="note">実働（日記＋信念/物語＋ルール＋テンプレ）</div></div></div>
+<div class="item part"><span class="mark">⚠️</span><div class="body"><div class="name">00-rules/ ・ 04-output/ ・ 05-resources/</div><div class="note">部屋は有るが中がまだ空（Phase3で埋める）</div></div></div>
+<div class="item no"><span class="mark">❌</span><div class="body"><div class="name">migration/ memory/ archive/ vault/ config/ docs/ code/</div><div class="note">丸ごと不在（Phase3で作成）</div></div></div>
 
-<h2>③ 各部屋の中の規約（_RULE / SKILL 等）<span class="count">一部だけ◯</span></h2>
-<div class="item ok"><span class="mark">✅</span><div class="body"><div class="name">01-private の 信念/物語ルール・テンプレ3種・日記実データ</div><div class="note">中身充実で実際に機能してる</div></div></div>
-<div class="item no"><span class="mark">❌</span><div class="body"><div class="name">会社ナレッジ・AI部署・各役割の _RULE / SKILL / MASTER.prompt</div><div class="note">対象フォルダが空なので当然すべて欠け</div></div></div>
+<h2>③ 各部屋の中の規約（_RULE / SKILL 等）<span class="count">中核は◯・00-rulesが残り</span></h2>
+<div class="item ok"><span class="mark">✅</span><div class="body"><div class="name">03-AI部署・02-会社ナレッジ の _RULE / _INDEX / SKILL / MASTER.prompt 🆕</div><div class="note">各フォルダに規約・索引・スキル手順を実データで整備（source明記つき）</div></div></div>
+<div class="item ok"><span class="mark">✅</span><div class="body"><div class="name">01-private の 信念/物語ルール・テンプレ・日記</div><div class="note">実働</div></div></div>
+<div class="item no"><span class="mark">❌</span><div class="body"><div class="name">00-rules/ 配下のルール類一式</div><div class="note">まだ空（Phase3）</div></div></div>
 
-<h2>④ 運用ルール・移行台帳 <span class="count">ほぼ 0</span></h2>
-<div class="item no"><span class="mark">❌</span><div class="body"><div class="name">migration/ 台帳一式（棚卸/分類/移動マップ/検証レポート 等）</div><div class="note">1つも無し＝「何をどこへ動かしたか」の記録がゼロ</div></div></div>
-<div class="item no"><span class="mark">❌</span><div class="body"><div class="name">MEMORY館内マップ・移動履歴の追記運用・99-trash退避</div><div class="note">未運用</div></div></div>
+<h2>④ 運用ルール・移行台帳 <span class="count">Phase3で構築</span></h2>
+<div class="item no"><span class="mark">❌</span><div class="body"><div class="name">migration/ 台帳一式（棚卸/分類/移動マップ/検証レポート 等）</div><div class="note">まだ無し＝Phase3で作成</div></div></div>
+<div class="item ok"><span class="mark">✅</span><div class="body"><div class="name">MEMORY館内マップ 🆕</div><div class="note">Phase1で作成済み（First Search Order / Workspace Map / Trigger Dictionary）</div></div></div>
 
 <h2>🎯 100%にするための順番（作ればいい物）</h2>
 <div class="todo"><ol>
