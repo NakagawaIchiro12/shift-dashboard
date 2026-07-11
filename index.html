@@ -968,7 +968,14 @@ function renderWeek() {
       let cls = 'shift-cell ' + status;
       let label = status === 'work' ? '○' : status === 'off' ? '休' : '?';
       const hrs = cellHours(cell, p);
-      const timeTag = (status === 'work' && hrs > 0) ? `<span class="time">${hrs}h</span>` : '';
+      // 出勤時間をセルに直接表示（押さなくても分かるように・ご主人様2026-07-11）。
+      // タスク欄(t)に時間があればそれを、無ければ Xh を出す。
+      const tText = cellTask(cell);
+      let timeTag = '';
+      if (status === 'work') {
+        if (tText) timeTag = `<span class="time">${tText}</span>`;
+        else if (hrs > 0) timeTag = `<span class="time">${hrs}h</span>`;
+      }
       if (status === 'work') workCount++;
       if (status === 'off') offCount++;
       if (status === 'unknown') unknownCount++;
@@ -1472,6 +1479,13 @@ async function loadFromGitHub() {
     const ts = String(data._meta.ts || '');
     if (!ts || localStorage.getItem('gh_last_ts') === ts) return; // 未更新なら適用しない
     applyImportMerge(data);
+    // roster_remove: 来なくなった人などを名簿から削除（名前 or id で指定）
+    if (Array.isArray(data.roster_remove)) {
+      for (const key of data.roster_remove) {
+        const idx = roster.findIndex(p => p.id === key || p.name === key);
+        if (idx >= 0) roster.splice(idx, 1);
+      }
+    }
     persistAll();
     localStorage.setItem('gh_last_ts', ts);
     renderWeek(); renderRoster();
