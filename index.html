@@ -89,7 +89,7 @@ main { padding: 16px; max-width: 720px; margin: 0 auto; }
 
 .shift-grid {
   display: grid;
-  grid-template-columns: 100px repeat(5, 1fr);
+  grid-template-columns: 100px repeat(7, 1fr);
   gap: 4px;
   background: var(--line);
   border-radius: 12px;
@@ -129,7 +129,7 @@ main { padding: 16px; max-width: 720px; margin: 0 auto; }
 .shift-cell .time { display: block; font-size: 9px; opacity: .85; margin-top: 2px; }
 
 @media (max-width: 480px) {
-  .shift-grid { grid-template-columns: 80px repeat(5, 1fr); font-size: 11px; }
+  .shift-grid { grid-template-columns: 64px repeat(7, 1fr); font-size: 10px; }
   .shift-cell.header-col { font-size: 11px; padding-left: 6px; }
 }
 
@@ -934,14 +934,14 @@ function copySummaryText() {
 function renderWeek() {
   const grid = document.getElementById('shiftGrid');
   const days = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 7; i++) {
     const d = new Date(currentWeekStart);
     d.setDate(d.getDate() + i);
     days.push(d);
   }
 
   document.getElementById('weekLabel').textContent =
-    `${days[0].getFullYear()}年 ${fmtJP(days[0])} 〜 ${fmtJP(days[4])}`;
+    `${days[0].getFullYear()}年 ${fmtJP(days[0])} 〜 ${fmtJP(days[6])}`;
 
   let html = '<div class="shift-cell header-row">名前</div>';
   days.forEach(d => {
